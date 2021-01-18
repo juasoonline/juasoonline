@@ -1,11 +1,16 @@
 <template>
-    <div id="nav">
-        <div class="flex justify-center items-center h-screen">
-            <h1 class="font-bold text-9xl text-gray-600">Tailwind CSS working fine</h1>
-        </div>
-    </div>
+
+    <!-- Begin page wrapper -->
     <router-view/>
+    <!-- End page wrapper -->
+
 </template>
+
+<script>
+    export default
+    {
+    };
+</script>
 
 <style lang="scss">
 </style>
