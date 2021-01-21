@@ -16,7 +16,7 @@
         <!-- End logo, search and cart -->
 
         <!-- Begin main contents -->
-        <main-contents></main-contents>
+<!--        <main-contents></main-contents>-->
         <!-- End main contents -->
 
         <!-- Begin footer -->
@@ -32,12 +32,11 @@
     import TopAds from "@/components/Shared/TopAds";
     import NavBar from "@/components/Shared/NavBar";
     import SearchBar from "@/components/Shared/SearchBar";
-    import MainContents from "@/components/Home/MainContents";
 
     export default
     {
         name: 'Home',
-        components: { TopAds, NavBar, SearchBar, MainContents }
+        components: { TopAds, NavBar, SearchBar }
     }
 </script>
 

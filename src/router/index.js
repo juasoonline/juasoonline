@@ -27,6 +27,16 @@ const routes =
         path: '/store/:store',
         name: 'Store',
         component: () => import( '../components/Store/Store' )
+    },
+    {
+        path: '/cart',
+        name: 'Cart',
+        component: () => import( '../components/Cart/Cart' )
+    },
+    {
+        path: '/wishlist',
+        name: 'Wishlist',
+        component: () => import( '../components/Wishlist/Wishlist' )
     }
 ]
 
