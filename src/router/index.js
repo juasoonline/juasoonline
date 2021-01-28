@@ -4,6 +4,16 @@ import Home from '../components/Home/Home.vue'
 const routes =
 [
     {
+        path: '/login',
+        name: 'Login',
+        component: () => import( '../components/Login/login' )
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: () => import( '../components/Register/register' )
+    },
+    {
         path: '/',
         name: 'Home',
         component: Home

@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="w-full h-screen my-4">
+    <section class="w-full my-4">
         <div class="flex flex-col grid gap-5 grid-cols-4">
 
             <!-- Begin products counts -->
@@ -67,10 +67,10 @@
 </template>
 
 <script>
-  export default
-  {
-      name: "JuasoTags"
-  }
+    export default
+    {
+        name: "JuasoTags"
+    }
 </script>
 
 <style scoped>

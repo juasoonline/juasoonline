@@ -31,7 +31,6 @@
                                       <h3 class="text-gray-500 text-sm font-bold hover:text-red-500">{{ Category.attributes.name }}</h3>
                                   </div>
                               </router-link>
-
                               <ul class="">
                                   <li v-for="Subcategory in Category.include.subcategory" :key="Subcategory.attributes.resource_id" class="text-gray-500 font-light text-xs hover:text-red-500 py-0.5">
                                       <router-link to="/category/1234567890">{{ Subcategory.attributes.name }}</router-link>

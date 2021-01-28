@@ -20,7 +20,7 @@
         <!-- End main contents -->
 
         <!-- Begin footer -->
-<!--        <main-footer></main-footer>-->
+        <main-footer></main-footer>
         <!-- End footer -->
 
     </div>
@@ -33,11 +33,12 @@
     import NavBar from "@/components/Shared/NavBar";
     import SearchBar from "@/components/Shared/SearchBar";
     import MainContents from "@/components/Home/MainContents";
+    import MainFooter from "@/components/Shared/MainFooter";
 
     export default
     {
         name: 'Home',
-        components: { TopAds, NavBar, SearchBar, MainContents }
+        components: { TopAds, NavBar, SearchBar, MainContents, MainFooter }
     }
 </script>
 
