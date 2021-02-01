@@ -36,7 +36,7 @@
 
     export default
     {
-        name: 'Home',
+        name: 'Stores',
         components: { TopAds, NavBar, SearchBar, MainFooter }
     }
 </script>

@@ -12,10 +12,11 @@
       <!-- End navbar -->
 
       <!-- Begin logo, search and cart -->
-      <search-bar></search-bar>
+      <search-bar class=""></search-bar>
       <!-- End logo, search and cart -->
 
       <!-- Begin main contents -->
+      <main-contents class="overflow-y-auto"></main-contents>
       <!-- End main contents -->
 
       <!-- Begin footer -->
@@ -31,12 +32,13 @@
     import TopAds from "@/components/Shared/TopAds";
     import NavBar from "@/components/Shared/NavBar";
     import SearchBar from "@/components/Shared/SearchBar";
+    import MainContents from "@/components/Category/MainContents"
     import MainFooter from "@/components/Shared/MainFooter";
 
     export default
     {
         name: "Category",
-        components: { TopAds, NavBar, SearchBar, MainFooter }
+        components: { TopAds, NavBar, SearchBar, MainFooter, MainContents }
     }
 </script>
 

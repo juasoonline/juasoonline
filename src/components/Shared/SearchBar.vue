@@ -1,10 +1,9 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="flex bg-white shadow">
+    <div class="sticky top-0 z-40 flex bg-white shadow">
         <div class="container mx-auto hidden lg:block">
-<!--            <div class="flex flex-row justify-between py-10">-->
-            <div class="flex flex-col grid gap-5 grid-cols-10 py-8">
+            <div class="flex flex-col grid gap-5 grid-cols-10 py-6">
 
                 <!-- Begin logo --->
                 <div class="flex col-span-2 justify-start">
@@ -18,14 +17,13 @@
                 <!-- Begin search form -->
                 <div class="flex col-span-6 justify-center">
                     <div class="border rounded flex w-full items-center catSelect">
-                        <select class="border-r text-xs minimal">
-                            <option value="0">All Categories</option>
-                            <option value="100003109">Women's Clothing</option><option value="100003070">Men's Clothing</option><option value="509">Cellphones &amp; Telecommunications</option><option value="7">Computer &amp; Office</option><option value="44">Consumer Electronics</option><option value="1509">Jewelry &amp; Accessories</option><option value="15">Home &amp; Garden</option><option value="1524">Luggage &amp; Bags</option><option value="322">Shoes</option><option value="1501" data-spm-anchor-id="a2g0o.best.1000002.i5.530b2c25CzRtOV">Mother &amp; Kids</option><option value="18">Sports &amp; Entertainment</option><option value="66">Beauty &amp; Health</option><option value="1511">Watches</option><option value="26">Toys &amp; Hobbies</option><option value="100003235">Weddings &amp; Events</option><option value="200000875">Novelty &amp; Special Use</option><option value="34">Automobiles &amp; Motorcycles</option><option value="39">Lights &amp; Lighting</option><option value="1503">Furniture</option><option value="502" data-spm-anchor-id="a2g0o.best.1000002.i4.530b2c25CzRtOV">Electronic Components &amp; Supplies</option><option value="21">Education &amp; Office Supplies</option><option value="6" data-spm-anchor-id="a2g0o.best.1000002.i3.530b2c25CzRtOV">Home Appliances</option><option value="13">Home Improvement</option><option value="2">Food</option><option value="30">Security &amp; Protection</option><option value="1420">Tools</option><option value="200002489">Hair Extensions &amp; Wigs</option><option value="205776616">Apparel Accessories</option><option value="205779615">Underwear &amp; Sleepwears</option><option value="205965401">Virtual Goods</option>
-                        </select>
-
-                        <input class="text-xs w-full px-5 py-3" placeholder="What are you looking for?...">
-
-                        <button class="w-8 h-8 mx-1.5 block rounded-full">
+                        <label>
+                            <select class="border-r text-xs minimal">
+                                <option value="0">All Categories</option><option value="100003109">Women's Clothing</option><option value="100003070">Men's Clothing</option><option value="509">Cellphones &amp; Telecommunications</option><option value="7">Computer &amp; Office</option><option value="44">Consumer Electronics</option><option value="1509">Jewelry &amp; Accessories</option><option value="15">Home &amp; Garden</option><option value="1524">Luggage &amp; Bags</option><option value="322">Shoes</option><option value="1501">Mother &amp; Kids</option><option value="18">Sports &amp; Entertainment</option><option value="66">Beauty &amp; Health</option><option value="1511">Watches</option><option value="26">Toys &amp; Hobbies</option><option value="100003235">Weddings &amp; Events</option><option value="200000875">Novelty &amp; Special Use</option><option value="34">Automobiles &amp; Motorcycles</option><option value="39">Lights &amp; Lighting</option><option value="1503">Furniture</option><option value="502" data-spm-anchor-id="a2g0o.best.1000002.i4.530b2c25CzRtOV">Electronic Components &amp; Supplies</option><option value="21">Education &amp; Office Supplies</option><option value="6" data-spm-anchor-id="a2g0o.best.1000002.i3.530b2c25CzRtOV">Home Appliances</option><option value="13">Home Improvement</option><option value="2">Food</option><option value="30">Security &amp; Protection</option><option value="1420">Tools</option><option value="200002489">Hair Extensions &amp; Wigs</option><option value="205776616">Apparel Accessories</option><option value="205779615">Underwear &amp; Sleepwears</option><option value="205965401">Virtual Goods</option>
+                            </select>
+                        </label>
+                        <label class="w-full"><input class="text-xs px-5 py-3 w-full" placeholder="What are you looking for?..."></label>
+                        <button class="w-8 h-8 mx-1.5 block focus:outline-none">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>

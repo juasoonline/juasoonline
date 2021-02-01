@@ -1,20 +1,45 @@
 <template>
 
     <!-- Begin contents wrapper -->
-    <div>
-        <h1 class="font-bold text-9xl text-gray-600">Item page</h1>
+    <div class="">
+
+        <!-- Begin top ads -->
+        <top-ads></top-ads>
+        <!-- End top ads -->
+
+        <!-- Begin navbar -->
+        <nav-bar></nav-bar>
+        <!-- End navbar -->
+
+        <!-- Begin logo, search and cart -->
+        <search-bar></search-bar>
+        <!-- End logo, search and cart -->
+
+        <!-- Begin main contents -->
+        <!--        <main-contents></main-contents>-->
+        <!-- End main contents -->
+
+        <!-- Begin footer -->
+        <main-footer></main-footer>
+        <!-- End footer -->
+
     </div>
     <!-- End contents wrapper -->
 
 </template>
 
 <script>
+    import TopAds from "@/components/Shared/TopAds";
+    import NavBar from "@/components/Shared/NavBar";
+    import SearchBar from "@/components/Shared/SearchBar";
+    import MainFooter from "@/components/Shared/MainFooter";
+
     export default
     {
-        name: "Item"
+        name: "Item",
+        components: { TopAds, NavBar, SearchBar, MainFooter }
     }
 </script>
 
 <style scoped>
-
 </style>
