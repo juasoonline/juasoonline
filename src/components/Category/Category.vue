@@ -3,25 +3,25 @@
     <!-- Begin contents wrapper -->
     <div class="">
 
-      <!-- Begin top ads -->
-      <top-ads></top-ads>
-      <!-- End top ads -->
+        <!-- Begin top ads -->
+        <top-ads></top-ads>
+        <!-- End top ads -->
 
-      <!-- Begin navbar -->
-      <nav-bar></nav-bar>
-      <!-- End navbar -->
+        <!-- Begin navbar -->
+        <nav-bar></nav-bar>
+        <!-- End navbar -->
 
-      <!-- Begin logo, search and cart -->
-      <search-bar class=""></search-bar>
-      <!-- End logo, search and cart -->
+        <!-- Begin logo, search and cart -->
+        <main-header></main-header>
+        <!-- End logo, search and cart -->
 
-      <!-- Begin main contents -->
-      <main-contents class="overflow-y-auto"></main-contents>
-      <!-- End main contents -->
+        <!-- Begin main contents -->
+        <main-contents></main-contents>
+        <!-- End main contents -->
 
-      <!-- Begin footer -->
-      <main-footer></main-footer>
-      <!-- End footer -->
+        <!-- Begin footer -->
+        <main-footer></main-footer>
+        <!-- End footer -->
 
     </div>
     <!-- End contents wrapper -->
@@ -31,14 +31,14 @@
 <script>
     import TopAds from "@/components/Shared/TopAds";
     import NavBar from "@/components/Shared/NavBar";
-    import SearchBar from "@/components/Shared/SearchBar";
+    import MainHeader from "@/components/Shared/MainHeader";
     import MainContents from "@/components/Category/MainContents"
     import MainFooter from "@/components/Shared/MainFooter";
 
     export default
     {
         name: "Category",
-        components: { TopAds, NavBar, SearchBar, MainFooter, MainContents }
+        components: { TopAds, NavBar, MainHeader, MainFooter, MainContents }
     }
 </script>
 

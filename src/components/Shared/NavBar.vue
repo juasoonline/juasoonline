@@ -63,7 +63,7 @@
                                         <router-link to="/register" class="justify-start inline-block mr-1 px-7 py-1 text-xs font-medium leading-4 text-center text-white transition bg-red-500 rounded shadow ripple hover:bg-red-600">Join</router-link>
                                         <router-link to="/login" class="justify-end inline-block ml-1 px-7 py-1 text-xs font-medium leading-4 text-center text-white transition bg-gray-500 rounded shadow ripple hover:bg-gray-600">Login</router-link>
                                     </div>
-                                    <ul class="w-full font-bold dropMenu">
+                                    <ul class="w-full dropMenu">
                                         <li class="rounded-sm px-3 py-1.5 hover:bg-gray-100"><router-link to="/orders" class="flex hover:text-red-500 hover:border-gray-600">My Orders</router-link></li>
                                         <li class="rounded-sm px-3 py-1.5 hover:bg-gray-100"><router-link to="/messages" class="flex hover:text-red-500 hover:border-gray-600">Message Center</router-link></li>
                                         <li class="rounded-sm px-3 py-1.5 hover:bg-gray-100"><router-link to="/wishlist" class="flex hover:text-red-500 hover:border-gray-600">Wish List</router-link></li>

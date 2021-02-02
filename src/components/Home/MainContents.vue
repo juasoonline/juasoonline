@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="container mx-auto my-4">
+    <main class="container mx-auto my-4">
 
         <!-- Begin category and slide contents -->
         <cats-and-ad-slides></cats-and-ad-slides>
@@ -35,7 +35,7 @@
         </section>
         <!-- End items -->
 
-    </div>
+    </main>
     <!-- End contents -->
 
 </template>

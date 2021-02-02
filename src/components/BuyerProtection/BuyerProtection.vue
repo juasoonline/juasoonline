@@ -31,7 +31,7 @@
 <script>
     import TopAds from "@/components/Shared/TopAds";
     import NavBar from "@/components/Shared/NavBar";
-    import SearchBar from "@/components/Shared/SearchBar";
+    import SearchBar from "@/components/Shared/MainHeader";
     import MainFooter from "@/components/Shared/MainFooter";
 
     export default

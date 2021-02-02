@@ -12,13 +12,11 @@
         <!-- End navbar -->
 
         <!-- Begin logo, search and cart -->
-        <search-bar></search-bar>
+        <main-header></main-header>
         <!-- End logo, search and cart -->
 
         <!-- Begin main contents -->
-        <div class="container mx-auto my-4">
-
-        </div>
+        <main-contents></main-contents>
         <!-- End main contents -->
 
         <!-- Begin footer -->
@@ -33,13 +31,14 @@
 <script>
     import TopAds from "@/components/Shared/TopAds";
     import NavBar from "@/components/Shared/NavBar";
-    import SearchBar from "@/components/Shared/SearchBar";
+    import MainHeader from "@/components/Shared/MainHeader";
+    import MainContents from "@/components/Item/MainContents";
     import MainFooter from "@/components/Shared/MainFooter";
 
     export default
     {
         name: "Item",
-        components: { TopAds, NavBar, SearchBar, MainFooter }
+        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter }
     }
 </script>
 
