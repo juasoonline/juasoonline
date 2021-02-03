@@ -3,7 +3,7 @@
     <!-- Begin contents -->
     <div class="sticky top-0 z-40 flex bg-white shadow">
         <div class="container mx-auto hidden lg:block">
-            <div class="flex flex-col grid gap-5 grid-cols-10 py-6">
+            <div class="flex grid gap-5 grid-cols-10 py-6">
 
                 <!-- Begin logo --->
                 <div class="flex col-span-2 justify-start">

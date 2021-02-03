@@ -18,7 +18,7 @@
             </div>
             <!-- End products counts -->
 
-            <!-- Begin ads slides -->
+            <!-- Begin 24/7 help -->
             <div class="flex p-10 bg-white rounded">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center rounded-full text-white bg-gray-700 p-4">
@@ -30,7 +30,7 @@
                     <p class="mt-1 text-xs text-gray-500">Round-the-clock assistance for a smooth shopping experience.</p>
                 </div>
             </div>
-            <!-- End ads slides -->
+            <!-- End 24/7 help -->
 
             <!-- Begin safe payment -->
             <div class="flex p-10 bg-white rounded">
@@ -46,7 +46,7 @@
             </div>
             <!-- End safe payment -->
 
-            <!-- Begin nationwide delivery -->
+            <!-- Begin shop with confidence -->
             <div class="flex p-10 bg-white rounded">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center rounded-full text-white bg-gray-700 p-4">
@@ -58,7 +58,7 @@
                     <p class="mt-1 text-xs text-gray-500">Our Buyer Protection covers your purchase from click to delivery.</p>
                 </div>
             </div>
-            <!-- End nationwide delivery -->
+            <!-- End shop with confidence -->
 
         </div>
     </section>
