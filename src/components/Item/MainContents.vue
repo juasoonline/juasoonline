@@ -19,10 +19,10 @@
                 <!-- End item images -->
 
                 <!-- Begin item info -->
-                <div class="col-span-6 p-4 text-gray-600">
+                <div class="col-span-6 p-4">
 
                     <!-- Begin item name -->
-                    <div class="text-xl font-bold pb-3">
+                    <div class="text-xl font-bold text-gray-600 pb-3">
                         <h2 class="text-2xl">Marshall Kilburn Portable Wireless Speaker</h2>
                         <div class="text-xs font-light mt-1">
                             <span class="mr-3 hover:text-red-500"><router-link to="/store/1234567890" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product KABFARMS</router-link></span>
@@ -34,7 +34,7 @@
                     <!-- End item name -->
 
                     <!-- Begin item price -->
-                    <div class="flex text-center border-b border-t py-4 border-gray-100">
+                    <div class="flex text-center  text-gray-600 border-b border-t py-4 border-gray-100">
                         <span class="font-bold text-xl">GHS 23,000</span>
                         <span class="text-gray-600 mx-3 text-xs py-1.5"><del>GHS 23,000</del></span>
                         <span class=""><p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p></span>
@@ -132,9 +132,6 @@
 
             <!-- Begin right contents -->
             <div class="bg-white rounded col-span-5">
-
-                <!-- Begin tab headers -->
-                <!-- End tab headers -->
 
             </div>
             <!-- End right contents -->
