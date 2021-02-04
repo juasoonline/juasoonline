@@ -2,32 +2,31 @@
 
     <!-- Begin contents -->
     <div class="mt-3 bg-white rounded p-2">
-        <swiper :slides-per-view="8" :space-between="5" :scrollbar="{ draggable: true }" :autoplay="{ autoplay: true }" class="rounded">
-            <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
-                <div class="card bg-white overflow-hidden border pb-1.5 border-gray-100 text-center rounded">
-                    <router-link to="/item/975858275"><img v-bind:src="banner.image" :alt="banner.name" class="rounded"></router-link>
+        <carousel :settings="settings" :breakpoints="breakpoints">
+            <slide v-for="banner in AdBanners" :key="banner.resource_id">
+                <div class="card bg-white overflow-hidden border pb-1.5 border-gray-100">
+                    <router-link to="/item/975858275"><img v-bind:src="banner.image" :alt="banner.name"></router-link>
                     <p class="font-bold block text-xs"><router-link class="text-xxs bg-red-500 px-1 text-white rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
                 </div>
-            </swiper-slide>
-        </swiper>
+            </slide>
+
+            <template #addons>
+                <navigation></navigation>
+            </template>
+        </carousel>
     </div>
     <!-- End contents -->
 
 </template>
 
 <script>
-    import SwiperCore, { Autoplay } from 'swiper';
-    import { Swiper, SwiperSlide } from 'swiper/vue'
-
-    import 'swiper/swiper.scss';
-    import 'swiper/components/pagination/pagination.scss';
-
-    SwiperCore.use( [ Autoplay ] );
+    import  'vue3-carousel/dist/carousel.css'
+    import { Carousel, Navigation, Slide } from "vue3-carousel";
 
     export default
     {
         name: "FlashDeals",
-        components: { Swiper, SwiperSlide },
+        components: { Carousel, Slide, Navigation },
         data()
         {
             return {
@@ -51,6 +50,8 @@
                     { resource_id: 32000000, image: "./assets/images/products/27.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
                     { resource_id: 33000000, image: "./assets/images/products/28.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
                 ],
+                settings: { itemsToShow: 1, snapAlign: "center" },
+                breakpoints: { 1024: { itemsToShow: 8, snapAlign: "start" } }
             }
         }
     }
