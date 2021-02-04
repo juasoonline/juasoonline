@@ -11,13 +11,14 @@
 </template>
 
 <script>
-    import SwiperCore, { Pagination, Autoplay } from 'swiper';
+    import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
 
     import 'swiper/swiper.scss';
+    import 'swiper/components/navigation/navigation.scss';
     import 'swiper/components/pagination/pagination.scss';
 
-    SwiperCore.use( [ Pagination, Autoplay ] );
+    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
 
     export default
     {
