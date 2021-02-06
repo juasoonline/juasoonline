@@ -3,7 +3,7 @@
     <!-- Begin contents -->
     <swiper :slides-per-view="1" :autoplay="{ autoplay: true }" :pagination="{ clickable: true }" class="rounded">
         <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id">
-            <div class="swiper-container"><router-link to="/"><img v-bind:src="banner.image" :alt="banner.desc" class="rounded border-none"></router-link></div>
+            <div class="swiper-container"><router-link to="/store/1234567890"><img v-bind:src="banner.image" :alt="banner.desc" class="rounded border-none"></router-link></div>
         </swiper-slide>
     </swiper>
     <!-- End contents -->

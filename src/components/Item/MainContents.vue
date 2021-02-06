@@ -108,8 +108,11 @@
                     </div>
                     <!-- End buyer guarantees -->
 
+                    <!-- Begin flash deals -->
                     <div class="">
                     </div>
+                    <!-- End flash deals -->
+
                 </div>
                 <!-- End buyer info -->
 
@@ -159,27 +162,30 @@
                     <!-- End table headers -->
 
                     <!-- Begin tab contents -->
-                    <section>
+                    <section class="">
 
                         <!-- Begin overview contents -->
-                        <div class="tab1">
-                            <p class="text-sm mb-3.5">The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit to what you can achieve.</p>
-                            <p class="text-sm mb-3.5">The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it's designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data.</p>
-                            <p class="text-sm mb-3.5">Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple's ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications.</p>
-                            <p class="text-sm mb-3.5">Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment</p>
-                            <p class="text-sm mb-3.5">The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.</p>
+                        <div class="tab1 rounded-b">
+                            <div class="">
+                                <p class="text-sm mb-3.5">The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit to what you can achieve.</p>
+                                <p class="text-sm mb-3.5">The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it's designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data.</p>
+                                <p class="text-sm mb-3.5">Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple's ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications.</p>
+                                <p class="text-sm mb-3.5">Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment</p>
+                                <p class="text-sm mb-3.5">The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.</p>
+                            </div>
                         </div>
                         <!-- End overview contents -->
 
                         <!-- Begin reviews contents -->
-                        <div class="tab2">
-
-
+                        <div class="tab2 rounded-b">
+                            <div class="">
+                                <p class="text-sm mb-3.5">The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.</p>
+                            </div>
                         </div>
                         <!-- End reviews contents -->
 
                         <!-- Begin Specification contents -->
-                        <div class="tab3">
+                        <div class="tab3 rounded-b">
                             <table class="table table-bordered ps-table ps-table--specification text-sm">
                                 <tbody>
                                     <tr><td>Color</td><td>Black, Gray</td></tr>
@@ -233,27 +239,26 @@
 <style lang="scss" scoped>
     // Tabs styles
     @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
-    .pc-tab > input, .pc-tab section > div { display: none; }
+    .pc-tab > input, .pc-tab section > div { display: none; border-top: 1px solid #E3E3E3 }
     #tab1:checked ~ section .tab1, #tab2:checked ~ section .tab2, #tab3:checked ~ section .tab3 { display: block; }
     #tab1:checked ~ nav .tab1, #tab2:checked ~ nav .tab2, #tab3:checked ~ nav .tab3 { color: red; }
-    $activeColor: #ffffff; $unactiveColor: #eeeeee; $unactiveHoverColor: #dddddd;
     *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
     .pc-tab { width: 100%; margin: 0 auto; ul { list-style: none; margin: 0; padding: 0; li { label { font-family: "Nunito"; text-transform: uppercase; float: left; padding: 10px 20px; color: #444; font-size: 12px; font-weight: bolder;
     &:hover { cursor: pointer; color: red; }
-    &:active { font-weight: bolder; color: red; } }
+    &:active { font-weight: bolder; color: red; border-bottom: #444444 solid 3px } }
     &:not(:last-child) label { border-right-width: 0; } } }
-    section { font-family: "Nunito"; clear: both; div { padding: 20px; width: 100%; background: #fff; line-height: 1.5em; letter-spacing: 0.3px; color: #444; border-top: #eeeeee 1px solid; h2 { margin: 0; font-family: "Nunito"; letter-spacing: 1px; color: #34495e; } } } }
+    section { font-family: "Nunito"; clear: both; div { padding: 10px; width: 100%; background: #fff; line-height: 1.5em; letter-spacing: 0.3px; color: #444; h2 { margin: 0; font-family: "Nunito"; letter-spacing: 1px; color: #34495e; } } } }
     #tab1:checked ~ nav .tab1, #tab2:checked ~ nav .tab2, #tab3:checked ~ nav .tab3 { label { background: white; color: #111; position: relative; &:after { content: ''; display: block; position: absolute; height: 2px; width: 100%; left: 0; bottom: -1px; } } }
 
     // Table Styles
     .table-responsive>.table-bordered { border: 0; }
     .table-bordered { border: 1px solid #e5e7eb; }
-    .table { width: 100%; margin-bottom: 1rem; background-color: transparent; }
+    .table { width: 98.5%; margin: 10px; background-color: transparent; }
     table { border-collapse: collapse; }
     table { display: table; box-sizing: border-box; text-indent: initial; border-spacing: 2px; border-color: #e5e7eb; }
     .ps-table thead > tr > th { font-family: "Work Sans", sans-serif; font-weight: 700; color: #515356; text-transform: uppercase; border-bottom: 1px solid #e5e7eb; }
     .ps-table tbody > tr > td { vertical-align: middle; padding: 10px; border: 1px solid #e5e7eb; color: #666; }
-    .ps-table--specification tbody tr td:first-child { background-color: #f4f4f4; font-weight: 500; color: #000; width: 150px; }
+    .ps-table--specification tbody tr td:first-child { background-color: #f4f4f4; font-weight: 500; color: #000; width: 200px; }
 
     // Review comments styles
 
