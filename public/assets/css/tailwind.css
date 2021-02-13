@@ -4,8 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.topNave { @apply inline-block text-gray-500 text-left text-xxs outline-none focus:outline-none items-center; }
-.navLink { @apply flex justify-end hover:text-red-500 font-light; }
+.topNave { @apply inline-block text-white text-left text-xxs outline-none focus:outline-none items-center; }
+.navLink { @apply flex justify-end hover:text-juaso-secondary font-light; }
 
 .userNav { @apply inline-block py-1 text-gray-500 flex justify-end }
 .userLink { @apply pl-8 hover:text-red-500 }

@@ -6,7 +6,7 @@
             <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border pb-1.5 border-gray-100 text-center rounded">
                     <router-link to="/item/975858275"><img v-bind:src="banner.image" :alt="banner.name" class="rounded"></router-link>
-                    <p class="font-bold block text-xs"><router-link class="text-xxs bg-red-500 px-1 text-white rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
+                    <p class="font-bold block text-xs"><router-link class="text-xxs bg-juaso-primary px-1 text-white rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
                 </div>
             </swiper-slide>
         </swiper>
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-    import SwiperCore, { Autoplay } from 'swiper';
+    import SwiperCore, { Autoplay, Navigation } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
 
     import 'swiper/swiper.scss';
 
-    SwiperCore.use( [ Autoplay ] );
+    SwiperCore.use( [ Autoplay, Navigation ] );
 
     export default
     {

@@ -5,12 +5,12 @@
         <div class="w-screen">
 
             <!-- Begin ad banner -->
-            <router-link to="/item/1234567890"><img class="hidden lg:block" src="@/assets/images/ads/banner-top.jpg"  alt=""/></router-link>
+            <router-link to="/item/1234567890"><img class="hidden lg:block" :src="topAd"  alt=""/></router-link>
             <!-- Begin ad banner -->
 
             <!-- Begin sm banner -->
             <div class="lg:hidden flex justify-between p-2 bg-gray-200 bgImage">
-                <img class="h-5" src="@/assets/images/logo2.png" alt="Juasoonline logo">
+                <img class="h-5" :src="mobileLogo" alt="Juasoonline logo">
                 <router-link to="/" class="uppercase sm:text-xxxs text-xxs px-2 py-1 bg-gradient-to-r from-red-400 to-red-500 focus:from-pink-500 focus:to-yellow-500 text-gray-100 rounded">
                     <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg>
                     <span class="ml-1">Open App</span>
@@ -27,10 +27,17 @@
 <script>
     export default
     {
-        name: "TopAds"
+        name: "TopAds",
+        data()
+        {
+            return {
+                topAd: './assets/images/ads/main-top/banner-top.jpg',
+                mobileLogo: './assets/images/logo2.png',
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .bgImage { background-image: url('../../assets/images/ads/banner-top2.png'); }
+    /*.bgImage { background-image: url('../../assets/images/ads/banner-top2.png'); }*/
 </style>
