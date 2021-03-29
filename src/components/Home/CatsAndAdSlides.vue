@@ -44,8 +44,8 @@
             <!-- End user actions -->
 
             <!-- Begin ads flash -->
-            <div v-for="adBanner in adBanners" :key="adBanner.resource_id" class="flex justify-center items-center mt-3 rounded">
-                <router-link to="/store/1234567890"><img v-bind:src="adBanner.image" :alt="adBanner.name" class="rounded"></router-link>
+            <div v-for="banner in banners" :key="banner.resource_id" class="flex justify-center items-center mt-3 rounded">
+                <router-link to="/store/1234567890"><img v-bind:src="banner.image" :alt="banner.name" class="rounded"></router-link>
             </div>
             <!-- End ads flash -->
 
@@ -69,10 +69,10 @@
         data()
         {
             return {
-              adBanners:
+              banners:
               [
-                  { resource_id: 10000000, image: "../assets/images/adbanners/banner1.jpg", name: "Ad banner name 1"  },
-                  { resource_id: 20000000, image: "../assets/images/adbanners/banner2.jpg", name: "Ad banner name 2",  },
+                  { resource_id: 10000000, image: "../assets/images/ads/right/banner1.jpg", name: "Ad banner name 1"  },
+                  { resource_id: 20000000, image: "../assets/images/ads/right/banner2.jpg", name: "Ad banner name 2",  },
               ]
             }
         }

@@ -31,7 +31,7 @@
         data()
         {
             return {
-                topAd: '../assets/images/ads/main-top/banner-top.jpg',
+                topAd: '../assets/images/ads/top/banner1.jpg',
                 mobileLogo: '../assets/images/logo2.png',
             }
         }

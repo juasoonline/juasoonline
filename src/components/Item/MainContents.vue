@@ -230,7 +230,7 @@
                     { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
                     { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
                 ],
-                storeBanner: "../assets/images/adbanners/topads/banner-top.jpg",
+                storeBanner: "../assets/images/ads/store/banner1.jpg",
             }
         }
     }

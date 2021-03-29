@@ -15,9 +15,9 @@
         <search-bar></search-bar>
         <!-- End logo, search and cart -->
 
-        <!-- Begin main contents -->
+        <!-- Begin top contents -->
         <main-contents></main-contents>
-        <!-- End main contents -->
+        <!-- End top contents -->
 
         <!-- Begin footer -->
         <main-footer></main-footer>
