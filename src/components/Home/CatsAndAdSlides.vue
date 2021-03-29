@@ -71,8 +71,8 @@
             return {
               adBanners:
               [
-                  { resource_id: 10000000, image: "./assets/images/adBanners/banner1.jpg", name: "Ad banner name 1"  },
-                  { resource_id: 20000000, image: "./assets/images/adBanners/banner2.jpg", name: "Ad banner name 2",  },
+                  { resource_id: 10000000, image: "../assets/images/adbanners/banner1.jpg", name: "Ad banner name 1"  },
+                  { resource_id: 20000000, image: "../assets/images/adbanners/banner2.jpg", name: "Ad banner name 2",  },
               ]
             }
         }

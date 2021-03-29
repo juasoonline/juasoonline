@@ -65,7 +65,7 @@
         data()
         {
             return {
-                mainLogo: './assets/images/logo.png',
+                mainLogo: '../assets/images/logo.png',
             }
         }
     }

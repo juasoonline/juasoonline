@@ -207,8 +207,8 @@
         data()
         {
             return {
-                PlayStoreLogo: './assets/images/icons/icon-googleplay.png',
-                AppStoreLogo: './assets/images/icons/icon-appstore.png',
+                PlayStoreLogo: '../assets/images/icons/icon-googleplay.png',
+                AppStoreLogo: '../assets/images/icons/icon-appstore.png',
                 Groups: [
                 {
                   "id": 1,

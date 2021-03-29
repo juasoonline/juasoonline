@@ -31,13 +31,12 @@
         data()
         {
             return {
-                topAd: './assets/images/ads/main-top/banner-top.jpg',
-                mobileLogo: './assets/images/logo2.png',
+                topAd: '../assets/images/ads/main-top/banner-top.jpg',
+                mobileLogo: '../assets/images/logo2.png',
             }
         }
     }
 </script>
 
 <style scoped>
-    /*.bgImage { background-image: url('../../assets/images/ads/banner-top2.png'); }*/
 </style>

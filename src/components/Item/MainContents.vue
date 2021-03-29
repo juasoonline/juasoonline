@@ -223,14 +223,14 @@
         {
             return {
                 items: [
-                    { resource_id: 10000000, image: "./assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  },
-                    { resource_id: 20000000, image: "./assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 30000000, image: "./assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 40000000, image: "./assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 50000000, image: "./assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 60000000, image: "./assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
+                    { resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  },
+                    { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
+                    { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
+                    { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
+                    { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
+                    { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
                 ],
-                storeBanner: "./assets/images/adBanners/topAds/banner-top.jpg",
+                storeBanner: "../assets/images/adbanners/topads/banner-top.jpg",
             }
         }
     }
