@@ -138,7 +138,7 @@
 
 <script>
     import { inject } from 'vue'
-    import router from "@/router";
+    // import router from "@/router";
 
     export default
     {
@@ -147,11 +147,7 @@
         {
             const authentication = inject( 'authentication' );
 
-            const signOut = () =>
-            {
-                authentication.logoutUser().then(() => { router.replace('/'); })
-            }
-
+            const signOut = () => { authentication.logoutUser().then(() => { document.location.href = "" } )}
             return { authentication, signOut }
         }
     }

@@ -12,7 +12,6 @@ const validateToken = async ( token, resource ) =>
 {
     try
     {
-        // let response = await axios({ method: 'GET', url: 'customers/' + resource + '?include=wishlist,cart', headers: { 'Authorization': 'Bearer ' + token } });
         let response = await axios({ method: 'GET', url: 'customers/' + resource, headers: { 'Authorization': 'Bearer ' + token } });
         storeData( token, response.data.data )
     }

@@ -87,7 +87,7 @@
 
 <script>
     import { inject, reactive } from "vue";
-    import router from "@/router";
+    // import router from "@/router";
 
     export default
     {
@@ -96,11 +96,7 @@
             const authentication = inject( 'authentication' );
             const files = reactive ({ userIconMale: '../assets/images/user-icon-male.png', logo: '../assets/images/logo.png' })
 
-            const signOut = () =>
-            {
-                authentication.logoutUser().then(() => { router.replace('/'); })
-            }
-
+            const signOut = () => { authentication.logoutUser().then(() => { document.location.href = "" } )}
             return { files, authentication, signOut }
         }
     }
