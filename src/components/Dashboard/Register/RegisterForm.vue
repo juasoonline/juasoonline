@@ -76,11 +76,13 @@
                 <!-- Begin submit button -->
                 <div class="mt-10">
                     <div class="flex mt-3">
-                        <button type="submit" class="rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
-                            <span v-if="loader.isLoading === false">Create Account</span>
-                            <div v-else class="w-full px-40">
-                                <spinner :color="loader.color" :size="loader.size"></spinner>
-                            </div>
+                        <button v-if="loader.isLoading === false" type="submit" class="rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
+                            <svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="uppercase text-xxxs">Add Product</span>
+                        </button>
+                        <button v-else disabled type="submit" class="rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
+                            <svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="flex items-center"><p class="uppercase text-xxxs mr-2">Please wait...</p> <spinner :loading="loader.loading" :color="loader.color" :size="loader.size"></spinner></span>
                         </button>
                     </div>
                 </div>
@@ -166,7 +168,7 @@
         setup()
         {
             const notification = new Notyf();
-            const loader = reactive({ color: '#FFFFFF', size: '30px', isLoading: false })
+            const loader = reactive({ color: '#FFFFFF', size: '30px', loading: true, isLoading: false })
             const accountData = reactive({ first_name: "", last_name: "", mobile_phone: "", email: "", password: "", verification_code: "", verification: false })
 
             const createAccount = () =>
