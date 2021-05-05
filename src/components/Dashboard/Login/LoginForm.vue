@@ -40,11 +40,14 @@
             <!-- Begin submit button -->
             <div class="mt-10">
                 <div class="flex mt-3">
-                    <button type="submit" class="rounded bg-juaso-primary text-white font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
-                        <span v-if="loader.isLoading === false">Login</span>
-                        <div v-else class="w-full px-40">
-                            <spinner :color="loader.color" :size="loader.size"></spinner>
-                        </div>
+                    <button v-if="loader.isLoading === false" type="submit" class="rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
+                        <span class="uppercase text-xxs">Login</span>
+                    </button>
+                    <button v-else disabled type="submit" class="flex items-center rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
+                        <span class="flex w-full items-center">
+                            <p class="uppercase text-xxs w-full">Please wait...</p>
+                            <spinner :loading="loader.loading" :color="loader.color" :size="loader.size" style="margin-left: -130px"></spinner>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -79,7 +82,7 @@
             const authentication = inject( 'authentication' );
 
             const loginData = reactive({ email: "", password: "" })
-            const loader = reactive({ color: '#FFFFFF', size: '30px', isLoading: false })
+            const loader = reactive({ color: '#FFFFFF', size: '18px', loading: true, isLoading: false })
 
             const signIn = () =>
             {
