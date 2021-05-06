@@ -11,9 +11,11 @@
         <juaso-tags></juaso-tags>
         <!-- End Juasoonline tags -->
 
+        <quick-deals></quick-deals>
+
         <!-- Begin items -->
         <section class="w-full my-2">
-            <h4 class="font-bold mt-12 pb-2">Latest items</h4>
+            <h4 class="font-bold mt-6 pb-2">Latest items</h4>
 
             <!-- Begin items list -->
             <div class="grid grid-cols-7 gap-4">
@@ -29,7 +31,9 @@
             <!-- End items list -->
 
             <!-- Begin load more button -->
-            <div class="my-10 flex justify-center"><button class="inline-block mr-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-red-500 rounded shadow ripple hover:bg-red-600">Load more</button></div>
+            <div class="my-10 flex justify-center">
+                <button class="inline-block mr-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-red-500 rounded shadow ripple hover:bg-red-600">Load more</button>
+            </div>
             <!-- End load more button -->
 
         </section>
@@ -43,11 +47,12 @@
 <script>
     import CatsAndAdSlides from "@/components/Site/Home/CatsAndAdSlides";
     import JuasoTags from "@/components/Site/Shared/JuasoTags";
+    import QuickDeals from "./QuickDeals";
 
     export default
     {
         name: "MainContents",
-        components: { CatsAndAdSlides, JuasoTags },
+        components: { CatsAndAdSlides, JuasoTags, QuickDeals },
         data()
         {
             return {

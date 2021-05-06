@@ -136,33 +136,6 @@
                                     <!-- End nav list -->
 
                                 </div>
-
-<!--                                <div v-if="authentication.isAuthenticated()" class="z-50 bg-white shadow-md rounded-b right-48 w-52 mt-3 border-r border-l border-b transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">-->
-
-<!--                                    &lt;!&ndash; Begin welcome message &ndash;&gt;-->
-<!--                                    <div class="text-juaso-primary font-bold pt-5 px-2.5 text-center">-->
-<!--                                        <h1 class="text-sm">Welcome! {{ authentication.state.user.attributes.first_name }}</h1>-->
-<!--                                    </div>-->
-<!--                                    &lt;!&ndash; End welcome message &ndash;&gt;-->
-
-<!--                                    &lt;!&ndash; Begin logout button &ndash;&gt;-->
-<!--                                    <div class="w-full pt-3 px-2.5 pb-3 border-b justify-center">-->
-<!--                                        <a @click="signOut" class="w-full inline-block mr-1 px-7 py-2 text-xxs font-bold leading-4 text-center text-white transition bg-red-600 rounded shadow ripple hover:bg-red-700 cursor-pointer uppercase">Log Out</a>-->
-<!--                                    </div>-->
-<!--                                    &lt;!&ndash; End logout button &ndash;&gt;-->
-
-<!--                                    &lt;!&ndash; Begin main user menus &ndash;&gt;-->
-<!--                                    <ul class="w-full dropMenu text-gray-600">-->
-<!--                                        <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/cart" class="flex hover:text-white hover:border-gray-600">Cart</router-link></li>-->
-<!--                                        <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/wishlist" class="flex hover:text-white hover:border-gray-600">Wish List</router-link></li>-->
-<!--                                        <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/orders" class="flex hover:text-white hover:border-gray-600">My Orders</router-link></li>-->
-<!--                                        <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/messages" class="flex hover:text-white hover:border-gray-600">Message Center</router-link></li>-->
-<!--                                        <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/coupons" class="flex hover:text-white hover:border-gray-600">My Coupons</router-link></li>-->
-<!--                                        <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/account" class="flex hover:text-white hover:border-gray-600">My Account</router-link></li>-->
-<!--                                    </ul>-->
-<!--                                    &lt;!&ndash; End main user menus &ndash;&gt;-->
-
-<!--                                </div>-->
                                 <!-- End login user routes -->
 
                                 <!-- Begin guest user routes -->
