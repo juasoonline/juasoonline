@@ -2,7 +2,7 @@
 
     <!-- Begin contents -->
     <div class="flex bg-juaso-primary border-b">
-        <div class="container mx-auto hidden lg:block">
+        <div class="max-w-screen-xl container mx-auto hidden lg:block">
             <div class="flex flex-row justify-between pt-3 pb-1">
 
                 <!-- Begin left menu -->

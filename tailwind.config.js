@@ -40,8 +40,13 @@ module.exports =
             'juaso-secondary': '#2d8bc3',
             'juaso-extra': '#1d4b95',
         }),
-
         textColor: theme => ({
+            ...theme('colors'),
+            'juaso-primary': '#1a4487',
+            'juaso-secondary': '#2d8bc3',
+        }),
+        borderColor: theme => ({
+            DEFAULT: theme('colors.gray.200', 'currentColor'),
             ...theme('colors'),
             'juaso-primary': '#1a4487',
             'juaso-secondary': '#2d8bc3',
