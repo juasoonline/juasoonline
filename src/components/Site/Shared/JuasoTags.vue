@@ -2,7 +2,9 @@
 
     <!-- Begin contents -->
     <section class="w-full my-4">
-        <div class="flex flex-col grid gap-5 grid-cols-4">
+
+        <!-- Begin tag for lg screens -->
+        <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden flex flex-col grid gap-5 grid-cols-4">
 
             <!-- Begin products counts -->
             <div class="flex p-10 bg-white rounded">
@@ -61,6 +63,12 @@
             <!-- End shop with confidence -->
 
         </div>
+        <!-- End tag for lg screens -->
+
+        <!-- Begin tag for sm screens -->
+        <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block"></div>
+        <!-- End tag for sm screens -->
+
     </section>
     <!-- End contents -->
 
