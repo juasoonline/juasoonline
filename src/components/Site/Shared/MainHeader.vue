@@ -6,7 +6,7 @@
             <div class="flex grid gap-5 grid-cols-12 py-6">
 
                 <!-- Begin logo --->
-                <div class="flex col-span-2 justify-start 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+                <div class="flex col-span-2 justify-start 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden xxs:hidden">
                     <router-link to="/" class="p-0 flex">
                         <img :src="mainLogo" alt="" class="h-12 py-1.5">
                     </router-link>
@@ -14,7 +14,7 @@
                 <!-- End logo --->
 
                 <!-- Begin search form -->
-                <div class="flex 2xl:col-span-8 xl:col-span-8 lg:col-span-8 md:col-span-12 sm:col-span-12 xs:col-span-12 justify-center items-center">
+                <div class="flex 2xl:col-span-8 xl:col-span-8 lg:col-span-8 md:col-span-12 sm:col-span-12 xs:col-span-12 xxs:col-span-12 justify-center items-center">
                     <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mr-3">
                         <router-link to="/" class="p-0 flex"><img :src="mainLogo" alt="" class="w-24"></router-link>
                     </div>
@@ -36,7 +36,7 @@
                 <!-- End search form -->
 
                 <!-- Begin user shopping -->
-                <div class="flex col-span-2 justify-end 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+                <div class="flex col-span-2 justify-end 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden xxs:hidden">
                     <ul class="userNav">
                         <li class="userLink relative">
                             <router-link to="/wishlist">
