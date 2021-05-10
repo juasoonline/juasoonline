@@ -20,7 +20,7 @@
             <h4 class="font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4>
 
             <!-- Begin items list -->
-            <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 xxs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
+            <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
                 <div v-for="item in items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                     <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
                     <div class="m-5">
