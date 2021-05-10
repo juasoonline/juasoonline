@@ -10,7 +10,7 @@
                     <router-link to="/orders" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 px-4 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">Orders</router-link>
                     <router-link to="/wishlist" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 px-4 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">Wish List</router-link>
                     <router-link to="/messages" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 px-4 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">Message Center</router-link>
-                    <router-link to="/my-favourite-stores" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 px-4 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">My Favourite Stores</router-link>
+                    <router-link to="" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 px-4 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">My Favourite Stores</router-link>
                 </div>
             </nav>
         </div>

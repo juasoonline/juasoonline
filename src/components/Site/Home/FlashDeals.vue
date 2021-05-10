@@ -2,11 +2,11 @@
 
     <!-- Begin contents -->
     <div class="mt-3 bg-white rounded p-2">
-        <swiper :slides-per-view="8" :space-between="5" :autoplay="{ autoplay: true }" class="rounded">
+        <swiper :slides-per-view="12" :space-between="5" :autoplay="{ autoplay: true }" class="rounded">
             <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border pb-1.5 border-gray-100 text-center rounded">
                     <router-link to="/item/975858275"><img v-bind:src="banner.image" :alt="banner.name" class="rounded"></router-link>
-                    <p class="font-bold block text-xs"><router-link class="text-xxs bg-juaso-primary px-1 text-white rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
+                    <p class="font-bold block text-xs"><router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
                 </div>
             </swiper-slide>
         </swiper>

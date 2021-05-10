@@ -14,7 +14,7 @@
                         <li><router-link to="edit-profile" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Edit Member Profile</router-link></li>
                         <li><router-link to="change-email" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Change Email</router-link></li>
                         <li><router-link to="change-password" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Change Password</router-link></li>
-                        <li><router-link to="edit-address" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Edit Addresses</router-link></li>
+                        <li><router-link to="edit-address" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white border-l-2 border-juaso-primary">Edit Addresses</router-link></li>
                     </ul>
                 </div>
                 <!-- End nav bar -->
@@ -41,70 +41,9 @@
                     <!-- Begin profile info -->
                     <div class="col-span-10">
 
-                        <!-- Begin user info -->
-                        <div class="flex justify-between">
-                            <div class="text-gray-600">
-                                <h3 class="font-bold text-lg">{{ profile.attributes.first_name }} {{ profile.attributes.last_name }}</h3>
-                                <p class="text-xxs font-bold mt-0.5">User ID: {{ profile.attributes.resource_id }}</p>
-                            </div>
-                            <div class="flex">
-                                <router-link to="edit-profile" class="font-light text-xxs text-juaso-primary hover:text-juaso-secondary">Edit Profile</router-link>
-                            </div>
-                        </div>
-                        <!-- End user info -->
-
-                        <!-- Begin contact info -->
-                        <div class="border-t mt-6 py-5">
-                            <h4 class="text-gray-400 text-xxxs mb-3">CONTACT INFORMATION</h4>
-
-                            <table class="table-auto text-xxs">
-                                <tbody>
-                                    <tr>
-                                        <td class="w-60 py-2 align-top">Phone</td>
-                                        <td class="w-60 py-2 text-juaso-primary">{{ profile.attributes.mobile_phone }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-60 py-2 align-top">Permanent Address</td>
-                                        <td class="w-60 py-2 text-gray-600">
-                                            {{ profile.permanent_address.postal_code }}<br>
-                                            {{ profile.permanent_address.street_name }} <br> {{ profile.delivery_address.city }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-60 py-2 align-top">Delivery Address</td>
-                                        <td class="w-60 py-2 text-gray-600">
-                                            {{ profile.delivery_address.postal_code }}<br>
-                                            {{ profile.delivery_address.street_name }} <br>
-                                            {{ profile.delivery_address.city }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-60 py-2 align-top">Email</td>
-                                        <td class="w-60 py-2 text-juaso-primary">{{ profile.attributes.email }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- End contact info -->
-
-                        <!-- Begin contact info -->
-                        <div class="border-t mt-6 py-5">
-                            <h4 class="text-gray-400 text-xxxs mb-3">BASIC INFORMATION</h4>
-
-                            <table class="table-auto text-xxs">
-                                <tbody>
-                                    <tr class="">
-                                        <td class="w-60 py-2">Gender</td>
-                                        <td class="w-60 py-2 text-gray-600">Male</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-60 py-2">Date of birth</td>
-                                        <td class="w-60 py-2 text-gray-600">12/03/2021</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- End contact info -->
+                        <!-- Begin title -->
+                        <div class="text-lg text-gray-600">Edit Address</div>
+                        <!-- End title -->
 
                     </div>
                     <!-- End profile info -->

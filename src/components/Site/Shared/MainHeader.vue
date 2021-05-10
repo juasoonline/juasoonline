@@ -2,11 +2,11 @@
 
     <!-- Begin contents -->
     <div class="sticky top-0 z-40 flex bg-white shadow">
-        <div class="container mx-auto hidden lg:block">
-            <div class="flex grid gap-5 grid-cols-10 py-6">
+        <div class="container mx-auto">
+            <div class="flex grid gap-5 grid-cols-12 py-6">
 
                 <!-- Begin logo --->
-                <div class="flex col-span-2 justify-start">
+                <div class="flex col-span-2 justify-start 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
                     <router-link to="/" class="p-0 flex">
                         <img :src="mainLogo" alt="" class="h-12 py-1.5">
                     </router-link>
@@ -14,9 +14,12 @@
                 <!-- End logo --->
 
                 <!-- Begin search form -->
-                <div class="flex col-span-6 justify-center">
+                <div class="flex 2xl:col-span-8 xl:col-span-8 lg:col-span-8 md:col-span-12 sm:col-span-12 xs:col-span-12 justify-center items-center">
+                    <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mr-3">
+                        <router-link to="/" class="p-0 flex"><img :src="mainLogo" alt="" class="w-24"></router-link>
+                    </div>
                     <div class="border border-blue-900 rounded flex w-full items-center catSelect">
-                        <label>
+                        <label class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
                             <select class="border-r border-blue-900 text-xs font-bold font-juaso text-juaso-primary minimal">
                                 <option value="0" class="">All Categories</option>
                                 <option value="100003109">Women's Clothing</option><option value="100003070">Men's Clothing</option><option value="509">Cellphones &amp; Telecommunications</option><option value="7">Computer &amp; Office</option><option value="44">Consumer Electronics</option><option value="1509">Jewelry &amp; Accessories</option><option value="15">Home &amp; Garden</option><option value="1524">Luggage &amp; Bags</option><option value="322">Shoes</option><option value="1501">Mother &amp; Kids</option><option value="18">Sports &amp; Entertainment</option><option value="66">Beauty &amp; Health</option><option value="1511">Watches</option><option value="26">Toys &amp; Hobbies</option><option value="100003235">Weddings &amp; Events</option><option value="200000875">Novelty &amp; Special Use</option><option value="34">Automobiles &amp; Motorcycles</option><option value="39">Lights &amp; Lighting</option><option value="1503">Furniture</option><option value="502" data-spm-anchor-id="a2g0o.best.1000002.i4.530b2c25CzRtOV">Electronic Components &amp; Supplies</option><option value="21">Education &amp; Office Supplies</option><option value="6" data-spm-anchor-id="a2g0o.best.1000002.i3.530b2c25CzRtOV">Home Appliances</option><option value="13">Home Improvement</option><option value="2">Food</option><option value="30">Security &amp; Protection</option><option value="1420">Tools</option><option value="200002489">Hair Extensions &amp; Wigs</option><option value="205776616">Apparel Accessories</option><option value="205779615">Underwear &amp; Sleepwears</option><option value="205965401">Virtual Goods</option>
@@ -33,7 +36,7 @@
                 <!-- End search form -->
 
                 <!-- Begin user shopping -->
-                <div class="flex col-span-2 justify-end">
+                <div class="flex col-span-2 justify-end 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
                     <ul class="userNav">
                         <li class="userLink relative">
                             <router-link to="/wishlist">

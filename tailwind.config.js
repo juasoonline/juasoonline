@@ -40,17 +40,29 @@ module.exports =
             'juaso-secondary': '#2d8bc3',
             'juaso-extra': '#1d4b95',
         }),
+
         textColor: theme => ({
             ...theme('colors'),
             'juaso-primary': '#1a4487',
             'juaso-secondary': '#2d8bc3',
         }),
+
         borderColor: theme => ({
             DEFAULT: theme('colors.gray.200', 'currentColor'),
             ...theme('colors'),
             'juaso-primary': '#1a4487',
             'juaso-secondary': '#2d8bc3',
         }),
+
+        screens:
+        {
+            'xs': {'min': '260px', 'max': '639px'},
+            'sm': {'min': '640px', 'max': '767px'},
+            'md': {'min': '768px', 'max': '1023px'},
+            'lg': {'min': '1024px', 'max': '1279px'},
+            'xl': {'min': '1280px', 'max': '1535px'},
+            '2xl': {'min': '1536px'},
+        },
 
         extend:
         {

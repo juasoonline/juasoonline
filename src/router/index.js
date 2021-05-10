@@ -13,6 +13,10 @@ const routes =
     { path: '/messages', name: 'Messages', component: () => import( '../components/Dashboard/Messages/Messages' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/coupons', name: 'Coupons', component: () => import( '../components/Dashboard/Coupons/Coupons' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/account', name: 'Account', component: () => import( '../components/Dashboard/Account/Account' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/edit-profile', name: 'EditProfile', component: () => import( '../components/Dashboard/EditProfile/EditProfile' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/change-email', name: 'ChangeEmail', component: () => import( '../components/Dashboard/ChangeEmail/ChangeEmail' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/change-password', name: 'ChangePassword', component: () => import( '../components/Dashboard/ChangePassword/ChangePassword' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/edit-address', name: 'EditAddress', component: () => import( '../components/Dashboard/EditAddress/EditAddress' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
 
     // Public routes
     { path: '/', name: 'Home', component: () => import( '../components/Site/Home/Home' ) },

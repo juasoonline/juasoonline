@@ -1,8 +1,8 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="flex bg-juaso-primary border-b">
-        <div class="container mx-auto hidden lg:block">
+    <div class="flex bg-juaso-primary border-b 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+        <div class="container mx-auto">
             <div class="flex flex-row justify-between pt-3 pb-1">
 
                 <!-- Begin left menu -->

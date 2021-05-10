@@ -1,30 +1,36 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="flex flex-col grid gap-5 grid-cols-10">
+    <section class="flex flex-col grid gap-5 grid-cols-12">
 
         <!-- Begin categories navbar -->
-        <div class="col-span-2 rounded">
+        <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:col-span-2 xl:col-span-2 lg:col-span-2">
             <categories-menu></categories-menu>
         </div>
         <!-- End categories navbar -->
 
         <!-- Begin ads slides -->
-        <div class="col-span-6">
+        <div class="2xl:col-span-8 xl:col-span-8 lg:col-span-8 md:col-span-12 sm:col-span-12 xs:col-span-12">
 
             <!-- Begin slider banners -->
-            <ad-sliders></ad-sliders>
+            <ad-sliders class=""></ad-sliders>
             <!-- End slider banners -->
 
             <!-- Begin ads -->
-            <flash-deals></flash-deals>
+            <flash-deals class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden"></flash-deals>
             <!-- Begin ads -->
+
+            <!-- Begin category menu for mobile -->
+            <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block">
+                <div class="text-center text-xxs py-3">Category Menu</div>
+            </div>
+            <!-- End category menu for mobile -->
 
         </div>
         <!-- End ads slides -->
 
         <!-- Begin user actions -->
-        <div class="col-span-2">
+        <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:col-span-2 xl:col-span-2 lg:col-span-2">
 
             <!-- Begin user actions -->
             <div class="flex justify-center mb-2 items-center bg-white rounded py-6">

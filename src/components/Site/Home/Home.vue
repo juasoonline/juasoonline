@@ -20,8 +20,12 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer></main-footer>
+        <main-footer class=""></main-footer>
         <!-- End footer -->
+
+        <!-- Begin mobile menu -->
+        <mobile-bottom-nav-bar></mobile-bottom-nav-bar>
+        <!-- End mobile menu -->
 
     </div>
     <!-- End contents wrapper -->
@@ -34,11 +38,12 @@
     import SearchBar from "@/components/Site/Shared/MainHeader";
     import MainContents from "@/components/Site/Home/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
+    import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
 
     export default
     {
         name: 'Home',
-        components: { TopAds, NavBar, SearchBar, MainContents, MainFooter }
+        components: { TopAds, NavBar, SearchBar, MainContents, MainFooter, MobileBottomNavBar }
     }
 </script>
 
