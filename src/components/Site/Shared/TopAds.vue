@@ -2,7 +2,7 @@
 
     <!-- Begin contents -->
     <div class="flex">
-        <div class="2xl:container xl:container lg:container md:px-2 md:px-2 md:px-2 mx-auto w-screen">
+        <div class="2xl:container xl:container lg:container mx-auto w-screen">
 
             <!-- Begin ad banner -->
             <router-link to="/item/1234567890" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" ><img :src="topAd"  alt=""/></router-link>

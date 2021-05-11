@@ -16,7 +16,7 @@
         <!-- End quick details -->
 
         <!-- Begin items -->
-        <section class="w-full mb-14">
+        <section class="md:px-1.5 md:px-1.5 md:px-1.5 w-full mb-14">
             <h4 class="font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4>
 
             <!-- Begin items list -->
