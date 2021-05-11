@@ -153,9 +153,21 @@
                 banners:
                 [
                     { resource_id: 10000000, image: "../assets/images/ads/right/banner1.jpg", name: "Ad banner name 1"  },
-                    { resource_id: 20000000, image: "../assets/images/ads/right/banner2.jpg", name: "Ad banner name 2",  },
+                    { resource_id: 20000000, image: "../assets/images/ads/right/banner2.jpg", name: "Ad banner name 2"  },
                 ],
-                category_icons: { women_fashion: "../assets/images/icons/category/women_fashion.png", men_fashion: "../assets/images/icons/category/men_fashion.png", phones_more: "../assets/images/icons/category/phones_more.png", consumer_electronics: "../assets/images/icons/category/consumer_electronics.png", jewelry_watches: "../assets/images/icons/category/jewelry_watches.png", home_pets: "../assets/images/icons/category/home_pets.png", bags_shoes: "../assets/images/icons/category/bags_shoes.png", toys_kids_babies: "../assets/images/icons/category/toys_kids_babies.png", outdoor_fun_sports: "../assets/images/icons/category/outdoor_fun_sports.png", beauty_health_hair: "../assets/images/icons/category/beauty_health_hair.png" }
+                category_icons:
+                {
+                    women_fashion: "../assets/images/icons/category/women_fashion.png",
+                    men_fashion: "../assets/images/icons/category/men_fashion.png",
+                    phones_more: "../assets/images/icons/category/phones_more.png",
+                    consumer_electronics: "../assets/images/icons/category/consumer_electronics.png",
+                    jewelry_watches: "../assets/images/icons/category/jewelry_watches.png",
+                    home_pets: "../assets/images/icons/category/home_pets.png",
+                    bags_shoes: "../assets/images/icons/category/bags_shoes.png",
+                    toys_kids_babies: "../assets/images/icons/category/toys_kids_babies.png",
+                    outdoor_fun_sports: "../assets/images/icons/category/outdoor_fun_sports.png",
+                    beauty_health_hair: "../assets/images/icons/category/beauty_health_hair.png"
+                }
             }
         }
     }
