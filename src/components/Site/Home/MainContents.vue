@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <main class="2xl:container xl:container lg:container md:px-1.5 md:px-1.5 md:px-1.5 md:w-screen sm:w-screen xs:w-screen mx-auto my-4">
+    <main class="2xl:container xl:container lg:container md:px-2 md:px-2 md:px-2 md:w-screen sm:w-screen xs:w-screen mx-auto my-4">
 
         <!-- Begin category and slide contents -->
         <cats-and-ad-slides></cats-and-ad-slides>
