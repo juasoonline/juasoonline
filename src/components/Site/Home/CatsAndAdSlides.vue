@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex flex-col grid gap-5 grid-cols-12">
+    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex flex-col grid gap-5 grid-cols-12 w-full">
 
         <!-- Begin categories navbar -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:col-span-2 xl:col-span-2 lg:col-span-2">
@@ -22,7 +22,82 @@
 
             <!-- Begin category menu for mobile -->
             <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block">
-                <div class="text-center text-xxs py-3">Category Menu</div>
+                <div class="my-4 text-center bg-white rounded px-1.5 py-3">
+
+                    <!-- Begin categories -->
+                    <div class="text-center grid grid-cols-5 mb-2">
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.women_fashion" />
+                                <p class="text-xxxs text-gray-600">Women's Fashion</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.men_fashion" />
+                                <p class="text-xxxs text-gray-600">Men's Fashion</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.phones_more" />
+                                <p class="text-xxxs text-gray-600">Phones & More</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.consumer_electronics" />
+                                <p class="text-xxxs text-gray-600">Consumer Electronics</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.jewelry_watches" />
+                                <p class="text-xxxs text-gray-600">Jewelry & Watches</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.home_pets" />
+                                <p class="text-xxxs text-gray-600">Home, Pet & Appliances</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.bags_shoes" />
+                                <p class="text-xxxs text-gray-600">Bags & Shoes</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.toys_kids_babies" />
+                                <p class="text-xxxs text-gray-600">Toys, Kids & Babies</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.outdoor_fun_sports" />
+                                <p class="text-xxxs text-gray-600">Outdoor Fun & Sports</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.beauty_health_hair" />
+                                <p class="text-xxxs text-gray-600">Beauty, Health, Hair</p>
+                            </router-link>
+                        </div>
+                    </div>
+                    <!-- End categories -->
+
+                    <!-- Begin call to action button -->
+                    <div class="flex items-center text-center mx-auto w-full">
+                        <router-link to="categories" class="bg-juaso-primary text-white text-xxxs px-3 py-1 rounded w-full">
+                            View all categories
+                        </router-link>
+                    </div>
+                    <!-- End call to action button -->
+
+                </div>
             </div>
             <!-- End category menu for mobile -->
 
@@ -79,7 +154,8 @@
                 [
                     { resource_id: 10000000, image: "../assets/images/ads/right/banner1.jpg", name: "Ad banner name 1"  },
                     { resource_id: 20000000, image: "../assets/images/ads/right/banner2.jpg", name: "Ad banner name 2",  },
-                ]
+                ],
+                category_icons: { women_fashion: "../assets/images/icons/category/women_fashion.png", men_fashion: "../assets/images/icons/category/men_fashion.png", phones_more: "../assets/images/icons/category/phones_more.png", consumer_electronics: "../assets/images/icons/category/consumer_electronics.png", jewelry_watches: "../assets/images/icons/category/jewelry_watches.png", home_pets: "../assets/images/icons/category/home_pets.png", bags_shoes: "../assets/images/icons/category/bags_shoes.png", toys_kids_babies: "../assets/images/icons/category/toys_kids_babies.png", outdoor_fun_sports: "../assets/images/icons/category/outdoor_fun_sports.png", beauty_health_hair: "../assets/images/icons/category/beauty_health_hair.png" }
             }
         }
     }

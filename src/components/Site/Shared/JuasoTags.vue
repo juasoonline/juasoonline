@@ -66,7 +66,8 @@
 
     <!-- Begin tag for sm screens -->
     <section class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block w-full my-4">
-        <div class=""></div>
+        <div class="">
+        </div>
     </section>
     <!-- End tag for sm screens -->
 
