@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <main class="2xl:container xl:container lg:container mx-auto my-4 md:w-screen sm:w-screen xs:w-screen">
+    <main class="2xl:container xl:container lg:container md:px-1.5 md:px-1.5 md:px-1.5 md:w-screen sm:w-screen xs:w-screen mx-auto my-4">
 
         <!-- Begin category and slide contents -->
         <cats-and-ad-slides></cats-and-ad-slides>
@@ -16,7 +16,7 @@
         <!-- End quick details -->
 
         <!-- Begin items -->
-        <section class="w-full mb-16">
+        <section class="w-full mb-14">
             <h4 class="font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4>
 
             <!-- Begin items list -->

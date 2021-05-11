@@ -2,7 +2,7 @@
 
     <!-- Begin contents -->
     <div class="sticky top-0 z-40 flex bg-white shadow">
-        <div class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto">
+        <div class="2xl:container xl:container lg:container md:px-1.5 md:px-1.5 md:px-1.5 md:w-screen sm:w-screen xs:w-screen mx-auto">
             <div class="flex grid gap-5 grid-cols-12 py-6">
 
                 <!-- Begin logo --->
