@@ -25,65 +25,65 @@
                 <div class="my-4 text-center bg-white rounded px-1.5 py-3">
 
                     <!-- Begin categories -->
-                    <div class="text-center grid grid-cols-5 mb-2">
+                    <div class="text-center grid gap-1 grid-cols-5 mb-2">
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.women_fashion" />
-                                <p class="text-xxxs text-gray-600">Women's Fashion</p>
+                                <p class="text-xxs text-gray-600">Women's Fashion</p>
                             </router-link>
                         </div>
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.men_fashion" />
-                                <p class="text-xxxs text-gray-600">Men's Fashion</p>
+                                <p class="text-xxs text-gray-600">Men's Fashion</p>
                             </router-link>
                         </div>
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.phones_more" />
-                                <p class="text-xxxs text-gray-600">Phones & More</p>
+                                <p class="text-xxs text-gray-600">Phones & More</p>
                             </router-link>
                         </div>
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.consumer_electronics" />
-                                <p class="text-xxxs text-gray-600">Consumer Electronics</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.jewelry_watches" />
-                                <p class="text-xxxs text-gray-600">Jewelry & Watches</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.home_pets" />
-                                <p class="text-xxxs text-gray-600">Home, Pet & Appliances</p>
+                                <p class="text-xxs text-gray-600">Consumer Electronics</p>
                             </router-link>
                         </div>
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.bags_shoes" />
-                                <p class="text-xxxs text-gray-600">Bags & Shoes</p>
+                                <p class="text-xxs text-gray-600">Bags & Shoes</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.home_pets" />
+                                <p class="text-xxs text-gray-600">Home, Pet & Appliances</p>
+                            </router-link>
+                        </div>
+                        <div class="mb-2.5">
+                            <router-link to="">
+                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.jewelry_watches" />
+                                <p class="text-xxs text-gray-600">Jewelry & Watches</p>
                             </router-link>
                         </div>
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.toys_kids_babies" />
-                                <p class="text-xxxs text-gray-600">Toys, Kids & Babies</p>
+                                <p class="text-xxs text-gray-600">Toys, Kids & Babies</p>
                             </router-link>
                         </div>
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.outdoor_fun_sports" />
-                                <p class="text-xxxs text-gray-600">Outdoor Fun & Sports</p>
+                                <p class="text-xxs text-gray-600">Outdoor Fun & Sports</p>
                             </router-link>
                         </div>
                         <div class="mb-2.5">
                             <router-link to="">
                                 <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.beauty_health_hair" />
-                                <p class="text-xxxs text-gray-600">Beauty, Health, Hair</p>
+                                <p class="text-xxs text-gray-600">Beauty, Health, Hair</p>
                             </router-link>
                         </div>
                     </div>
