@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="flex flex-col grid gap-5 grid-cols-12">
+    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex flex-col grid gap-5 grid-cols-12">
 
         <!-- Begin categories navbar -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:col-span-2 xl:col-span-2 lg:col-span-2">

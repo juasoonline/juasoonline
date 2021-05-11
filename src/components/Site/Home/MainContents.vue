@@ -16,7 +16,7 @@
         <!-- End quick details -->
 
         <!-- Begin items -->
-        <section class="md:mx-2 md:mx-2 md:mx-2 w-full mb-14">
+        <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 w-full mb-14">
 
             <!-- Begin title -->
             <h4 class="font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4>

@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="bg-white rounded p-4">
+    <div class="2xl:p-4 xl:p-4 lg:p-4 md:px-1.5 sm:px-1.5 xs:px-1.5 bg-white rounded">
 
         <!-- Begin header -->
         <div class="flex justify-between items-center mb-3">
