@@ -3,7 +3,7 @@
     <!-- Begin contents -->
     <div class="sticky top-0 z-40 flex bg-white shadow">
         <div class="2xl:container xl:container lg:container md:px-1.5 sm:px-1.5 xs:px-1.5 md:w-screen sm:w-screen xs:w-screen mx-auto">
-            <div class="flex grid gap-5 grid-cols-12 py-6">
+            <div class="flex grid gap-5 grid-cols-12 py-6 items-center">
 
                 <!-- Begin logo --->
                 <div class="flex col-span-2 justify-start 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
@@ -15,29 +15,65 @@
 
                 <!-- Begin search form -->
                 <div class="flex 2xl:col-span-8 xl:col-span-8 lg:col-span-8 md:col-span-12 sm:col-span-12 xs:col-span-12 justify-center items-center">
+
+                    <!-- Begin logo for mobile screens -->
                     <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mr-3">
                         <router-link to="/" class="p-0 flex"><img :src="mainLogo" alt="" class="w-24"></router-link>
                     </div>
-                    <div class="border border-blue-900 rounded flex w-full items-center catSelect">
+                    <!-- End logo for mobile screens -->
+
+                    <!-- Begin form -->
+                    <div class="border border-blue-900 rounded flex w-full items-center">
                         <label class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-                            <select class="border-r border-blue-900 text-xs font-bold font-juaso text-juaso-primary minimal">
+                            <select class="border-r border-blue-900 text-xs text-gray-600 minimal">
                                 <option value="0" class="">All Categories</option>
-                                <option value="100003109">Women's Clothing</option><option value="100003070">Men's Clothing</option><option value="509">Cellphones &amp; Telecommunications</option><option value="7">Computer &amp; Office</option><option value="44">Consumer Electronics</option><option value="1509">Jewelry &amp; Accessories</option><option value="15">Home &amp; Garden</option><option value="1524">Luggage &amp; Bags</option><option value="322">Shoes</option><option value="1501">Mother &amp; Kids</option><option value="18">Sports &amp; Entertainment</option><option value="66">Beauty &amp; Health</option><option value="1511">Watches</option><option value="26">Toys &amp; Hobbies</option><option value="100003235">Weddings &amp; Events</option><option value="200000875">Novelty &amp; Special Use</option><option value="34">Automobiles &amp; Motorcycles</option><option value="39">Lights &amp; Lighting</option><option value="1503">Furniture</option><option value="502" data-spm-anchor-id="a2g0o.best.1000002.i4.530b2c25CzRtOV">Electronic Components &amp; Supplies</option><option value="21">Education &amp; Office Supplies</option><option value="6" data-spm-anchor-id="a2g0o.best.1000002.i3.530b2c25CzRtOV">Home Appliances</option><option value="13">Home Improvement</option><option value="2">Food</option><option value="30">Security &amp; Protection</option><option value="1420">Tools</option><option value="200002489">Hair Extensions &amp; Wigs</option><option value="205776616">Apparel Accessories</option><option value="205779615">Underwear &amp; Sleepwears</option><option value="205965401">Virtual Goods</option>
+                                <option value="100003109">Women's Clothing</option>
+                                <option value="100003070">Men's Clothing</option>
+                                <option value="509">Cellphones &amp; Telecommunications</option>
+                                <option value="7">Computer &amp; Office</option>
+                                <option value="44">Consumer Electronics</option>
+                                <option value="1509">Jewelry &amp; Accessories</option>
+                                <option value="15">Home &amp; Garden</option>
+                                <option value="1524">Luggage &amp; Bags</option>
+                                <option value="322">Shoes</option>
+                                <option value="1501">Mother &amp; Kids</option>
+                                <option value="18">Sports &amp; Entertainment</option>
+                                <option value="66">Beauty &amp; Health</option>
+                                <option value="1511">Watches</option>
+                                <option value="26">Toys &amp; Hobbies</option>
+                                <option value="100003235">Weddings &amp; Events</option>
+                                <option value="200000875">Novelty &amp; Special Use</option>
+                                <option value="34">Automobiles &amp; Motorcycles</option>
+                                <option value="39">Lights &amp; Lighting</option>
+                                <option value="1503">Furniture</option>
+                                <option value="502">Electronic Components &amp; Supplies</option>
+                                <option value="21">Education &amp; Office Supplies</option>
+                                <option value="6">Home Appliances</option>
+                                <option value="13">Home Improvement</option>
+                                <option value="2">Food</option>
+                                <option value="30">Security &amp; Protection</option>
+                                <option value="1420">Tools</option>
+                                <option value="200002489">Hair Extensions &amp; Wigs</option>
+                                <option value="205776616">Apparel Accessories</option>
+                                <option value="205779615">Underwear &amp; Sleepwears</option>
+                                <option value="205965401">Virtual Goods</option>
                             </select>
                         </label>
-                        <label class="w-full"><input class="text-xs px-5 w-full" placeholder="What are you looking for?..."></label>
+                        <label class="w-full"><input class="text-xs px-3 2xl:py-2.5 xl:py-2.5 lg:py-2.5 text-gray-600 w-full" placeholder="What are you looking for?..."></label>
                         <button class="w-8 h-8 mx-1.5 block focus:outline-none">
                             <svg class="w-6 h-6 text-juaso-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </button>
                     </div>
+                    <!-- End form -->
+
                 </div>
                 <!-- End search form -->
 
                 <!-- Begin user shopping -->
                 <div class="flex col-span-2 justify-end 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-                    <ul class="userNav">
+                    <ul class="userNav items-center">
                         <li class="userLink relative">
                             <router-link to="/wishlist">
                                 <svg class="w-8 text-juaso-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
