@@ -91,7 +91,7 @@
 
                     <!-- Begin call to action button -->
                     <div class="flex items-center text-center mx-auto w-full">
-                        <router-link to="categories" class="bg-juaso-primary text-white text-xxxs px-3 py-2 rounded w-full">
+                        <router-link to="categories" class="bg-juaso-primary text-white text-xxs px-3 py-2 rounded w-full">
                             View all categories
                         </router-link>
                     </div>

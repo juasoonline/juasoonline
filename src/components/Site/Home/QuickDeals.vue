@@ -11,7 +11,7 @@
         <!-- End header -->
 
         <!-- Begin item list -->
-        <div class="2xl:block xl:block lg:block xs:hidden xs:hidden xs:hidden text-justify">
+        <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden text-justify">
           <swiper :slides-per-view="9" :space-between="5" :autoplay="{ autoplay: true }">
             <swiper-slide v-for="item in items.data" :key="item.resource_id">
               <div class="card bg-white overflow-hidden text-center mx-0.5">
@@ -32,15 +32,15 @@
         <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block text-justify">
             <swiper :slides-per-view="3" :space-between="5" :autoplay="{ autoplay: true }">
                 <swiper-slide v-for="item in items.data" :key="item.resource_id">
-                    <div class="card bg-white overflow-hidden text-center pb-2 relative">
-                        <router-link to="/item/975858275">
+                    <div class="card bg-white overflow-hidden text-center pb-3 relative">
+                        <router-link to="/item/975858275" class="">
                             <img v-bind:src="item.image" :alt="item.name" class="rounded border">
                         </router-link>
-                        <div class="font-bold block text-xs">
+                        <div class="font-bold block">
                             <router-link class="text-xxs text-red-600 font-bold" to="/item/975858275">GHS {{ item.sales_price }}</router-link>
-                            <p class="font-light text-xxxs p-0">398 Sold</p>
+                            <p class="font-light text-xxs p-0">398 Sold</p>
                         </div>
-                        <div class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 absolute top-0 my-1"><span>-2%</span></div>
+                        <div class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 absolute top-0"><span>-2%</span></div>
                     </div>
                 </swiper-slide>
             </swiper>
