@@ -143,7 +143,7 @@
                 </div>
                 <!-- End user actions -->
 
-                <!-- Begin main contents -->
+                <!-- Begin navigation contents -->
                 <div class="mt-3">
                     <div class="bg-white rounded">
                         <div class="border-b">
@@ -204,7 +204,18 @@
                         </div>
                     </div>
                 </div>
-                <!-- End main contents -->
+                <!-- End navigation contents -->
+
+                <!-- Begin sign-out action -->
+                <div class="mt-3">
+                    <div class="rounded">
+                        <a @click="signOut" class="flex text-sm items-center p-2 cursor-pointer bg-red-600 justify-center rounded text-white">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                            <span>Sign Out</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- End sign-out action -->
 
             </div>
         </section>
@@ -257,7 +268,8 @@
                     .catch( error => { error.response })
             })
 
-            return { notification, loader, profile, addAddress }
+            const signOut = () => { authentication.logoutUser().then(() => { document.location.href = "" } )}
+            return { notification, loader, profile, addAddress, signOut }
         }
     }
 </script>
