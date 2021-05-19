@@ -171,7 +171,7 @@
 </template>
 
 <script>
-import {inject, reactive} from 'vue'
+    import { inject, reactive } from 'vue'
     // import router from "@/router";
 
     export default
