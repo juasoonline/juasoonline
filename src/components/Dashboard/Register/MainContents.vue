@@ -4,7 +4,7 @@
     <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-4">
         <section class="2xl:my-40 xl:my-40 lg:my-40 md:my-20 sm:my-20 xs:my-20">
             <div class="2xl:w-1/4 xl:w-1/4 lg:w-1/4 m-auto justify-center">
-                <div class="md:px-1.5 sm:px-1.5 xs:px-1.5">
+                <div class="md:px-2 sm:px-2 xs:px-2">
 
                     <!-- Begin logo -->
                     <div class="">

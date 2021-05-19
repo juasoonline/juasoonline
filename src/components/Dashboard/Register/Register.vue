@@ -11,6 +11,10 @@
         <main-contents></main-contents>
         <!-- End top contents -->
 
+        <!-- Begin mobile menu -->
+        <mobile-bottom-nav-bar></mobile-bottom-nav-bar>
+        <!-- End mobile menu -->
+
     </div>
     <!-- End contents wrapper -->
 
@@ -19,11 +23,12 @@
 <script>
     import MainHeader from "./MainHeader";
     import MainContents from "./MainContents";
+    import MobileBottomNavBar from "../../Site/Shared/MobileBottomNavBar";
 
     export default
     {
         name: "Join",
-        components: { MainHeader, MainContents }
+        components: { MainHeader, MainContents, MobileBottomNavBar }
     }
 </script>
 
