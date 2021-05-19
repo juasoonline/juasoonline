@@ -23,6 +23,10 @@
         <main-footer></main-footer>
         <!-- End footer -->
 
+        <!-- Begin mobile menu -->
+        <mobile-bottom-nav-bar></mobile-bottom-nav-bar>
+        <!-- End mobile menu -->
+
     </div>
     <!-- End contents wrapper -->
 
@@ -34,11 +38,12 @@
     import MainHeader from "@/components/Site/Shared/MainHeader";
     import MainContents from "@/components/Site/Item/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
+    import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
 
     export default
     {
         name: "Item",
-        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter }
+        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter, MobileBottomNavBar }
     }
 </script>
 

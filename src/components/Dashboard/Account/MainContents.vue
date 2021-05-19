@@ -245,7 +245,6 @@
             const notification = new Notyf();
             const loader = reactive({ color: '#FFFFFF', size: '10px', loading: true, isLoading: false })
             const authentication = inject( 'authentication' )
-
             const profile = reactive({ attributes: [], permanent_address: [], delivery_address: [] })
 
             const addAddress = () =>
