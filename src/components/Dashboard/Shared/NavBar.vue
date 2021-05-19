@@ -1,8 +1,8 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="flex bg-juaso-primary border-b">
-        <div class="max-w-screen-xl container mx-auto hidden lg:block">
+    <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden flex bg-juaso-primary border-b">
+        <div class="max-w-screen-xl container mx-auto">
             <div class="flex flex-row justify-between pt-3 pb-1">
 
                 <!-- Begin left menu -->
@@ -61,7 +61,7 @@
 
             </div>
         </div>
-    </div>
+    </section>
     <!-- End contents -->
 
 </template>

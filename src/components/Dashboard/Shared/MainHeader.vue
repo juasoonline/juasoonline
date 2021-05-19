@@ -1,8 +1,8 @@
 <template>
 
-    <!-- Begin contents -->
-    <div class="sticky top-0 z-40 bg-gray-50 border-b">
-        <div class="max-w-screen-xl container mx-auto flex items-center justify-between">
+    <!-- Begin contents for large screens -->
+    <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden sticky top-0 z-40 bg-gray-50 border-b">
+        <div class="container mx-auto flex items-center justify-between">
 
             <!-- Begin logo --->
             <div class="py-3">
@@ -86,14 +86,25 @@
             <!-- End user info -->
 
         </div>
-    </div>
-    <!-- End contents -->
+    </section>
+    <!-- End contents for large screens -->
+
+    <!-- Begin contents for mobile screens -->
+    <section class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block sticky top-0 z-40 bg-gray-50">
+        <div class="shadow-md px-2 py-3 mx-auto">
+
+            <!-- Begin logo --->
+            <div class=""><router-link to="/" class="p-0 flex"><img :src="files.logo" alt="" class="w-20"></router-link></div>
+            <!-- End logo --->
+
+        </div>
+    </section>
+    <!-- End contents for mobile screens -->
 
 </template>
 
 <script>
     import { inject, reactive } from "vue";
-    // import router from "@/router";
 
     export default
     {

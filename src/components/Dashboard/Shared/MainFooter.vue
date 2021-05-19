@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin lower footer contents -->
-    <footer class="bg-juaso-primary">
+    <footer class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden bg-juaso-primary">
 
         <!-- Begin company and site info -->
         <div class="container py-20 m-auto text-gray-800 flex flex-wrap flex-col grid gap-6 grid-cols-2">
