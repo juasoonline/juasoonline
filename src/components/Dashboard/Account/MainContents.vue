@@ -145,6 +145,8 @@
 
                 <!-- Begin navigation contents -->
                 <div class="mt-3">
+
+                    <!-- Begin shop menu -->
                     <div class="bg-white rounded">
                         <div class="border-b">
                             <router-link to="orders" class="flex text-sm items-center p-3 cursor-pointer">
@@ -171,7 +173,9 @@
                             </router-link>
                         </div>
                     </div>
+                    <!-- End shop menu -->
 
+                    <!-- Begin user menu -->
                     <div class="bg-white rounded mt-3">
                         <div class="border-b">
                             <div to="orders" class="flex text-sm items-center p-3 cursor-pointer">
@@ -203,19 +207,21 @@
                             </router-link>
                         </div>
                     </div>
+                    <!-- End user menu -->
+
+                    <!-- Begin sign-out action -->
+                    <div class="mt-3 mb-14">
+                        <div class="rounded">
+                            <a @click="signOut" class="flex text-sm items-center p-3 cursor-pointer bg-red-600 justify-center rounded text-white">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                                <span>Sign Out</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End sign-out action -->
+
                 </div>
                 <!-- End navigation contents -->
-
-                <!-- Begin sign-out action -->
-                <div class="my-3">
-                    <div class="rounded">
-                        <a @click="signOut" class="flex text-sm items-center p-3 cursor-pointer bg-red-600 justify-center rounded text-white">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                            <span>Sign Out</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- End sign-out action -->
 
             </div>
         </section>
