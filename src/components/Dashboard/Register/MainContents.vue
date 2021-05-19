@@ -8,7 +8,7 @@
 
                     <!-- Begin logo -->
                     <div class="">
-                        <img :src="files.logo" class="2xl:w-32 xl:w-32 lg:w-32 md:w-24 sm:w-24 xs:w-24 mx-auto">
+                        <router-link to="/"><img :src="files.logo" class="2xl:w-32 xl:w-32 lg:w-32 md:w-24 sm:w-24 xs:w-24 mx-auto"></router-link>
                     </div>
                     <!-- End logo -->
 
