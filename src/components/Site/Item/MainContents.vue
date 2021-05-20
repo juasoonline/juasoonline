@@ -396,7 +396,7 @@
             <!-- End delivery info -->
 
             <!-- Begin color -->
-            <div class="bg-white px-2 mb-3 pb-3">
+            <div class="bg-white px-2 pb-3 mb-3">
                 <label class="w-full text-gray-700 text-sm">Color:</label>
                 <div class="flex gap-2 grid grid-cols-6">
                     <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
@@ -412,7 +412,7 @@
             <!-- End color -->
 
             <!-- Begin size -->
-            <div class="bg-white px-2 pb-3">
+            <div class="bg-white px-2 pb-3 mb-3">
                 <label class="w-full text-gray-700 text-xs font-semibold">Size:</label>
                 <div class="flex gap-2 grid grid-cols-6">
                     <div class="flex cursor-pointer"><div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">39</div></div>
@@ -426,8 +426,7 @@
             <!-- End size -->
 
             <!-- Begin quantity -->
-            <div class="bg-white px-2 pb-3">
-                <div class="mt-5">
+            <div class="bg-white px-2 pb-3 mb-3">
                   <label class="w-full text-gray-700 text-xs font-semibold">Quantity:</label>
                   <div class="flex items-center">
                       <div class="custom-number-input h-10 w-32">
@@ -445,12 +444,11 @@
                           <span class="text-gray-400 text-sm">797 pieces available</span>
                       </div>
                   </div>
-                </div>
             </div>
             <!-- End quantity -->
 
             <!-- Begin item detailed info -->
-            <div class="bg-white mt-2">
+            <div class="bg-white mb-3">
                 <div class="flex flex-wrap">
                     <div class="w-full">
 
@@ -553,7 +551,7 @@
             <!-- End item detailed info -->
 
             <!-- Begin more to love -->
-            <div class="px-2 mt-2 mb-16">
+            <div class="px-2 mb-16">
                 <h3 class="font-bold text-lg mb-1.5">More To Love</h3>
 
                 <!-- Begin items list -->
