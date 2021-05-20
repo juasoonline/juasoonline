@@ -425,6 +425,30 @@
             </div>
             <!-- End size -->
 
+            <!-- Begin quantity -->
+            <div class="bg-white px-2 pb-3">
+                <div class="mt-5">
+                  <label class="w-full text-gray-700 text-xs font-semibold">Quantity:</label>
+                  <div class="flex items-center">
+                      <div class="custom-number-input h-10 w-32">
+                          <div class="flex flex-row h-10 w-full rounded relative bg-transparent mt-1">
+                            <button data-action="decrement" class=" border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-l cursor-pointer outline-none">
+                                <span class="m-auto text-2xl font-thin">−</span>
+                            </button>
+                            <input type="number" class="outline-none focus:outline-none text-center w-full bg-white border-t border-b font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0">
+                            <button data-action="increment" class="border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-r cursor-pointer">
+                                <span class="m-auto text-2xl font-thin">+</span>
+                            </button>
+                          </div>
+                      </div>
+                      <div class="ml-4 mt-2">
+                          <span class="text-gray-400 text-sm">797 pieces available</span>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <!-- End quantity -->
+
             <!-- Begin item detailed info -->
             <div class="bg-white mt-2 mb-14">
                 <div class="flex flex-wrap">
