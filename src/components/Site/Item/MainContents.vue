@@ -381,8 +381,8 @@
             <!-- Begin product name and price -->
             <div class="bg-white p-2">
                 <div class="border-b pb-2.5">
-                    <div class="font-bold text-sm">Ghc 234.00</div>
-                    <p class="text-sm mt-1">Marshall Kilburn Portable Wireless Speaker</p>
+                    <div class="font-bold text-lg">GHS 234.00</div>
+                    <p class="text-lg mt-1">Marshall Kilburn Portable Wireless Speaker</p>
                 </div>
             </div>
             <!-- End product name and price -->
