@@ -405,7 +405,7 @@
             <!-- End color -->
 
             <!-- Begin item detailed info -->
-            <div class="bg-white mt-2 mb-12">
+            <div class="bg-white mt-2 mb-14">
                 <div class="flex flex-wrap">
                     <div class="w-full">
 
