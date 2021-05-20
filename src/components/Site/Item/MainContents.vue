@@ -450,7 +450,7 @@
             <!-- End quantity -->
 
             <!-- Begin item detailed info -->
-            <div class="bg-white mt-2 mb-14">
+            <div class="bg-white mt-2">
                 <div class="flex flex-wrap">
                     <div class="w-full">
 
@@ -551,6 +551,26 @@
                 </div>
             </div>
             <!-- End item detailed info -->
+
+            <!-- Begin more to love -->
+            <div class="mt-2 mb-14">
+                <h3 class="font-bold text-lg mb-1.5">More To Love</h3>
+
+                <!-- Begin items list -->
+                <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
+                    <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
+                        <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
+                        <div class="m-5">
+                            <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}</router-link></span>
+                            <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }} <del class="ml-2 text-xs font-light text-gray-500 text-red-500">GHS {{ item.product_price }}</del></router-link></p>
+                            <span class="block text-gray-500 text-xxs">{{ item.total_sold }} Sold</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End items list -->
+
+            </div>
+            <!-- End more to love -->
 
             <!-- Begin contents -->
             <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
