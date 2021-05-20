@@ -553,7 +553,7 @@
             <!-- End item detailed info -->
 
             <!-- Begin more to love -->
-            <div class="mt-2 mb-14">
+            <div class="px-2 mt-2 mb-16">
                 <h3 class="font-bold text-lg mb-1.5">More To Love</h3>
 
                 <!-- Begin items list -->
