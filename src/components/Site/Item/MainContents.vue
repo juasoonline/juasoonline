@@ -379,6 +379,134 @@
             </div>
             <!-- Begin image slider -->
 
+            <!-- Begin product name and price -->
+            <div class="bg-white p-2">
+                <div class="border-b pb-2.5">
+                    <div class="font-bold text-sm">Ghc 234.00</div>
+                    <p class="text-sm mt-1">Marshall Kilburn Portable Wireless Speaker</p>
+                </div>
+            </div>
+            <!-- End product name and price -->
+
+            <!-- Begin color -->
+            <div class="bg-white px-2 pb-3">
+                <label class="w-full text-gray-700 text-sm">Color:</label>
+                <div class="flex gap-2 grid grid-cols-6">
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                </div>
+            </div>
+            <!-- End color -->
+
+            <!-- Begin item detailed info -->
+            <div class="bg-white rounded mt-2">
+                <div class="flex flex-wrap">
+                    <div class="w-full">
+
+                        <!-- Begin tab menu -->
+                        <div class="">
+                            <ul class="flex mb-0 list-none flex-wrap flex-row">
+                                <li class="-mb-px last:mr-0 cursor-pointer"><a class="text-sm px-3 py-1 block leading-normal border-b" @click="toggleTabs(1)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 1, 'text-gray-500 bg-gray-200': tabs.openTab === 1}">Overview</a></li>
+                                <li class="-mb-px last:mr-0 cursor-pointer"><a class="text-sm px-3 py-1 block leading-normal border-b" @click="toggleTabs(2)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 2, 'text-gray-500 bg-gray-200': tabs.openTab === 2}">Reviews</a></li>
+                                <li class="-mb-px last:mr-0 cursor-pointer"><a class="text-sm px-3 py-1 block leading-normal border-b" @click="toggleTabs(3)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 3, 'text-gray-500 bg-gray-200': tabs.openTab === 3}">Specifications</a></li>
+                            </ul>
+                        </div>
+                        <!-- End tab menu -->
+
+                        <!-- Begin tab contents -->
+                        <div class="relative rounded-b flex flex-col min-w-0 break-words bg-white w-full border-t">
+                            <div class="flex-auto">
+                                <div class="tab-content tab-space px-2">
+
+                                  <!-- Begin overview -->
+                                  <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
+                                      <div v-for="overview in 3" :key="overview" class="flex items-center justify-center py-2">
+                                          <div class="flex flex-col bg-white items-center">
+                                              <h3 class="font-serif font-bold text-gray-900 text-lg">Some header goes here</h3>
+                                              <p class="text-center leading-relaxed py-4 text-sm">This tutorial provides complete steps to design a database schema of online shops and shopping carts to manage the users, products, reviews, carts, orders, and payments. It can be further used to develop an online shop and shopping cart based websites or applications.</p>
+                                              <img class="rounded w-full" src="https://ae01.alicdn.com/kf/H595d729be06a4a01ac497f2ac5d3c7ffL.jpg" alt="motivation" />
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- End overview -->
+
+                                  <!-- Begin customers review -->
+                                  <div v-bind:class="{ 'hidden': tabs.openTab !== 2, 'block': tabs.openTab === 2 }">
+                                      <div v-for="review in 5" :key="review" class="flex mb-3">
+                                          <div class="flex-1 border-b py-4 leading-relaxed">
+                                              <div class="flex items-center">
+                                                  <strong class="mr-2">Michael Kabutey</strong>
+                                                  <span class="text-xs text-gray-400 mr-2">29 Mar 2021 @ 3:34 PM</span>
+                                                  <span class="">
+                                                      <div class="text-sm text-gray-500 flex">
+                                                          <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                          <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                          <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                          <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                          <span><svg class="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                      </div>
+                                                  </span>
+                                              </div>
+                                              <p class="text-sm">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                              <div class="mt-4 flex items-center float-right">
+                                                  <p class="text-xs mr-3">Helpful?</p>
+                                                  <div class="mr-2">
+                                                      <button type="button" class="flex items-center rounded bg-juaso-primary text-white font-bold px-2 py-1 focus:outline-none hover:bg-juaso-secondary">
+                                                          <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                          <span class="uppercase text-xxxs font-bold">Yes</span>
+                                                      </button>
+                                                  </div>
+                                                  <div class="">
+                                                      <button type="button" class="flex items-center rounded bg-red-500 text-white font-bold px-2 py-1 focus:outline-none hover:bg-red-600">
+                                                          <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                                          <span class="uppercase text-xxxs font-bold">No</span>
+                                                      </button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- End image -->
+
+                                  <!-- Begin specifications -->
+                                  <div v-bind:class="{ 'hidden': tabs.openTab !== 3, 'block': tabs.openTab === 3 }">
+                                      <table class="table table-bordered ps-table ps-table--specification text-sm my-5">
+                                          <tbody>
+                                              <tr><td class="w-1/2">Color</td><td class="w-1/2">Black, Gray</td></tr>
+                                              <tr><td>Style</td><td>Ear Hook</td></tr>
+                                              <tr><td>Wireless</td><td>Yes</td></tr>
+                                              <tr><td>Dimensions</td><td>5.5 x 5.5 x 9.5 inches</td></tr>
+                                              <tr><td>Weight</td><td>6.61 pounds</td></tr>
+                                              <tr><td>Battery Life</td><td>20 hours</td></tr>
+                                              <tr><td>Bluetooth</td><td>Yes</td></tr>
+                                              <tr><td class="w-1/2">Color</td><td class="w-1/2">Black, Gray</td></tr>
+                                              <tr><td>Style</td><td>Ear Hook</td></tr>
+                                              <tr><td>Wireless</td><td>Yes</td></tr>
+                                              <tr><td>Dimensions</td><td>5.5 x 5.5 x 9.5 inches</td></tr>
+                                              <tr><td>Weight</td><td>6.61 pounds</td></tr>
+                                              <tr><td>Battery Life</td><td>20 hours</td></tr>
+                                              <tr><td>Bluetooth</td><td>Yes</td></tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                                  <!-- End specifications -->
+
+                              </div>
+                          </div>
+                      </div>
+                      <!-- End tab contents -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- End item detailed info -->
+
         </div>
         <!-- End contents for mobile screens -->
 
