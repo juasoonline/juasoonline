@@ -7,7 +7,9 @@
 
                 <!-- Begin logo --->
                 <div class="flex col-span-2 justify-start 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-                    <router-link to="/" class="p-0 flex w-auto"><img :src="mainLogo" alt=""></router-link>
+                    <router-link to="/" class="p-0 flex w-auto">
+                        <img :src="mainLogo" alt="" class="w-28 h-8">
+                    </router-link>
                 </div>
                 <!-- End logo --->
 
