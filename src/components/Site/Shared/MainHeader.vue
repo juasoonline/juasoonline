@@ -18,7 +18,7 @@
 
                     <!-- Begin logo for mobile screens -->
                     <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mr-3">
-                        <router-link to="/" class="p-0 flex"><img :src="mainLogo" alt="" class="w-24"></router-link>
+                        <router-link to="/" class="p-0 flex"><img :src="mainLogo" alt="" class="w-24 h-7"></router-link>
                     </div>
                     <!-- End logo for mobile screens -->
 

@@ -2,7 +2,7 @@
 
     <!-- Begin tag for lg screens -->
     <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-full my-4">
-        <div class="flex flex-col grid gap-5 grid-cols-4">
+        <div class="flex flex-col grid gap-3 grid-cols-4">
 
             <!-- Begin products counts -->
             <div class="flex 2xl:p-6 xl:p-4 lg:p-2 bg-white rounded">
