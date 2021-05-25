@@ -453,7 +453,7 @@
                     <div class="w-full">
 
                         <!-- Begin tab menu -->
-                        <div class="sticky top-20 z-30 border-t">
+                        <div class="sticky top-10 z-30 border-t">
                             <ul class="flex mb-0 list-none flex-wrap flex-row">
                                 <li class="-mb-px last:mr-0 flex-auto text-center cursor-pointer"><a class="text-sm font-bold px-3 py-2 block leading-normal border-b" @click="toggleTabs(1)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 1, 'text-gray-500 bg-gray-200': tabs.openTab === 1}">Overview</a></li>
                                 <li class="-mb-px last:mr-0 flex-auto text-center cursor-pointer"><a class="text-sm font-bold px-3 py-2 block leading-normal border-b" @click="toggleTabs(2)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 2, 'text-gray-500 bg-gray-200': tabs.openTab === 2}">Reviews</a></li>
