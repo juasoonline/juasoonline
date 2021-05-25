@@ -1,8 +1,8 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="flex bg-juaso-primary border-b 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden px-1.5">
-        <div class="container mx-auto">
+    <div class="flex bg-juaso-primary border-b 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+        <div class="container mx-auto px-1.5">
             <div class="flex justify-between">
 
                 <!-- Begin left menu -->
@@ -57,7 +57,7 @@
                             <!-- End account link -->
 
                             <!-- Begin login user routes -->
-                            <div class="z-50 bg-white shadow-md rounded-b right-1 2xl:right-1 xl:right-1 lg:right-1 mt-3 w-52 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top" v-if="authentication.isAuthenticated()">
+                            <div class="z-50 bg-white shadow-md rounded-b mt-3 w-52 mr-1.5 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top" v-if="authentication.isAuthenticated()">
 
                                 <!-- Begin header contents -->
                                 <div class="m-3 flex">
@@ -120,7 +120,7 @@
                             <!-- End login user routes -->
 
                             <!-- Begin guest user routes -->
-                            <div class="z-50 bg-white shadow-md rounded-b right-1 2xl:right-1 xl:right-1 lg:right-1 mt-3 w-52 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top border-r border-l border-b" v-else>
+                            <div class="z-50 bg-white shadow-md rounded-b mt-3 w-52 mr-1.5 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top border-r border-l border-b" v-else>
                                 <div class="text-juaso-primary font-bold pt-5 px-2.5 text-center">Welcome to Juasoonline</div>
                                 <div class="m-auto flex pt-5 px-2.5 pb-3 border-b justify-center">
                                     <router-link to="/register" class="justify-start inline-block mr-1 px-7 py-1 text-xs font-medium leading-4 text-center text-white transition bg-juaso-primary rounded shadow ripple hover:bg-juaso-secondary">Register</router-link>

@@ -1,8 +1,8 @@
 <template>
 
     <!-- Begin upper footer contents -->
-    <footer class="bg-juaso-extra 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden px-1.5">
-        <div class="container py-20 m-auto text-gray-800">
+    <footer class="bg-juaso-extra 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+        <div class="container py-20 m-auto px-1.5 text-gray-800">
             <div class="flex flex-col grid gap-6 grid-cols-5">
 
                 <!-- Begin get app contents -->
@@ -136,10 +136,10 @@
     <!-- End upper footer contents -->
 
     <!-- Begin lower footer contents -->
-    <footer class="bg-juaso-primary 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden px-1.5">
+    <footer class="bg-juaso-primary 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
 
         <!-- Begin company and site info -->
-        <div class="container py-20 m-auto text-gray-800 flex flex-wrap flex-col grid gap-6 grid-cols-2">
+        <div class="container px-1.5 py-20 m-auto text-gray-800 flex flex-wrap flex-col grid gap-6 grid-cols-2">
 
             <!-- Begin policies contents -->
             <div class="text-gray-100">
