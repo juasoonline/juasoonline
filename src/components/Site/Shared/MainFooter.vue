@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin upper footer contents -->
-    <footer class="bg-juaso-extra 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+    <footer class="bg-juaso-extra 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden px-1.5">
         <div class="container py-20 m-auto text-gray-800">
             <div class="flex flex-col grid gap-6 grid-cols-5">
 
@@ -136,7 +136,7 @@
     <!-- End upper footer contents -->
 
     <!-- Begin lower footer contents -->
-    <footer class="bg-juaso-primary 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+    <footer class="bg-juaso-primary 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden px-1.5">
 
         <!-- Begin company and site info -->
         <div class="container py-20 m-auto text-gray-800 flex flex-wrap flex-col grid gap-6 grid-cols-2">

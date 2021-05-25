@@ -10,23 +10,59 @@
         </div>
         <!-- End header -->
 
-        <!-- Begin item list -->
-        <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden text-justify">
-          <swiper :slides-per-view="9" :space-between="5" :autoplay="{ autoplay: true }">
-            <swiper-slide v-for="item in items.data" :key="item.resource_id">
-              <div class="card bg-white overflow-hidden text-center mx-0.5">
-                <router-link to="/item/975858275">
-                  <img v-bind:src="item.image" :alt="item.name" class="rounded border mb-4">
-                </router-link>
-                <div class="font-bold block text-xs flex justify-between">
-                  <router-link class="text-xs text-gray-600" to="/item/975858275">GHS {{ item.sales_price }}</router-link>
-                  <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
-                </div>
-              </div>
-            </swiper-slide>
-          </swiper>
+        <!-- Begin item for 2xl screens -->
+        <div class="2xl:block xl:hidden lg:hidden md:hidden sm:hidden xs:hidden text-justify">
+            <swiper :slides-per-view="9" :space-between="5" :autoplay="{ autoplay: true }">
+                <swiper-slide v-for="item in items.data" :key="item.resource_id">
+                    <div class="card bg-white overflow-hidden text-center mx-0.5">
+                        <router-link to="/item/975858275">
+                            <img v-bind:src="item.image" :alt="item.name" class="rounded border mb-4">
+                        </router-link>
+                        <div class="font-bold block text-xs flex justify-between">
+                            <router-link class="text-xs text-gray-600" to="/item/975858275">GHS {{ item.sales_price }}</router-link>
+                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
         </div>
-        <!-- End item list -->
+        <!-- End item for 2xl screens -->
+
+        <!-- Begin item for xl screens -->
+        <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
+            <swiper :slides-per-view="8" :space-between="5" :autoplay="{ autoplay: true }">
+                <swiper-slide v-for="item in items.data" :key="item.resource_id">
+                    <div class="card bg-white overflow-hidden text-center mx-0.5">
+                        <router-link to="/item/975858275">
+                            <img v-bind:src="item.image" :alt="item.name" class="rounded border mb-4">
+                        </router-link>
+                        <div class="font-bold block text-xs flex justify-between">
+                            <router-link class="text-xs text-gray-600" to="/item/975858275">GHS {{ item.sales_price }}</router-link>
+                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
+        </div>
+        <!-- End item for xl screens -->
+
+        <!-- Begin item for lg screens -->
+        <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
+            <swiper :slides-per-view="7" :space-between="5" :autoplay="{ autoplay: true }">
+                <swiper-slide v-for="item in items.data" :key="item.resource_id">
+                    <div class="card bg-white overflow-hidden text-center mx-0.5">
+                        <router-link to="/item/975858275">
+                            <img v-bind:src="item.image" :alt="item.name" class="rounded border mb-4">
+                        </router-link>
+                        <div class="font-bold block text-xs flex justify-between">
+                            <router-link class="text-xs text-gray-600" to="/item/975858275">GHS {{ item.sales_price }}</router-link>
+                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
+        </div>
+        <!-- End item for lg screens -->
 
         <!-- Begin item list -->
         <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block text-justify">

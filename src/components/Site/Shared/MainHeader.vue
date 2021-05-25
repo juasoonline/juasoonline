@@ -1,15 +1,13 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="sticky top-0 z-40 flex bg-white shadow">
+    <div class="sticky top-0 z-40 flex bg-white shadow px-1.5">
         <div class="2xl:container xl:container lg:container md:px-1.5 sm:px-1.5 xs:px-1.5 md:w-screen sm:w-screen xs:w-screen mx-auto">
-            <div class="flex grid gap-5 grid-cols-12 py-6 items-center">
+            <div class="grid gap-5 grid-cols-12 py-4 items-center">
 
                 <!-- Begin logo --->
                 <div class="flex col-span-2 justify-start 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-                    <router-link to="/" class="p-0 flex">
-                        <img :src="mainLogo" alt="" class="h-12 py-1.5">
-                    </router-link>
+                    <router-link to="/" class="p-0 flex w-auto"><img :src="mainLogo" alt=""></router-link>
                 </div>
                 <!-- End logo --->
 
@@ -25,7 +23,7 @@
                     <!-- Begin form -->
                     <div class="border border-blue-900 rounded flex w-full items-center">
                         <label class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-                            <select class="border-r border-blue-900 text-xs text-gray-600 minimal">
+                            <select class="text-xs text-gray-600 minimal">
                                 <option value="0" class="">All Categories</option>
                                 <option value="100003109">Women's Clothing</option>
                                 <option value="100003070">Men's Clothing</option>
@@ -59,7 +57,7 @@
                                 <option value="205965401">Virtual Goods</option>
                             </select>
                         </label>
-                        <label class="w-full"><input class="text-xs px-3 2xl:py-2.5 xl:py-2.5 lg:py-2.5 text-gray-600 w-full" placeholder="What are you looking for?..."></label>
+                        <label class="w-full"><input class="border-l border-blue-900 text-xs px-3 2xl:py-2.5 xl:py-2.5 lg:py-2.5 text-gray-600 w-full" placeholder="What are you looking for?..."></label>
                         <button class="w-8 h-8 mx-1.5 block focus:outline-none">
                             <svg class="w-6 h-6 text-juaso-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>

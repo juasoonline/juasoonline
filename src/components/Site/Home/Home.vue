@@ -12,7 +12,7 @@
         <!-- End navbar -->
 
         <!-- Begin logo, search and cart -->
-        <search-bar></search-bar>
+        <main-header></main-header>
         <!-- End logo, search and cart -->
 
         <!-- Begin top contents -->
@@ -35,7 +35,7 @@
 <script>
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
-    import SearchBar from "@/components/Site/Shared/MainHeader";
+    import MainHeader from "@/components/Site/Shared/MainHeader";
     import MainContents from "@/components/Site/Home/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
     import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
@@ -43,7 +43,7 @@
     export default
     {
         name: 'Home',
-        components: { TopAds, NavBar, SearchBar, MainContents, MainFooter, MobileBottomNavBar }
+        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter, MobileBottomNavBar }
     }
 </script>
 

@@ -81,7 +81,7 @@
                                             <button data-action="decrement" class=" border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-l cursor-pointer outline-none">
                                                 <span class="m-auto text-2xl font-thin">−</span>
                                             </button>
-                                            <input type="number" class="outline-none focus:outline-none text-center w-full bg-white border-t border-b font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0">
+                                            <input type="text" class="outline-none focus:outline-none text-center w-full bg-white border-t border-b font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0">
                                             <button data-action="increment" class="border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-r cursor-pointer">
                                                 <span class="m-auto text-2xl font-thin">+</span>
                                             </button>
@@ -571,7 +571,7 @@
             <!-- End more to love -->
 
             <!-- Begin contents -->
-            <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
+            <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-50 bg-white shadow">
                 <div id="tabs" class="flex justify-between">
                     <router-link to="/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1 border-r">
                         <svg class="w-5 h-5 m-auto text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>

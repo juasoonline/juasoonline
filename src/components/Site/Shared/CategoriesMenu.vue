@@ -8,7 +8,7 @@
           <router-link to="/categories">
               <div class="flex justify-start p-2.5 hover:bg-juaso-secondary rounded-t">
                   <svg class="w-6 h-6 mr-1.5 text-gray-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                  <span class="font-bold text-gray-50">Categories</span>
+                  <span class="text-gray-50">Categories</span>
               </div>
           </router-link>
         </div>
@@ -18,8 +18,8 @@
         <div class="flex w-full bg-white rounded-b py-2">
             <nav class="text-sm w-full">
                 <ul class="menu">
-                    <li v-for="Group in Groups" :key="Group.attributes.resource_id" class="text-ct font-bold text-gray-500">
-                        <router-link to="/category/1234567890" class="flex justify-between py-1.5 px-3 hover:shadow-lg hover:text-juaso-primary">
+                    <li v-for="Group in Groups" :key="Group.attributes.resource_id" class="2xl:text-ct xl:text-xs lg:text-xs text-gray-500">
+                        <router-link to="/category/1234567890" class="flex justify-between py-1.5 2xl:mb-0.5 px-3 hover:shadow-lg hover:text-juaso-primary">
                             <span>{{ Group.attributes.name }}</span>
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </router-link>

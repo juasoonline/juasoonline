@@ -20,7 +20,7 @@
                 <!-- End user icon -->
 
                 <!-- Begin user drop menu -->
-                <div class="z-50 bg-white shadow-lg rounded right-80 w-52 mt-1 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">
+                <div class="z-50 bg-white shadow-lg rounded right-48 w-52 mt-1 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">
 
                     <!-- Begin header contents -->
                     <div class="m-3 flex">
