@@ -453,7 +453,7 @@
                     <div class="w-full">
 
                         <!-- Begin tab menu -->
-                        <div class="sticky top-20 z-40 border-t">
+                        <div class="sticky top-20 z-30 border-t">
                             <ul class="flex mb-0 list-none flex-wrap flex-row">
                                 <li class="-mb-px last:mr-0 flex-auto text-center cursor-pointer"><a class="text-sm font-bold px-3 py-2 block leading-normal border-b" @click="toggleTabs(1)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 1, 'text-gray-500 bg-gray-200': tabs.openTab === 1}">Overview</a></li>
                                 <li class="-mb-px last:mr-0 flex-auto text-center cursor-pointer"><a class="text-sm font-bold px-3 py-2 block leading-normal border-b" @click="toggleTabs(2)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 2, 'text-gray-500 bg-gray-200': tabs.openTab === 2}">Reviews</a></li>
@@ -571,7 +571,7 @@
             <!-- End more to love -->
 
             <!-- Begin contents -->
-            <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-50 bg-white shadow">
+            <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-40 bg-white shadow">
                 <div id="tabs" class="flex justify-between">
                     <router-link to="/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1 border-r">
                         <svg class="w-5 h-5 m-auto text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
