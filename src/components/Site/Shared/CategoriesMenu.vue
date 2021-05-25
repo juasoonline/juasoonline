@@ -7127,7 +7127,7 @@
     .menu { position: relative; }
     /*.menu > li { display: block; }*/
     /*.menu > li > a { display: block; }*/
-    .menu > li > a:hover { font-weight: bold }
+    /*.menu > li > a:hover { font-weight: bold }*/
     .menu > li > .megadrop { visibility: hidden; position: absolute; list-style: none; top: 0px; left: 100%; width: 700px; min-height: 100%; text-align: left; margin-top:30px; padding: 15px; z-index: 99; overflow: hidden; background-color: #ffffff; }
     .menu > li:hover .megadrop { opacity: 1; visibility: visible; margin-top: -9px; }
     .menu ul li:hover:after { color: #227087; }
