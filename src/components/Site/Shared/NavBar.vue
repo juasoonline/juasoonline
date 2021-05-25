@@ -57,7 +57,7 @@
                             <!-- End account link -->
 
                             <!-- Begin login user routes -->
-                            <div v-if="authentication.isAuthenticated()" class="z-50 bg-white shadow-md rounded-b right-48 w-52 mt-3 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">
+                            <div class="z-50 bg-white shadow-md rounded-b 2xl:right-48 w-52 mt-3 -mr-2.5 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top" v-if="authentication.isAuthenticated()">
 
                                 <!-- Begin header contents -->
                                 <div class="m-3 flex">
@@ -120,7 +120,7 @@
                             <!-- End login user routes -->
 
                             <!-- Begin guest user routes -->
-                            <div v-else class="z-50 bg-white shadow-md rounded-b right-48 w-52 mt-3 border-r border-l border-b transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">
+                            <div class="z-50 bg-white shadow-md rounded-b 2xl:right-48 w-52 mt-3 -mr-2.5 border-r border-l border-b transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top" v-else>
                                 <div class="text-juaso-primary font-bold pt-5 px-2.5 text-center">Welcome to Juasoonline</div>
                                 <div class="m-auto flex pt-5 px-2.5 pb-3 border-b justify-center">
                                     <router-link to="/register" class="justify-start inline-block mr-1 px-7 py-1 text-xs font-medium leading-4 text-center text-white transition bg-juaso-primary rounded shadow ripple hover:bg-juaso-secondary">Register</router-link>
