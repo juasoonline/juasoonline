@@ -600,8 +600,9 @@
 </template>
 
 <script>
-    import { reactive } from "vue";
+import {onBeforeMount, reactive} from "vue";
     import { VueperSlides, VueperSlide } from 'vueperslides'
+import axios from "axios";
 
     export default
     {
@@ -614,6 +615,13 @@
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
             const product = reactive({ images: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg" }, { resource_id: 10000000, image: "../assets/images/products/details/2.jpg" }, { resource_id: 10000000, image: "../assets/images/products/details/3.jpg" }, { resource_id: 10000000, image: "../assets/images/products/details/4.jpg" }, { resource_id: 10000000, image: "../assets/images/products/details/1.jpg" }]  })
             const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg",});
+
+            onBeforeMount(() =>
+            {
+                axios({ method: 'GET', url: 'products', headers: {} })
+                    .then( response => { product.items = response.data.data; } )
+                    .catch( error => { error.response })
+            })
 
             return { tabs, toggleTabs, product, items }
         }
