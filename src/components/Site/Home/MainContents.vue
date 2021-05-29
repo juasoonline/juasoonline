@@ -31,13 +31,13 @@
                     <div class="m-3">
                         <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
                             <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                <p class="leading-7" :title="item.attributes.name">{{ item.attributes.name.substring(0, 22) }}...</p>
+                                <p class="leading-6" :title="item.attributes.name">{{ item.attributes.name.substring(0, 22) }}...</p>
                             </router-link>
                         </span>
                         <p class="font-bold block text-xs my-0.5">
                             <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
                                 GHS {{ item.attributes.sales_price }}
-                                <del class="ml-2 text-xxs font-light text-gray-500 text-red-500">GHS {{ item.attributes.price }}</del>
+                                <del class="ml-2 text-xxxs font-light text-gray-500 text-red-500">GHS {{ item.attributes.price }}</del>
                             </router-link>
                         </p>
                         <span class="block text-gray-500 text-xxs">{{ item.attributes.total_sold }} Sold</span>

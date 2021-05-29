@@ -59,7 +59,7 @@
                                 <option value="205965401">Virtual Goods</option>
                             </select>
                         </label>
-                        <label class="w-full"><input class="border-l border-blue-900 text-xs px-3 2xl:py-2.5 xl:py-2.5 lg:py-2.5 text-gray-600 w-full" placeholder="What are you looking for?..."></label>
+                        <label class="w-full"><input class="2xl:border-l xl:border-l lg:border-l border-blue-900 text-xs px-3 2xl:py-2.5 xl:py-2.5 lg:py-2.5 text-gray-600 w-full" placeholder="What are you looking for?..."></label>
                         <button class="w-8 h-8 mx-1.5 block focus:outline-none">
                             <svg class="w-6 h-6 text-juaso-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>

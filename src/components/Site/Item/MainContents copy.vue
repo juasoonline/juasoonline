@@ -13,7 +13,7 @@
                     <!-- Begin item images -->
                     <div class="col-span-4 p-4">
                         <div class="justify-center items-center border border-gray-100 rounded mb-2">
-                            <img :src="product.currentImage" alt="" class="rounded">
+                            <img :src="product.images[2].attributes.image" alt="" class="rounded">
                         </div>
                         <div class="flex justify-center items-center">
                             <a v-for="image in product.images" :key="image.attributes.resource_id" href="#" class="">
@@ -257,11 +257,11 @@
 
                                             <!-- Begin overview -->
                                             <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
-                                                <div v-for="overview in product.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-5">
+                                                <div v-for="overview in 3" :key="overview" class="flex items-center justify-center py-5">
                                                     <div class="flex flex-col bg-white items-center">
-                                                        <h3 class="font-serif font-bold text-gray-900 text-2xl">{{ overview.attributes.title }}</h3>
-                                                        <p class="text-center leading-relaxed py-4">{{ overview.attributes.description }}</p>
-                                                        <img class="rounded w-full" :src="overview.attributes.image" alt="motivation" />
+                                                        <h3 class="font-serif font-bold text-gray-900 text-2xl">Some header goes here</h3>
+                                                        <p class="text-center leading-relaxed py-4">This tutorial provides complete steps to design a database schema of online shops and shopping carts to manage the users, products, reviews, carts, orders, and payments. It can be further used to develop an online shop and shopping cart based websites or applications.</p>
+                                                        <img class="rounded w-full" src="https://ae01.alicdn.com/kf/H595d729be06a4a01ac497f2ac5d3c7ffL.jpg" alt="motivation" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -269,7 +269,7 @@
 
                                             <!-- Begin customers review -->
                                             <div v-bind:class="{ 'hidden': tabs.openTab !== 2, 'block': tabs.openTab === 2 }">
-                                                <div v-for="review in product.reviews" :key="review" class="flex mb-3">
+                                                <div v-for="review in 10" :key="review" class="flex mb-3">
                                                     <div class="flex-1 border-b py-4 leading-relaxed">
                                                         <div class="flex items-center">
                                                             <strong class="mr-2">Michael Kabutey</strong>
@@ -309,9 +309,20 @@
                                             <div v-bind:class="{ 'hidden': tabs.openTab !== 3, 'block': tabs.openTab === 3 }">
                                                 <table class="table table-bordered ps-table ps-table--specification text-sm my-5">
                                                     <tbody>
-                                                        <tr v-for="specification in product.specifications" :key="specification.attributes.resource_id">
-                                                            <td class="w-1/2">{{ specification.attributes.specification }}</td><td class="w-1/2">{{ specification.attributes.value }}</td>
-                                                        </tr>
+                                                        <tr><td class="w-1/2">Color</td><td class="w-1/2">Black, Gray</td></tr>
+                                                        <tr><td>Style</td><td>Ear Hook</td></tr>
+                                                        <tr><td>Wireless</td><td>Yes</td></tr>
+                                                        <tr><td>Dimensions</td><td>5.5 x 5.5 x 9.5 inches</td></tr>
+                                                        <tr><td>Weight</td><td>6.61 pounds</td></tr>
+                                                        <tr><td>Battery Life</td><td>20 hours</td></tr>
+                                                        <tr><td>Bluetooth</td><td>Yes</td></tr>
+                                                        <tr><td class="w-1/2">Color</td><td class="w-1/2">Black, Gray</td></tr>
+                                                        <tr><td>Style</td><td>Ear Hook</td></tr>
+                                                        <tr><td>Wireless</td><td>Yes</td></tr>
+                                                        <tr><td>Dimensions</td><td>5.5 x 5.5 x 9.5 inches</td></tr>
+                                                        <tr><td>Weight</td><td>6.61 pounds</td></tr>
+                                                        <tr><td>Battery Life</td><td>20 hours</td></tr>
+                                                        <tr><td>Bluetooth</td><td>Yes</td></tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -368,19 +379,17 @@
 
             <!-- Begin image slider -->
             <div class="">
-                <swiper :slides-per-view="1" :speed="1000">
-                    <swiper-slide v-for="image in product.images" :key="image.attributes.resource_id">
-                        <div class="swiper-container"><img :src="image.attributes.image" :alt="image.attributes.description"></div>
-                    </swiper-slide>
-                </swiper>
+                <vueper-slides class="no-shadow" :arrows="false" :bullets="false" :slide-ratio="1">
+                    <vueper-slide v-for="image in product.images" :key="image.resource_id" :image="image.image" />
+                </vueper-slides>
             </div>
             <!-- Begin image slider -->
 
             <!-- Begin product name and price -->
             <div class="bg-white p-2">
                 <div class="border-b pb-2.5">
-                    <div class="font-bold text-lg">GHS {{ product.item.sales_price }}</div>
-                    <p class="text-lg mt-1">GHS {{ product.item.name }}</p>
+                    <div class="font-bold text-lg">GHS 234.00</div>
+                    <p class="text-lg mt-1">Marshall Kilburn Portable Wireless Speaker</p>
                 </div>
             </div>
             <!-- End product name and price -->
@@ -397,9 +406,14 @@
             <div class="bg-white px-2 pb-3 mb-3">
                 <label class="w-full text-gray-700 text-sm">Color:</label>
                 <div class="flex gap-2 grid grid-cols-6">
-                    <div v-for="color in product.colors" :key="color.attributes.resource_id" class="flex cursor-pointer">
-                        <img :src="color.attributes.image" alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" />
-                    </div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
+                    <div class="flex cursor-pointer"><img alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" src="https://picsum.photos/seed/picsum/200" /></div>
                 </div>
             </div>
             <!-- End color -->
@@ -408,15 +422,18 @@
             <div class="bg-white px-2 pb-3 mb-3">
                 <label class="w-full text-gray-700 text-xs font-semibold">Size:</label>
                 <div class="flex gap-2 grid grid-cols-6">
-                    <div v-for="size in product.sizes" :key="size.attributes.resource_id" class="flex cursor-pointer">
-                        <div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">{{ size.attributes.size }}</div>
-                    </div>
+                    <div class="flex cursor-pointer"><div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">39</div></div>
+                    <div class="flex cursor-pointer"><div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">40</div></div>
+                    <div class="flex cursor-pointer"><div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">41</div></div>
+                    <div class="flex cursor-pointer"><div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">42</div></div>
+                    <div class="flex cursor-pointer"><div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">43</div></div>
+                    <div class="flex cursor-pointer"><div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">44</div></div>
                 </div>
             </div>
             <!-- End size -->
 
             <!-- Begin quantity -->
-            <div class="bg-white px-2 pb-3 mb-7">
+            <div class="bg-white px-2 pb-3 mb-3">
                   <label class="w-full text-gray-700 text-xs font-semibold">Quantity:</label>
                   <div class="flex items-center">
                       <div class="custom-number-input h-10 w-32">
@@ -424,14 +441,14 @@
                             <button data-action="decrement" class=" border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-l cursor-pointer outline-none">
                                 <span class="m-auto text-2xl font-thin">−</span>
                             </button>
-                            <input type="text" class="outline-none focus:outline-none text-center w-full bg-white border-t border-b font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0">
+                            <input type="number" class="outline-none focus:outline-none text-center w-full bg-white border-t border-b font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0">
                             <button data-action="increment" class="border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-r cursor-pointer">
                                 <span class="m-auto text-2xl font-thin">+</span>
                             </button>
                           </div>
                       </div>
                       <div class="ml-4 mt-2">
-                          <span class="text-gray-400 text-sm">{{ product.item.quantity }} pieces available</span>
+                          <span class="text-gray-400 text-sm">797 pieces available</span>
                       </div>
                   </div>
             </div>
@@ -459,11 +476,11 @@
 
                                   <!-- Begin overview -->
                                   <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
-                                      <div v-for="overview in product.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-2">
+                                      <div v-for="overview in 3" :key="overview" class="flex items-center justify-center py-2">
                                           <div class="flex flex-col bg-white items-center">
-                                              <h3 class="font-serif font-bold text-gray-900 text-lg">{{ overview.attributes.title }}</h3>
-                                              <p class="text-center leading-relaxed py-4 text-sm">{{ overview.attributes.description }}</p>
-                                              <img class="rounded w-full" :src="overview.attributes.image" alt="motivation" />
+                                              <h3 class="font-serif font-bold text-gray-900 text-lg">Some header goes here</h3>
+                                              <p class="text-center leading-relaxed py-4 text-sm">This tutorial provides complete steps to design a database schema of online shops and shopping carts to manage the users, products, reviews, carts, orders, and payments. It can be further used to develop an online shop and shopping cart based websites or applications.</p>
+                                              <img class="rounded w-full" src="https://ae01.alicdn.com/kf/H595d729be06a4a01ac497f2ac5d3c7ffL.jpg" alt="motivation" />
                                           </div>
                                       </div>
                                   </div>
@@ -511,9 +528,20 @@
                                   <div v-bind:class="{ 'hidden': tabs.openTab !== 3, 'block': tabs.openTab === 3 }">
                                       <table class="table table-bordered ps-table ps-table--specification text-sm my-5">
                                           <tbody>
-                                              <tr v-for="specification in product.specifications" :key="specification.attributes.resource_id">
-                                                  <td class="w-1/2">{{ specification.attributes.specification }}</td><td class="w-1/2">{{ specification.attributes.value }}</td>
-                                              </tr>
+                                              <tr><td class="w-1/2">Color</td><td class="w-1/2">Black, Gray</td></tr>
+                                              <tr><td>Style</td><td>Ear Hook</td></tr>
+                                              <tr><td>Wireless</td><td>Yes</td></tr>
+                                              <tr><td>Dimensions</td><td>5.5 x 5.5 x 9.5 inches</td></tr>
+                                              <tr><td>Weight</td><td>6.61 pounds</td></tr>
+                                              <tr><td>Battery Life</td><td>20 hours</td></tr>
+                                              <tr><td>Bluetooth</td><td>Yes</td></tr>
+                                              <tr><td class="w-1/2">Color</td><td class="w-1/2">Black, Gray</td></tr>
+                                              <tr><td>Style</td><td>Ear Hook</td></tr>
+                                              <tr><td>Wireless</td><td>Yes</td></tr>
+                                              <tr><td>Dimensions</td><td>5.5 x 5.5 x 9.5 inches</td></tr>
+                                              <tr><td>Weight</td><td>6.61 pounds</td></tr>
+                                              <tr><td>Battery Life</td><td>20 hours</td></tr>
+                                              <tr><td>Bluetooth</td><td>Yes</td></tr>
                                           </tbody>
                                       </table>
                                   </div>
@@ -580,20 +608,15 @@
 
 <script>
     import { onBeforeMount, reactive} from "vue";
-
+    import { VueperSlides, VueperSlide } from 'vueperslides'
     import axios from "axios";
     import { useRoute } from 'vue-router'
-
-    import { Swiper, SwiperSlide } from 'swiper/vue'
-    import SwiperCore, { Autoplay, Navigation } from "swiper";
-    SwiperCore.use( [ Autoplay, Navigation ] );
-    import 'swiper/swiper.scss';
 
 
     export default
     {
         name: "MainContents",
-        components: { Swiper, SwiperSlide },
+        components: { VueperSlides, VueperSlide },
 
         setup()
         {
@@ -601,12 +624,13 @@
             const tabs = reactive({ openTab: 1 } )
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
 
-            const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
+            const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [] })
             const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg",});
 
             onBeforeMount(() =>
             {
                 axios({ method: 'GET', url: 'product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
+                    // .then( response => { console.log( response.data ) } )
                     .then( response =>
                     {
                         product.item = response.data.data.attributes;
@@ -615,11 +639,6 @@
                         product.colors = response.data.data.include.colors;
                         product.sizes = response.data.data.include.sizes;
                         product.images = response.data.data.include.images;
-                        product.overviews = response.data.data.include.overviews;
-                        product.specifications = response.data.data.include.specifications;
-                        product.reviews = response.data.data.include.reviews;
-
-                        product.currentImage = response.data.data.include.images[2].attributes.image;
                     })
                     .catch( error => { error.response })
             })

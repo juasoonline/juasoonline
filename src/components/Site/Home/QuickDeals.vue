@@ -91,11 +91,11 @@
 <script>
     import SwiperCore, { Autoplay, Navigation } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
+    SwiperCore.use( [ Autoplay, Navigation ] );
 
     import 'swiper/swiper.scss';
     import { reactive } from "vue";
 
-    SwiperCore.use( [ Autoplay, Navigation ] );
 
     export default
     {
