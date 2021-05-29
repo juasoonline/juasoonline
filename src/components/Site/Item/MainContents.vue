@@ -380,7 +380,7 @@
             <div class="bg-white p-2">
                 <div class="border-b pb-2.5">
                     <div class="font-bold text-lg">GHS {{ product.item.sales_price }}</div>
-                    <p class="text-lg mt-1">GHS {{ product.item.name }}</p>
+                    <p class="text-sm mt-1">{{ product.item.name }}</p>
                 </div>
             </div>
             <!-- End product name and price -->
@@ -461,9 +461,9 @@
                                   <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
                                       <div v-for="overview in product.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-2">
                                           <div class="flex flex-col bg-white items-center">
-                                              <h3 class="font-serif font-bold text-gray-900 text-lg">{{ overview.attributes.title }}</h3>
-                                              <p class="text-center leading-relaxed py-4 text-sm">{{ overview.attributes.description }}</p>
-                                              <img class="rounded w-full" :src="overview.attributes.image" alt="motivation" />
+                                              <h3 class="font-serif font-bold text-gray-900 text-lg mt-3">{{ overview.attributes.title }}</h3>
+                                              <p class="text-center leading-relaxed py-1 text-sm">{{ overview.attributes.description }}</p>
+                                              <img class="rounded w-full mt-2" :src="overview.attributes.image" alt="motivation" />
                                           </div>
                                       </div>
                                   </div>
