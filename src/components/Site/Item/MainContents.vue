@@ -380,7 +380,7 @@
             <div class="bg-white p-2">
                 <div class="border-b pb-2.5">
                     <div class="flex items-center justify-between">
-                        <span class="font-bold text-2xl">GHS {{ product.item.sales_price }}</span>
+                        <p class="font-bold text-lg">GHS {{ product.item.sales_price }} <del class="text-xxs mr-1">GHS {{ product.item.price }}</del> <span class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ product.item.percentage_charge }}%</span></p>
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                     </div>
                     <p class="text-sm mt-2">{{ product.item.name }}</p>
@@ -689,7 +689,7 @@
                         product.specifications = response.data.data.include.specifications;
                         product.reviews = response.data.data.include.reviews;
 
-                        product.currentImage = response.data.data.include.images[2].attributes.image;
+                        product.currentImage = response.data.data.include.images[0].attributes.image;
                     })
                     .catch( error => { error.response })
             })
