@@ -541,32 +541,32 @@
 
                 <!-- Begin store name -->
                 <div class="flex items-center">
-                    <svg class="w-4 h-4 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
-                    <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">{{ product.store.name }}</router-link></span>
+                    <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
+                    <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">{{ product.store.name }}</router-link></span>
                 </div>
                 <!-- End store name -->
 
                 <!-- Begin store stats -->
                 <div class="flex items-center justify-between my-3">
                     <div class="text-left">
-                        <p class="text-xxs">95.7%</p>
-                        <p class="text-gray-400 text-xxxs">Positive Feedback</p>
+                        <p class="text-sm">95.7%</p>
+                        <p class="text-gray-400 text-xs">Positive Feedback</p>
                     </div>
                     <div class="text-center">
-                        <p class="text-xxs">230</p>
-                        <p class="text-gray-400 text-xxxs">Items</p>
+                        <p class="text-sm">230</p>
+                        <p class="text-gray-400 text-xs">Items</p>
                     </div>
                     <div class="text-right">
-                        <p class="text-xxs">230</p>
-                        <p class="text-gray-400 text-xxxs">Followers</p>
+                        <p class="text-sm">230</p>
+                        <p class="text-gray-400 text-xs">Followers</p>
                     </div>
                 </div>
                 <!-- End store stats -->
 
                 <!-- Begin call to action -->
                 <div class="my-3 border-b pb-4">
-                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xxs py-0.5 px-3.5 border rounded-full border-red-600">Go to store</router-link>
-                    <button class="text-red-600 text-xxs py-0.5 px-3.5 border rounded-full border-red-600">Follow</button>
+                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Go to store</router-link>
+                    <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
                 </div>
                 <!-- End call to action -->
 
