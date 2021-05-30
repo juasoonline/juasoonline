@@ -380,8 +380,8 @@
             <div class="bg-white p-2">
                 <div class="border-b pb-2.5">
                     <div class="flex items-center justify-between">
-                        <span class="font-bold text-xl">GHS {{ product.item.sales_price }}</span>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        <span class="font-bold text-2xl">GHS {{ product.item.sales_price }}</span>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                     </div>
                     <p class="text-sm mt-2">{{ product.item.name }}</p>
                     <span class="block text-gray-500 text-xs flex items-center mt-2">
