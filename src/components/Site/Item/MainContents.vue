@@ -379,8 +379,15 @@
             <!-- Begin product name and price -->
             <div class="bg-white p-2">
                 <div class="border-b pb-2.5">
-                    <div class="font-bold text-lg">GHS {{ product.item.sales_price }}</div>
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-lg">GHS {{ product.item.sales_price }}</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    </div>
                     <p class="text-sm mt-1">{{ product.item.name }}</p>
+                    <span class="block text-gray-500 text-xxs flex items-center mt-2">
+                        <svg class="w-3 h-3 text-red-600 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                        4.9 | {{ product.item.total_sold }} Sold
+                    </span>
                 </div>
             </div>
             <!-- End product name and price -->
@@ -394,7 +401,7 @@
             <!-- End delivery info -->
 
             <!-- Begin color -->
-            <div class="bg-white px-2 pb-3 mb-3">
+            <div class="bg-white px-2 pt-1 pb-3 mb-3">
                 <label class="w-full text-gray-700 text-sm">Color:</label>
                 <div class="flex gap-2 grid grid-cols-6">
                     <div v-for="color in product.colors" :key="color.attributes.resource_id" class="flex cursor-pointer">
@@ -405,7 +412,7 @@
             <!-- End color -->
 
             <!-- Begin size -->
-            <div class="bg-white px-2 pb-3 mb-3">
+            <div class="bg-white px-2 pt-1 pb-3 mb-3">
                 <label class="w-full text-gray-700 text-xs font-semibold">Size:</label>
                 <div class="flex gap-2 grid grid-cols-6">
                     <div v-for="size in product.sizes" :key="size.attributes.resource_id" class="flex cursor-pointer">
@@ -416,7 +423,7 @@
             <!-- End size -->
 
             <!-- Begin quantity -->
-            <div class="bg-white px-2 pb-3 mb-7">
+            <div class="bg-white px-2 pt-1 pb-3 mb-7">
                   <label class="w-full text-gray-700 text-xs font-semibold">Quantity:</label>
                   <div class="flex items-center">
                       <div class="custom-number-input h-10 w-32">
@@ -437,7 +444,7 @@
             </div>
             <!-- End quantity -->
 
-            <!-- Begin item detailed info -->
+            <!-- Begin overview, review and specification info -->
             <div class="bg-white mb-3">
                 <div class="flex flex-wrap">
                     <div class="w-full">
@@ -522,25 +529,56 @@
                               </div>
                           </div>
                       </div>
-                      <!-- End tab contents -->
+                        <!-- End tab contents -->
 
                     </div>
                 </div>
             </div>
-            <!-- End item detailed info -->
+            <!-- End overview, review and specification info -->
+
+            <!-- Begin seller recommendations -->
+            <div class="bg-white px-2 py-3 mb-3">
+
+                <!-- Begin header -->
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-xs mb-1.5">Seller Recommendations</h3>
+                    <p class="text-xxxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">View All Product</router-link></p>
+                </div>
+                <!-- End header -->
+
+                <!-- Begin items list -->
+                <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
+                    <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
+                        <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
+                            <img v-bind:src="item.image" :alt="item.name" class="object-cover h-16 w-16 text-center mx-auto">
+                        </router-link>
+                        <div class="m-3 text-center">
+                            <p class="font-bold block text-xxxs my-0.5">
+                                <router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End items list -->
+
+            </div>
+            <!-- End seller recommendations -->
 
             <!-- Begin more to love -->
             <div class="px-2 mb-16">
-                <h3 class="font-bold text-lg mb-1.5">More To Love</h3>
+                <h3 class="font-bold text-sm mb-1.5 text-center">More To Love</h3>
 
                 <!-- Begin items list -->
                 <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
                     <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                         <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
                         <div class="m-5">
-                            <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}</router-link></span>
-                            <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }} <del class="ml-2 text-xs font-light text-gray-500 text-red-500">GHS {{ item.product_price }}</del></router-link></p>
-                            <span class="block text-gray-500 text-xxs">{{ item.total_sold }} Sold</span>
+                            <p class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}</router-link></p>
+                            <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }}</router-link></p>
+                            <span class="block text-gray-500 text-xxs flex items-center">
+                                <svg class="w-3 h-3 text-red-600 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                                4.9 | {{ item.total_sold }} Sold
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -549,7 +587,7 @@
             </div>
             <!-- End more to love -->
 
-            <!-- Begin contents -->
+            <!-- Begin bottom navbar -->
             <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-40 bg-white shadow">
                 <div id="tabs" class="flex justify-between">
                     <router-link to="/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1 border-r">
@@ -568,7 +606,7 @@
                     </button>
                 </div>
             </section>
-            <!-- End contents -->
+            <!-- End bottom navbar -->
 
         </div>
         <!-- End contents for mobile screens -->
@@ -602,6 +640,7 @@
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
 
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
+            const sellerRecommendation = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg",});
             const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg",});
 
             onBeforeMount(() =>
@@ -624,7 +663,7 @@
                     .catch( error => { error.response })
             })
 
-            return { tabs, toggleTabs, product, items }
+            return { tabs, toggleTabs, product, items, sellerRecommendation }
         },
     }
 </script>
