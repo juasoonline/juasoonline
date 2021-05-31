@@ -263,8 +263,8 @@
                                 <!-- End store stats -->
 
                                 <!-- Begin call to action -->
-                                <div class="mt-3">
-                                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                                <div class="mt-3 flex justify-between items-center">
+                                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                                     <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
                                 </div>
                                 <!-- End call to action -->
@@ -274,13 +274,39 @@
 
                             <!-- Begin store items -->
                             <div class="col-span-10">
-                                <div class="flex grid gap-2 grid-cols-8">
-                                    <div v-for="item in sellerRecommendation.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
-                                        <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
-                                            <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
-                                        </router-link>
-                                        <div class="m-3 text-center">
-                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                <div class="2xl:block xl:hidden lg:hidden">
+                                    <div class="flex grid gap-2 grid-cols-8">
+                                        <div v-for="item in sellerRecommendation.items.slice( 0, 8 )" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
+                                                <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                            </router-link>
+                                            <div class="m-3 text-center">
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="2xl:hidden xl:block lg:hidden">
+                                    <div class="flex grid gap-2 grid-cols-7">
+                                        <div v-for="item in sellerRecommendation.items.slice( 0, 7 )" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
+                                                <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                            </router-link>
+                                            <div class="m-3 text-center">
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="2xl:hidden xl:hidden lg:block">
+                                    <div class="flex grid gap-2 grid-cols-6">
+                                        <div v-for="item in sellerRecommendation.items.slice( 0, 6 )" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
+                                                <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                            </router-link>
+                                            <div class="m-3 text-center">
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
