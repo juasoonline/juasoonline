@@ -264,8 +264,8 @@
 
                                 <!-- Begin call to action -->
                                 <div class="mt-3 flex justify-between items-center">
-                                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
-                                    <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
+                                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                                    <button class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Follow</button>
                                 </div>
                                 <!-- End call to action -->
 
