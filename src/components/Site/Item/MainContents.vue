@@ -782,7 +782,7 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
+                axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
                     .then( response =>
                     {
                         product.item = response.data.data.attributes;

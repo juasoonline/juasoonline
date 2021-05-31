@@ -78,7 +78,7 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'products?include=images', headers: {} })
+                axios({ method: 'GET', url: 'juaso/products?include=images', headers: {} })
                     .then( response => { product.items = response.data.data; } )
                     .catch( error => { error.response })
             })
