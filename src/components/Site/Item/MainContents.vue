@@ -235,6 +235,62 @@
                 <!-- Begin right contents -->
                 <div class="col-span-5">
 
+                    <!-- Begin store info -->
+                    <div class="bg-white mb-4 rounded p-4">
+                        <div class="flex grid grid-cols-12">
+
+                            <!-- Begin store info -->
+                            <div class="col-span-2 mr-3">
+
+                                <!-- Begin store name -->
+                                <div class="flex items-center">
+                                    <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">{{ product.store.name }}</router-link></span>
+                                </div>
+                                <!-- End store name -->
+
+                                <!-- Begin store stats -->
+                                <div class="my-2">
+                                    <p class="text-xs">95.7%<span class="text-gray-400 mx-2">Positive Feedback</span></p>
+                                    <p class="text-xs">230<span class="text-gray-400 mx-2">Items</span></p>
+                                    <p class="text-xs">230<span class="text-gray-400 mx-2">Followers</span></p>
+                                    <p class="text-xs my-2">
+                                        <router-link to="/messages" class="flex items-center hover:text-juaso-primary cursor-pointer ">
+                                            <svg class="w-5 h-5 text-juaso-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                                            <span class="text-juaso-secondary mx-2">Message Store</span>
+                                        </router-link>
+                                    </p>
+                                </div>
+                                <!-- End store stats -->
+
+                                <!-- Begin call to action -->
+                                <div class="mt-3">
+                                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                                    <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
+                                </div>
+                                <!-- End call to action -->
+
+                            </div>
+                            <!-- Begin store info -->
+
+                            <!-- Begin store items -->
+                            <div class="col-span-10">
+                                <div class="flex grid gap-2 grid-cols-8">
+                                    <div v-for="item in sellerRecommendation.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
+                                        <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
+                                            <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                        </router-link>
+                                        <div class="m-3 text-center">
+                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End store items -->
+
+                        </div>
+                    </div>
+                    <!-- End store info -->
+
                     <!-- Begin item detailed info -->
                     <div class="bg-white rounded mb-5">
                         <div class="flex flex-wrap">
@@ -260,8 +316,8 @@
                                                 <div v-for="overview in product.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-5">
                                                     <div class="flex flex-col bg-white items-center">
                                                         <h3 class="font-serif font-bold text-gray-900 text-2xl">{{ overview.attributes.title }}</h3>
-                                                        <p class="text-center leading-relaxed py-4">{{ overview.attributes.description }}</p>
-                                                        <img class="rounded w-full" :src="overview.attributes.image" alt="motivation" />
+                                                        <p class="text-center leading-relaxed">{{ overview.attributes.description }}</p>
+                                                        <img class="rounded w-full mt-4" :src="overview.attributes.image" alt="motivation" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -327,12 +383,32 @@
                     </div>
                     <!-- End item detailed info -->
 
-                    <!-- Begin related items -->
+                    <!-- Begin store recommendations -->
+                    <div class="rounded mb-5">
+                        <h3 class="font-bold text-lg text-gray-600">Store Recommendations</h3>
+
+                        <!-- Begin items -->
+                        <div class="grid grid-cols-6 gap-4">
+                            <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
+                                <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
+                                <div class="m-5">
+                                    <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}...</router-link></span>
+                                    <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.total_sold }} Sold</span></router-link></p>
+                                    <span class="block text-gray-500 text-xxs"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End items -->
+
+                    </div>
+                    <!-- End store recommendations -->
+
+                    <!-- Begin more to love items -->
                     <div class="rounded mb-5">
 
                         <!-- Begin title -->
                         <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-lg text-gray-600">Related Items</h3>
+                            <h3 class="font-bold text-lg text-gray-600">More To Love</h3>
                             <router-link to="">
                                 <p class="flex items-center text-xs text-gray-600 hover:text-juaso-primary">View More <span><svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></span></p>
                             </router-link>
@@ -353,7 +429,8 @@
                         <!-- End items -->
 
                     </div>
-                    <!-- Begin related items -->
+                    <!-- Begin  more to love items -->
+
                 </div>
                 <!-- End right contents -->
 
@@ -390,7 +467,7 @@
                     <p class="text-sm mt-2">{{ product.item.name }}</p>
                     <span class="block text-gray-500 text-xs flex items-center mt-2">
                         <svg class="w-3.5 h-3.5 text-red-600 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                        4.9 | {{ product.item.total_sold }} Sold
+                        {{ product.item.total_rating }} | {{ product.item.total_sold }} Sold
                     </span>
                 </div>
             </div>
@@ -569,7 +646,7 @@
 
                 <!-- Begin call to action -->
                 <div class="my-3 border-b pb-4">
-                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Go to store</router-link>
+                    <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                     <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
                 </div>
                 <!-- End call to action -->
@@ -583,7 +660,7 @@
 
                 <!-- Begin items list -->
                 <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
-                    <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
+                    <div v-for="item in sellerRecommendation.items.slice(0, 6)" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
                         <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
                             <img v-bind:src="item.image" :alt="item.name" class="object-cover h-16 w-16 text-center mx-auto">
                         </router-link>
@@ -662,7 +739,6 @@
     SwiperCore.use( [ Autoplay, Navigation ] );
     import 'swiper/swiper.scss';
 
-
     export default
     {
         name: "MainContents",
@@ -675,8 +751,8 @@
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
 
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
-            const sellerRecommendation = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg",});
-            const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg",});
+            const sellerRecommendation = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }]});
+            const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg"});
 
             onBeforeMount(() =>
             {
