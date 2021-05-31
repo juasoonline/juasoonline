@@ -103,7 +103,7 @@
 
                             <!-- Begin delivery info -->
                             <div class="mt-5">
-                                <p class="font-bold text-sm">Delivery Free: GHS 30.21</p>
+                                <p class="font-bold text-sm">Delivery Fee: GHS 30.21</p>
                                 <p class="text-sm text-gray-400">nationwide Delivery via Juasoonline Delivery</p>
                                 <p class="text-xs mt-0.5 text-gray-400">Estimated Delivery: 7-15 days</p>
                             </div>
@@ -501,7 +501,7 @@
 
             <!-- Begin delivery info -->
             <div class="bg-white p-2 mb-3">
-                <p class="font-bold text-sm">Delivery Free: GHS 30.21</p>
+                <p class="font-bold text-sm">Delivery Fee: GHS 30.21</p>
                 <p class="text-sm text-gray-400">Nationwide Delivery via Juasoonline Delivery</p>
                 <p class="text-xs mt-0.5 text-gray-400">Estimated Delivery: 7-15 days</p>
             </div>
