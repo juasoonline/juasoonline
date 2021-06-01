@@ -13,7 +13,7 @@
                     <!-- Begin item images -->
                     <div class="col-span-4 p-4">
                         <div class="justify-center items-center border border-gray-100 rounded mb-2">
-                            <img :src="product.currentImage" alt="" class="rounded">
+                            <img :src="product.item.image" alt="" class="rounded">
                         </div>
                         <div class="flex justify-center items-center">
                             <a v-for="image in product.images" :key="image.attributes.resource_id" href="#" class="">
@@ -443,11 +443,11 @@
 
                         <!-- Begin items -->
                         <div class="grid grid-cols-6 gap-4">
-                            <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
-                                <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
+                            <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
+                                <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.attributes.image" :alt="item.name"></router-link>
                                 <div class="m-5">
-                                    <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}...</router-link></span>
-                                    <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.total_sold }} Sold</span></router-link></p>
+                                    <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.attributes.name }}...</router-link></span>
+                                    <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link></p>
                                     <span class="block text-gray-500 text-xxs"></span>
                                 </div>
                             </div>
@@ -755,7 +755,7 @@
 </template>
 
 <script>
-    import { onBeforeMount, reactive} from "vue";
+    import { onMounted, reactive} from "vue";
 
     import axios from "axios";
     import { useRoute } from 'vue-router'
@@ -778,9 +778,10 @@
 
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
             const sellerRecommendation = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }]});
+            const recommendations = reactive({ items: [] });
             const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg"});
 
-            onBeforeMount(() =>
+            onMounted(() =>
             {
                 axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
                     .then( response =>
@@ -794,13 +795,18 @@
                         product.overviews = response.data.data.include.overviews;
                         product.specifications = response.data.data.include.specifications;
                         product.reviews = response.data.data.include.reviews;
-
-                        product.currentImage = response.data.data.include.images[0].attributes.image;
                     })
                     .catch( error => { error.response })
+
+                axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: product.item.name } } })
+                    .then( response => {
+                        console.log(response.data.data)
+                        recommendations.items = response.data.data
+                    })
+                    .catch( error => { console.log(error.response) })
             })
 
-            return { tabs, toggleTabs, product, items, sellerRecommendation }
+            return { tabs, toggleTabs, product, items, sellerRecommendation, recommendations }
         },
     }
 </script>
