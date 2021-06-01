@@ -444,10 +444,16 @@
                         <!-- Begin items -->
                         <div class="grid grid-cols-6 gap-4">
                             <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
-                                <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.attributes.image" :alt="item.name"></router-link>
+                                <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                    <img  class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.name">
+                                </router-link>
                                 <div class="m-5">
-                                    <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.attributes.name }}...</router-link></span>
-                                    <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link></p>
+                                    <span class="text-gray-500 text-xs hover:text-red-500">
+                                        <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">{{ item.attributes.name.substring(0, 22) }}...</router-link>
+                                    </span>
+                                    <p class="font-bold block text-xs my-0.5">
+                                        <router-link class="w-full object-cover hover:text-red-500" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link>
+                                    </p>
                                     <span class="block text-gray-500 text-xxs"></span>
                                 </div>
                             </div>
@@ -708,14 +714,20 @@
 
                 <!-- Begin items list -->
                 <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
-                    <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
-                        <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
+                    <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
+                        <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                            <img v-bind:src="item.attributes.image" :alt="item.name">
+                        </router-link>
                         <div class="m-5">
-                            <p class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}</router-link></p>
-                            <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }}</router-link></p>
+                            <p class="text-gray-500 text-xs hover:text-red-500">
+                                <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">{{ item.attributes.name.substring(0, 22) }}...</router-link>
+                            </p>
+                            <p class="font-bold block text-xs my-0.5">
+                                <router-link class="w-full object-cover hover:text-red-500" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                            </p>
                             <span class="block text-gray-500 text-xxs flex items-center">
                                 <svg class="w-3 h-3 text-red-600 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                                4.9 | {{ item.total_sold }} Sold
+                                {{ item.attributes.total_rating }}  | {{ item.attributes.total_sold }} Sold
                             </span>
                         </div>
                     </div>
