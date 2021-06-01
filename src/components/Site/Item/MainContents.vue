@@ -821,7 +821,7 @@
                     .catch( error => { console.log(error.response) })
 
                 // Get store items
-                axios({ method: 'GET', url: 'juaso/' + product.store.resource_id  + '/products', headers: {} })
+                axios({ method: 'GET', url: 'juaso/store/' + product.store.resource_id  + '/products', headers: {} })
                     .then( response =>
                     {
                         storeItems.items = response.data.data
