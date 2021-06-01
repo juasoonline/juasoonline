@@ -26,7 +26,7 @@
             <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
                 <div v-for="item in product.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                     <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                        <img class="object-cover h-48 w-full" v-bind:src="item.include.images[0].attributes.image" :alt="item.include.images[0].attributes.image">
+                        <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.include.images[0].attributes.image">
                     </router-link>
                     <div class="m-3">
                         <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
