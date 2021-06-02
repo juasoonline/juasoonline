@@ -449,7 +449,7 @@
                                 </router-link>
                                 <div class="m-5">
                                     <span class="text-gray-500 text-xs hover:text-red-500">
-                                        <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">{{ item.attributes.name.substring(0, 22) }}...</router-link>
+                                        <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p></router-link>
                                     </span>
                                     <p class="font-bold block text-xs my-0.5">
                                         <router-link class="w-full object-cover hover:text-red-500" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link>
@@ -767,7 +767,7 @@
 </template>
 
 <script>
-    import { onBeforeMount, reactive} from "vue";
+    import { onBeforeMount, reactive } from "vue";
 
     import axios from "axios";
     import { useRoute } from 'vue-router'
@@ -796,30 +796,29 @@
 
             onBeforeMount(() =>
             {
-              axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
-                  .then( response =>
-                  {
-                    product.item = response.data.data.attributes;
-                      product.store = response.data.data.include.store.attributes;
-                      product.brand = response.data.data.include.brand.attributes;
-                      product.colors = response.data.data.include.colors;
-                      product.sizes = response.data.data.include.sizes;
-                      product.images = response.data.data.include.images;
-                      product.overviews = response.data.data.include.overviews;
-                      product.specifications = response.data.data.include.specifications;
-                      product.reviews = response.data.data.include.reviews;
+                axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
+                    .then( response =>
+                    {
+                        product.item = response.data.data.attributes;
+                        product.store = response.data.data.include.store.attributes;
+                        product.brand = response.data.data.include.brand.attributes;
+                        product.colors = response.data.data.include.colors;
+                        product.sizes = response.data.data.include.sizes;
+                        product.images = response.data.data.include.images;
+                        product.overviews = response.data.data.include.overviews;
+                        product.specifications = response.data.data.include.specifications;
+                        product.reviews = response.data.data.include.reviews;
 
-                      // Get store items
-                      axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
-                          .then( response => { storeItems.items = response.data.data })
-                          .catch( error => { error.response })
+                        // Get store items
+                        axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
+                            .then( response => { storeItems.items = response.data.data })
+                            .catch( error => { error.response })
 
-                      // Get general recommendations
-                      axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
-                          .then( response => { recommendations.items = response.data.data })
-                          .catch( error => { console.log(error.response) })
-                  })
-                  .catch( error => { error.response })
+                        // Get general recommendations
+                        axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                            .then( response => { recommendations.items = response.data.data })
+                            .catch( error => { console.log(error.response) })
+                    })
             })
 
             return { tabs, toggleTabs, product, items, sellerRecommendation, recommendations, storeItems }
