@@ -276,36 +276,36 @@
                             <div class="col-span-10">
                                 <div class="2xl:block xl:hidden lg:hidden">
                                     <div class="flex grid gap-2 grid-cols-8">
-                                        <div v-for="item in storeItems.items.slice( 0, 8 )" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
-                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
-                                                <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                        <div v-for="item in storeItems.items.slice( 0, 8 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                                <img v-bind:src="item.attributes.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
                                             </router-link>
                                             <div class="m-3 text-center">
-                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="2xl:hidden xl:block lg:hidden">
                                     <div class="flex grid gap-2 grid-cols-7">
-                                        <div v-for="item in storeItems.items.slice( 0, 7 )" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
-                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
+                                        <div v-for="item in storeItems.items.slice( 0, 7 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                                 <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
                                             </router-link>
                                             <div class="m-3 text-center">
-                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="2xl:hidden xl:hidden lg:block">
                                     <div class="flex grid gap-2 grid-cols-6">
-                                        <div v-for="item in storeItems.items.slice( 0, 6 )" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
-                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
-                                                <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                        <div v-for="item in storeItems.items.slice( 0, 6 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                                <img v-bind:src="item.attributes.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
                                             </router-link>
                                             <div class="m-3 text-center">
-                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link></p>
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
                                             </div>
                                         </div>
                                     </div>
@@ -767,7 +767,7 @@
 </template>
 
 <script>
-    import { onMounted, reactive} from "vue";
+    import { onBeforeMount, reactive} from "vue";
 
     import axios from "axios";
     import { useRoute } from 'vue-router'
@@ -794,39 +794,32 @@
             const storeItems = reactive({ items: [] });
             const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg"});
 
-            onMounted(() =>
+            onBeforeMount(() =>
             {
-                // Get product
-                axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
-                    .then( response =>
-                    {
-                        product.item = response.data.data.attributes;
-                        product.store = response.data.data.include.store.attributes;
-                        product.brand = response.data.data.include.brand.attributes;
-                        product.colors = response.data.data.include.colors;
-                        product.sizes = response.data.data.include.sizes;
-                        product.images = response.data.data.include.images;
-                        product.overviews = response.data.data.include.overviews;
-                        product.specifications = response.data.data.include.specifications;
-                        product.reviews = response.data.data.include.reviews;
-                    })
-                    .catch( error => { error.response })
+              axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
+                  .then( response =>
+                  {
+                    product.item = response.data.data.attributes;
+                      product.store = response.data.data.include.store.attributes;
+                      product.brand = response.data.data.include.brand.attributes;
+                      product.colors = response.data.data.include.colors;
+                      product.sizes = response.data.data.include.sizes;
+                      product.images = response.data.data.include.images;
+                      product.overviews = response.data.data.include.overviews;
+                      product.specifications = response.data.data.include.specifications;
+                      product.reviews = response.data.data.include.reviews;
 
-                // Get recommendation items
-                axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: product.item.name } } })
-                    .then( response =>
-                    {
-                        recommendations.items = response.data.data
-                    })
-                    .catch( error => { console.log(error.response) })
+                      // Get store items
+                      axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
+                          .then( response => { storeItems.items = response.data.data })
+                          .catch( error => { error.response })
 
-                // Get store items
-                axios({ method: 'GET', url: 'juaso/store/' + product.store.resource_id  + '/products', headers: {} })
-                    .then( response =>
-                    {
-                        storeItems.items = response.data.data
-                    })
-                    .catch( error => { console.log(error.response) })
+                      // Get general recommendations
+                      axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                          .then( response => { recommendations.items = response.data.data })
+                          .catch( error => { console.log(error.response) })
+                  })
+                  .catch( error => { error.response })
             })
 
             return { tabs, toggleTabs, product, items, sellerRecommendation, recommendations, storeItems }
