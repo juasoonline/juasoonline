@@ -6,7 +6,9 @@
 
             <!-- Begin ad banner -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden mx-auto w-screen">
-                <router-link to="/item/1234567890" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" ><img :src="topAd"  alt=""/></router-link>
+                <router-link to="" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" >
+                    <img src="https://assets.juasoonline.com/juasoonline/assets/images/ads/top/banner1.jpg"  alt=""/>
+                </router-link>
             </div>
             <!-- Begin ad banner -->
 
@@ -29,13 +31,6 @@
     export default
     {
         name: "TopAds",
-        data()
-        {
-            return {
-                topAd: '../assets/images/ads/top/banner1.jpg',
-                mobileLogo: '../assets/images/logo2.png',
-            }
-        }
     }
 </script>
 
