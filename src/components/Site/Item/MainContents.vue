@@ -444,7 +444,7 @@
                         <!-- Begin items -->
                         <div class="grid grid-cols-6 gap-4">
                             <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
-                                <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover" target= '_blank'>
                                     <img  class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.name">
                                 </router-link>
                                 <div class="m-5">
@@ -452,7 +452,7 @@
                                         <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p></router-link>
                                     </span>
                                     <p class="font-bold block text-xs my-0.5">
-                                        <router-link class="w-full object-cover hover:text-red-500" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link>
+                                        <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" target= '_blank' class="w-full object-cover hover:text-red-500">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link>
                                     </p>
                                     <span class="block text-gray-500 text-xxs"></span>
                                 </div>

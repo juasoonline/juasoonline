@@ -21,7 +21,7 @@ const routes =
     // Public routes
     { path: '/', name: 'Home', component: () => import( '../components/Site/Home/Home' ) },
     { path: '/categories', name: 'Categories', component: () => import( '../components/Site/Categories/Categories' ) },
-    { path: '/category/:category', name: 'Category', component: () => import( '../components/Site/Category/Category' )},
+    { path: '/category/:category/:slug', name: 'Category', component: () => import( '../components/Site/Category/Category' )},
     { path: '/item/:item', name: 'Item', component: () => import( '../components/Site/Item/Item' ) },
     { path: '/stores', name: 'Stores', component: () => import( '../components/Site/Stores/Stores' ) },
     { path: '/store/:store', name: 'Store', component: () => import( '../components/Site/Store/Store' ) },
