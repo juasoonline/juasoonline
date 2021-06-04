@@ -11,8 +11,20 @@
         <juaso-tags></juaso-tags>
         <!-- End Juasoonline tags -->
 
+        <!-- Begin error message -->
+        <div v-if="error">{{ error.errors }}</div>
+        <!-- End error message -->
+
         <!-- Begin quick details -->
-        <quick-deals></quick-deals>
+        <Suspense>
+            <template #default>
+                <quick-deals></quick-deals>
+            </template>
+
+            <template #fallback>
+                <div class="mx-auto text-center">Loading deals...</div>
+            </template>
+        </Suspense>
         <!-- End quick details -->
 
         <!-- Begin items -->
@@ -65,7 +77,7 @@
     import JuasoTags from "@/components/Site/Shared/JuasoTags";
     import QuickDeals from "./QuickDeals";
 
-    import { onBeforeMount, reactive } from 'vue';
+    import { onBeforeMount, onErrorCaptured, reactive, ref } from 'vue';
     import axios from "axios";
 
     export default
@@ -75,6 +87,11 @@
         setup ()
         {
             const product = reactive({ items: [] })
+            const error = ref(null )
+
+            onErrorCaptured( e => {
+                error.value = e;
+            })
 
             onBeforeMount(() =>
             {
@@ -83,7 +100,7 @@
                     .catch( error => { error.response })
             })
 
-            return { product }
+            return { product, error }
         }
     }
 </script>
