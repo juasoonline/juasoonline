@@ -12,42 +12,6 @@
 
         <!-- Begin item for 2xl screens -->
         <div class="2xl:block xl:hidden lg:hidden md:hidden sm:hidden xs:hidden text-justify">
-            <swiper :slides-per-view="9" :space-between="5" :autoplay="{ autoplay: true }">
-                <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
-                    <div class="card bg-white overflow-hidden text-center mx-0.5">
-                        <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}">
-                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
-                        </router-link>
-                        <div class="font-bold block text-xs flex justify-between">
-                            <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
-                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
-                        </div>
-                    </div>
-                </swiper-slide>
-            </swiper>
-        </div>
-        <!-- End item for 2xl screens -->
-
-        <!-- Begin item for xl screens -->
-        <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
-            <swiper :slides-per-view="8" :space-between="5" :autoplay="{ autoplay: true }">
-                <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
-                    <div class="card bg-white overflow-hidden text-center mx-0.5">
-                        <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}">
-                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
-                        </router-link>
-                        <div class="font-bold block text-xs flex justify-between">
-                            <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
-                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
-                        </div>
-                    </div>
-                </swiper-slide>
-            </swiper>
-        </div>
-        <!-- End item for xl screens -->
-
-        <!-- Begin item for lg screens -->
-        <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
             <swiper :slides-per-view="7" :space-between="5" :autoplay="{ autoplay: true }">
                 <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
                     <div class="card bg-white overflow-hidden text-center mx-0.5">
@@ -57,6 +21,54 @@
                         <div class="font-bold block text-xs flex justify-between">
                             <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
                             <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                        </div>
+                        <div class="block text-xxs flex justify-between mt-2 text-green-800">
+                            <p class="">Deal Ends:</p>
+                            <p class="">{{ item.attributes.promo_end }}</p>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
+        </div>
+        <!-- End item for 2xl screens -->
+
+        <!-- Begin item for xl screens -->
+        <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
+            <swiper :slides-per-view="6" :space-between="5" :autoplay="{ autoplay: true }">
+                <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
+                    <div class="card bg-white overflow-hidden text-center mx-0.5">
+                        <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}">
+                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
+                        </router-link>
+                        <div class="font-bold block text-xs flex justify-between">
+                            <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                        </div>
+                        <div class="block text-xxs flex justify-between mt-2 text-green-800">
+                            <p class="">Deal Ends:</p>
+                            <p class="">{{ item.attributes.promo_end }}</p>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
+        </div>
+        <!-- End item for xl screens -->
+
+        <!-- Begin item for lg screens -->
+        <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
+            <swiper :slides-per-view="5" :space-between="5" :autoplay="{ autoplay: true }">
+                <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
+                    <div class="card bg-white overflow-hidden text-center mx-0.5">
+                        <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}">
+                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
+                        </router-link>
+                        <div class="font-bold block text-xs flex justify-between">
+                            <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                        </div>
+                        <div class="block text-xxs flex justify-between mt-2 text-green-800">
+                            <p class="">Deal Ends:</p>
+                            <p class="">{{ item.attributes.promo_end }}</p>
                         </div>
                     </div>
                 </swiper-slide>
@@ -77,6 +89,11 @@
                             <p class="font-light text-xxs p-0">398 Sold</p>
                         </div>
                         <div class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 absolute top-0 my-1.5 mx-2.5"><span>-2%</span></div>
+
+                        <div class="block text-xxs flex justify-between mt-2 text-green-800">
+                            <p class="">Deal Ends:</p>
+                            <p class="">{{ item.attributes.promo_end }}</p>
+                        </div>
                     </div>
                 </swiper-slide>
             </swiper>
@@ -106,7 +123,6 @@
         setup()
         {
             const items = reactive({ data: [] })
-            // const items = reactive({ data: [ { resource_id: 10000000, image: "../assets/images/products/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  },{ resource_id: 20000000, image: "../assets/images/products/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 30000000, image: "../assets/images/products/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 40000000, image: "../assets/images/products/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 50000000, image: "../assets/images/products/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 60000000, image: "../assets/images/products/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 70000000, image: "../assets/images/products/7.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 80000000, image: "../assets/images/products/8.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 90000000, image: "../assets/images/products/9.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },{ resource_id: 26000000, image: "../assets/images/products/21.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, ] })
             onBeforeMount(() =>
             {
                 axios({ method: 'GET', url: 'juaso/products/deals', headers: {} })

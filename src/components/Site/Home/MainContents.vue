@@ -19,7 +19,7 @@
         <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 w-full mb-14">
 
             <!-- Begin title -->
-            <h4 class="font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4>
+            <div class="mx-auto text-center"><h4 class="text-2xl font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4></div>
             <!-- End title -->
 
             <!-- Begin items list -->
@@ -28,10 +28,10 @@
                     <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                         <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.include.images[0].attributes.image">
                     </router-link>
-                    <div class="m-3">
+                    <div class="m-2">
                         <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
                             <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                <p class="leading-6" :title="item.attributes.name">{{ item.attributes.name.substring(0, 22) }}...</p>
+                                <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 25) }}...</p>
                             </router-link>
                         </span>
                         <p class="font-bold block text-xs my-0.5">
