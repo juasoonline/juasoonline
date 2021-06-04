@@ -86,10 +86,10 @@
                         </router-link>
                         <div class="font-bold block">
                             <router-link class="text-xxs text-red-600 font-bold" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
-                            <p class="font-light text-xxs p-0">398 Sold</p>
+                            <p class="font-light text-xxs leading-none p-0">398 Sold</p>
                         </div>
                         <div class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 absolute top-0 my-1.5 mx-2.5"><span>-2%</span></div>
-                        <div class="block text-xxxs mt-2 text-green-800">
+                        <div class="block text-xxxs text-green-800">
                             <p class="">Ends in: {{ item.attributes.promo_end }}</p>
                         </div>
                     </div>
