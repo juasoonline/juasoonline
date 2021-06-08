@@ -22,7 +22,9 @@
             </template>
 
             <template #fallback>
-                <div class="mx-auto text-center">Loading deals...</div>
+                <div class="mx-auto text-center">
+                    <spinner :loading="loader.loading" :color="loader.color" :size="loader.size" :position="loader.position"></spinner>
+                </div>
             </template>
         </Suspense>
         <!-- End quick details -->
@@ -76,6 +78,7 @@
     import CatsAndAdSlides from "@/components/Site/Home/CatsAndAdSlides";
     import JuasoTags from "@/components/Site/Shared/JuasoTags";
     import QuickDeals from "./QuickDeals";
+    import Spinner from 'vue-spinner/src/MoonLoader.vue'
 
     import { onBeforeMount, onErrorCaptured, reactive, ref } from 'vue';
     import axios from "axios";
@@ -83,9 +86,10 @@
     export default
     {
         name: "MainContents",
-        components: { CatsAndAdSlides, JuasoTags, QuickDeals },
+        components: { CatsAndAdSlides, JuasoTags, QuickDeals, Spinner },
         setup ()
         {
+            const loader = reactive({ color: '#686868', size: '25px', loading: true, isLoading: false, position: 'center' })
             const product = reactive({ items: [] })
             const error = ref(null )
 
@@ -100,7 +104,7 @@
                     .catch( error => { error.response })
             })
 
-            return { product, error }
+            return { product, error, loader }
         }
     }
 </script>
