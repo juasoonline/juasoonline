@@ -20,7 +20,9 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer class=""></main-footer>
+        <Suspense>
+            <main-footer></main-footer>
+        </Suspense>
         <!-- End footer -->
 
         <!-- Begin mobile menu -->

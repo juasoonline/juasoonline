@@ -19,8 +19,8 @@
                         </div>
 
                         <div class="my-3">
-                            <router-link to="/"><img :src="AppStoreLogo" alt="" class="mb-2"></router-link>
-                            <router-link to="/"><img :src="PlayStoreLogo" alt=""></router-link>
+                            <router-link to="/"><img src="https://assets.juasoonline.com/juasoonline/assets/images/icons/icon-appstore.png" alt="" class="mb-2"></router-link>
+                            <router-link to="/"><img src="https://assets.juasoonline.com/juasoonline/assets/images/icons/icon-appstore.png" alt=""></router-link>
                         </div>
                     </div>
                     <!-- End contents -->
@@ -160,7 +160,6 @@
             <div class="text-gray-300">
                 <h1 class="font-bold mb-2">About Juasoonline</h1>
                 <p class="text-sm text-gray-300">Juasoonline offers its millions of registered users a comprehensive selection of the latest consumer electronics, entertainment, fashion, Jewel / Watches and many more products. Juasoonline is consistently ranked... <router-link to="/about-juasoonline" class="hover:text-gray-400 font-bold">Read more</router-link></p>
-<!--                <p class="text-sm text-gray-500">Juasoonline offers its millions of registered users a comprehensive selection of the latest consumer electronics, entertainment, fashion, Jewel / Watches and many more products. Juasoonline is consistently ranked as one of the best online shopping destinations, and the company regularly earns industry-leading customer service ratings. Newegg is headquartered in City of Industry, California, with North American distribution facilities located throughout the United States and Canada.</p>-->
             </div>
             <!-- End about us -->
 
@@ -201,30 +200,35 @@
 </template>
 
 <script>
-    import { onBeforeMount, reactive } from "vue";
+import {reactive, ref} from "vue";
     import axios from "axios";
 
     export default
     {
         name: "MainFooter",
-        setup()
+        async setup()
         {
             const groups = reactive({ categories: [] });
-            onBeforeMount(() =>
-            {
-                axios({ method: 'GET', url: 'juaso/categories', headers: {} })
-                    .then( response => { groups.categories = response.data.data })
-                    .catch( error => { error.response })
-            })
+            const error = ref(null )
 
-            return { groups }
-        },
-        data()
-        {
-            return {
-                PlayStoreLogo: '../assets/images/icons/icon-googleplay.png',
-                AppStoreLogo: '../assets/images/icons/icon-appstore.png',
+            try
+            {
+                const response = await axios({ method: 'GET', url: 'juaso/categories' });
+                groups.categories = await response.data.data
             }
+            catch (e)
+            {
+                error.value = e
+            }
+
+            // onBeforeMount(() =>
+            // {
+            //     axios({ method: 'GET', url: 'juaso/categories', headers: {} })
+            //         .then( response => { groups.categories = response.data.data })
+            //         .catch( error => { error.response })
+            // })
+
+            return { groups, error }
         }
     }
 </script>

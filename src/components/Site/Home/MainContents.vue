@@ -20,10 +20,9 @@
             <template #default>
                 <quick-deals></quick-deals>
             </template>
-
             <template #fallback>
                 <div class="mx-auto text-center">
-                    <spinner :loading="loader.loading" :color="loader.color" :size="loader.size" :position="loader.position"></spinner>
+                    <img class="mx-auto text-center w-20 h-20" src="https://assets.juasoonline.com/juasoonline/assets/images/loader.gif">
                 </div>
             </template>
         </Suspense>
@@ -78,7 +77,6 @@
     import CatsAndAdSlides from "@/components/Site/Home/CatsAndAdSlides";
     import JuasoTags from "@/components/Site/Shared/JuasoTags";
     import QuickDeals from "./QuickDeals";
-    import Spinner from 'vue-spinner/src/MoonLoader.vue'
 
     import { onBeforeMount, onErrorCaptured, reactive, ref } from 'vue';
     import axios from "axios";
@@ -86,7 +84,7 @@
     export default
     {
         name: "MainContents",
-        components: { CatsAndAdSlides, JuasoTags, QuickDeals, Spinner },
+        components: { CatsAndAdSlides, JuasoTags, QuickDeals },
         setup ()
         {
             const loader = reactive({ color: '#686868', size: '25px', loading: true, isLoading: false, position: 'center' })
