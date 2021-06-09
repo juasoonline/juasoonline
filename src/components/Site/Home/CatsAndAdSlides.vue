@@ -13,7 +13,14 @@
         <div class="2xl:col-span-8 xl:col-span-8 lg:col-span-9 md:col-span-12 sm:col-span-12 xs:col-span-12 h-full rounded">
 
             <!-- Begin slider banners -->
-            <ad-sliders class=""></ad-sliders>
+            <Suspense>
+                <template #default>
+                    <ad-sliders class=""></ad-sliders>
+                </template>
+                <template #fallback>
+                    <div class="text-center align-middle">Loading...</div>
+                </template>
+            </Suspense>
             <!-- End slider banners -->
 
             <!-- Begin ads -->

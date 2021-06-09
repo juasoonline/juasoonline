@@ -1,15 +1,23 @@
 <template>
 
     <!-- Begin contents -->
-    <swiper :slides-per-view="1" :speed="1000" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
-        <swiper-slide v-for="slider in sliders" :key="slider.resource_id">
-            <div class="swiper-container">
-                <router-link to="/store/1234567890">
-                    <img v-bind:src="slider.image" :alt="slider.desc" class="rounded border-none">
-                </router-link>
-            </div>
-        </swiper-slide>
-    </swiper>
+    <div>
+        <!-- Begin error message -->
+        <div v-if="error">{{ error.errors }}</div>
+        <!-- End error message -->
+
+        <div v-else>
+            <swiper :slides-per-view="1" :speed="1000" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
+                <swiper-slide v-for="slider in items.data" :key="slider.attributes.resource_id">
+                    <div class="swiper-container">
+                        <router-link to="/store/1234567890">
+                            <img :src="slider.attributes.image" alt="" class="rounded border-none">
+                        </router-link>
+                    </div>
+                </swiper-slide>
+            </swiper>
+        </div>
+    </div>
     <!-- End contents -->
 
 </template>
@@ -21,6 +29,8 @@
     import 'swiper/swiper.scss';
     import 'swiper/components/navigation/navigation.scss';
     import 'swiper/components/pagination/pagination.scss';
+    import { reactive, ref } from "vue";
+    import axios from "axios";
 
     SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
 
@@ -28,19 +38,24 @@
     {
         name: "AdSliders",
         components: { Swiper, SwiperSlide },
-        data()
+
+        async setup()
         {
-            return {
-                sliders:
-                [
-                    { resource_id: 10000000, image: "https://assets.juasoonline.com/juasoonline/assets/images/ads/sliders/1.jpg", desc: "Something" },
-                    { resource_id: 20000000, image: "https://assets.juasoonline.com/juasoonline/assets/images/ads/sliders/2.jpg", desc: "Something" },
-                    { resource_id: 11000000, image: "https://assets.juasoonline.com/juasoonline/assets/images/ads/sliders/1.jpg", desc: "Something" },
-                    { resource_id: 30000000, image: "https://assets.juasoonline.com/juasoonline/assets/images/ads/sliders/3.jpg", desc: "Something" },
-                    { resource_id: 21000000, image: "https://assets.juasoonline.com/juasoonline/assets/images/ads/sliders/2.jpg", desc: "Something" },
-                ],
+            const items = reactive({ data: [] })
+            const error = ref(null )
+
+            try
+            {
+                const response = await axios({ method: 'GET', url: 'juaso/stores/ads' });
+                items.data = await response.data.data
             }
-        },
+            catch (e)
+            {
+                error.value = e
+            }
+
+            return { items, error }
+        }
     }
 </script>
 
