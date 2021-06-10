@@ -26,7 +26,6 @@
         <img class="mx-auto text-center w-20 h-20" src="https://assets.juasoonline.com/juasoonline/assets/images/loader.gif">
     </div>
     <!-- End contents -->
-    <!-- End contents -->
 
 </template>
 
@@ -68,7 +67,6 @@
 
             const handleScroll = async () =>
             {
-                // if (( window.innerHeight + window.scrollY ) >= document.getElementById("break").offsetHeight )
                 if (( window.innerHeight + window.scrollY ) >= document.body.offsetHeight )
                 {
                     if ( hasFetchedAllData.value || isLoading.value ) { return }

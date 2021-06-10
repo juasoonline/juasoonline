@@ -62,7 +62,7 @@
                                 <label class="w-full text-gray-700 text-xs font-semibold">Color:</label>
                                 <div class="flex gap-2">
                                     <div v-for="color in product.colors" :key="color.attributes.resource_id" class="flex cursor-pointer">
-                                        <img :alt="color.attributes.resource_id" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" :src="color.attributes.image" />
+                                        <img :alt="color.attributes.resource_id" class="w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" :src="color.attributes.image" />
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                 <label class="w-full text-gray-700 text-xs font-semibold">Size:</label>
                                 <div class="flex gap-2">
                                     <div v-for="size in product.sizes" :key="size.attributes.resource_id" class="flex cursor-pointer">
-                                        <div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">{{ size.attributes.size }}</div>
+                                        <div class="w-10 mr-1 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">{{ size.attributes.size }}</div>
                                     </div>
                                 </div>
                             </div>
