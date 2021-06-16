@@ -415,11 +415,17 @@
 
                         <!-- Begin items -->
                         <div class="grid grid-cols-6 gap-4">
-                            <div v-for="item in items.items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
-                                <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
+                            <div v-for="item in storeRecommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
+                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover" target= '_blank'>
+                                    <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
+                                </router-link>
                                 <div class="m-5">
-                                    <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}...</router-link></span>
-                                    <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.total_sold }} Sold</span></router-link></p>
+                                    <span class="text-gray-500 text-xs hover:text-red-500">
+                                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p></router-link>
+                                    </span>
+                                    <p class="font-bold block text-xs my-0.5">
+                                        <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" target= '_blank' class="w-full object-cover hover:text-red-500">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link>
+                                    </p>
                                     <span class="block text-gray-500 text-xxs"></span>
                                 </div>
                             </div>
@@ -436,7 +442,7 @@
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold text-lg text-gray-600">More To Love</h3>
                             <router-link to="">
-                                <p class="flex items-center text-xs text-gray-600 hover:text-juaso-primary">View More <span><svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></span></p>
+                                <p class="flex items-center text-xs text-gray-600 hover:text-juaso-primary">View More <span><svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></span></p>
                             </router-link>
                         </div>
                         <!-- End title -->
@@ -445,7 +451,7 @@
                         <div class="grid grid-cols-6 gap-4">
                             <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
                                 <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover" target= '_blank'>
-                                    <img  class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.name">
+                                    <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
                                 </router-link>
                                 <div class="m-5">
                                     <span class="text-gray-500 text-xs hover:text-red-500">
@@ -692,7 +698,7 @@
 
                 <!-- Begin items list -->
                 <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
-                    <div v-for="item in sellerRecommendation.items.slice(0, 6)" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
+                    <div v-for="item in storeRecommendations.items.slice(0, 6)" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
                         <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
                             <img v-bind:src="item.image" :alt="item.name" class="object-cover h-16 w-16 text-center mx-auto">
                         </router-link>
@@ -789,9 +795,9 @@
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
 
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
-            const sellerRecommendation = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }]});
             const recommendations = reactive({ items: [] });
             const storeItems = reactive({ items: [] });
+            const storeRecommendations = reactive({ items: [] });
             const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg"});
 
             onBeforeMount(() =>
@@ -814,6 +820,11 @@
                             .then( response => { storeItems.items = response.data.data })
                             .catch( error => { error.response })
 
+                        // Get store recommendations
+                        axios({ method: 'GET', url: 'juaso/store/product/'  + response.data.data.attributes.resource_id  +  '/recommendations', headers: {} })
+                            .then( response => { storeRecommendations.items = response.data.data })
+                            .catch( error => { console.log( error.response ) })
+
                         // Get general recommendations
                         axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
                             .then( response => { recommendations.items = response.data.data })
@@ -821,7 +832,7 @@
                     })
             })
 
-            return { tabs, toggleTabs, product, items, sellerRecommendation, recommendations, storeItems }
+            return { tabs, toggleTabs, product, items, storeRecommendations, recommendations, storeItems }
         },
     }
 </script>

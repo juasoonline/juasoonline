@@ -67,7 +67,7 @@
 
             const handleScroll = async () =>
             {
-                if (( window.innerHeight + window.scrollY ) >= document.body.offsetHeight )
+                if (( window.scrollY + window.innerHeight ) >= document.body.offsetHeight )
                 {
                     if ( hasFetchedAllData.value || isLoading.value ) { return }
 
