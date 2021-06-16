@@ -13,11 +13,11 @@
                     <!-- Begin item images -->
                     <div class="col-span-4 p-4">
                         <div class="justify-center items-center border border-gray-100 rounded mb-2">
-                            <img :src="product.currentImage" alt="" class="rounded cursor-pointer">
+                            <img :src="product.item.image" alt="" class="rounded">
                         </div>
                         <div class="flex justify-center items-center">
                             <a v-for="image in product.images" :key="image.attributes.resource_id" href="#" class="">
-                                <img @mouseover="changeImage( image.attributes.image )" :src="image.attributes.image" alt="" class="rounded w-12 h-12 mx-1">
+                                <img :src="image.attributes.image" alt="" class="rounded w-12 h-12 mx-2">
                             </a>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                 <label class="w-full text-gray-700 text-xs font-semibold">Color:</label>
                                 <div class="flex gap-2">
                                     <div v-for="color in product.colors" :key="color.attributes.resource_id" class="flex cursor-pointer">
-                                        <img @mouseover="changeImage( color.attributes.image )" :src="color.attributes.image" :alt="color.attributes.resource_id" class="w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" />
+                                        <img :alt="color.attributes.resource_id" class="w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" :src="color.attributes.image" />
                                     </div>
                                 </div>
                             </div>
@@ -795,16 +795,10 @@
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
 
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
-            const productImage = reactive({ images: { normal_size: [ {'id': '495739563856', 'url': 'https://assets.juasoonline.com/juasoonline/assets/images/products/details/1.jpg'}, {'id': '495739509856', 'url': 'https://assets.juasoonline.com/juasoonline/assets/images/products/details/2.jpg'} ] }, zoomerOptions: { zoomFactor: 3, pane: 'pane', hoverDelay: 300, namespace: 'zoomer-bottom', move_by_click: false, scroll_items: 5, choosed_thumb_border_color: "#bbdefb", scroller_button_style: "line", scroller_position: "left", zoomer_pane_position: "right" } })
             const recommendations = reactive({ items: [] });
             const storeItems = reactive({ items: [] });
             const storeRecommendations = reactive({ items: [] });
             const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg"});
-
-            const changeImage = ( image ) =>
-            {
-                product.currentImage = image
-            }
 
             onBeforeMount(() =>
             {
@@ -820,8 +814,6 @@
                         product.overviews = response.data.data.include.overviews;
                         product.specifications = response.data.data.include.specifications;
                         product.reviews = response.data.data.include.reviews;
-
-                        product.currentImage = response.data.data.attributes.image;
 
                         // Get store items
                         axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
@@ -840,7 +832,7 @@
                     })
             })
 
-            return { tabs, toggleTabs, changeImage, product, items, storeRecommendations, recommendations, storeItems, productImage }
+            return { tabs, toggleTabs, product, items, storeRecommendations, recommendations, storeItems }
         },
     }
 </script>
