@@ -58,38 +58,40 @@
                         <div class="">
 
                             <!-- Begin color -->
-                            <div class="mt-5">
-                                <label class="w-full text-gray-700 text-xs font-semibold">Color:</label>
-                                <div class="flex gap-2">
-                                    <div v-for="color in product.colors" :key="color.attributes.resource_id" class="flex cursor-pointer">
-                                        <img @mouseover="changeImage( color.attributes.image )" :src="color.attributes.image" :alt="color.attributes.resource_id" class="w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" />
+                            <div class="mt-3">
+                                <label class="w-full text-gray-700 text-xs font-semibold">Color: <span class="font-light">{{ orderData.color }}</span></label>
+                                <div class="flex gap-2 mt-1">
+                                    <div v-for="color in product.colors" :key="color.attributes.resource_id" @click="chooseColor( color.attributes.color, color.id )" class="flex cursor-pointer">
+                                        <img @click="changeImage( color.attributes.image )" :src="color.attributes.image" :alt="color.attributes.resource_id" v-bind:class="{'w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500': orderData.colorActive !== color.id, 'w-12 h-12 mr-1 rounded-md border border-red-500 p-0.5': orderData.colorActive === color.id }" />
                                     </div>
                                 </div>
                             </div>
                             <!-- End color -->
 
                             <!-- Begin size -->
-                            <div class="mt-5">
-                                <label class="w-full text-gray-700 text-xs font-semibold">Size:</label>
-                                <div class="flex gap-2">
-                                    <div v-for="size in product.sizes" :key="size.attributes.resource_id" class="flex cursor-pointer">
-                                        <div class="w-10 mr-1 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">{{ size.attributes.size }}</div>
+                            <div class="mt-3">
+                                <label class="w-full text-gray-700 text-xs font-semibold">Size: <span class="font-light">{{ orderData.size }}</span></label>
+                                <div class="flex gap-2 mt-1">
+                                    <div v-for="size in product.sizes" :key="size.attributes.resource_id" @click="chooseSize( size.attributes.size, size.id )" class="flex cursor-pointer">
+                                        <div @click="chooseSize( size.attributes.size, size.id )" v-bind:class="{'w-10 mr-1 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500': orderData.sizeActive !== size.id, 'w-10 mr-1 text-center rounded-md border py-1.5 border-red-500': orderData.sizeActive === size.id }">
+                                            {{ size.attributes.size }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- End size -->
 
                             <!-- Begin quantity -->
-                            <div class="mt-5">
+                            <div class="mt-3">
                                 <label class="w-full text-gray-700 text-xs font-semibold">Quantity:</label>
-                                <div class="flex items-center">
+                                <div class="flex items-center mt-1">
                                     <div class="custom-number-input h-10 w-32">
                                         <div class="flex flex-row h-10 w-full rounded relative bg-transparent mt-1">
-                                            <button data-action="decrement" class=" border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-l cursor-pointer outline-none">
+                                            <button @click="quantityCounter( '-' )" data-action="decrement" class=" border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-l cursor-pointer outline-none">
                                                 <span class="m-auto text-2xl font-thin">−</span>
                                             </button>
-                                            <input type="text" class="outline-none focus:outline-none text-center w-full bg-white border-t border-b font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0">
-                                            <button data-action="increment" class="border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-r cursor-pointer">
+                                            <input type="text" class="outline-none focus:outline-none text-center w-full bg-white border-t border-b font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" :value="orderData.quantity">
+                                            <button @click="quantityCounter( '+' )" data-action="increment" class="border text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-r cursor-pointer">
                                                 <span class="m-auto text-2xl font-thin">+</span>
                                             </button>
                                         </div>
@@ -114,9 +116,9 @@
 
                         <!-- Begin action button -->
                         <div class="flex inline-block mt-5">
-                            <button type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
-                            <button type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
-                            <button type="button" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
+                            <button @click="makeOrder()"  type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
+                            <button @click="addToCart()"  type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
+                            <button @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
                                 <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 12.10K
                             </button>
@@ -189,7 +191,9 @@
 
             <!-- Begin store banner -->
             <section class="my-4">
-                <div class="rounded"><router-link to="/store/1234567890" class="focus:outline-none"><img :src="items.storeBanner" alt="" class="rounded"></router-link></div>
+                <div class="rounded"><router-link to="/store/1234567890" class="focus:outline-none">
+                    <img src="" alt="" class="rounded"></router-link>
+                </div>
             </section>
             <!-- End store banner -->
 
@@ -773,7 +777,7 @@
 </template>
 
 <script>
-    import { onBeforeMount, reactive } from "vue";
+    import { inject, onBeforeMount, reactive } from "vue";
 
     import axios from "axios";
     import { useRoute } from 'vue-router'
@@ -790,57 +794,96 @@
 
         setup()
         {
-            const route = useRoute()
+            const authentication = inject( 'authentication' );
             const tabs = reactive({ openTab: 1 } )
-            const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
+            const route = useRoute()
 
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
-            const productImage = reactive({ images: { normal_size: [ {'id': '495739563856', 'url': 'https://assets.juasoonline.com/juasoonline/assets/images/products/details/1.jpg'}, {'id': '495739509856', 'url': 'https://assets.juasoonline.com/juasoonline/assets/images/products/details/2.jpg'} ] }, zoomerOptions: { zoomFactor: 3, pane: 'pane', hoverDelay: 300, namespace: 'zoomer-bottom', move_by_click: false, scroll_items: 5, choosed_thumb_border_color: "#bbdefb", scroller_button_style: "line", scroller_position: "left", zoomer_pane_position: "right" } })
             const recommendations = reactive({ items: [] });
             const storeItems = reactive({ items: [] });
             const storeRecommendations = reactive({ items: [] });
-            const items = reactive({ items: [{ resource_id: 10000000, image: "../assets/images/products/details/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  }, { resource_id: 20000000, image: "../assets/images/products/details/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 30000000, image: "../assets/images/products/details/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 40000000, image: "../assets/images/products/details/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 50000000, image: "../assets/images/products/details/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  }, { resource_id: 60000000, image: "../assets/images/products/details/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230" }], storeBanner: "../assets/images/ads/store/banner1.jpg"});
+            const orderData = reactive({ product_id: "", size: "", color: "", quantity: 0, sizeActive: 0, colorActive: 0 });
+
+            const toggleTabs = ( tabNumber ) =>
+            {
+                tabs.openTab = tabNumber
+            }
+
+            const makeOrder = () =>
+            {}
+
+            const addToCart = () =>
+            {
+                if ( product.item.resource_id && orderData.quantity )
+                {
+                    alert( "Added to cart" )
+                }
+                else
+                {
+                    alert( "No product" )
+                }
+            }
+
+            const addToWishlist = () =>
+            {
+                if ( authentication.isAuthenticated() )
+                {
+                    alert( "User is logged in" )
+                }
+                else
+                {
+                    alert( "User is not logged in" )
+                }
+            }
 
             const changeImage = ( image ) =>
             {
                 product.currentImage = image
             }
 
+            const chooseColor = ( color, id ) => { orderData.color = color; orderData.colorActive = id }
+            const chooseSize = ( size, id ) => { orderData.size = size; orderData.sizeActive = id }
+
+            const quantityCounter = ( operator ) =>
+            {
+                if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 }
+                else { orderData.quantity = orderData.quantity -1 }
+            }
+
             onBeforeMount(() =>
             {
                 axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
-                    .then( response =>
-                    {
-                        product.item = response.data.data.attributes;
-                        product.store = response.data.data.include.store.attributes;
-                        product.brand = response.data.data.include.brand.attributes;
-                        product.colors = response.data.data.include.colors;
-                        product.sizes = response.data.data.include.sizes;
-                        product.images = response.data.data.include.images;
-                        product.overviews = response.data.data.include.overviews;
-                        product.specifications = response.data.data.include.specifications;
-                        product.reviews = response.data.data.include.reviews;
+                .then( response =>
+                {
+                    product.item = response.data.data.attributes;
+                    product.store = response.data.data.include.store.attributes;
+                    product.brand = response.data.data.include.brand.attributes;
+                    product.colors = response.data.data.include.colors;
+                    product.sizes = response.data.data.include.sizes;
+                    product.images = response.data.data.include.images;
+                    product.overviews = response.data.data.include.overviews;
+                    product.specifications = response.data.data.include.specifications;
+                    product.reviews = response.data.data.include.reviews;
+                    product.currentImage = response.data.data.attributes.image;
 
-                        product.currentImage = response.data.data.attributes.image;
+                    // Get store items
+                    axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
+                        .then( response => { storeItems.items = response.data.data })
+                        .catch( error => { error.response })
 
-                        // Get store items
-                        axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
-                            .then( response => { storeItems.items = response.data.data })
-                            .catch( error => { error.response })
+                    // Get store recommendations
+                    axios({ method: 'GET', url: 'juaso/store/product/'  + response.data.data.attributes.resource_id  +  '/recommendations', headers: {} })
+                        .then( response => { storeRecommendations.items = response.data.data })
+                        .catch( error => { console.log( error.response ) })
 
-                        // Get store recommendations
-                        axios({ method: 'GET', url: 'juaso/store/product/'  + response.data.data.attributes.resource_id  +  '/recommendations', headers: {} })
-                            .then( response => { storeRecommendations.items = response.data.data })
-                            .catch( error => { console.log( error.response ) })
-
-                        // Get general recommendations
-                        axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
-                            .then( response => { recommendations.items = response.data.data })
-                            .catch( error => { console.log(error.response) })
-                    })
+                    // Get general recommendations
+                    axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                        .then( response => { recommendations.items = response.data.data })
+                        .catch( error => { console.log(error.response) })
+                })
             })
 
-            return { tabs, toggleTabs, changeImage, product, items, storeRecommendations, recommendations, storeItems, productImage }
+            return { authentication, tabs, product, storeRecommendations, recommendations, storeItems, orderData, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize }
         },
     }
 </script>
