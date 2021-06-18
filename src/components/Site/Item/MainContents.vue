@@ -12,13 +12,15 @@
 
                     <!-- Begin item images -->
                     <div class="col-span-4 p-4">
+                        <div class="sticky inset-x-0 top-0 left-0">
                         <div class="justify-center items-center border border-gray-100 rounded mb-2">
                             <img :src="product.currentImage" alt="" class="rounded cursor-pointer">
                         </div>
                         <div class="flex justify-center items-center">
                             <a v-for="image in product.images" :key="image.attributes.resource_id" href="#" class="">
-                                <img @mouseover="changeImage( image.attributes.image )" :src="image.attributes.image" alt="" class="rounded w-12 h-12 mx-1">
+                                <img @mouseover="changeImage( image.attributes.image )" :src="image.attributes.image" alt="" class="rounded w-12 h-12 mx-1 border border-gray-300 p-0.5 hover:border-red-500">
                             </a>
+                        </div>
                         </div>
                     </div>
                     <!-- End item images -->
@@ -106,8 +108,8 @@
                             <!-- Begin delivery info -->
                             <div class="mt-5">
                                 <p class="font-bold text-sm">Delivery Fee: GHS 30.21</p>
-                                <p class="text-sm text-gray-400">nationwide Delivery via Juasoonline Delivery</p>
-                                <p class="text-xs mt-0.5 text-gray-400">Estimated Delivery: 7-15 days</p>
+                                <p class="text-sm text-gray-400">Nationwide Delivery via Juasoonline Delivery</p>
+                                <p class="text-xs mt-0.5 text-gray-400">Estimated Delivery: 1-72 Hours</p>
                             </div>
                             <!-- End delivery info -->
 
@@ -118,10 +120,7 @@
                         <div class="flex inline-block mt-5">
                             <button @click="makeOrder()"  type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
                             <button @click="addToCart()"  type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
-                            <button @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
-                                <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                                12.10K
-                            </button>
+                            <button @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>12.10K</button>
                         </div>
                         <!-- End action button -->
 
@@ -420,15 +419,20 @@
                         <!-- Begin items -->
                         <div class="grid grid-cols-6 gap-4">
                             <div v-for="item in storeRecommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
-                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover" target= '_blank'>
+                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover">
                                     <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
                                 </router-link>
                                 <div class="m-5">
                                     <span class="text-gray-500 text-xs hover:text-red-500">
-                                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p></router-link>
+                                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                            <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
+                                        </router-link>
                                     </span>
                                     <p class="font-bold block text-xs my-0.5">
-                                        <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" target= '_blank' class="w-full object-cover hover:text-red-500">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link>
+                                        <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover hover:text-red-500">
+                                            GHS {{ item.attributes.sales_price }}
+                                            <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+                                        </router-link>
                                     </p>
                                     <span class="block text-gray-500 text-xxs"></span>
                                 </div>
@@ -454,15 +458,20 @@
                         <!-- Begin items -->
                         <div class="grid grid-cols-6 gap-4">
                             <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
-                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover" target= '_blank'>
+                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover">
                                     <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
                                 </router-link>
                                 <div class="m-5">
                                     <span class="text-gray-500 text-xs hover:text-red-500">
-                                        <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p></router-link>
+                                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                            <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
+                                        </router-link>
                                     </span>
                                     <p class="font-bold block text-xs my-0.5">
-                                        <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" target= '_blank' class="w-full object-cover hover:text-red-500">GHS {{ item.attributes.sales_price }} <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span></router-link>
+                                        <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover hover:text-red-500">
+                                            GHS {{ item.attributes.sales_price }}
+                                            <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+                                        </router-link>
                                     </p>
                                     <span class="block text-gray-500 text-xxs"></span>
                                 </div>
@@ -810,25 +819,43 @@
             }
 
             const makeOrder = () =>
-            {}
-
-            const addToCart = () =>
             {
-                if ( product.item.resource_id && orderData.quantity )
+                if ( authentication.isAuthenticated() )
                 {
-                    alert( "Added to cart" )
+                    if ( product.item.resource_id && orderData.quantity ) { alert( "Order created" ) }
+                    else { alert( "Order details needed" ) }
                 }
                 else
                 {
-                    alert( "No product" )
+                    alert( "User is not logged in" )
                 }
+            }
+
+            const addToCart = () =>
+            {
+                if ( authentication.isAuthenticated() )
+                {
+                    if ( product.item.resource_id && orderData.quantity )
+                    {
+                        alert( "Added to cart" )
+                    }
+                    else
+                    {
+                        alert( "Order details needed" )
+                    }
+                }
+                else
+                {
+                    alert( "User is not logged in" )
+                }
+
             }
 
             const addToWishlist = () =>
             {
                 if ( authentication.isAuthenticated() )
                 {
-                    alert( "User is logged in" )
+                    alert( "Added to wishlist" )
                 }
                 else
                 {
