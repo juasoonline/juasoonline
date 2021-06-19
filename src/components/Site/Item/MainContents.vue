@@ -12,15 +12,15 @@
 
                     <!-- Begin item images -->
                     <div class="col-span-4 p-4">
-                        <div class="sticky inset-x-0 top-0 left-0">
-                        <div class="justify-center items-center border border-gray-100 rounded mb-2">
-                            <img :src="product.currentImage" alt="" class="rounded cursor-pointer">
-                        </div>
-                        <div class="flex justify-center items-center">
-                            <a v-for="image in product.images" :key="image.attributes.resource_id" href="#" class="">
-                                <img @mouseover="changeImage( image.attributes.image )" :src="image.attributes.image" alt="" class="rounded w-12 h-12 mx-1 border border-gray-300 p-0.5 hover:border-red-500">
-                            </a>
-                        </div>
+                        <div class="sticky inset-x-0 top-20 left-0">
+                            <div class="justify-center items-center border border-gray-100 rounded mb-2">
+                                <img :src="product.currentImage" alt="" class="rounded cursor-pointer">
+                            </div>
+                            <div class="flex justify-center items-center">
+                                <a v-for="image in product.images" :key="image.attributes.resource_id" href="#" class="">
+                                    <img @mouseover="changeImage( image.attributes.image )" :src="image.attributes.image" alt="" class="rounded w-12 h-12 mx-1 border border-gray-300 p-0.5 hover:border-red-500">
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <!-- End item images -->
@@ -281,7 +281,7 @@
                                     <div class="flex grid gap-2 grid-cols-8">
                                         <div v-for="item in storeItems.items.slice( 0, 8 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
                                             <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                                                <img v-bind:src="item.attributes.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                             </router-link>
                                             <div class="m-3 text-center">
                                                 <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
@@ -293,7 +293,7 @@
                                     <div class="flex grid gap-2 grid-cols-7">
                                         <div v-for="item in storeItems.items.slice( 0, 7 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
                                             <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                                                <img v-bind:src="item.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                             </router-link>
                                             <div class="m-3 text-center">
                                                 <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
@@ -305,7 +305,7 @@
                                     <div class="flex grid gap-2 grid-cols-6">
                                         <div v-for="item in storeItems.items.slice( 0, 6 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
                                             <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                                                <img v-bind:src="item.attributes.image" :alt="item.name" class="object-cover text-center border mx-auto rounded">
+                                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                             </router-link>
                                             <div class="m-3 text-center">
                                                 <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
@@ -795,6 +795,7 @@
     import SwiperCore, { Autoplay, Navigation } from "swiper";
     SwiperCore.use( [ Autoplay, Navigation ] );
     import 'swiper/swiper.scss';
+    import router from "../../../router";
 
     export default
     {
@@ -804,25 +805,25 @@
         setup()
         {
             const authentication = inject( 'authentication' );
-            const tabs = reactive({ openTab: 1 } )
             const route = useRoute()
 
+            const tabs = reactive({ openTab: 1 } )
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
             const recommendations = reactive({ items: [] });
             const storeItems = reactive({ items: [] });
             const storeRecommendations = reactive({ items: [] });
-            const orderData = reactive({ product_id: "", size: "", color: "", quantity: 0, sizeActive: 0, colorActive: 0 });
-
-            const toggleTabs = ( tabNumber ) =>
-            {
-                tabs.openTab = tabNumber
-            }
+            const orderData = reactive({ product_id: "", size: "", color: "", quantity: 1, sizeActive: 0, colorActive: 0 });
 
             const makeOrder = () =>
             {
                 if ( authentication.isAuthenticated() )
                 {
-                    if ( product.item.resource_id && orderData.quantity ) { alert( "Order created" ) }
+                    if ( orderData.quantity )
+                    {
+                        axios({ method: 'POST', url: 'customer/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity }, relationships: { customer: { customer_id: "1" }}}}})
+                        .then( response => { if ( response.data.status === 'Success' ) { router.push({ name: 'OrderConfirmation', params: { order_id: response.data.data.attributes.resource_id }})} else { console.log( response.data ) }})
+                        .catch( error => { console.log( error.response ) })
+                    }
                     else { alert( "Order details needed" ) }
                 }
                 else
@@ -863,19 +864,11 @@
                 }
             }
 
-            const changeImage = ( image ) =>
-            {
-                product.currentImage = image
-            }
-
+            const changeImage = ( image ) => { product.currentImage = image }
             const chooseColor = ( color, id ) => { orderData.color = color; orderData.colorActive = id }
             const chooseSize = ( size, id ) => { orderData.size = size; orderData.sizeActive = id }
-
-            const quantityCounter = ( operator ) =>
-            {
-                if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 }
-                else { orderData.quantity = orderData.quantity -1 }
-            }
+            const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
+            const quantityCounter = ( operator ) => { if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 } else { orderData.quantity = orderData.quantity -1 }}
 
             onBeforeMount(() =>
             {

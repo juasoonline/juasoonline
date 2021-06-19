@@ -18,6 +18,10 @@ const routes =
     { path: '/change-password', name: 'ChangePassword', component: () => import( '../components/Dashboard/ChangePassword/ChangePassword' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/edit-address', name: 'EditAddress', component: () => import( '../components/Dashboard/EditAddress/EditAddress' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
 
+    // Buyers routes
+    { path: '/order/:order_id/confirmation', name: 'OrderConfirmation', component: () => import( '../components/Site/OrderConfirmation/OrderConfirmation' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    // { path: '/orders/confirmation', name: 'OrdersConfirmation', component: () => import( '../components/Site/OrderConfirmation/OrdersConfirmation' ) }, beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+
     // Public routes
     { path: '/', name: 'Home', component: () => import( '../components/Site/Home/Home' ) },
     { path: '/categories', name: 'Categories', component: () => import( '../components/Site/Categories/Categories' ) },
