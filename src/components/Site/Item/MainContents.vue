@@ -788,6 +788,7 @@
 <script>
     import { inject, onBeforeMount, reactive } from "vue";
 
+    import router from "../../../router";
     import axios from "axios";
     import { useRoute } from 'vue-router'
 
@@ -795,7 +796,6 @@
     import SwiperCore, { Autoplay, Navigation } from "swiper";
     SwiperCore.use( [ Autoplay, Navigation ] );
     import 'swiper/swiper.scss';
-    import router from "../../../router";
 
     export default
     {
