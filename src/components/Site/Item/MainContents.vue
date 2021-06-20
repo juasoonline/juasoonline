@@ -290,10 +290,10 @@
                                     </div>
                                 </div>
                                 <div class="2xl:hidden xl:block lg:hidden">
-                                    <div class="flex grid gap-2 grid-cols-7">
-                                        <div v-for="item in storeItems.items.slice( 0, 7 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
-                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
+                                    <div class="flex grid gap-2 grid-cols-6">
+                                        <div v-for="item in storeItems.items.slice( 0, 6 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                                <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
                                             </router-link>
                                             <div class="m-3 text-center">
                                                 <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
@@ -302,9 +302,9 @@
                                     </div>
                                 </div>
                                 <div class="2xl:hidden xl:hidden lg:block">
-                                    <div class="flex grid gap-2 grid-cols-6">
-                                        <div v-for="item in storeItems.items.slice( 0, 6 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
-                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                    <div class="flex grid gap-2 grid-cols-4">
+                                        <div v-for="item in storeItems.items.slice( 0, 4 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center object-cover h-48 w-full" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                                 <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                             </router-link>
                                             <div class="m-3 text-center">
@@ -417,12 +417,12 @@
                         <h3 class="font-bold text-lg text-gray-600">Seller Recommendations</h3>
 
                         <!-- Begin items -->
-                        <div class="grid grid-cols-6 gap-4">
+                        <div class="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 gap-4">
                             <div v-for="item in storeRecommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
                                 <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover">
                                     <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
                                 </router-link>
-                                <div class="m-5">
+                                <div class="m-2">
                                     <span class="text-gray-500 text-xs hover:text-red-500">
                                         <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                             <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
@@ -456,12 +456,12 @@
                         <!-- End title -->
 
                         <!-- Begin items -->
-                        <div class="grid grid-cols-6 gap-4">
+                        <div class="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 gap-4">
                             <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
                                 <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover">
                                     <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
                                 </router-link>
-                                <div class="m-5">
+                                <div class="m-2">
                                     <span class="text-gray-500 text-xs hover:text-red-500">
                                         <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                             <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
@@ -710,7 +710,7 @@
                 <!-- End recommendations header -->
 
                 <!-- Begin items list -->
-                <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
+                <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
                     <div v-for="item in storeRecommendations.items.slice(0, 6)" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
                         <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
                             <img v-bind:src="item.image" :alt="item.name" class="object-cover h-16 w-16 text-center mx-auto">
@@ -732,7 +732,7 @@
                 <h3 class="font-bold text-sm mb-1.5 text-center">More To Love</h3>
 
                 <!-- Begin items list -->
-                <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
+                <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
                     <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                         <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                             <img v-bind:src="item.attributes.image" :alt="item.name">

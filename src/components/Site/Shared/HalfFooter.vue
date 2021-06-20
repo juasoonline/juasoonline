@@ -4,7 +4,7 @@
     <footer class="bg-juaso-primary 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
 
         <!-- Begin company and site info -->
-        <div class="w-2/3 px-1.5 py-10 m-auto text-gray-800 flex flex-wrap flex-col grid gap-6 grid-cols-2">
+        <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 px-1.5 py-10 m-auto text-gray-800 flex flex-wrap flex-col grid gap-6 grid-cols-2">
 
             <!-- Begin policies contents -->
             <div class="text-gray-100">
@@ -15,8 +15,8 @@
                     <router-link class="hover:text-juaso-secondary mr-1.5" to="/terms-and-conditions">Terms and Conditions,</router-link>
                     <router-link class="hover:text-juaso-secondary mr-1.5" to="/disputes-and-reports">Disputes and Reports,</router-link>
                     <router-link class="hover:text-juaso-secondary mr-1.5" to="/orders-returns">Orders and Returns,</router-link>
-                    <router-link class="hover:text-juaso-secondary mr-1.5" to="/shipping">Shipping,</router-link>
-                    <router-link class="hover:text-juaso-secondary mr-1.5" to="/payment-policies">Payment Policies,</router-link>
+                    <router-link class="hover:text-juaso-secondary mr-1.5" to="/shipping">Delivery,</router-link>
+                    <router-link class="hover:text-juaso-secondary mr-1.5" to="/payment-policies">Payment Policies</router-link>
                 </p>
             </div>
             <!-- End policies contents -->
@@ -52,7 +52,7 @@
         <!-- End company and site info -->
 
         <!-- Begin copyright -->
-        <div class="w-2/3 px-1.5 m-auto">
+        <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 px-1.5 m-auto">
             <div class="border-t border-gray-500"></div>
             <div class="flex m-auto sm:border-t border-gray-400 text-gray-400 text-sm flex-col">
                 <div class="my-5">© Copyright. All Rights Reserved.</div>
@@ -75,7 +75,7 @@
         setup()
         {
             const groups = reactive({ categories: [] });
-            const error = ref(null )
+            const error = ref( null )
 
             onBeforeMount(() =>
             {
@@ -83,7 +83,6 @@
                     .then( response => { groups.categories = response.data.data })
                     .catch( error => { error.response })
             })
-
             return { groups, error }
         }
     }

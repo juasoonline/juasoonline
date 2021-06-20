@@ -5,7 +5,7 @@
 
         <!-- Begin top nav -->
         <div class="flex bg-juaso-primary 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-            <div class="w-2/3 mx-auto px-1.5">
+            <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 mx-auto px-1.5">
                 <div class="flex justify-between">
 
                     <!-- Begin left menu -->
@@ -53,7 +53,7 @@
 
         <!-- Begin logo --->
         <div class="bg-white 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden shadow-sm">
-            <div class="w-2/3 mx-auto px-1.5">
+            <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 mx-auto px-1.5">
                 <div class="py-3">
                     <router-link to="/" class="p-0 flex w-auto">
                         <img src="https://assets.juasoonline.com/juasoonline/assets/images/logo.png" alt="" class="w-28 h-8">
@@ -65,11 +65,11 @@
 
         <!-- Begin main contents -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden my-4">
-            <div class="w-2/3 mx-auto px-1.5">
+            <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 mx-auto px-1.5">
                 <div class="flex">
 
                     <!-- Begin left contents -->
-                    <div class="w-3/4 mr-6">
+                    <div class="w-3/4 mr-5">
 
                         <!-- Begin shipping information -->
                         <div class="bg-white rounded p-5">
@@ -210,23 +210,23 @@
                                 </div>
                                 <!-- End selected coupon -->
 
-                                <!-- Begin juaso coupon -->
+                                <!-- Begin juasoonline coupon -->
                                 <div class="flex justify-between items-center font-bold">
                                     <p class="text-xs">Juaso Coupon</p>
                                     <p class="text-xs"></p>
                                 </div>
-                                <!-- End juaso coupon -->
+                                <!-- End juasoonline coupon -->
 
                                 <!-- Begin promo code form -->
                                 <div class="my-3">
                                     <p class="text-xs font-bold mb-1">Promo Code</p>
                                     <div class="flex justify-between items-center font-bold">
-                                    <div class="mr-3">
-                                        <input type="text" class="outline-none focus:outline-none py-0.5 text-center w-full bg-white rounded border font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number">
-                                    </div>
-                                    <div>
-                                        <button type="button" class="focus:outline-none py-1 px-5 border border-transparent rounded text-sm text-white bg-red-500 hover:bg-red-400 w-full ">Apply</button>
-                                    </div>
+                                        <div class="mr-1">
+                                            <input type="text" class="outline-none focus:outline-none py-0.5 text-center w-full bg-white rounded border font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number">
+                                        </div>
+                                        <div>
+                                            <button type="button" class="focus:outline-none py-1 px-3 border border-transparent rounded text-sm text-white bg-red-500 hover:bg-red-400 w-full ">Apply</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- End promo code form -->
@@ -281,12 +281,12 @@
 
         setup()
         {
-          const quantityCounter = ( operator ) =>
-          {
-              console.log( operator )
-              // if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 }
-              // else { orderData.quantity = orderData.quantity -1 }
-          }
+            const quantityCounter = ( operator ) =>
+            {
+                console.log( operator )
+                // if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 }
+                // else { orderData.quantity = orderData.quantity -1 }
+            }
             return { quantityCounter }
         }
     }
