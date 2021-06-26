@@ -9,7 +9,7 @@
                     <!-- Begin logo -->
                     <div class="">
                         <router-link to="/">
-                            <img :src="files.logo" class="2xl:w-32 xl:w-32 lg:w-32 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+                            <img src="https://assets.juasoonline.com/juasoonline/assets/images/logo.png" class="2xl:w-32 xl:w-32 lg:w-32 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
                         </router-link>
                     </div>
                     <!-- End logo -->
@@ -28,18 +28,11 @@
 
 <script>
     import LoginForm from "./LoginForm";
-    import { reactive } from "vue";
 
     export default
     {
         name: "MainContents",
         components: { LoginForm },
-
-        setup()
-        {
-            const files = reactive ({ userIconMale: 'https://assets.juasoonline.com/juasoonline/assets/images/user-icon-male.png', logo: 'https://assets.juasoonline.com/juasoonline/assets/images/logo.png' })
-            return { files }
-        }
     }
 </script>
 

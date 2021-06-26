@@ -783,6 +783,94 @@
     </main>
     <!-- End contents -->
 
+    <!-- Begin sign in form modal -->
+    <div class="">
+        <div v-if="modal.showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+
+            <!-- Begin modal -->
+            <div class="relative w-auto my-6 mx-auto max-w-sm">
+                <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+
+                    <!-- Begin modal header -->
+                    <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                        <div>
+                            <router-link to="/">
+                                <img src="https://assets.juasoonline.com/juasoonline/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+                            </router-link>
+                        </div>
+                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- End modal header -->
+
+                    <!-- Begin modal body -->
+                    <div class="relative px-5 flex-auto">
+                        <form class="">
+                            <div class="mt-4 text-sm">
+
+                                <!-- Begin title -->
+                                <div class="max-w-lg text-center">
+                                    <h3 class="font-bold text-lg text-gray-500 uppercase mb-3">Sign In</h3>
+                                    <p> Please provide your email and password to log into your Juasoonline account: </p>
+                                </div>
+                                <!-- End title -->
+
+                                <!-- Begin email -->
+                                <div class="mt-2">
+                                    <label class="text-gray-500 text-sm">Email Address</label>
+                                    <div class="flex mt-3">
+                                        <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
+                                            <svg class="w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                        </div>
+                                        <input type="email" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="example@example.com">
+                                    </div>
+                                </div>
+                                <!-- End email -->
+
+                                <!-- Begin password -->
+                                <div class="mt-6">
+                                    <div class="flex justify-between"><label class="text-gray-500 text-sm">Password</label></div>
+                                    <div class="flex my-3">
+                                        <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                        </div>
+                                        <input type="password" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="password">
+                                    </div>
+                                    <router-link class="text-sm hover:text-juaso-secondary" to="/forgot-password">Forgot your password?</router-link>
+                                </div>
+                                <!-- End password -->
+
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End modal body -->
+
+                    <!-- Begin modal footer -->
+                    <div class="rounded-b mt-3">
+                        <div class="flex items-center justify-end px-4 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button type="button" class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Sign In</button>
+                        </div>
+                    </div>
+                    <!-- End modal footer -->
+
+                    <!-- Begin register link -->
+                    <div class="my-3 mb-7 text-center text-sm">
+                      Don't have an account yet? <router-link to="/register" class="text-juaso-primary hover:text-juaso-secondary">Register Here</router-link>
+                    </div>
+                    <!-- End register link -->
+
+                </div>
+            </div>
+            <!-- End modal -->
+
+        </div>
+        <div v-if="modal.showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+    </div>
+    <!-- End sign in form modal -->
+
 </template>
 
 <script>
@@ -807,6 +895,7 @@
             const authentication = inject( 'authentication' );
             const route = useRoute()
 
+            const modal = reactive({ showModal: false });
             const tabs = reactive({ openTab: 1 } )
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
             const recommendations = reactive({ items: [] });
@@ -828,7 +917,7 @@
                 }
                 else
                 {
-                    alert( "User is not logged in" )
+                    toggleModal()
                 }
             }
 
@@ -847,7 +936,7 @@
                 }
                 else
                 {
-                    alert( "User is not logged in" )
+                    toggleModal()
                 }
 
             }
@@ -860,7 +949,7 @@
                 }
                 else
                 {
-                    alert( "User is not logged in" )
+                    toggleModal()
                 }
             }
 
@@ -869,6 +958,7 @@
             const chooseSize = ( size, id ) => { orderData.size = size; orderData.sizeActive = id }
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
             const quantityCounter = ( operator ) => { if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 } else { orderData.quantity = orderData.quantity -1 }}
+            const toggleModal = () => { modal.showModal = !modal.showModal; }
 
             onBeforeMount(() =>
             {
@@ -903,7 +993,7 @@
                 })
             })
 
-            return { authentication, tabs, product, storeRecommendations, recommendations, storeItems, orderData, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize }
+            return { authentication, modal, toggleModal, tabs, product, storeRecommendations, recommendations, storeItems, orderData, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize }
         },
     }
 </script>

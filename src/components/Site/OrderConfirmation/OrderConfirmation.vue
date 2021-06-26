@@ -271,7 +271,7 @@
             const sellerData = reactive({ seller: [], isLoading: false })
             const paymentOptions = reactive({ paymentOptions: [], isLoading: false })
 
-            onBeforeMount(async () =>
+            onBeforeMount( async () =>
             {
                 await getOrder()
                 await getProduct()

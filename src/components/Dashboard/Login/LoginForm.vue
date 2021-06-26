@@ -76,6 +76,7 @@
     {
         name: "LoginForm",
         components: { Spinner },
+
         setup()
         {
             const notification = new Notyf();
