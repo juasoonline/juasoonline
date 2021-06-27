@@ -808,7 +808,7 @@
 
                     <!-- Begin modal body -->
                     <div class="relative px-5 flex-auto">
-                        <form class="">
+                        <form @submit.prevent="signIn" class="">
                             <div class="mt-4 text-sm">
 
                                 <!-- Begin title -->
@@ -825,7 +825,7 @@
                                         <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
                                             <svg class="w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                                         </div>
-                                        <input type="email" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="example@example.com">
+                                        <input v-model="loginData.email" type="email" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="example@example.com">
                                     </div>
                                 </div>
                                 <!-- End email -->
@@ -837,24 +837,25 @@
                                         <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                                         </div>
-                                        <input type="password" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="password">
+                                        <input v-model="loginData.password" type="password" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="password">
                                     </div>
                                     <router-link class="text-sm hover:text-juaso-secondary" to="/forgot-password">Forgot your password?</router-link>
                                 </div>
                                 <!-- End password -->
 
+                                <!-- Begin sign in button  -->
+                                <div class="rounded-b mt-3">
+                                    <div class="flex items-center justify-end sm:px-6 sm:flex sm:flex-row-reverse">
+                                        <button v-if="loginData.isLoading === false" type="submit" class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Sign In</button>
+                                        <button v-else disabled class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Logging In...</button>
+                                    </div>
+                                </div>
+                                <!-- End sign in button -->
+
                             </div>
                         </form>
                     </div>
-                    <!-- End modal body -->
-
-                    <!-- Begin modal footer -->
-                    <div class="rounded-b mt-3">
-                        <div class="flex items-center justify-end px-4 sm:px-6 sm:flex sm:flex-row-reverse">
-                            <button type="button" class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Sign In</button>
-                        </div>
-                    </div>
-                    <!-- End modal footer -->
+                  <!-- End modal body -->
 
                     <!-- Begin register link -->
                     <div class="my-3 mb-7 text-center text-sm">
@@ -880,10 +881,11 @@
     import axios from "axios";
     import { useRoute } from 'vue-router'
 
+    import { Notyf } from "notyf";
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import SwiperCore, { Autoplay, Navigation } from "swiper";
-    SwiperCore.use( [ Autoplay, Navigation ] );
     import 'swiper/swiper.scss';
+    SwiperCore.use( [ Autoplay, Navigation ] );
 
     export default
     {
@@ -892,6 +894,7 @@
 
         setup()
         {
+            const notification = new Notyf();
             const authentication = inject( 'authentication' );
             const route = useRoute()
 
@@ -902,6 +905,7 @@
             const storeItems = reactive({ items: [] });
             const storeRecommendations = reactive({ items: [] });
             const orderData = reactive({ product_id: "", size: "", color: "", quantity: 1, sizeActive: 0, colorActive: 0 });
+            const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
             {
@@ -918,6 +922,7 @@
                 else
                 {
                     toggleModal()
+                    loginData.afterLoginAction = makeOrder
                 }
             }
 
@@ -937,6 +942,7 @@
                 else
                 {
                     toggleModal()
+                    loginData.afterLoginAction = addToCart
                 }
 
             }
@@ -950,7 +956,23 @@
                 else
                 {
                     toggleModal()
+                    loginData.afterLoginAction = addToWishlist
                 }
+            }
+
+            const signIn = () =>
+            {
+                loginData.isLoading = true
+                authentication.loginUser( loginData )
+                .then(() =>
+                {
+                    loginData.afterLoginAction()
+                })
+                .catch(() =>
+                {
+                    loginData.isLoading = false;
+                    notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Email or password is incorrect</p>', duration: 8000, ripple: false, dismissible: true })
+                })
             }
 
             const changeImage = ( image ) => { product.currentImage = image }
@@ -993,7 +1015,7 @@
                 })
             })
 
-            return { authentication, modal, toggleModal, tabs, product, storeRecommendations, recommendations, storeItems, orderData, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize }
+            return { authentication, modal, tabs, product, storeRecommendations, recommendations, storeItems, orderData, loginData, toggleModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize, signIn }
         },
     }
 </script>
