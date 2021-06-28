@@ -55,9 +55,9 @@
         <div class="bg-white 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden shadow-sm">
             <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 mx-auto px-1.5">
                 <div class="py-3">
-                    <router-link to="/" class="p-0 flex w-auto">
+                    <a href="/" class="p-0 flex w-auto">
                         <img src="https://assets.juasoonline.com/juasoonline/assets/images/logo.png" alt="" class="w-28 h-8">
-                    </router-link>
+                    </a>
                 </div>
             </div>
         </div>
