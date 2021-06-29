@@ -57,7 +57,7 @@
                             <!-- End account link -->
 
                             <!-- Begin login user routes -->
-                            <div class="z-50 bg-white shadow-md rounded-b mt-3 w-52 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top" v-if="authentication.isAuthenticated()">
+                            <div v-if="authentication.isAuthenticated()" class="z-50 bg-white shadow-md rounded-b mt-3 w-52 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top">
 
                                 <!-- Begin header contents -->
                                 <div class="m-3 flex">
@@ -65,7 +65,7 @@
                                     <!-- Begin user icon -->
                                     <div class="mr-4">
                                         <div class="rounded-full">
-                                            <img :src="files.userIconMale" alt="" class="w-10">
+                                            <img src="https://assets.juasoonline.com/juasoonline/assets/images/user-icon-male.png" alt="" class="w-10">
                                         </div>
                                     </div>
                                     <!-- End user icon -->
@@ -120,7 +120,7 @@
                             <!-- End login user routes -->
 
                             <!-- Begin guest user routes -->
-                            <div class="z-50 bg-white shadow-md rounded-b mt-3 w-52 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top border-r border-l border-b" v-else>
+                            <div v-else class="z-50 bg-white shadow-md rounded-b mt-3 w-52 transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top border-r border-l border-b">
                                 <div class="text-juaso-primary font-bold pt-5 px-2.5 text-center">Welcome to Juasoonline</div>
                                 <div class="m-auto flex pt-5 px-2.5 pb-3 border-b justify-center">
                                     <router-link to="/register" class="justify-start inline-block mr-1 px-7 py-1 text-xs font-medium leading-4 text-center text-white transition bg-juaso-primary rounded shadow ripple hover:bg-juaso-secondary">Register</router-link>
@@ -151,8 +151,7 @@
 </template>
 
 <script>
-    import { inject, reactive } from 'vue'
-    // import router from "@/router";
+    import { inject } from 'vue'
 
     export default
     {
@@ -160,10 +159,9 @@
         setup()
         {
             const authentication = inject( 'authentication' );
-            const files = reactive ({ userIconMale: '../assets/images/user-icon-male.png', logo: '../assets/images/logo.png' })
 
             const signOut = () => { authentication.logoutUser().then(() => { document.location.href = "" } )}
-            return { authentication, signOut, files }
+            return { authentication, signOut }
         }
     }
 </script>

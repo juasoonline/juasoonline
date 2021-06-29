@@ -5,7 +5,7 @@
 
         <!-- Begin item contents -->
         <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden bg-white rounded">
-            <div class="2xl:container xl:container lg:container mx-auto">
+            <div class="2xl:container xl:container lg:container px-1.5 mx-auto">
                 <div class="flex grid grid-cols-12 py-5">
 
                     <!-- Begin item images -->
@@ -30,7 +30,7 @@
                         <div class="text-xl text-gray-600 pb-3">
                             <h2 class="text-lg font-light leading-6 mb-3">{{ product.item.name }}</h2>
                             <div class="text-xs font-light mt-1">
-                                <span class="mr-3 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ product.store.name }}</router-link></span>
+                                <span class="mr-3 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ product.store.doing_business_as }}</router-link></span>
                                 <span class="mr-3 font-bold border-r pr-3">Brand: <a href="#" class="hover:text-red-500">{{ product.brand.name }}</a></span>
                                 <span class="mr-3 hover:text-red-500"><a href="#">200 Reviews</a></span>
                                 <span class="mr-3 hover:text-red-500"><a href="#">({{ product.item.total_sold }} Orders)</a></span>
@@ -51,9 +51,9 @@
 
                             <!-- Begin color -->
                             <div class="mt-3">
-                                <label class="w-full text-gray-700 text-xs font-semibold">Color: <span class="font-light">{{ orderData.color }}</span></label>
+                                <label class="w-full text-gray-700 text-xs font-semibold">Color: <span class="font-light">{{ orderData.colorValue }}</span></label>
                                 <div class="flex gap-2 mt-1">
-                                    <div v-for="color in product.colors" :key="color.attributes.resource_id" @click="chooseColor( color.attributes.color, color.id )" class="flex cursor-pointer">
+                                    <div v-for="color in product.colors" :key="color.attributes.resource_id" @click="chooseColor( color.attributes.color, color.id, color.attributes.resource_id )" class="flex cursor-pointer">
                                         <img @click="changeImage( color.attributes.image )" :src="color.attributes.image" :alt="color.attributes.resource_id" v-bind:class="{'w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500': orderData.colorActive !== color.id, 'w-12 h-12 mr-1 rounded-md border border-red-500 p-0.5': orderData.colorActive === color.id }" />
                                     </div>
                                 </div>
@@ -62,10 +62,10 @@
 
                             <!-- Begin size -->
                             <div class="mt-3">
-                                <label class="w-full text-gray-700 text-xs font-semibold">Size: <span class="font-light">{{ orderData.size }}</span></label>
+                                <label class="w-full text-gray-700 text-xs font-semibold">Size: <span class="font-light">{{ orderData.sizeValue }}</span></label>
                                 <div class="flex gap-2 mt-1">
-                                    <div v-for="size in product.sizes" :key="size.attributes.resource_id" @click="chooseSize( size.attributes.size, size.id )" class="flex cursor-pointer">
-                                        <div @click="chooseSize( size.attributes.size, size.id )" v-bind:class="{'w-10 mr-1 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500': orderData.sizeActive !== size.id, 'w-10 mr-1 text-center rounded-md border py-1.5 border-red-500': orderData.sizeActive === size.id }">
+                                    <div v-for="size in product.sizes" :key="size.attributes.resource_id" @click="chooseSize( size.attributes.size, size.id, size.attributes.resource_id )" class="flex cursor-pointer">
+                                        <div @click="chooseSize( size.attributes.size, size.id, size.attributes.resource_id )" v-bind:class="{'w-10 mr-1 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500': orderData.sizeActive !== size.id, 'w-10 mr-1 text-center rounded-md border py-1.5 border-red-500': orderData.sizeActive === size.id }">
                                             {{ size.attributes.size }}
                                         </div>
                                     </div>
@@ -136,56 +136,56 @@
                     <!-- Begin buy info -->
                     <div class="col-span-2 py-4 justify-center">
 
-                      <!-- Begin buyer guarantees -->
-                      <div class="">
+                        <!-- Begin buyer guarantees -->
+                        <div class="">
 
-                        <!-- Begin 24/7 help -->
-                        <div class="flex mb-3 bg-gray-200 rounded p-2">
-                          <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                          <span class="text-gray-500">
-                                              <h3 class="text-sm font-bold text-gray-600">24/7 Help Center</h3>
-                                              <p class="text-xs">Round-the-clock assistance for a smooth shopping experience.</p>
-                                          </span>
+                            <!-- Begin 24/7 help -->
+                            <div class="flex mb-3 bg-gray-200 rounded p-2">
+                                <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                                <span class="text-gray-500">
+                                    <h3 class="text-sm font-bold text-gray-600">24/7 Help Center</h3>
+                                    <p class="text-xs">Round-the-clock assistance for a smooth shopping experience.</p>
+                                </span>
+                            </div>
+                            <!-- End 24/7 help -->
+
+                            <!-- Begin safe payment -->
+                            <div class="flex mb-3 bg-gray-200 rounded p-2">
+                                <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                                <span class="text-gray-500">
+                                    <h3 class="text-sm font-bold text-gray-600">Convenient payment</h3>
+                                    <p class="text-xs">Pay with the popular and secure payment methods or on delivery</p>
+                                </span>
+                            </div>
+                            <!-- End safe payment -->
+
+                            <!-- Begin shop with confidence -->
+                            <div class="flex mb-3 bg-gray-200 rounded p-2">
+                                <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                <span class="text-gray-500">
+                                    <h3 class="text-sm font-bold text-gray-600">Shop with Confidence</h3>
+                                    <p class="text-xs">Our Buyer Protection covers your purchase from click to delivery.</p>
+                                </span>
+                            </div>
+                            <!-- End shop with confidence -->
+
+                            <!-- Begin products counts -->
+                            <div class="flex mb-3 bg-gray-200 rounded p-2">
+                                <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
+                                <span class="text-gray-500">
+                                    <h3 class="text-sm font-bold text-gray-600">Over 1 million items</h3>
+                                    <p class="text-xs">With over 1 million items, there's always something on sale!</p>
+                                </span>
+                            </div>
+                            <!-- End products counts -->
+
                         </div>
-                        <!-- End 24/7 help -->
+                        <!-- End buyer guarantees -->
 
-                        <!-- Begin safe payment -->
-                        <div class="flex mb-3 bg-gray-200 rounded p-2">
-                          <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                          <span class="text-gray-500">
-                                              <h3 class="text-sm font-bold text-gray-600">Convenient payment</h3>
-                                              <p class="text-xs">Pay with the popular and secure payment methods or on delivery</p>
-                                          </span>
+                        <!-- Begin flash deals -->
+                        <div class="">
                         </div>
-                        <!-- End safe payment -->
-
-                        <!-- Begin shop with confidence -->
-                        <div class="flex mb-3 bg-gray-200 rounded p-2">
-                          <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                          <span class="text-gray-500">
-                                              <h3 class="text-sm font-bold text-gray-600">Shop with Confidence</h3>
-                                              <p class="text-xs">Our Buyer Protection covers your purchase from click to delivery.</p>
-                                          </span>
-                        </div>
-                        <!-- End shop with confidence -->
-
-                        <!-- Begin products counts -->
-                        <div class="flex mb-3 bg-gray-200 rounded p-2">
-                          <svg class="w-16 h-16 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
-                          <span class="text-gray-500">
-                                              <h3 class="text-sm font-bold text-gray-600">Over 1 million items</h3>
-                                              <p class="text-xs">With over 1 million items, there's always something on sale!</p>
-                                          </span>
-                        </div>
-                        <!-- End products counts -->
-
-                      </div>
-                      <!-- End buyer guarantees -->
-
-                      <!-- Begin flash deals -->
-                      <div class="">
-                      </div>
-                      <!-- End flash deals -->
+                        <!-- End flash deals -->
 
                     </div>
                     <!-- End buyer info -->
@@ -196,7 +196,7 @@
         <!-- End item contents -->
 
         <!-- Begin main contents -->
-        <div class="2xl:container xl:container lg:container 2xl:my-4 xl:my-4 lg:my-4 mx-auto">
+        <div class="2xl:container xl:container lg:container 2xl:my-4 xl:my-4 lg:my-4 mx-auto px-1.5">
 
             <!-- Begin contents for large screens -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
@@ -260,7 +260,7 @@
 
                                     <!-- Begin store name -->
                                     <div class="flex items-center">
-                                        <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">{{ product.store.name }}</router-link></span>
+                                        <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">{{ product.store.doing_business_as }}</router-link></span>
                                     </div>
                                     <!-- End store name -->
 
@@ -427,11 +427,11 @@
 
                         <!-- Begin store recommendations -->
                         <div class="rounded mb-5">
-                            <h3 class="font-bold text-lg text-gray-600">Seller Recommendations</h3>
+                            <h3 class="font-bold text-lg text-gray-600 mb-2">Seller Recommendations</h3>
 
                             <!-- Begin items -->
                             <div class="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 gap-4">
-                                <div v-for="item in storeRecommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
+                                <div v-for="item in storeRecommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                                     <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover">
                                         <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
                                     </router-link>
@@ -461,7 +461,7 @@
 
                             <!-- Begin title -->
                             <div class="flex items-center justify-between">
-                                <h3 class="font-bold text-lg text-gray-600">More To Love</h3>
+                                <h3 class="font-bold text-lg text-gray-600 mb-2">More To Love</h3>
                                 <router-link to="">
                                     <p class="flex items-center text-xs text-gray-600 hover:text-juaso-primary">View More <span><svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></span></p>
                                 </router-link>
@@ -470,7 +470,7 @@
 
                             <!-- Begin items -->
                             <div class="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 gap-4">
-                                <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md mt-2 hover:shadow-2xl">
+                                <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                                     <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover">
                                         <img  class="object-cover h-48 w-full" :src="item.attributes.image" :alt="item.attributes.name">
                                     </router-link>
@@ -801,7 +801,7 @@
 
     <!-- Begin sign in form modal -->
     <div class="">
-        <div v-if="modal.showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+        <div v-if="modal.showSignInModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
 
             <!-- Begin modal -->
             <div class="relative w-auto my-6 mx-auto max-w-sm">
@@ -814,7 +814,7 @@
                                 <img src="https://assets.juasoonline.com/juasoonline/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
                             </router-link>
                         </div>
-                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleModal()">
+                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleSignInModal()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
@@ -871,11 +871,11 @@
                             </div>
                         </form>
                     </div>
-                  <!-- End modal body -->
+                    <!-- End modal body -->
 
                     <!-- Begin register link -->
                     <div class="my-3 mb-7 text-center text-sm">
-                      Don't have an account yet? <router-link to="/register" class="text-juaso-primary hover:text-juaso-secondary">Register Here</router-link>
+                        Don't have an account yet? <router-link to="/register" class="text-juaso-primary hover:text-juaso-secondary">Register Here</router-link>
                     </div>
                     <!-- End register link -->
 
@@ -884,9 +884,102 @@
             <!-- End modal -->
 
         </div>
-        <div v-if="modal.showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        <div v-if="modal.showSignInModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
     </div>
     <!-- End sign in form modal -->
+
+    <!-- Begin addToCart modal -->
+    <div class="">
+        <div v-if="modal.showAddToCartModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
+
+            <!-- Begin modal -->
+            <div class="relative w-auto my-6 mx-auto w-2/4">
+                <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+
+                    <!-- Begin modal header -->
+                    <div class="flex p-2 rounded-t">
+                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleAddToCartModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- End modal header -->
+
+                    <!-- Begin alert -->
+                    <div class="flex p-2 mx-4 font-medium py-1 px-2 bg-white rounded text-green-700 bg-green-100 border border-green-300 rounded">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle w-5 h-5 mx-2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="text-xs font-normal  max-w-full flex-initial">
+                            A new item has been added to your Shopping Cart
+                        </div>
+                    </div>
+                    <!-- End alert -->
+
+                    <!-- Begin action buttons -->
+                    <div class="flex m-4">
+                        <button class="inline-flex justify-center rounded shadow-sm px-4 py-1 mr-5 bg-red-600 font-medium text-sm text-white hover:bg-red-700 focus:outline-none">View Shopping Cart</button>
+                        <button class="inline-flex justify-center rounded shadow-sm px-4 py-1 border border-red-500 font-medium text-sm text-red-500 hover:text-red-700 focus:outline-none">Continue Shopping</button>
+                    </div>
+                    <!-- End action buttons -->
+
+                    <!-- Begin modal body -->
+                    <div class="relative px-4 mt-4 flex-auto">
+                        <div class="border-t font-bold">
+                            <div class="py-3">Recommended for you</div>
+
+                            <div class="2xl:block xl:hidden lg:hidden">
+                                <div class="flex grid gap-5 grid-cols-6">
+                                    <div v-for="item in recommendations.items.slice( 0, 6 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                        <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
+                                        </router-link>
+                                        <div class="m-3 text-center">
+                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="2xl:hidden xl:block lg:hidden">
+                                <div class="flex grid gap-5 grid-cols-5">
+                                    <div v-for="item in recommendations.items.slice( 0, 5 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                            <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
+                                        </router-link>
+                                        <div class="m-3 text-center">
+                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="2xl:hidden xl:hidden lg:block">
+                                <div class="flex grid gap-5 grid-cols-4">
+                                    <div v-for="item in recommendations.items.slice( 0, 4 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                        <router-link class="text-center object-cover h-48 w-full" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
+                                        </router-link>
+                                        <div class="m-3 text-center">
+                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End modal body -->
+
+                </div>
+            </div>
+            <!-- End modal -->
+
+        </div>
+        <div v-if="modal.showAddToCartModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+    </div>
+    <!-- End addToCart modal -->
 
 </template>
 
@@ -914,53 +1007,64 @@
             const authentication = inject( 'authentication' );
             const route = useRoute()
 
-            const modal = reactive({ showModal: false });
+            const modal = reactive({ showSignInModal: false, showAddToCartModal: false });
             const tabs = reactive({ openTab: 1 } )
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
             const recommendations = reactive({ items: [] });
             const storeItems = reactive({ items: [] });
             const storeRecommendations = reactive({ items: [] });
-            const orderData = reactive({ product_id: "", size: "", color: "", quantity: 1, sizeActive: 0, colorActive: 0 });
+            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", quantity: 1, colorActive: 0, sizeActive: 0 });
             const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
             {
-                if ( authentication.isAuthenticated() )
+                if ( validateQuantity() && validateColor() && validateSize() )
                 {
-                    if ( orderData.quantity )
+                    if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customer/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity }, relationships: { customer: { customer_id: "1" }}}}})
+                        axios({ method: 'POST', url: 'customer/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                         .then( response => { if ( response.data.status === 'Success' ) { router.push({ name: 'OrderConfirmation', params: { order_id: response.data.data.attributes.resource_id }})} else { console.log( response.data ) }})
                         .catch( error => { console.log( error.response ) })
                     }
-                    else { alert( "Order details needed" ) }
+                    else
+                    {
+                        toggleSignInModal()
+                        loginData.afterLoginAction = makeOrder
+                    }
                 }
                 else
                 {
-                    toggleModal()
-                    loginData.afterLoginAction = makeOrder
+                    notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
             }
 
             const addToCart = () =>
             {
-                if ( authentication.isAuthenticated() )
+                if ( validateQuantity() && validateColor() && validateSize() )
                 {
-                    if ( product.item.resource_id && orderData.quantity )
+                    if ( authentication.isAuthenticated() )
                     {
-                        alert( "Added to cart" )
+                        axios({ method: 'POST', url: 'customer/' + authentication.state.user.attributes.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        .then( response =>
+                        {
+                            if ( response.data.status === 'Success' )
+                            {
+                                toggleAddToCartModal()
+                            }
+                            else { console.log( response ) }
+                        })
+                        .catch( error => { console.log( error.response ) })
                     }
                     else
                     {
-                        alert( "Order details needed" )
+                        toggleSignInModal()
+                        loginData.afterLoginAction = addToCart
                     }
                 }
                 else
                 {
-                    toggleModal()
-                    loginData.afterLoginAction = addToCart
+                    notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
-
             }
 
             const addToWishlist = () =>
@@ -971,10 +1075,14 @@
                 }
                 else
                 {
-                    toggleModal()
+                    toggleSignInModal()
                     loginData.afterLoginAction = addToWishlist
                 }
             }
+
+            const validateQuantity = () => { return orderData.quantity > 0 }
+            const validateColor = () => { if ( product.colors.length > 0 && orderData.color_id !== "" ) { return true }}
+            const validateSize = () => { if ( product.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
 
             const signIn = () =>
             {
@@ -982,6 +1090,7 @@
                 authentication.loginUser( loginData )
                 .then(() =>
                 {
+                    toggleSignInModal()
                     loginData.afterLoginAction()
                 })
                 .catch(() =>
@@ -991,12 +1100,13 @@
                 })
             }
 
-            const changeImage = ( image ) => { product.currentImage = image }
-            const chooseColor = ( color, id ) => { orderData.color = color; orderData.colorActive = id }
-            const chooseSize = ( size, id ) => { orderData.size = size; orderData.sizeActive = id }
-            const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
+            const chooseColor = ( color, id, resource_id ) => { orderData.colorValue = color; orderData.colorActive = id; orderData.color_id = resource_id }
+            const chooseSize = ( size, id, resource_id ) => { orderData.sizeValue = size; orderData.sizeActive = id; orderData.size_id = resource_id }
             const quantityCounter = ( operator ) => { if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 } else { orderData.quantity = orderData.quantity -1 }}
-            const toggleModal = () => { modal.showModal = !modal.showModal; }
+            const changeImage = ( image ) => { product.currentImage = image }
+            const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
+            const toggleSignInModal = () => { modal.showSignInModal = !modal.showSignInModal; }
+            const toggleAddToCartModal = () => { modal.showAddToCartModal = !modal.showAddToCartModal; }
 
             onBeforeMount(() =>
             {
@@ -1016,22 +1126,22 @@
 
                     // Get store items
                     axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
-                        .then( response => { storeItems.items = response.data.data })
-                        .catch( error => { error.response })
+                    .then( response => { storeItems.items = response.data.data })
+                    .catch( error => { console.log(error.response) })
 
                     // Get store recommendations
                     axios({ method: 'GET', url: 'juaso/store/product/'  + response.data.data.attributes.resource_id  +  '/recommendations', headers: {} })
-                        .then( response => { storeRecommendations.items = response.data.data })
-                        .catch( error => { console.log( error.response ) })
+                    .then( response => { storeRecommendations.items = response.data.data })
+                    .catch( error => { console.log( error.response ) })
 
                     // Get general recommendations
                     axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
-                        .then( response => { recommendations.items = response.data.data })
-                        .catch( error => { console.log(error.response) })
+                    .then( response => { recommendations.items = response.data.data })
+                    .catch( error => { console.log(error.response) })
                 })
             })
 
-            return { authentication, modal, tabs, product, storeRecommendations, recommendations, storeItems, orderData, loginData, toggleModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize, signIn }
+            return { authentication, modal, tabs, product, storeRecommendations, recommendations, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize, signIn }
         },
     }
 </script>
@@ -1047,7 +1157,6 @@
     input[type=file]::file-selector-button { display: none; }
     input[type=file]::file-selector-button:hover { display: none; }
 
-    // Table Styles
     .table-responsive>.table-bordered { border: 0; }
     .table-bordered { border: 1px solid #e5e7eb; }
     .table { width: 100%; background-color: transparent; }
@@ -1056,4 +1165,12 @@
     .ps-table thead > tr > th { font-family: "Work Sans", sans-serif; font-weight: 700; color: #515356; text-transform: uppercase; border-bottom: 1px solid #e5e7eb; }
     .ps-table tbody > tr > td { vertical-align: middle; padding: 10px; border: 1px solid #e5e7eb; color: #666; }
     .ps-table--specification tbody tr td:first-child { background-color: #f4f4f4; font-weight: 500; color: #000; width: 200px; }
+
+
+    .animated { -webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-fill-mode: both; animation-fill-mode: both; }
+    .animated.faster { -webkit-animation-duration: 500ms; animation-duration: 500ms; }
+    .fadeIn { -webkit-animation-name: fadeIn; animation-name: fadeIn; }
+    .fadeOut { -webkit-animation-name: fadeOut; animation-name: fadeOut; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; }}
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; }}
 </style>

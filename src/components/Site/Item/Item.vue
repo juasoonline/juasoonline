@@ -20,7 +20,7 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer></main-footer>
+        <suspense><main-footer></main-footer></suspense>
         <!-- End footer -->
 
     </div>
@@ -43,5 +43,4 @@
 </script>
 
 <style scoped>
-
 </style>

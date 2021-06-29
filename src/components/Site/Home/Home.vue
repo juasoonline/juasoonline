@@ -20,9 +20,9 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <Suspense>
+        <suspense>
             <main-footer></main-footer>
-        </Suspense>
+        </suspense>
         <!-- End footer -->
 
         <!-- Begin mobile menu -->

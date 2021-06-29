@@ -18,7 +18,9 @@
                     <ad-sliders class=""></ad-sliders>
                 </template>
                 <template #fallback>
-                    <div class="text-center align-middle">Loading...</div>
+                    <div class="mx-auto text-center">
+                        <img class="mx-auto text-center w-20 h-20" src="https://assets.juasoonline.com/juasoonline/assets/images/loader.gif">
+                    </div>
                 </template>
             </Suspense>
             <!-- End slider banners -->

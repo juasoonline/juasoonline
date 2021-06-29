@@ -200,7 +200,7 @@
 </template>
 
 <script>
-import {reactive, ref} from "vue";
+    import { reactive, ref } from "vue";
     import axios from "axios";
 
     export default
@@ -220,13 +220,6 @@ import {reactive, ref} from "vue";
             {
                 error.value = e
             }
-
-            // onBeforeMount(() =>
-            // {
-            //     axios({ method: 'GET', url: 'juaso/categories', headers: {} })
-            //         .then( response => { groups.categories = response.data.data })
-            //         .catch( error => { error.response })
-            // })
 
             return { groups, error }
         }

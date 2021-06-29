@@ -89,7 +89,7 @@
             {
                 loader.isLoading = true
                 authentication.loginUser( loginData )
-                    .then(() => { router.replace('/' ) })
+                    .then(() => { router.replace('/') })
                     .catch(() => { loader.isLoading = false; notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Email or password is incorrect</p>', duration: 8000, ripple: false, dismissible: true }) })
             }
 

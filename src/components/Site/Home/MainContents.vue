@@ -16,7 +16,7 @@
         <!-- End error message -->
 
         <!-- Begin quick details -->
-        <Suspense>
+        <suspense>
             <template #default>
                 <quick-deals></quick-deals>
             </template>
@@ -25,7 +25,7 @@
                     <img class="mx-auto text-center w-20 h-20" src="https://assets.juasoonline.com/juasoonline/assets/images/loader.gif">
                 </div>
             </template>
-        </Suspense>
+        </suspense>
         <!-- End quick details -->
 
         <!-- Begin items -->
