@@ -48,7 +48,7 @@
                 currentPage.value++
                 try
                 {
-                    const response = await axios({ method: 'GET', url: `juaso/products?page=${currentPage.value}`, headers: {} })
+                    const response = await axios({ method: 'GET', url: `products?page=${currentPage.value}`, headers: {} })
                     const parsedResponse = await response.data
                     product.items = [ ...product.items, ...parsedResponse.data ]
                     totalPages.value = parsedResponse.meta.last_page

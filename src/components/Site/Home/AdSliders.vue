@@ -46,7 +46,7 @@
 
             try
             {
-                const response = await axios({ method: 'GET', url: 'juaso/stores/ads' });
+                const response = await axios({ method: 'GET', url: 'stores/ads' });
                 items.data = await response.data.data
             }
             catch (e)

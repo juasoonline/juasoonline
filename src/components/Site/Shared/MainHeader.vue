@@ -119,9 +119,9 @@
             {
                 if ( authentication.isAuthenticated() )
                 {
-                    axios({ method: 'GET', url: 'customer/' + authentication.state.user.attributes.resource_id + '/stats', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                        .then( response => { response.data })
-                        .catch( error => { console.log( error.response ) })
+                    axios({ method: 'GET', url: 'customers/' + authentication.state.user.attributes.resource_id + '/stats', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                    .then( response => { userStats.wishlistCount = response.data.data.attributes.wishlist_items; userStats.cartItemCount = response.data.data.attributes.cart_items })
+                    .catch( error => { console.log( error.response ) })
                 }
             }
 

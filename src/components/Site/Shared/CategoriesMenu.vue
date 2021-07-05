@@ -62,7 +62,7 @@
 
             onBeforeMount(() =>
             {
-              axios({ method: 'GET', url: 'juaso/categories?include=category.subcategory', headers: {} })
+              axios({ method: 'GET', url: 'categories?include=category.subcategory', headers: {} })
                   .then( response => { groups.categories = response.data.data })
                   .catch( error => { error.response })
             })

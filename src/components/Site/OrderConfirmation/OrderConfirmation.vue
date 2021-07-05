@@ -290,7 +290,7 @@
             // Get product data
             const getProduct = async () =>
             {
-                const response = await axios({ method: 'GET', url: 'juaso/product/' + orderData.order.product_id + '?include=store', headers: {} })
+                const response = await axios({ method: 'GET', url: 'product/' + orderData.order.product_id + '?include=store', headers: {} })
                 product.product = await response.data.data.attributes;
                 sellerData.product = await response.data.data.include.store.attributes;
             }
@@ -298,7 +298,7 @@
             // Get payment options data
             const getPaymentOptions = async () =>
             {
-                const response = await axios({ method: 'GET', url: 'juaso/payment-methods', headers: {} })
+                const response = await axios({ method: 'GET', url: 'payment-methods', headers: {} })
                 paymentOptions.paymentOptions = await response.data.data;
             }
 

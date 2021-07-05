@@ -213,7 +213,7 @@
 
             try
             {
-                const response = await axios({ method: 'GET', url: 'juaso/categories' });
+                const response = await axios({ method: 'GET', url: 'categories' });
                 groups.categories = await response.data.data
             }
             catch (e)

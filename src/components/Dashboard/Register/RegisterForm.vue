@@ -169,6 +169,7 @@
     {
         name: "LoginForm",
         components: { Spinner },
+
         setup()
         {
             const notification = new Notyf();
@@ -178,7 +179,7 @@
             const createAccount = () =>
             {
                 loader.isLoading = true
-                axios( { method: 'POST', url: 'customers/registration', headers: {}, data: { data: { type: "Customer", attributes: { first_name: accountData.first_name, last_name: accountData.last_name, mobile_phone: accountData.mobile_phone, email: accountData.email, password: accountData.password } } } })
+                axios( { method: 'POST', url: 'customers/auth/registration', headers: {}, data: { data: { type: "Customer", attributes: { first_name: accountData.first_name, last_name: accountData.last_name, mobile_phone: accountData.mobile_phone, email: accountData.email, password: accountData.password } } } })
                     .then( response =>
                     {
                         if ( response.data.status === "Success" )
@@ -204,7 +205,7 @@
             const verifyAccount = () =>
             {
                 loader.isLoading = true
-                axios( { method: 'POST', url: 'customers/account/verification', headers: {}, data: { data: { type: "Customer", attributes: { email: accountData.email, verification_code: accountData.verification_code } } } })
+                axios( { method: 'POST', url: 'customers/auth/verification', headers: {}, data: { data: { type: "Customer", attributes: { email: accountData.email, verification_code: accountData.verification_code } } } })
                     .then( response =>
                     {
                         if ( response.data.status === "Success" )

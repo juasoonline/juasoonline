@@ -100,9 +100,9 @@
 
                             <!-- Begin delivery info -->
                             <div class="mt-5">
-                                <p class="font-bold text-sm">Delivery Fee: GHS 30.21</p>
-                                <p class="text-sm text-gray-400">Nationwide Delivery via Juasoonline Delivery</p>
-                                <p class="text-xs mt-0.5 text-gray-400">Estimated Delivery: 1-72 Hours</p>
+                                <p class="font-bold text-sm">Delivery Fee: GHS 15.00</p>
+                                <p @click="toggleDeliveryOptionsModal()" class="text-sm text-gray-500 flex items-center hover:text-red-600 cursor-pointer">Rapid Delivery via Juasoonline Standard Delivery<span class="mx-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></p>
+                                <p class="text-xs mt-0.5 text-gray-500">Estimated Delivery: 30-48 Hours</p>
                             </div>
                             <!-- End delivery info -->
 
@@ -119,7 +119,7 @@
 
                         <!-- Begin buyer protection -->
                         <div class="mt-5 flex items-center">
-                            <div class="mr-2 border rounded-full p-1">
+                            <div class="mr-2 border border-gray-400 rounded-full p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
@@ -915,7 +915,7 @@
                             </svg>
                         </div>
                         <div class="text-xs font-normal  max-w-full flex-initial">
-                            A new item has been added to your Shopping Cart
+                            {{ modal.message }}
                         </div>
                     </div>
                     <!-- End alert -->
@@ -981,6 +981,67 @@
     </div>
     <!-- End addToCart modal -->
 
+    <!-- Begin deliverOptions modal -->
+    <div class="">
+        <div v-if="modal.showDeliveryOptionsModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
+
+            <!-- Begin modal -->
+            <div class="relative w-auto my-6 mx-auto 2xl:w-2/4">
+                <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+
+                    <!-- Begin modal header -->
+                    <div class="flex p-2 rounded-t">
+                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleDeliveryOptionsModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- End modal header -->
+
+                    <!-- Begin modal body -->
+                    <div class="relative px-4 mt-4 flex-auto">
+                        <div class="">
+                            <h2 class="font-bold mb-3 border-b pb-3">Delivery Options</h2>
+
+                            <table class="table ps-table text-sm my-5">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td class="py-3">Delivery Time</td>
+                                        <td>Fee</td>
+                                        <td>Carrier</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="option in deliveryFees.fees" :key="option.id">
+                                        <td class="w-5"><input class="cursor-pointer" name="new1" type="radio"></td>
+                                        <td class="">{{ option.attributes.delivery_time }}</td>
+                                        <td class="">{{ option.attributes.fee }}</td>
+                                        <td class="">{{ option.attributes.carrier }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <!-- End modal body -->
+
+                    <!-- Begin action buttons -->
+                    <div class="flex m-4 justify-end">
+                        <button v-on:click="toggleDeliveryOptionsModal()" class="inline-flex justify-center rounded shadow-sm px-10 py-1 bg-red-600 font-medium text-sm text-white hover:bg-red-700 focus:outline-none">Apply</button>
+                    </div>
+                    <!-- End action buttons -->
+
+                </div>
+            </div>
+            <!-- End modal -->
+
+        </div>
+        <div v-if="modal.showDeliveryOptionsModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+    </div>
+    <!-- End deliverOptions modal -->
+
 </template>
 
 <script>
@@ -1007,10 +1068,11 @@
             const authentication = inject( 'authentication' );
             const route = useRoute()
 
-            const modal = reactive({ showSignInModal: false, showAddToCartModal: false });
+            const modal = reactive({ showSignInModal: false, showAddToCartModal: false, showDeliveryOptionsModal: false, message: "" });
             const tabs = reactive({ openTab: 1 } )
             const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
             const recommendations = reactive({ items: [] });
+            const deliveryFees = reactive({ fees: [] });
             const storeItems = reactive({ items: [] });
             const storeRecommendations = reactive({ items: [] });
             const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", quantity: 1, colorActive: 0, sizeActive: 0 });
@@ -1022,7 +1084,7 @@
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customer/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                         .then( response => { if ( response.data.status === 'Success' ) { router.push({ name: 'OrderConfirmation', params: { order_id: response.data.data.attributes.resource_id }})} else { console.log( response.data ) }})
                         .catch( error => { console.log( error.response ) })
                     }
@@ -1044,13 +1106,10 @@
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customer/' + authentication.state.user.attributes.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                         .then( response =>
                         {
-                            if ( response.data.status === 'Success' )
-                            {
-                                toggleAddToCartModal()
-                            }
+                            if ( response.data.status === 'Success' ) { modal.message = "A new item has been added to your Shopping Cart"; toggleAddToCartModal() }
                             else { console.log( response ) }
                         })
                         .catch( error => { console.log( error.response ) })
@@ -1071,7 +1130,12 @@
             {
                 if ( authentication.isAuthenticated() )
                 {
-                    alert( "Added to wishlist" )
+                    axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                    .then( response =>
+                    {
+                        if ( response.data.status === 'Success' ) { modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal() }
+                        else { console.log( response ) }
+                    })
                 }
                 else
                 {
@@ -1107,10 +1171,11 @@
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
             const toggleSignInModal = () => { modal.showSignInModal = !modal.showSignInModal; }
             const toggleAddToCartModal = () => { modal.showAddToCartModal = !modal.showAddToCartModal; }
+            const toggleDeliveryOptionsModal = () => { modal.showDeliveryOptionsModal = !modal.showDeliveryOptionsModal; }
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'juaso/product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
+                axios({ method: 'GET', url: 'product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
                 .then( response =>
                 {
                     product.item = response.data.data.attributes;
@@ -1125,23 +1190,28 @@
                     product.currentImage = response.data.data.attributes.image;
 
                     // Get store items
-                    axios({ method: 'GET', url: 'juaso/store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
+                    axios({ method: 'GET', url: 'store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
                     .then( response => { storeItems.items = response.data.data })
                     .catch( error => { console.log(error.response) })
 
                     // Get store recommendations
-                    axios({ method: 'GET', url: 'juaso/store/product/'  + response.data.data.attributes.resource_id  +  '/recommendations', headers: {} })
+                    axios({ method: 'GET', url: 'store/product/'  + response.data.data.attributes.resource_id  +  '/recommendations', headers: {} })
                     .then( response => { storeRecommendations.items = response.data.data })
                     .catch( error => { console.log( error.response ) })
 
                     // Get general recommendations
-                    axios({ method: 'GET', url: 'juaso/products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                    axios({ method: 'GET', url: 'products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
                     .then( response => { recommendations.items = response.data.data })
+                    .catch( error => { console.log(error.response) })
+
+                    // Get delivery fees
+                    axios({ method: 'GET', url: 'delivery-fees', headers: {}})
+                    .then( response => { deliveryFees.fees = response.data.data })
                     .catch( error => { console.log(error.response) })
                 })
             })
 
-            return { authentication, modal, tabs, product, storeRecommendations, recommendations, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize, signIn }
+            return { authentication, modal, tabs, product, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize, signIn }
         },
     }
 </script>

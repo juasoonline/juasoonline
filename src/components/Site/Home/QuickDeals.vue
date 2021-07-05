@@ -135,7 +135,7 @@
           
             try
             {
-                const response = await axios({ method: 'GET', url: 'juaso/products/deals' });
+                const response = await axios({ method: 'GET', url: 'products/deals' });
                 items.data = await response.data.data
             }
             catch (e)
