@@ -250,7 +250,7 @@
 </template>
 
 <script>
-    import HalfFooter from "../Shared/HalfFooter";
+    import HalfFooter from "../../Shared/HalfFooter";
     import { inject, onBeforeMount, reactive } from "vue";
     import axios from "axios";
     import { useRoute } from "vue-router";
@@ -281,7 +281,7 @@
             // Get order data
             const getOrder = async () =>
             {
-                const response = await axios({ method: 'GET', url: 'customer/' + authentication.state.user.attributes.resource_id + '/orders/' + route.params.order_id + '?include=customer.addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
+                const response = await axios({ method: 'GET', url: 'customers/' + authentication.state.user.attributes.resource_id + '/orders/' + route.params.order_id + '?include=customer.addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
                 orderData.order = await response.data.data.attributes;
                 customerData.customer = await response.data.data.include.customer.attributes;
                 customerData.addresses = await response.data.data.include.customer.include.addresses;
@@ -302,6 +302,7 @@
                 paymentOptions.paymentOptions = await response.data.data;
             }
 
+            // Quantity count method
             const quantityCounter = ( operator ) =>
             {
                 if ( operator === '+' )

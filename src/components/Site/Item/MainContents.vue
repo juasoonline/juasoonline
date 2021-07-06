@@ -109,11 +109,18 @@
                         </div>
                         <!-- End buying options -->
 
+                        {{ orderData.orderLoading }}
+
                         <!-- Begin action button -->
                         <div class="flex inline-block mt-5">
-                            <button @click="makeOrder()" type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
-                            <button @click="addToCart()" type="button" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
-                            <button @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>12.10K</button>
+                            <button v-if="orderData.orderLoading === false" @click="makeOrder()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
+                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Please wait...</button>
+
+                            <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
+                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Please wait...</button>
+
+                            <button v-if="orderData.wishlistLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>12.10K</button>
+                            <button v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</button>
                         </div>
                         <!-- End action button -->
 
@@ -196,7 +203,7 @@
         <!-- End item contents -->
 
         <!-- Begin main contents -->
-        <div class="2xl:container xl:container lg:container 2xl:my-4 xl:my-4 lg:my-4 mx-auto px-1.5">
+        <section class="2xl:container xl:container lg:container 2xl:my-4 xl:my-4 lg:my-4 mx-auto px-1.5">
 
             <!-- Begin contents for large screens -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
@@ -793,7 +800,7 @@
             </div>
             <!-- End contents for mobile screens -->
 
-        </div>
+        </section>
         <!-- End main contents -->
 
     </main>
@@ -893,7 +900,7 @@
         <div v-if="modal.showAddToCartModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
 
             <!-- Begin modal -->
-            <div class="relative w-auto my-6 mx-auto w-2/4">
+            <div class="relative w-auto my-6 mx-auto 2xl:w-2/4 xl:w-2/3">
                 <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
                     <!-- Begin modal header -->
@@ -928,7 +935,7 @@
                     <!-- End action buttons -->
 
                     <!-- Begin modal body -->
-                    <div class="relative px-4 mt-4 flex-auto">
+                    <div class="relative px-5 pb-5 mt-4 flex-auto">
                         <div class="border-t font-bold">
                             <div class="py-3">Recommended for you</div>
 
@@ -986,7 +993,7 @@
         <div v-if="modal.showDeliveryOptionsModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
 
             <!-- Begin modal -->
-            <div class="relative w-auto my-6 mx-auto 2xl:w-2/4">
+            <div class="relative w-auto my-6 mx-auto 2xl:w-2/4 xl:w-3/5">
                 <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
                     <!-- Begin modal header -->
@@ -1075,18 +1082,35 @@
             const deliveryFees = reactive({ fees: [] });
             const storeItems = reactive({ items: [] });
             const storeRecommendations = reactive({ items: [] });
-            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", quantity: 1, colorActive: 0, sizeActive: 0 });
+            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", quantity: 1, colorActive: 0, sizeActive: 0, orderLoading: false, cartLoading: false, wishlistLoading: false });
             const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
             {
+                orderData.orderLoading = true
                 if ( validateQuantity() && validateColor() && validateSize() )
                 {
                     if ( authentication.isAuthenticated() )
                     {
                         axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
-                        .then( response => { if ( response.data.status === 'Success' ) { router.push({ name: 'OrderConfirmation', params: { order_id: response.data.data.attributes.resource_id }})} else { console.log( response.data ) }})
-                        .catch( error => { console.log( error.response ) })
+                        .then( response =>
+                        {
+                            if ( response.data.status === 'Success' )
+                            {
+                                orderData.orderLoading = false
+                                router.push({ name: 'OrderConfirmation', params: { order_id: response.data.data.attributes.resource_id }});
+                            }
+                            else
+                            {
+                                orderData.orderLoading = false
+                                console.log( response.data );
+                            }
+                        })
+                        .catch( error =>
+                        {
+                            console.log( error.response )
+                            orderData.orderLoading = false
+                        })
                     }
                     else
                     {
@@ -1096,12 +1120,14 @@
                 }
                 else
                 {
+                    orderData.orderLoading = false
                     notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
             }
 
             const addToCart = () =>
             {
+                orderData.cartLoading = true
                 if ( validateQuantity() && validateColor() && validateSize() )
                 {
                     if ( authentication.isAuthenticated() )
@@ -1109,8 +1135,17 @@
                         axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                         .then( response =>
                         {
-                            if ( response.data.status === 'Success' ) { modal.message = "A new item has been added to your Shopping Cart"; toggleAddToCartModal() }
-                            else { console.log( response ) }
+                            if ( response.data.status === 'Success' )
+                            {
+                                orderData.cartLoading = false
+                                modal.message = "A new item has been added to your Shopping Cart";
+                                toggleAddToCartModal()
+                            }
+                            else
+                            {
+                                orderData.cartLoading = false
+                                console.log( response )
+                            }
                         })
                         .catch( error => { console.log( error.response ) })
                     }
@@ -1122,19 +1157,29 @@
                 }
                 else
                 {
+                    orderData.cartLoading = false
                     notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
             }
 
             const addToWishlist = () =>
             {
+                orderData.wishlistLoading = true
                 if ( authentication.isAuthenticated() )
                 {
                     axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                     .then( response =>
                     {
-                        if ( response.data.status === 'Success' ) { modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal() }
-                        else { console.log( response ) }
+                        if ( response.data.status === 'Success' )
+                        {
+                            orderData.wishlistLoading = false
+                            modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal()
+                        }
+                        else
+                        {
+                            orderData.wishlistLoading = false
+                            console.log( response )
+                        }
                     })
                 }
                 else
@@ -1217,7 +1262,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     input[type='number']::-webkit-inner-spin-button,
     input[type='number']::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
