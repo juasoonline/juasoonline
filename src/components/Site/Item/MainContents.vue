@@ -50,7 +50,7 @@
                         <div class="">
 
                             <!-- Begin color -->
-                            <div class="mt-3">
+                            <div v-if="product.colors.length > 0 " class="mt-3">
                                 <label class="w-full text-gray-700 text-xs font-semibold">Color: <span class="font-light">{{ orderData.colorValue }}</span></label>
                                 <div class="flex gap-2 mt-1">
                                     <div v-for="color in product.colors" :key="color.attributes.resource_id" @click="chooseColor( color.attributes.color, color.id, color.attributes.resource_id )" class="flex cursor-pointer">
@@ -60,8 +60,19 @@
                             </div>
                             <!-- End color -->
 
+                            <!-- Begin bundle -->
+                            <div v-if="product.bundles.length > 0 " class="mt-3">
+                                <label class="w-full text-gray-700 text-xs font-semibold">Color: <span class="font-light">{{ orderData.colorValue }}</span></label>
+                                <div class="flex gap-2 mt-1">
+                                    <div v-for="bundle in product.bundles" :key="bundle.attributes.resource_id" @click="chooseBundle( bundle.attributes.bundle, bundle.id, bundle.attributes.resource_id )" class="flex cursor-pointer">
+                                        <img @click="changeImage( bundle.attributes.image )" :src="bundle.attributes.image" :alt="bundle.attributes.resource_id" v-bind:class="{'w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500': orderData.bundleActive !== bundle.id, 'w-12 h-12 mr-1 rounded-md border border-red-500 p-0.5': orderData.bundleActive === bundle.id }" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End bundle -->
+
                             <!-- Begin size -->
-                            <div class="mt-3">
+                            <div v-if="product.sizes.length > 0" class="mt-3">
                                 <label class="w-full text-gray-700 text-xs font-semibold">Size: <span class="font-light">{{ orderData.sizeValue }}</span></label>
                                 <div class="flex gap-2 mt-1">
                                     <div v-for="size in product.sizes" :key="size.attributes.resource_id" @click="chooseSize( size.attributes.size, size.id, size.attributes.resource_id )" class="flex cursor-pointer">
@@ -108,8 +119,6 @@
 
                         </div>
                         <!-- End buying options -->
-
-                        {{ orderData.orderLoading }}
 
                         <!-- Begin action button -->
                         <div class="flex inline-block mt-5">
@@ -210,8 +219,8 @@
 
                 <!-- Begin store banner -->
                 <section class="my-4">
-                    <div class="rounded"><router-link to="/store/1234567890" class="focus:outline-none">
-                        <img src="" alt="" class="rounded"></router-link>
+                    <div class="rounded"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="focus:outline-none">
+                        <img src="https://assets.juasoonline.com/juasoonline/assets/images/ads/top/banner1.jpg" alt="" class="rounded"></router-link>
                     </div>
                 </section>
                 <!-- End store banner -->
@@ -234,23 +243,28 @@
                         </div>
                         <!-- End store category -->
 
-                        <!-- Begin recommended for you -->
+                        <!-- Begin top selling -->
                         <div class="bg-white rounded px-4 py-4 mb-5">
                             <div class="flex justify-start">
-                                <span class="text-sm font-bold">Recommended For You</span>
+                                <span class="text-sm font-bold">Top Selling</span>
                             </div>
                             <div class="py-3">
-                                <div v-for="image in 3" :key="image" class="max-w-xs mb-5">
-                                    <img class="w-full rounded border" src="https://ae04.alicdn.com/kf/Haa44037b656241c3b639917f9aa82f34Z.jpg_480x480q90.jpg_.webp" alt="Sunset in the mountains">
-                                    <div class="font-bold text-sm mt-1.5">GHS 234.00</div>
-                                    <div class="flex text-xs justify-between text-gray-400">
-                                        <p class="inline-block text-grey-darker">Photography</p>
-                                        <p class="inline-block text-grey-darker">234 Sold</p>
+                                <div v-for="item in storeItems.items.slice( 0, 5 )" :key="item.id" class="max-w-xs">
+                                    <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><img class="w-full rounded border cursor-pointer" :src="item.attributes.image" alt="Sunset in the mountains"></router-link>
+                                    <div class="font-bold text-sm mt-1.5">{{ item.attributes.sales_price }}</div>
+                                    <div class="flex text-xs justify-between text-gray-400 mb-5">
+                                        <p class="flex inline-block text-grey-darker items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                            </svg>
+                                            <span>{{ item.include.review_rating.total }}</span>
+                                        </p>
+                                        <p class="inline-block text-grey-darker">{{ item.attributes.total_sold }} Sold</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End recommended for you -->
+                        <!-- End top selling -->
 
                     </aside>
                     <!-- End left contents -->
@@ -374,38 +388,43 @@
 
                                                 <!-- Begin customers review -->
                                                 <div v-bind:class="{ 'hidden': tabs.openTab !== 2, 'block': tabs.openTab === 2 }">
-                                                    <div v-for="review in product.reviews" :key="review" class="flex mb-3">
-                                                        <div class="flex-1 border-b py-4 leading-relaxed">
-                                                            <div class="flex items-center">
-                                                                <strong class="mr-2">Michael Kabutey</strong>
-                                                                <span class="text-xs text-gray-400 mr-2">29 Mar 2021 @ 3:34 PM</span>
-                                                                <span class="">
-                                                                    <div class="text-sm text-gray-500 flex">
-                                                                        <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                                        <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                                        <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                                        <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                                        <span><svg class="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                            <p class="text-sm">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                                                            <div class="mt-4 flex items-center float-right">
-                                                                <p class="text-xs mr-3">Helpful?</p>
-                                                                <div class="mr-2">
-                                                                    <button type="button" class="flex items-center rounded bg-juaso-primary text-white font-bold px-2 py-1 focus:outline-none hover:bg-juaso-secondary">
-                                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                                        <span class="uppercase text-xxxs font-bold">Yes</span>
-                                                                    </button>
+                                                    <div v-if="product.reviews.length > 0">
+                                                        <div v-for="review in product.reviews" :key="review" class="flex mb-3">
+                                                            <div class="flex-1 border-b py-4 leading-relaxed">
+                                                                <div class="flex items-center">
+                                                                    <strong class="mr-2">Michael Kabutey</strong>
+                                                                    <span class="text-xs text-gray-400 mr-2">29 Mar 2021 @ 3:34 PM</span>
+                                                                    <span class="">
+                                                                        <div class="text-sm text-gray-500 flex">
+                                                                            <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                            <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                            <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                            <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                            <span><svg class="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                        </div>
+                                                                    </span>
                                                                 </div>
-                                                                <div class="">
-                                                                    <button type="button" class="flex items-center rounded bg-red-500 text-white font-bold px-2 py-1 focus:outline-none hover:bg-red-600">
-                                                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                                                                        <span class="uppercase text-xxxs font-bold">No</span>
-                                                                    </button>
+                                                                <p class="text-sm">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                                                <div class="mt-4 flex items-center float-right">
+                                                                    <p class="text-xs mr-3">Helpful?</p>
+                                                                    <div class="mr-2">
+                                                                        <button type="button" class="flex items-center rounded bg-juaso-primary text-white font-bold px-2 py-1 focus:outline-none hover:bg-juaso-secondary">
+                                                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                                            <span class="uppercase text-xxxs font-bold">Yes</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="">
+                                                                        <button type="button" class="flex items-center rounded bg-red-500 text-white font-bold px-2 py-1 focus:outline-none hover:bg-red-600">
+                                                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                                                            <span class="uppercase text-xxxs font-bold">No</span>
+                                                                        </button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div v-else class="flex mb-3">
+                                                        <p class="text-middle m-auto my-20 text-gray-400">There are no reviews for this item</p>
                                                     </div>
                                                 </div>
                                                 <!-- End image -->
@@ -1075,14 +1094,14 @@
             const authentication = inject( 'authentication' );
             const route = useRoute()
 
-            const modal = reactive({ showSignInModal: false, showAddToCartModal: false, showDeliveryOptionsModal: false, message: "" });
-            const tabs = reactive({ openTab: 1 } )
-            const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], sizes: [], reviews: [], promotions: [], currentImage: null })
-            const recommendations = reactive({ items: [] });
-            const deliveryFees = reactive({ fees: [] });
-            const storeItems = reactive({ items: [] });
-            const storeRecommendations = reactive({ items: [] });
-            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", quantity: 1, colorActive: 0, sizeActive: 0, orderLoading: false, cartLoading: false, wishlistLoading: false });
+            const modal = reactive({ showSignInModal: false, showAddToCartModal: false, showDeliveryOptionsModal: false, message: "" })
+            const tabs = reactive({ openTab: 1 })
+            const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], bundles: [], sizes: [], reviews: [], promotions: [], currentImage: null })
+            const recommendations = reactive({ items: [] })
+            const deliveryFees = reactive({ fees: [] })
+            const storeItems = reactive({ items: [] })
+            const storeRecommendations = reactive({ items: [] })
+            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", quantity: 1, colorActive: 0, sizeActive: 0, orderLoading: false, cartLoading: false, wishlistLoading: false })
             const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
@@ -1210,6 +1229,7 @@
             }
 
             const chooseColor = ( color, id, resource_id ) => { orderData.colorValue = color; orderData.colorActive = id; orderData.color_id = resource_id }
+            const chooseBundle = ( bundle, id, resource_id ) => { orderData.bundleValue = bundle; orderData.bundleActive = id; orderData.bundle_id = resource_id }
             const chooseSize = ( size, id, resource_id ) => { orderData.sizeValue = size; orderData.sizeActive = id; orderData.size_id = resource_id }
             const quantityCounter = ( operator ) => { if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 } else { orderData.quantity = orderData.quantity -1 }}
             const changeImage = ( image ) => { product.currentImage = image }
@@ -1220,13 +1240,14 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,sizes,reviews,promotions', headers: {} })
+                axios({ method: 'GET', url: 'product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,bundles,sizes,reviews,promotions', headers: {} })
                 .then( response =>
                 {
                     product.item = response.data.data.attributes;
                     product.store = response.data.data.include.store.attributes;
                     product.brand = response.data.data.include.brand.attributes;
                     product.colors = response.data.data.include.colors;
+                    product.bundles = response.data.data.include.bundles;
                     product.sizes = response.data.data.include.sizes;
                     product.images = response.data.data.include.images;
                     product.overviews = response.data.data.include.overviews;
@@ -1256,7 +1277,7 @@
                 })
             })
 
-            return { authentication, modal, tabs, product, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseSize, signIn }
+            return { authentication, modal, tabs, product, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
         },
     }
 </script>
