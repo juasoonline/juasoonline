@@ -421,6 +421,8 @@
 
                                                 <!-- Begin customers review -->
                                                 <div v-bind:class="{ 'hidden': tabs.openTab !== 2, 'block': tabs.openTab === 2 }">
+
+                                                    <!-- Begin reviews if any -->
                                                     <div v-if="reviews.reviews.length > 0">
 
                                                         <!-- Begin reviews stats -->
@@ -515,9 +517,14 @@
                                                         <!-- End reviews contents -->
 
                                                     </div>
+                                                    <!-- Begin reviews -->
+
+                                                    <!-- Begin no reviews content -->
                                                     <div v-else class="flex mb-3">
                                                         <p class="text-middle m-auto my-20 text-gray-400">There are no reviews for this item</p>
                                                     </div>
+                                                    <!-- End no reviews content -->
+
                                                 </div>
                                                 <!-- End image -->
 
@@ -542,6 +549,44 @@
                             </div>
                         </div>
                         <!-- End item detailed info -->
+
+                        <!-- Begin FAQs if any -->
+                        <div v-if="faqs.faqs.length > 0" class="bg-white rounded mb-3">
+                            <div class="flex-wrap p-5">
+
+                                <!-- Begin header -->
+                                <div class="mb-3 border-b pb-2">
+                                    <h2 class="font-extrabold text-xl text-gray-700">Buyer Questions & Answers</h2>
+                                </div>
+                                <!-- End header -->
+
+                                <!-- Begin FAQs if any -->
+                                <div class="">
+                                    <div v-for="faq in faqs.faqs" :key="faq.attributes.resource_id" class="">
+                                        <div v-if="faq.attributes.answer !== null" class="border-b mb-2 py-2">
+
+                                        <!-- Begin question -->
+                                        <div class="flex items-center my-1.5">
+                                            <div class="mr-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg></div>
+                                            <div class="font-extrabold">{{ faq.attributes.question }}</div>
+                                        </div>
+                                        <!-- End question -->
+
+                                        <!-- Begin answer -->
+                                        <div class="flex items-center my-1.5">
+                                            <div class="mr-5"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" /></svg></div>
+                                            <div class="font-light text-sm">{{ faq.attributes.answer }}</div>
+                                        </div>
+                                        <!-- End answer -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End FAQs if any -->
+
+                            </div>
+                        </div>
+                        <!-- End FAQs if any -->
 
                         <!-- Begin store recommendations -->
                         <div class="rounded mb-5">
@@ -1208,6 +1253,7 @@
             const bundles = reactive({ bundles: [] })
             const overviews = reactive({ overviews: [] })
             const reviews = reactive({ reviews: [] })
+            const faqs = reactive({ faqs: [] })
             const promotions = reactive({ promotions: [] })
 
             const deliveryFees = reactive({ fees: [], current: [] })
@@ -1356,7 +1402,7 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions&ratings=ratings', headers: {} })
+                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions,faqs&ratings=ratings', headers: {} })
                 .then( response =>
                 {
                     product.item = response.data.data.attributes;
@@ -1370,6 +1416,8 @@
                     overviews.overviews = response.data.data.include.overviews;
                     reviews.reviews = response.data.data.include.reviews;
                     promotions.promotions = response.data.data.include.promotions;
+                    faqs.faqs = response.data.data.include.faqs;
+
                     product.currentImage = response.data.data.attributes.image;
                     pricing.priced = response.data.data.pricing.priced;
                     pricing.data = response.data.data.pricing.price_data[0];
@@ -1410,7 +1458,7 @@
                       .catch( error => { console.log(error.response) })
                 })
             })
-            return { authentication, modal, tabs, product, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
+            return { authentication, modal, tabs, product, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
         }
     }
 </script>
