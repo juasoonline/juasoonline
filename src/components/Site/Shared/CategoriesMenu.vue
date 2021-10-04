@@ -25,14 +25,14 @@
                         </router-link>
 
                         <div class="megadrop rounded-r border shadow-sm grid gap-6 grid-cols-3">
-                          <div class="col" v-for="category in group.include.category" :key="category.attributes.resource_id">
+                          <div class="col" v-for="category in group.include.categories" :key="category.attributes.resource_id">
                               <router-link :to="{ name: 'Category', params: { category: category.attributes.resource_id, slug: category.attributes.slug }}">
                                   <div class="border-b pb-1 mb-1">
                                       <h3 class="text-gray-500 text-sm font-bold hover:text-juaso-primary">{{ category.attributes.name }}</h3>
                                   </div>
                               </router-link>
                               <ul class="">
-                                  <li v-for="subcategory in category.include.subcategory" :key="subcategory.attributes.resource_id" class="text-gray-500 font-light text-xs hover:text-juaso-primary py-0.5">
+                                  <li v-for="subcategory in category.include.subcategories" :key="subcategory.attributes.resource_id" class="text-gray-500 font-light text-xs hover:text-juaso-primary py-0.5">
                                       <router-link :to="{ name: 'Category', params: { category: subcategory.attributes.resource_id, slug: subcategory.attributes.slug }}">{{ subcategory.attributes.name }}</router-link>
                                   </li>
                               </ul>
@@ -62,7 +62,7 @@
 
             onBeforeMount(() =>
             {
-              axios({ method: 'GET', url: 'categories?include=category.subcategory', headers: {} })
+              axios({ method: 'GET', url: 'juaso/groups?include=categories.subcategories', headers: {} })
                   .then( response => { groups.categories = response.data.data })
                   .catch( error => { error.response })
             })
@@ -78,7 +78,7 @@
     /*.menu > li > a { display: block; }*/
     /*.menu > li > a:hover { font-weight: bold }*/
     .menu > li > .megadrop { visibility: hidden; position: absolute; list-style: none; top: 0px; left: 100%; width: 700px; min-height: 100%; text-align: left; margin-top:30px; padding: 15px; z-index: 99; overflow: hidden; background-color: #ffffff; }
-    .menu > li:hover .megadrop { opacity: 1; visibility: visible; margin-top: -9px; }
+    .menu > li:hover .megadrop { opacity: 1; visibility: visible; margin-top: -8px; }
     .menu ul li:hover:after { color: #227087; }
     .menu .col { float: left; color: white; }
     .menu .col ul { padding: 0; margin: 0; }

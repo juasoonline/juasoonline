@@ -4,7 +4,7 @@
     <div id="infinite-list" class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
         <div v-for="item in product.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
             <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.include.images[0].attributes.image">
+                <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
             </router-link>
             <div class="m-2">
                 <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
@@ -12,10 +12,15 @@
                         <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 25) }}...</p>
                     </router-link>
                 </span>
-                <p class="font-bold block text-xs my-0.5">
+                <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
                     <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                        GHS {{ item.attributes.sales_price }}
-                        <del class="ml-2 text-xxxs font-light text-gray-500 text-red-500">GHS {{ item.attributes.price }}</del>
+                         {{ item.pricing.price_data[0].sales_price }}
+                        <del class="ml-2 text-xxxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
+                    </router-link>
+                </p>
+                <p v-else class="font-bold block text-xs my-0.5">
+                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                         {{ item.pricing.price_data[0].price_range }}
                     </router-link>
                 </p>
                 <span class="block text-gray-500 text-xxs">{{ item.attributes.total_sold }} Sold</span>
@@ -23,7 +28,7 @@
         </div>
     </div>
     <div v-if="isLoading">
-        <img class="mx-auto text-center w-20 h-20" src="https://assets.juasoonline.com/juasoonline/assets/images/loader.gif">
+        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
     </div>
     <!-- End contents -->
 
@@ -48,7 +53,7 @@
                 currentPage.value++
                 try
                 {
-                    const response = await axios({ method: 'GET', url: `products?page=${currentPage.value}`, headers: {} })
+                    const response = await axios({ method: 'GET', url: `business/products?page=${currentPage.value}`, headers: {} })
                     const parsedResponse = await response.data
                     product.items = [ ...product.items, ...parsedResponse.data ]
                     totalPages.value = parsedResponse.meta.last_page

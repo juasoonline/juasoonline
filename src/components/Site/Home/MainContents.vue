@@ -22,7 +22,7 @@
             </template>
             <template #fallback>
                 <div class="mx-auto text-center">
-                    <img class="mx-auto text-center w-20 h-20" src="https://assets.juasoonline.com/juasoonline/assets/images/loader.gif">
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
                 </div>
             </template>
         </suspense>

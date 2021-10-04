@@ -36,7 +36,7 @@
         components: { ForgotPasswordForm },
         setup()
         {
-            const files = reactive ({ userIconMale: 'https://assets.juasoonline.com/juasoonline/assets/images/user-icon-male.png', logo: 'https://assets.juasoonline.com/juasoonline/assets/images/logo.png' })
+            const files = reactive ({ userIconMale: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/user-icon-male.png', logo: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png' })
             return { files }
         }
     }

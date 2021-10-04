@@ -26,7 +26,7 @@
                                 <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
                             </router-link>
                             <div class="font-bold block text-xs flex justify-between">
-                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
                                 <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
                             </div>
                             <div class="block text-xxs flex justify-between mt-2 text-green-800">
@@ -48,7 +48,7 @@
                                 <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
                             </router-link>
                             <div class="font-bold block text-xs flex justify-between">
-                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
                                 <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
                             </div>
                             <div class="block text-xxs flex justify-between mt-2 text-green-800">
@@ -70,7 +70,7 @@
                                 <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
                             </router-link>
                             <div class="font-bold block text-xs flex justify-between">
-                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
                                 <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
                             </div>
                             <div class="block text-xxs flex justify-between mt-2 text-green-800">
@@ -92,7 +92,7 @@
                                 <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border">
                             </router-link>
                             <div class="font-bold block">
-                                <router-link class="text-xxs text-red-600 font-bold" :to="{ name: 'Item', params: { item: item.attributes.product_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xxs text-red-600 font-bold" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
                                 <p class="font-light text-xxs leading-none p-0">398 Sold</p>
                             </div>
                             <div class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 absolute top-0 my-1.5 mx-2.5"><span>-2%</span></div>
@@ -135,7 +135,7 @@
           
             try
             {
-                const response = await axios({ method: 'GET', url: 'products/deals' });
+                const response = await axios({ method: 'GET', url: 'business/ads/quick-deals' });
                 items.data = await response.data.data
             }
             catch (e)

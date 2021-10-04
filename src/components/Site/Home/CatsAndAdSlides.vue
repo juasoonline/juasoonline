@@ -19,7 +19,7 @@
                 </template>
                 <template #fallback>
                     <div class="mx-auto text-center">
-                        <img class="mx-auto text-center w-20 h-20" src="https://assets.juasoonline.com/juasoonline/assets/images/loader.gif">
+                        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
                     </div>
                 </template>
             </Suspense>
@@ -161,21 +161,21 @@
             return {
                 banners:
                 [
-                    { resource_id: 10000000, image: "https://assets.juasoonline.com/juasoonline/assets/images/ads/right/banner1.jpg", name: "Ad banner name 1"  },
-                    { resource_id: 20000000, image: "https://assets.juasoonline.com/juasoonline/assets/images/ads/right/banner2.jpg", name: "Ad banner name 2"  },
+                    { resource_id: 10000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/right/banner1.jpg", name: "Ad banner name 1"  },
+                    { resource_id: 20000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/right/banner2.jpg", name: "Ad banner name 2"  },
                 ],
                 category_icons:
                 {
-                    women_fashion: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/women_fashion.png",
-                    men_fashion: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/men_fashion.png",
-                    phones_more: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/phones_more.png",
-                    consumer_electronics: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/consumer_electronics.png",
-                    jewelry_watches: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/jewelry_watches.png",
-                    home_pets: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/home_pets.png",
-                    bags_shoes: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/bags_shoes.png",
-                    toys_kids_babies: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/toys_kids_babies.png",
-                    outdoor_fun_sports: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/outdoor_fun_sports.png",
-                    beauty_health_hair: "https://assets.juasoonline.com/juasoonline/assets/images/icons/category/beauty_health_hair.png"
+                    women_fashion: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/women_fashion.png",
+                    men_fashion: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/men_fashion.png",
+                    phones_more: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/phones_more.png",
+                    consumer_electronics: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/consumer_electronics.png",
+                    jewelry_watches: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/jewelry_watches.png",
+                    home_pets: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/home_pets.png",
+                    bags_shoes: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/bags_shoes.png",
+                    toys_kids_babies: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/toys_kids_babies.png",
+                    outdoor_fun_sports: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/outdoor_fun_sports.png",
+                    beauty_health_hair: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/beauty_health_hair.png"
                 }
             }
         }

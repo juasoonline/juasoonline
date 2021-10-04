@@ -46,7 +46,7 @@
 
             try
             {
-                const response = await axios({ method: 'GET', url: 'stores/ads' });
+                const response = await axios({ method: 'GET', url: 'business/ads/slider-ads' });
                 items.data = await response.data.data
             }
             catch (e)

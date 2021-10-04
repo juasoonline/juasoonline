@@ -48,7 +48,7 @@
                         <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
                         <div class="m-5">
                             <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}...</router-link></span>
-                            <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275">GHS {{ item.sales_price }} <del class="ml-2 text-xs font-light text-gray-500 text-red-500">GHS {{ item.product_price }}</del></router-link></p>
+                            <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275"> {{ item.sales_price }} <del class="ml-2 text-xs font-light text-gray-500 text-red-500"> {{ item.product_price }}</del></router-link></p>
                             <span class="block text-gray-500 text-xxs">{{ item.total_sold }} Sold</span>
                         </div>
                     </div>

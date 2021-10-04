@@ -5,7 +5,7 @@ const state = reactive({ user: {}, token: {}, authenticated: false } );
 
 const loginUser = async ( credentials ) =>
 {
-    const response = await  axios({ method: 'POST', url: 'customers/auth/login', data: { data: { type: "Customer", attributes: { email: credentials.email, password: credentials.password } } } });
+    const response = await  axios({ method: 'POST', url: 'customers/authentication/login', data: { data: { type: "Customer", attributes: { email: credentials.email, password: credentials.password } } } });
     return await validateToken ( response.data.data.token.access_token, response.data.data.attributes.resource_id )
 }
 const validateToken = async ( token, resource ) =>

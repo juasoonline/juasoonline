@@ -56,7 +56,7 @@
             <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 mx-auto px-1.5">
                 <div class="py-3">
                     <a href="/" class="p-0 flex w-auto">
-                        <img src="https://assets.juasoonline.com/juasoonline/assets/images/logo.png" alt="" class="w-28 h-8">
+                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" alt="" class="w-28 h-8">
                     </a>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                                                 <img src="https://assets.juasoonline.com/test/images/products/product14_1.jpg" class="rounded w-5 h-5 ml-2 border border-gray-300">
                                                 <strong class="mx-2">Size:</strong> 40
                                             </p>
-                                            <p class="text-sm font-bold my-2.5">GHS {{ product.product.sales_price }}</p>
+                                            <p class="text-sm font-bold my-2.5"> {{ product.product.sales_price }}</p>
                                             <p class="text-xs my-2.5">
                                                 <strong class="mr-1 text-juaso-secondary">Delivery:</strong> GH 5.11 via Juaso Xpress Delivery. Estimated Delivery Time: 1 - 50 hours
                                             </p>
@@ -152,15 +152,15 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="py-1.5 pr-40 text-right">Subtotal</td>
-                                                    <td class="py-1.5 text-right">GHS {{ orderData.order.subtotal }}</td>
+                                                    <td class="py-1.5 text-right"> {{ orderData.order.subtotal }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="py-1.5 pr-40 text-right">Delivery Fee</td>
-                                                    <td class="py-1.5 text-right">GHS {{ orderData.order.delivery_fee }}</td>
+                                                    <td class="py-1.5 text-right"> {{ orderData.order.delivery_fee }}</td>
                                                 </tr>
                                                 <tr class="font-bold text-xs">
                                                     <td class="py-1.5 pr-40 text-right">Total</td>
-                                                    <td class="py-1.5 text-right">GHS {{ orderData.order.total }}</td>
+                                                    <td class="py-1.5 text-right"> {{ orderData.order.total }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -212,7 +212,7 @@
                                 <!-- Begin total price -->
                                 <div class="flex justify-between items-center font-bold border-t mt-5 py-3">
                                     <p class="text-sm">Total</p>
-                                    <p class="text-lg">GHS {{ orderData.order.total }}</p>
+                                    <p class="text-lg"> {{ orderData.order.total }}</p>
                                 </div>
                                 <!-- End total price -->
 

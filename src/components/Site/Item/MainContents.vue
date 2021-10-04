@@ -6,7 +6,7 @@
         <!-- Begin item contents -->
         <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden bg-white rounded">
             <div class="2xl:container xl:container lg:container px-1.5 mx-auto">
-                <div class="flex grid grid-cols-12 py-5">
+                <div class="flex grid grid-cols-12 gap-2 py-5">
 
                     <!-- Begin item images -->
                     <div class="col-span-4 py-4">
@@ -15,7 +15,7 @@
                                 <img :src="product.currentImage" alt="" class="rounded cursor-pointer">
                             </div>
                             <div class="flex justify-center items-center">
-                                <a v-for="image in product.images" :key="image.attributes.resource_id" href="#" class="">
+                                <a v-for="image in images.images" :key="image.attributes.resource_id" href="#" class="">
                                     <img @mouseover="changeImage( image.attributes.image )" :src="image.attributes.image" alt="" class="rounded w-12 h-12 mx-1 border border-gray-300 p-0.5 hover:border-red-500">
                                 </a>
                             </div>
@@ -29,20 +29,40 @@
                         <!-- Begin item name -->
                         <div class="text-xl text-gray-600 pb-3">
                             <h2 class="text-lg font-light leading-6 mb-3">{{ product.item.name }}</h2>
-                            <div class="text-xs font-light mt-1">
-                                <span class="mr-3 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ product.store.doing_business_as }}</router-link></span>
-                                <span class="mr-3 font-bold border-r pr-3">Brand: <a href="#" class="hover:text-red-500">{{ product.brand.name }}</a></span>
-                                <span class="mr-3 hover:text-red-500"><a href="#">200 Reviews</a></span>
-                                <span class="mr-3 hover:text-red-500"><a href="#">({{ product.item.total_sold }} Orders)</a></span>
+                            <div class="text-xs font-light mt-1 flex items-center">
+                                <span class="mr-4 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ store.store.doing_business_as }}</router-link></span>
+                                <span class="mr-4 font-bold border-r pr-3">Brand: <a href="#" class="hover:text-red-500">{{ product.brand }}</a></span>
+                                <span class="mr-4 hover:text-red-500 flex">
+                                      <div class="text-sm text-gray-500 flex items-center">
+                                          <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                          <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                          <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                          <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                          <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                      </div>
+                                      <a class="ml-2">{{ rating.stats.average_rating }}</a>
+                                </span>
+                                <span class="mr-4 hover:text-red-500"><a>{{ rating.stats.total_rating }} Review(s)</a></span>
+                                <span class="mr-4 hover:text-red-500"><a>({{ product.item.total_sold }} Orders)</a></span>
                             </div>
                         </div>
                         <!-- End item name -->
 
                         <!-- Begin item price -->
-                        <div class="flex text-center text-gray-600 border-b border-t py-4 border-gray-100">
-                            <span class="font-bold text-xl">GHS {{ product.item.sales_price }}</span>
-                            <span class="text-gray-600 mx-3 text-xs py-1.5"><del>GHS {{ product.item.price }}</del></span>
-                            <span class=""><p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ product.item.percentage_charge }}%</p></span>
+                        <div class="">
+                            <div v-if="pricing.priced === 'Product'" class="flex text-center text-gray-600 border-b border-t py-4 border-gray-100">
+                                <span class="font-extrabold text-xl text-gray-600"> {{ pricing.data.sales_price }}</span>
+                                <span class="text-gray-600 mx-3 text-xs py-1.5"><del> {{ pricing.data.price }}</del></span>
+                                <span class=""><p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ pricing.data.discount_percentage }}</p></span>
+                            </div>
+                            <div v-else class="flex text-center text-gray-600 border-b border-t py-4 border-gray-100">
+                                <span v-if="pricing.selected.length === 0" class="font-extrabold text-xl text-gray-600"> {{ pricing.data.price_range }}</span>
+                                <div v-else class="flex">
+                                    <span class="font-extrabold text-xl text-gray-600"> {{ pricing.selected.sales_price }}</span>
+                                    <span class="text-gray-600 mx-3 text-xs py-1.5"><del> {{ pricing.selected.price }}</del></span>
+                                    <span class=""><p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ pricing.selected.discount_percentage }}</p></span>
+                                </div>
+                            </div>
                         </div>
                         <!-- End item price -->
 
@@ -50,33 +70,33 @@
                         <div class="">
 
                             <!-- Begin color -->
-                            <div v-if="product.colors.length > 0 " class="mt-3">
-                                <label class="w-full text-gray-700 text-xs font-semibold">Color: <span class="font-light">{{ orderData.colorValue }}</span></label>
+                            <div v-if="colors.colors.length > 0 " class="mt-3">
+                                <label class="w-full text-gray-700 text-xs font-semibold">Colors: <span class="font-light">{{ orderData.colorValue }}</span></label>
                                 <div class="flex gap-2 mt-1">
-                                    <div v-for="color in product.colors" :key="color.attributes.resource_id" @click="chooseColor( color.attributes.color, color.id, color.attributes.resource_id )" class="flex cursor-pointer">
-                                        <img @click="changeImage( color.attributes.image )" :src="color.attributes.image" :alt="color.attributes.resource_id" v-bind:class="{'w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500': orderData.colorActive !== color.id, 'w-12 h-12 mr-1 rounded-md border border-red-500 p-0.5': orderData.colorActive === color.id }" />
+                                    <div v-for="( color, index ) in colors.colors" :key="color.attributes.resource_id" @click="chooseColor( color.attributes.color, index, color.attributes.resource_id )" class="flex cursor-pointer">
+                                        <img @click="changeImage( color.attributes.image )" :src="color.attributes.image" :alt="color.attributes.resource_id" v-bind:class="{'w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500': orderData.colorActive !== index, 'w-12 h-12 mr-1 rounded-md border-2 border-red-500 p-0.5': orderData.colorActive === index }" />
                                     </div>
                                 </div>
                             </div>
                             <!-- End color -->
 
                             <!-- Begin bundle -->
-                            <div v-if="product.bundles.length > 0 " class="mt-3">
-                                <label class="w-full text-gray-700 text-xs font-semibold">Color: <span class="font-light">{{ orderData.colorValue }}</span></label>
+                            <div v-if="bundles.bundles.length > 0 " class="mt-3">
+                                <label class="w-full text-gray-700 text-xs font-semibold">Bundles: <span class="font-light">{{ orderData.bundleValue }}</span></label>
                                 <div class="flex gap-2 mt-1">
-                                    <div v-for="bundle in product.bundles" :key="bundle.attributes.resource_id" @click="chooseBundle( bundle.attributes.bundle, bundle.id, bundle.attributes.resource_id )" class="flex cursor-pointer">
-                                        <img @click="changeImage( bundle.attributes.image )" :src="bundle.attributes.image" :alt="bundle.attributes.resource_id" v-bind:class="{'w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500': orderData.bundleActive !== bundle.id, 'w-12 h-12 mr-1 rounded-md border border-red-500 p-0.5': orderData.bundleActive === bundle.id }" />
+                                    <div v-for="( bundle, index ) in bundles.bundles" :key="bundle.attributes.resource_id" @click="chooseBundle( bundle.attributes.bundle, index, bundle.attributes.resource_id )" class="flex cursor-pointer">
+                                        <img @click="changeImage( bundle.attributes.image )" :src="bundle.attributes.image" :alt="bundle.attributes.resource_id" v-bind:class="{'w-12 h-12 mr-1 rounded-md border border-gray-300 p-0.5 hover:border-red-500': orderData.bundleActive !== index, 'w-12 h-12 mr-1 rounded-md border-2 border-red-500 p-0.5': orderData.bundleActive === index }" />
                                     </div>
                                 </div>
                             </div>
                             <!-- End bundle -->
 
                             <!-- Begin size -->
-                            <div v-if="product.sizes.length > 0" class="mt-3">
-                                <label class="w-full text-gray-700 text-xs font-semibold">Size: <span class="font-light">{{ orderData.sizeValue }}</span></label>
+                            <div v-if="sizes.sizes.length > 0" class="mt-3">
+                                <label class="w-full text-gray-700 text-xs font-semibold">Sizes: <span class="font-light">{{ orderData.sizeValue }}</span></label>
                                 <div class="flex gap-2 mt-1">
-                                    <div v-for="size in product.sizes" :key="size.attributes.resource_id" @click="chooseSize( size.attributes.size, size.id, size.attributes.resource_id )" class="flex cursor-pointer">
-                                        <div @click="chooseSize( size.attributes.size, size.id, size.attributes.resource_id )" v-bind:class="{'w-10 mr-1 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500': orderData.sizeActive !== size.id, 'w-10 mr-1 text-center rounded-md border py-1.5 border-red-500': orderData.sizeActive === size.id }">
+                                    <div v-for="( size, index ) in sizes.sizes" :key="size.attributes.resource_id" @click="chooseSize( size.attributes.size, index, size.attributes.resource_id )" class="flex cursor-pointer">
+                                        <div @click="chooseSize( size.attributes.size, size.id, size.attributes.resource_id )" v-bind:class="{'w-10 mr-1 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500': orderData.sizeActive !== index, 'w-10 mr-1 text-center rounded-md border-2 py-1.5 border-red-500': orderData.sizeActive === index }">
                                             {{ size.attributes.size }}
                                         </div>
                                     </div>
@@ -111,9 +131,9 @@
 
                             <!-- Begin delivery info -->
                             <div class="mt-5">
-                                <p class="font-bold text-sm">Delivery Fee: GHS 15.00</p>
-                                <p @click="toggleDeliveryOptionsModal()" class="text-sm text-gray-500 flex items-center hover:text-red-600 cursor-pointer">Rapid Delivery via Juasoonline Standard Delivery<span class="mx-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></p>
-                                <p class="text-xs mt-0.5 text-gray-500">Estimated Delivery: 30-48 Hours</p>
+                                <p class="font-bold text-sm">Delivery Fee: {{ deliveryFees.current.fee }}</p>
+                                <p @click="toggleDeliveryOptionsModal()" class="text-sm text-gray-500 flex items-center hover:text-red-600 cursor-pointer">Rapid Delivery via <strong class="ml-2"> {{ deliveryFees.current.carrier }}</strong><span class="mx-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></p>
+                                <p class="text-xs mt-0.5 text-gray-500">Estimated Delivery: {{ deliveryFees.current.delivery_time }}</p>
                             </div>
                             <!-- End delivery info -->
 
@@ -219,8 +239,8 @@
 
                 <!-- Begin store banner -->
                 <section class="my-4">
-                    <div class="rounded"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="focus:outline-none">
-                        <img src="https://assets.juasoonline.com/juasoonline/assets/images/ads/top/banner1.jpg" alt="" class="rounded"></router-link>
+                    <div class="rounded"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
+                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/top/banner1.jpg" alt="" class="rounded"></router-link>
                     </div>
                 </section>
                 <!-- End store banner -->
@@ -257,7 +277,7 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                                             </svg>
-                                            <span>{{ item.include.review_rating.total }}</span>
+                                            <span>948</span>
                                         </p>
                                         <p class="inline-block text-grey-darker">{{ item.attributes.total_sold }} Sold</p>
                                     </div>
@@ -281,7 +301,7 @@
 
                                     <!-- Begin store name -->
                                     <div class="flex items-center">
-                                        <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">{{ product.store.doing_business_as }}</router-link></span>
+                                        <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link></span>
                                     </div>
                                     <!-- End store name -->
 
@@ -301,7 +321,7 @@
 
                                     <!-- Begin call to action -->
                                     <div class="mt-3 flex justify-between items-center">
-                                        <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                                         <button class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Follow</button>
                                     </div>
                                     <!-- End call to action -->
@@ -318,7 +338,7 @@
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,7 +350,7 @@
                                                     <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -342,7 +362,7 @@
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,7 +383,7 @@
                                     <div class="rounded">
                                         <ul class="flex mb-0 list-none flex-wrap flex-row">
                                             <li class="-mb-px last:mr-0 cursor-pointer"><a class="text-sm px-5 py-2 block leading-normal font-bold border-b" @click="toggleTabs(1)" v-bind:class="{'text-gray-600 bg-white rounded-tl': tabs.openTab !== 1, 'text-gray-500 bg-gray-200 rounded-tl': tabs.openTab === 1}">Product Overview</a></li>
-                                            <li class="-mb-px last:mr-0 cursor-pointer"><a class="text-sm px-5 py-2 block leading-normal font-bold border-b" @click="toggleTabs(2)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 2, 'text-gray-500 bg-gray-200': tabs.openTab === 2}">Customer(s) Reviews</a></li>
+                                            <li class="-mb-px last:mr-0 cursor-pointer"><a class="text-sm px-5 py-2 block leading-normal font-bold border-b" @click="toggleTabs(2)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 2, 'text-gray-500 bg-gray-200': tabs.openTab === 2}">Customer Reviews ({{rating.stats.total_rating}})</a></li>
                                             <li class="-mb-px last:mr-0 cursor-pointer"><a class="text-sm px-5 py-2 block leading-normal font-bold border-b" @click="toggleTabs(3)" v-bind:class="{'text-gray-600 bg-white': tabs.openTab !== 3, 'text-gray-500 bg-gray-200': tabs.openTab === 3}">Product Specifications</a></li>
                                         </ul>
                                     </div>
@@ -376,7 +396,7 @@
 
                                                 <!-- Begin overview -->
                                                 <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
-                                                    <div v-for="overview in product.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-5">
+                                                    <div v-for="overview in overviews.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-5">
                                                         <div class="flex flex-col bg-white items-center">
                                                             <h3 class="font-serif font-bold text-gray-900 text-2xl">{{ overview.attributes.title }}</h3>
                                                             <p class="text-center leading-relaxed">{{ overview.attributes.description }}</p>
@@ -388,12 +408,69 @@
 
                                                 <!-- Begin customers review -->
                                                 <div v-bind:class="{ 'hidden': tabs.openTab !== 2, 'block': tabs.openTab === 2 }">
-                                                    <div v-if="product.reviews.length > 0">
-                                                        <div v-for="review in product.reviews" :key="review" class="flex mb-3">
+                                                    <div v-if="reviews.reviews.length > 0">
+
+                                                        <!-- Begin reviews stats -->
+                                                        <div class="my-5 border-b pb-8">
+                                                            <h2 class="mb-5 font-extrabold text-gray-700">Customer Reviews ({{rating.stats.total_rating}})</h2>
+                                                            <div class="flex grid items-center grid-cols-2 ">
+                                                                <div>
+                                                                    <div class="flex mr-10 items-center grid grid-cols-5 text-xs">
+                                                                        <div class="mr-5 mb-1.5 col-span-1">5 Stars</div>
+                                                                        <div class="mr-5 col-span-3 overflow-hidden h-1.5 text-xs flex bg-gray-200">
+                                                                            <div :style="'width:' + rating.rating_percentage.star_5" class="mr-5 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                                                                        </div>
+                                                                        <div class="col-span-1"><div class="border rounded w-1/2 text-center text-xxs">{{ rating.rating_percentage.star_5 }}</div></div>
+                                                                    </div>
+                                                                    <div class="flex mr-10 items-center grid grid-cols-5 text-xs">
+                                                                        <div class="mr-5 mb-1.5 col-span-1">4 Stars</div>
+                                                                        <div class="mr-5 col-span-3 overflow-hidden h-1.5 text-xs flex bg-gray-200">
+                                                                            <div :style="'width:' + rating.rating_percentage.star_4" class="mr-5 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                                                                        </div>
+                                                                        <div class="col-span-1"><div class="border rounded w-1/2 text-center text-xxs">{{ rating.rating_percentage.star_4 }}</div></div>
+                                                                    </div>
+                                                                    <div class="flex mr-10 items-center grid grid-cols-5 text-xs">
+                                                                        <div class="mr-5 mb-1.5 col-span-1">3 Stars</div>
+                                                                        <div class="mr-5 col-span-3 overflow-hidden h-1.5 text-xs flex bg-gray-200">
+                                                                            <div :style="'width:' + rating.rating_percentage.star_3" class="mr-5 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                                                                        </div>
+                                                                        <div class="col-span-1"><div class="border rounded w-1/2 text-center text-xxs">{{ rating.rating_percentage.star_3 }}</div></div>
+                                                                    </div>
+                                                                    <div class="flex mr-10 items-center grid grid-cols-5 text-xs">
+                                                                        <div class="mr-5 mb-1.5 col-span-1">2 Stars</div>
+                                                                        <div class="mr-5 col-span-3 overflow-hidden h-1.5 text-xs flex bg-gray-200">
+                                                                            <div :style="'width:' + rating.rating_percentage.star_2" class="mr-5 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                                                                        </div>
+                                                                        <div class="col-span-1"><div class="border rounded w-1/2 text-center text-xxs">{{ rating.rating_percentage.star_2 }}</div></div>
+                                                                    </div>
+                                                                    <div class="flex mr-10 items-center grid grid-cols-5 text-xs">
+                                                                    <div class="mr-5 mb-1.5 col-span-1">1 Stars</div>
+                                                                        <div class="mr-5 col-span-3 overflow-hidden h-1.5 text-xs flex bg-gray-200">
+                                                                            <div :style="'width:' + rating.rating_percentage.star_1" class="mr-5 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
+                                                                        </div>
+                                                                        <div class="col-span-1"><div class="border rounded w-1/2 text-center text-xxs">{{ rating.rating_percentage.star_1 }}</div></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex gap-5 items-center">
+                                                                    <div class="font-black text-gray-700">{{ rating.stats.average_rating }} / 5</div>
+                                                                    <div class="text-sm text-gray-500 flex items-center">
+                                                                        <span><svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                        <span><svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                        <span><svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                        <span><svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                        <span><svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End reviews stats -->
+
+                                                        <!-- Begin reviews contents -->
+                                                        <div v-for="review in reviews.reviews" :key="review" class="flex mb-3">
                                                             <div class="flex-1 border-b py-4 leading-relaxed">
                                                                 <div class="flex items-center">
-                                                                    <strong class="mr-2">Michael Kabutey</strong>
-                                                                    <span class="text-xs text-gray-400 mr-2">29 Mar 2021 @ 3:34 PM</span>
+                                                                    <strong class="mr-2">{{ review.attributes.reviewer }}</strong>
+                                                                    <span class="text-xs text-gray-400 mr-2">{{ review.attributes.created_at }}</span>
                                                                     <span class="">
                                                                         <div class="text-sm text-gray-500 flex">
                                                                             <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
@@ -404,7 +481,7 @@
                                                                         </div>
                                                                     </span>
                                                                 </div>
-                                                                <p class="text-sm">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                                                <p class="text-sm my-1">{{ review.attributes.review }}</p>
                                                                 <div class="mt-4 flex items-center float-right">
                                                                     <p class="text-xs mr-3">Helpful?</p>
                                                                     <div class="mr-2">
@@ -422,6 +499,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <!-- End reviews contents -->
+
                                                     </div>
                                                     <div v-else class="flex mb-3">
                                                         <p class="text-middle m-auto my-20 text-gray-400">There are no reviews for this item</p>
@@ -433,7 +512,7 @@
                                                 <div v-bind:class="{ 'hidden': tabs.openTab !== 3, 'block': tabs.openTab === 3 }">
                                                     <table class="table table-bordered ps-table ps-table--specification text-sm my-5">
                                                         <tbody>
-                                                            <tr v-for="specification in product.specifications" :key="specification.attributes.resource_id">
+                                                            <tr v-for="specification in specifications.specifications" :key="specification.attributes.resource_id">
                                                                 <td class="w-1/2">{{ specification.attributes.specification }}</td><td class="w-1/2">{{ specification.attributes.value }}</td>
                                                             </tr>
                                                         </tbody>
@@ -469,7 +548,7 @@
                                         </span>
                                         <p class="font-bold block text-xs my-0.5">
                                             <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover hover:text-red-500">
-                                                GHS {{ item.attributes.sales_price }}
+                                                 {{ item.attributes.sales_price }}
                                                 <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
                                             </router-link>
                                         </p>
@@ -508,7 +587,7 @@
                                         </span>
                                         <p class="font-bold block text-xs my-0.5">
                                             <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover hover:text-red-500">
-                                                GHS {{ item.attributes.sales_price }}
+                                                 {{ item.attributes.sales_price }}
                                                 <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
                                             </router-link>
                                         </p>
@@ -536,7 +615,7 @@
                 <!-- Begin image slider -->
                 <div class="">
                     <swiper :slides-per-view="1" :speed="1000">
-                        <swiper-slide v-for="image in product.images" :key="image.attributes.resource_id">
+                        <swiper-slide v-for="image in images.images" :key="image.attributes.resource_id">
                             <div class="swiper-container"><img :src="image.attributes.image" :alt="image.attributes.description"></div>
                         </swiper-slide>
                     </swiper>
@@ -546,18 +625,26 @@
                 <!-- Begin product name and price -->
                 <div class="bg-white p-2">
                     <div class="border-b pb-2.5">
-                        <div class="flex items-center justify-between">
+                        <div v-if="pricing.priced === 'Product'" class="flex items-center justify-between">
                             <p class="font-bold text-lg items-center flex">
-                                GHS {{ product.item.sales_price }}
-                                <del class="text-xxs text-red-600 font-light mx-2">GHS {{ product.item.price }}</del>
-                                <span class="inline-flex py-0.5 px-3 items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ product.item.percentage_charge }}%</span>
+                                {{ pricing.data.sales_price }}
+                                <del class="text-xxs text-red-600 font-light mx-2"> {{ pricing.data.price }}</del>
+                                <span class="inline-flex py-0.5 px-3 items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ pricing.data.discount_percentage }}</span>
+                            </p>
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        </div>
+                        <div v-else class="flex items-center justify-between">
+                            <p class="font-bold text-lg items-center flex">
+                                 {{ pricing.data.price_range }}
+<!--                                <del class="text-xxs text-red-600 font-light mx-2"> {{ pricing.price_data.price }}</del>-->
+<!--                                <span class="inline-flex py-0.5 px-3 items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ pricing.price_data.discount_percentage }}%</span>-->
                             </p>
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                         </div>
                         <p class="text-sm mt-2">{{ product.item.name }}</p>
                         <span class="block text-gray-500 text-xs flex items-center mt-2">
                             <svg class="w-3.5 h-3.5 text-red-600 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                            {{ product.item.total_rating }} | {{ product.item.total_sold }} Sold
+                            {{ rating.stats.average_rating }} | {{ product.item.total_sold }} Sold
                         </span>
                     </div>
                 </div>
@@ -565,7 +652,7 @@
 
                 <!-- Begin delivery info -->
                 <div class="bg-white p-2 mb-3">
-                    <p class="font-bold text-sm">Delivery Fee: GHS 30.21</p>
+                    <p class="font-bold text-sm">Delivery Fee:  30.21</p>
                     <p class="text-sm text-gray-400">Nationwide Delivery via Juasoonline Delivery</p>
                     <p class="text-xs mt-0.5 text-gray-400">Estimated Delivery: 7-15 days</p>
                 </div>
@@ -575,7 +662,7 @@
                 <div class="bg-white px-2 pt-1 pb-3 mb-3">
                     <label class="w-full text-gray-700 text-sm">Color:</label>
                     <div class="flex gap-2 grid grid-cols-6">
-                        <div v-for="color in product.colors" :key="color.attributes.resource_id" class="flex cursor-pointer">
+                        <div v-for="color in colors.colors" :key="color.attributes.resource_id" class="flex cursor-pointer">
                             <img :src="color.attributes.image" alt="mountain" class="w-12 rounded-md border border-gray-300 p-0.5 hover:border-red-500 active:shadow-md" />
                         </div>
                     </div>
@@ -586,7 +673,7 @@
                 <div class="bg-white px-2 pt-1 pb-3 mb-3">
                     <label class="w-full text-gray-700 text-xs font-semibold">Size:</label>
                     <div class="flex gap-2 grid grid-cols-6">
-                        <div v-for="size in product.sizes" :key="size.attributes.resource_id" class="flex cursor-pointer">
+                        <div v-for="size in sizes.sizes" :key="size.attributes.resource_id" class="flex cursor-pointer">
                             <div class="w-10 text-center rounded-md border border-gray-300 py-1.5 hover:border-red-500 active:shadow-md">{{ size.attributes.size }}</div>
                         </div>
                     </div>
@@ -635,71 +722,71 @@
                                 <div class="flex-auto">
                                     <div class="tab-content tab-space px-2">
 
-                                      <!-- Begin overview -->
-                                      <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
-                                          <div v-for="overview in product.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-2">
-                                              <div class="flex flex-col bg-white items-center">
-                                                  <h3 class="font-serif font-bold text-gray-900 text-lg mt-3">{{ overview.attributes.title }}</h3>
-                                                  <p class="text-center leading-relaxed py-1 text-sm">{{ overview.attributes.description }}</p>
-                                                  <img class="rounded w-full mt-2" :src="overview.attributes.image" alt="motivation" />
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <!-- End overview -->
+                                        <!-- Begin overview -->
+                                        <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
+                                            <div v-for="overview in overviews.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-2">
+                                                <div class="flex flex-col bg-white items-center">
+                                                    <h3 class="font-serif font-bold text-gray-900 text-lg mt-3">{{ overview.attributes.title }}</h3>
+                                                    <p class="text-center leading-relaxed py-1 text-sm">{{ overview.attributes.description }}</p>
+                                                    <img class="rounded w-full mt-2" :src="overview.attributes.image" alt="motivation" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End overview -->
 
-                                      <!-- Begin customers review -->
-                                      <div v-bind:class="{ 'hidden': tabs.openTab !== 2, 'block': tabs.openTab === 2 }">
-                                          <div v-for="review in 5" :key="review" class="flex mb-3">
-                                              <div class="flex-1 border-b py-4 leading-relaxed">
-                                                  <div class="flex items-center">
-                                                      <strong class="mr-2">Michael Kabutey</strong>
-                                                      <span class="text-xs text-gray-400 mr-2">29 Mar 2021 @ 3:34 PM</span>
-                                                      <span class="">
-                                                          <div class="text-sm text-gray-500 flex">
-                                                              <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                              <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                              <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                              <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                              <span><svg class="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
-                                                          </div>
-                                                      </span>
-                                                  </div>
-                                                  <p class="text-sm">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                                                  <div class="mt-4 flex items-center float-right">
-                                                      <p class="text-xs mr-3">Helpful?</p>
-                                                      <div class="mr-2">
-                                                          <button type="button" class="flex items-center rounded bg-juaso-primary text-white font-bold px-2 py-1 focus:outline-none hover:bg-juaso-secondary">
-                                                              <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                              <span class="uppercase text-xxxs font-bold">Yes</span>
-                                                          </button>
-                                                      </div>
-                                                      <div class="">
-                                                          <button type="button" class="flex items-center rounded bg-red-500 text-white font-bold px-2 py-1 focus:outline-none hover:bg-red-600">
-                                                              <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                                                              <span class="uppercase text-xxxs font-bold">No</span>
-                                                          </button>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <!-- End image -->
+                                        <!-- Begin customers review -->
+                                        <div v-bind:class="{ 'hidden': tabs.openTab !== 2, 'block': tabs.openTab === 2 }">
+                                            <div v-for="review in 5" :key="review" class="flex mb-3">
+                                                <div class="flex-1 border-b py-4 leading-relaxed">
+                                                    <div class="flex items-center">
+                                                        <strong class="mr-2">Michael Kabutey</strong>
+                                                        <span class="text-xs text-gray-400 mr-2">29 Mar 2021 @ 3:34 PM</span>
+                                                        <span class="">
+                                                            <div class="text-sm text-gray-500 flex">
+                                                                <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                <span><svg class="w-3.5 h-3.5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                                <span><svg class="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <p class="text-sm">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                                                    <div class="mt-4 flex items-center float-right">
+                                                        <p class="text-xs mr-3">Helpful?</p>
+                                                        <div class="mr-2">
+                                                            <button type="button" class="flex items-center rounded bg-juaso-primary text-white font-bold px-2 py-1 focus:outline-none hover:bg-juaso-secondary">
+                                                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                                <span class="uppercase text-xxxs font-bold">Yes</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="">
+                                                            <button type="button" class="flex items-center rounded bg-red-500 text-white font-bold px-2 py-1 focus:outline-none hover:bg-red-600">
+                                                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                                                <span class="uppercase text-xxxs font-bold">No</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End image -->
 
-                                      <!-- Begin specifications -->
-                                      <div v-bind:class="{ 'hidden': tabs.openTab !== 3, 'block': tabs.openTab === 3 }">
-                                          <table class="table table-bordered ps-table ps-table--specification text-sm my-5">
-                                              <tbody>
-                                                  <tr v-for="specification in product.specifications" :key="specification.attributes.resource_id">
-                                                      <td class="w-1/2">{{ specification.attributes.specification }}</td><td class="w-1/2">{{ specification.attributes.value }}</td>
-                                                  </tr>
-                                              </tbody>
-                                          </table>
-                                      </div>
-                                      <!-- End specifications -->
+                                        <!-- Begin specifications -->
+                                        <div v-bind:class="{ 'hidden': tabs.openTab !== 3, 'block': tabs.openTab === 3 }">
+                                            <table class="table table-bordered ps-table ps-table--specification text-sm my-5">
+                                                <tbody>
+                                                    <tr v-for="specification in specifications.specifications" :key="specification.attributes.resource_id">
+                                                        <td class="w-1/2">{{ specification.attributes.specification }}</td><td class="w-1/2">{{ specification.attributes.value }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- End specifications -->
 
-                                  </div>
-                              </div>
-                          </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- End tab contents -->
 
                         </div>
@@ -713,7 +800,7 @@
                     <!-- Begin store name -->
                     <div class="flex items-center">
                         <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
-                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">{{ product.store.name }}</router-link></span>
+                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.name }}</router-link></span>
                     </div>
                     <!-- End store name -->
 
@@ -736,7 +823,7 @@
 
                     <!-- Begin call to action -->
                     <div class="my-3 border-b pb-4">
-                        <router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                         <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
                     </div>
                     <!-- End call to action -->
@@ -744,7 +831,7 @@
                     <!-- Begin recommendations header -->
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="font-bold text-sm mb-1.5">Seller Recommendations</h3>
-                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { store: product.store.resource_id }}">View All Product</router-link></p>
+                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">View All Product</router-link></p>
                     </div>
                     <!-- End recommendations header -->
 
@@ -756,7 +843,7 @@
                             </router-link>
                             <div class="m-3 text-center">
                                 <p class="font-bold block text-xxs my-0.5">
-                                    <router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}">GHS {{ item.sales_price }}</router-link>
+                                    <router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.resource_id }}"> {{ item.sales_price }}</router-link>
                                 </p>
                             </div>
                         </div>
@@ -781,7 +868,7 @@
                                     <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">{{ item.attributes.name.substring(0, 22) }}...</router-link>
                                 </p>
                                 <p class="font-bold block text-xs my-0.5">
-                                    <router-link class="w-full object-cover hover:text-red-500" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link>
+                                    <router-link class="w-full object-cover hover:text-red-500" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link>
                                 </p>
                                 <span class="block text-gray-500 text-xxs flex items-center">
                                     <svg class="w-3 h-3 text-red-600 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
@@ -837,7 +924,7 @@
                     <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                         <div>
                             <router-link to="/">
-                                <img src="https://assets.juasoonline.com/juasoonline/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+                                <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
                             </router-link>
                         </div>
                         <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleSignInModal()">
@@ -965,7 +1052,7 @@
                                             <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                         </router-link>
                                         <div class="m-3 text-center">
-                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
                                         </div>
                                     </div>
                                 </div>
@@ -977,7 +1064,7 @@
                                             <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
                                         </router-link>
                                         <div class="m-3 text-center">
-                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
                                         </div>
                                     </div>
                                 </div>
@@ -989,7 +1076,7 @@
                                             <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                         </router-link>
                                         <div class="m-3 text-center">
-                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">GHS {{ item.attributes.sales_price }}</router-link></p>
+                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
                                         </div>
                                     </div>
                                 </div>
@@ -1040,8 +1127,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="option in deliveryFees.fees" :key="option.id">
-                                        <td class="w-5"><input class="cursor-pointer" name="new1" type="radio"></td>
+                                    <tr v-for="(option, index) in deliveryFees.fees" :key="option.resource_id">
+                                        <td class="w-5"><input @click="selectDeliveryOption( index )" class="cursor-pointer" name="new1" type="radio"></td>
                                         <td class="">{{ option.attributes.delivery_time }}</td>
                                         <td class="">{{ option.attributes.fee }}</td>
                                         <td class="">{{ option.attributes.carrier }}</td>
@@ -1096,12 +1183,26 @@
 
             const modal = reactive({ showSignInModal: false, showAddToCartModal: false, showDeliveryOptionsModal: false, message: "" })
             const tabs = reactive({ openTab: 1 })
-            const product = reactive({ item: [], store: [], brand: [], specifications: [], images: [], overviews: [], colors: [], bundles: [], sizes: [], reviews: [], promotions: [], currentImage: null })
-            const recommendations = reactive({ items: [] })
-            const deliveryFees = reactive({ fees: [] })
+
+            const product = reactive({ item: [], currentImage: null })
+            const pricing = reactive({ priced: '', data: [], selected: [] })
+            const rating = reactive({ stats: 0, rating: [], rating_percentage: [] })
+            const store = reactive({ store: [] })
+            const specifications = reactive({ specifications: [] })
+            const images = reactive({ images: [] })
+            const colors = reactive({ colors: [] })
+            const sizes = reactive({ sizes: [] })
+            const bundles = reactive({ bundles: [] })
+            const overviews = reactive({ overviews: [] })
+            const reviews = reactive({ reviews: [] })
+            const promotions = reactive({ promotions: [] })
+
+            const deliveryFees = reactive({ fees: [], current: [] })
             const storeItems = reactive({ items: [] })
             const storeRecommendations = reactive({ items: [] })
-            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", quantity: 1, colorActive: 0, sizeActive: 0, orderLoading: false, cartLoading: false, wishlistLoading: false })
+            const recommendations = reactive({ items: [] })
+
+            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", bundleValue: null, quantity: 1, colorActive: null, sizeActive: null, bundleActive: null, orderLoading: false, cartLoading: false, wishlistLoading: false })
             const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
@@ -1203,14 +1304,15 @@
                 }
                 else
                 {
+                    orderData.wishlistLoading = false
                     toggleSignInModal()
                     loginData.afterLoginAction = addToWishlist
                 }
             }
 
             const validateQuantity = () => { return orderData.quantity > 0 }
-            const validateColor = () => { if ( product.colors.length > 0 && orderData.color_id !== "" ) { return true }}
-            const validateSize = () => { if ( product.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
+            const validateColor = () => { if ( colors.colors.length > 0 && orderData.color_id !== "" ) { return true }}
+            const validateSize = () => { if ( sizes.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
 
             const signIn = () =>
             {
@@ -1228,57 +1330,69 @@
                 })
             }
 
-            const chooseColor = ( color, id, resource_id ) => { orderData.colorValue = color; orderData.colorActive = id; orderData.color_id = resource_id }
-            const chooseBundle = ( bundle, id, resource_id ) => { orderData.bundleValue = bundle; orderData.bundleActive = id; orderData.bundle_id = resource_id }
-            const chooseSize = ( size, id, resource_id ) => { orderData.sizeValue = size; orderData.sizeActive = id; orderData.size_id = resource_id }
+            const chooseColor = ( color, id, resource_id ) => { orderData.colorValue = color; orderData.colorActive = id; orderData.color_id = resource_id; if ( pricing.priced === 'Color' ){ pricing.selected = colors.colors[id]['attributes'] } }
+            const chooseSize = ( size, id, resource_id ) => { orderData.sizeValue = size; orderData.sizeActive = id; orderData.size_id = resource_id; if ( pricing.priced === 'Size' ){ pricing.selected = sizes.sizes[id]['attributes'] } }
+            const chooseBundle = ( bundle, id, resource_id ) => { orderData.bundleValue = bundle; orderData.bundleActive = id; orderData.bundle_id = resource_id; if ( pricing.priced === 'Bundle' ){ pricing.selected = bundles.bundles[id]['attributes'] } }
             const quantityCounter = ( operator ) => { if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 } else { orderData.quantity = orderData.quantity -1 }}
             const changeImage = ( image ) => { product.currentImage = image }
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
             const toggleSignInModal = () => { modal.showSignInModal = !modal.showSignInModal; }
             const toggleAddToCartModal = () => { modal.showAddToCartModal = !modal.showAddToCartModal; }
             const toggleDeliveryOptionsModal = () => { modal.showDeliveryOptionsModal = !modal.showDeliveryOptionsModal; }
+            const selectDeliveryOption = ( option ) => { deliveryFees.current = deliveryFees.fees[option]['attributes']; }
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'product/' + route.params.item + '?include=store,brand,charge,specifications,images,overviews,colors,bundles,sizes,reviews,promotions', headers: {} })
+                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions&ratings=ratings', headers: {} })
                 .then( response =>
                 {
                     product.item = response.data.data.attributes;
-                    product.store = response.data.data.include.store.attributes;
-                    product.brand = response.data.data.include.brand.attributes;
-                    product.colors = response.data.data.include.colors;
-                    product.bundles = response.data.data.include.bundles;
-                    product.sizes = response.data.data.include.sizes;
-                    product.images = response.data.data.include.images;
-                    product.overviews = response.data.data.include.overviews;
-                    product.specifications = response.data.data.include.specifications;
-                    product.reviews = response.data.data.include.reviews;
+                    store.store = response.data.data.include.store.attributes;
+                    specifications.specifications = response.data.data.include.specifications;
+                    images.images = response.data.data.include.images;
+                    colors.colors = response.data.data.include.colors;
+                    sizes.sizes = response.data.data.include.sizes;
+                    bundles.bundles = response.data.data.include.bundles;
+                    overviews.overviews = response.data.data.include.overviews;
+                    reviews.reviews = response.data.data.include.reviews;
+                    promotions.promotions = response.data.data.include.promotions;
                     product.currentImage = response.data.data.attributes.image;
+                    pricing.priced = response.data.data.pricing.priced;
+                    pricing.data = response.data.data.pricing.price_data[0];
+                    if ( response.data.data.ratings.length > 0 )
+                    {
+                        rating.stats = response.data.data.ratings[0];
+                        rating.rating = response.data.data.ratings[1].rating;
+                        rating.rating_percentage = response.data.data.ratings[2].rating_percentage;
+                    }
+                    else
+                    {
+                        rating.stats = { average_rating: 0, total_rating: 0 }
+                    }
 
                     // Get store items
-                    axios({ method: 'GET', url: 'store/' + response.data.data.include.store.attributes.resource_id  + '/products', headers: {} })
-                    .then( response => { storeItems.items = response.data.data })
-                    .catch( error => { console.log(error.response) })
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products', headers: {} })
+                      .then( response => { storeItems.items = response.data.data })
+                      .catch( error => { console.log(error.response) })
 
                     // Get store recommendations
-                    axios({ method: 'GET', url: 'store/product/'  + response.data.data.attributes.resource_id  +  '/recommendations', headers: {} })
-                    .then( response => { storeRecommendations.items = response.data.data })
-                    .catch( error => { console.log( error.response ) })
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations', headers: {} })
+                      .then( response => { storeRecommendations.items = response.data.data })
+                      .catch( error => { console.log( error.response ) })
 
                     // Get general recommendations
-                    axios({ method: 'GET', url: 'products/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
-                    .then( response => { recommendations.items = response.data.data })
-                    .catch( error => { console.log(error.response) })
+                    axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                      .then( response => { recommendations.items = response.data.data })
+                      .catch( error => { console.log(error.response) })
 
                     // Get delivery fees
-                    axios({ method: 'GET', url: 'delivery-fees', headers: {}})
-                    .then( response => { deliveryFees.fees = response.data.data })
-                    .catch( error => { console.log(error.response) })
+                    axios({ method: 'GET', url: 'juaso/delivery-methods', headers: {}})
+                      .then( response => { deliveryFees.fees = response.data.data; deliveryFees.current = response.data.data[0]['attributes'] })
+                      .catch( error => { console.log(error.response) })
                 })
             })
-
-            return { authentication, modal, tabs, product, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
-        },
+            return { authentication, modal, tabs, product, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
+        }
     }
 </script>
 

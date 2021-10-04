@@ -7,7 +7,7 @@
             <!-- Begin ad banner -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden mx-auto w-screen">
                 <router-link to="" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" >
-                    <img src="https://assets.juasoonline.com/juasoonline/assets/images/ads/top/banner1.jpg"  alt=""/>
+                    <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/top/banner1.jpg"  alt=""/>
                 </router-link>
             </div>
             <!-- Begin ad banner -->
