@@ -253,12 +253,25 @@
 
                         <!-- Begin store category -->
                         <div class="bg-white rounded px-4 py-4 mb-5">
-                            <div class="flex justify-start">
-                                <svg class="w-5 h-5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                            <div class="flex justify-start border-b pb-2">
+                                <svg class="w-5 h-5 mr-1.5 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
                                 <span class="text-sm font-bold">Store Categories</span>
                             </div>
-                            <div class="py-3 text-xs">
-                                Details coming soon
+                            <div class="py-3">
+                                <ul>
+                                    <li v-for="category in store.categories" :key="category.attributes.resource_id" class="text-xs font-extrabold text-gray-500 my-1.5">
+                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="flex items-center hover:text-red-500">
+                                            <svg v-if="category.include.subcategories.length > 0" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                                            <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+                                            {{ category.attributes.name }}
+                                        </router-link>
+                                        <ul v-if="category.include.subcategories.length > 0" class="ml-6 text-xxs font-normal mt-1.5 mb-2.5">
+                                            <li v-for="subcategory in category.include.subcategories" :key="subcategory.attributes.resource_id" class="my-2 hover:text-red-500">
+                                                <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ subcategory.attributes.name }}</router-link>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <!-- End store category -->
@@ -1187,7 +1200,7 @@
             const product = reactive({ item: [], currentImage: null })
             const pricing = reactive({ priced: '', data: [], selected: [] })
             const rating = reactive({ stats: 0, rating: [], rating_percentage: [] })
-            const store = reactive({ store: [] })
+            const store = reactive({ store: [], categories: [] })
             const specifications = reactive({ specifications: [] })
             const images = reactive({ images: [] })
             const colors = reactive({ colors: [] })
@@ -1343,11 +1356,12 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions&ratings=ratings', headers: {} })
+                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions&ratings=ratings', headers: {} })
                 .then( response =>
                 {
                     product.item = response.data.data.attributes;
                     store.store = response.data.data.include.store.attributes;
+                    store.categories = response.data.data.include.store.include.categories;
                     specifications.specifications = response.data.data.include.specifications;
                     images.images = response.data.data.include.images;
                     colors.colors = response.data.data.include.colors;
@@ -1369,6 +1383,11 @@
                     {
                         rating.stats = { average_rating: 0, total_rating: 0 }
                     }
+
+                    // Get store categories
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products', headers: {} })
+                      .then( response => { storeItems.items = response.data.data })
+                      .catch( error => { console.log(error.response) })
 
                     // Get store items
                     axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products', headers: {} })
