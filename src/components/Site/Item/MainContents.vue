@@ -333,9 +333,9 @@
 
                                     <!-- Begin store stats -->
                                     <div class="my-2">
-                                        <p class="text-xs">95.7%<span class="text-gray-400 mx-2">Positive Feedback</span></p>
-                                        <p class="text-xs">230<span class="text-gray-400 mx-2">Items</span></p>
-                                        <p class="text-xs">230<span class="text-gray-400 mx-2">Followers</span></p>
+                                        <p class="text-xs">{{ store.rating.overall_rating }}<span class="text-gray-400 mx-2">Positive Feedback</span></p>
+                                        <p class="text-xs">{{ store.stats.items }}<span class="text-gray-400 mx-2">Items</span></p>
+                                        <p class="text-xs">{{ store.stats.followers }}<span class="text-gray-400 mx-2">Followers</span></p>
                                         <p class="text-xs my-2">
                                             <router-link to="/messages" class="flex items-center hover:text-juaso-primary cursor-pointer ">
                                                 <svg class="w-5 h-5 text-juaso-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
@@ -1258,7 +1258,7 @@
             const product = reactive({ item: [], currentImage: null })
             const pricing = reactive({ priced: '', data: [], selected: [] })
             const rating = reactive({ stats: 0, rating: [], rating_percentage: [] })
-            const store = reactive({ store: [], categories: [] })
+            const store = reactive({ store: [], categories: [], stats: [], rating: [] })
             const specifications = reactive({ specifications: [] })
             const images = reactive({ images: [] })
             const colors = reactive({ colors: [] })
@@ -1445,9 +1445,9 @@
                         rating.stats = { average_rating: 0, total_rating: 0 }
                     }
 
-                    // Get store categories
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products', headers: {} })
-                      .then( response => { storeItems.items = response.data.data })
+                    // Get store stats
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats', headers: {} })
+                      .then( response => { store.stats = response.data.data.attributes[0]; store.rating = response.data.data.ratings[0]; })
                       .catch( error => { console.log(error.response) })
 
                     // Get store items
