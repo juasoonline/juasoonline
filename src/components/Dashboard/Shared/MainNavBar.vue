@@ -23,7 +23,7 @@
 
             <!-- Begin user welcome -->
             <div class="pt-7 pb-12">
-                <h2 class="font-bold text-xl">Welcome! {{ authentication.state.user.attributes.first_name }}</h2>
+                <h2 class="font-bold text-xl">Welcome! {{ authentication.state.user.name }}</h2>
             </div>
             <!-- Begin user welcome -->
 

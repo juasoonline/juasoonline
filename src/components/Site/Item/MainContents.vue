@@ -1284,7 +1284,7 @@
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                         .then( response =>
                         {
                             if ( response.data.status === 'Success' )
@@ -1324,7 +1324,7 @@
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                         .then( response =>
                         {
                             if ( response.data.status === 'Success' )
@@ -1359,7 +1359,7 @@
                 orderData.wishlistLoading = true
                 if ( authentication.isAuthenticated() )
                 {
-                    axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                    axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                     .then( response =>
                     {
                         if ( response.data.status === 'Success' )
