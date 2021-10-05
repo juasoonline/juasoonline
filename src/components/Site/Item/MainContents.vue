@@ -31,7 +31,7 @@
                             <h2 class="text-lg font-light leading-6 mb-3">{{ product.item.name }}</h2>
                             <div class="text-xs font-light mt-1 flex items-center">
                                 <span class="mr-4 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ store.store.doing_business_as }}</router-link></span>
-                                <span class="mr-4 font-bold border-r pr-3">Brand: <a href="#" class="hover:text-red-500">{{ product.brand }}</a></span>
+                                <span class="mr-4 font-bold border-r pr-3">Brand: <a href="#" class="hover:text-red-500">{{ product.item.brand }}</a></span>
                                 <span class="mr-4 hover:text-red-500 flex">
                                       <div class="text-sm text-gray-500 flex items-center">
                                           <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
@@ -129,16 +129,26 @@
                             </div>
                             <!-- End quantity -->
 
-                            <!-- Begin delivery info -->
-                            <div class="mt-5">
-                                <p class="font-bold text-sm">Delivery Fee: {{ deliveryFees.current.fee }}</p>
+                        </div>
+                        <!-- End buying options -->
+
+                        <!-- Begin delivery fee info -->
+                        <div class="mt-5">
+                            <div v-if="product.item.free_delivery === null || product.item.free_delivery !== 'Free Delivery'">
+                                <p class="font-extrabold text-sm">Delivery Fee: {{ deliveryFees.current.fee }}</p>
                                 <p @click="toggleDeliveryOptionsModal()" class="text-sm text-gray-500 flex items-center hover:text-red-600 cursor-pointer">Rapid Delivery via <strong class="ml-2"> {{ deliveryFees.current.carrier }}</strong><span class="mx-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></p>
                                 <p class="text-xs mt-0.5 text-gray-500">Estimated Delivery: {{ deliveryFees.current.delivery_time }}</p>
                             </div>
-                            <!-- End delivery info -->
-
+                            <div v-else>
+                                <div>
+                                    <p v-if="deliveryFees.current.carrier === 'Juasoonline Standard Delivery'" class="font-extrabold text-sm">{{ product.item.free_delivery }}</p>
+                                    <p v-else class="font-extrabold text-sm">Delivery Fee: {{ deliveryFees.current.fee }}</p>
+                                </div>
+                                <p @click="toggleDeliveryOptionsModal()" class="text-sm text-gray-500 flex items-center hover:text-red-600 cursor-pointer">via <strong class="ml-2"> {{ deliveryFees.current.carrier }}</strong><span class="mx-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></p>
+                                <p class="text-xs mt-0.5 text-gray-500">Estimated Delivery: {{ deliveryFees.current.delivery_time }}</p>
+                            </div>
                         </div>
-                        <!-- End buying options -->
+                        <!-- End delivery fee info -->
 
                         <!-- Begin action button -->
                         <div class="flex inline-block mt-5">
@@ -161,7 +171,10 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-bold text-sm leading-4">15-Day Buyer Protection <br> <router-link to="buyer-protection" class="text-xs font-light leading-none">Money back guarantee</router-link></p>
+                                <p class="font-bold text-sm leading-4">
+                                    <span>{{ product.item.buyer_protection }}-Days Buyer Protection</span> <br>
+                                    <router-link to="/buyer-protection" class="text-xs font-light leading-none">Money back guarantee</router-link>
+                                </p>
                             </div>
                         </div>
                         <!-- End buyer protection -->
