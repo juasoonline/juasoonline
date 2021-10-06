@@ -348,7 +348,10 @@
                                     <!-- Begin call to action -->
                                     <div class="mt-3 flex justify-between items-center">
                                         <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
-                                        <button class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Follow</button>
+                                        <button @click="followAction()" class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">
+                                            <span v-if="follows.loading === true">Loading</span>
+                                            <span v-else>{{ follows.status }}</span>
+                                        </button>
                                     </div>
                                     <!-- End call to action -->
 
@@ -364,7 +367,7 @@
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.pricing.price_data[0].sales_price }} </router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -376,7 +379,7 @@
                                                     <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.pricing.price_data[0].sales_price }} </router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -388,7 +391,7 @@
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.pricing.price_data[0].sales_price }} </router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1269,18 +1272,19 @@
             const faqs = reactive({ faqs: [] })
             const promotions = reactive({ promotions: [] })
 
+            const follows = reactive({ status: 'Follow', loading: false })
             const deliveryFees = reactive({ fees: [], current: [] })
             const storeItems = reactive({ items: [] })
             const storeRecommendations = reactive({ items: [] })
             const recommendations = reactive({ items: [] })
 
-            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", bundleValue: null, quantity: 1, colorActive: null, sizeActive: null, bundleActive: null, orderLoading: false, cartLoading: false, wishlistLoading: false })
+            const orderData = reactive({ quantity: 1, product_id: "", color_id: "", size_id: "", bundle_id: "", delivery_method_id: null, colorValue: null, sizeValue: null, bundleValue: null, colorActive: null, sizeActive: null, bundleActive: null, orderLoading: false, cartLoading: false, wishlistLoading: false })
             const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
             {
                 orderData.orderLoading = true
-                if ( validateQuantity() && validateColor() && validateSize() )
+                if ( validateQuantity() && validateColor() && validateSize()  && validateBundle() )
                 {
                     if ( authentication.isAuthenticated() )
                     {
@@ -1316,7 +1320,6 @@
                     notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
             }
-
             const addToCart = () =>
             {
                 orderData.cartLoading = true
@@ -1353,7 +1356,6 @@
                     notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
             }
-
             const addToWishlist = () =>
             {
                 orderData.wishlistLoading = true
@@ -1365,7 +1367,8 @@
                         if ( response.data.status === 'Success' )
                         {
                             orderData.wishlistLoading = false
-                            modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal()
+                            modal.message = "A new item has been added to your Wish List";
+                            toggleAddToCartModal()
                         }
                         else
                         {
@@ -1381,10 +1384,36 @@
                     loginData.afterLoginAction = addToWishlist
                 }
             }
+            const followAction = () =>
+            {
+                follows.loading = true
+                if ( authentication.isAuthenticated() )
+                {
+                    if ( follows.status === "Follow" )
+                    {
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + store.store.resource_id + '/follow', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.status === 'Success' ) { follows.loading = false; follows.status = "Following" } else { follows.loading = false; console.log( response.data ); }})
+                            .catch( error => { console.log( error.response ); follows.loading = false })
+                    }
+                    else
+                    {
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + store.store.resource_id + '/unfollow', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.status === 'Success' ) { follows.loading = false; follows.status = "Follow" } else { follows.loading = false; console.log( response.data ); }})
+                            .catch( error => { console.log( error.response ); follows.loading = false })
+                    }
+                }
+                else
+                {
+                    follows.loading = false
+                    toggleSignInModal()
+                    loginData.afterLoginAction = followAction
+                }
+            }
 
             const validateQuantity = () => { return orderData.quantity > 0 }
             const validateColor = () => { if ( colors.colors.length > 0 && orderData.color_id !== "" ) { return true }}
             const validateSize = () => { if ( sizes.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
+            const validateBundle = () => { if ( bundles.bundles.length > 0 && orderData.bundle_id !== "" ) { return true }}
 
             const signIn = () =>
             {
@@ -1446,22 +1475,22 @@
                     }
 
                     // Get store stats
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats', headers: {} })
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats' })
                       .then( response => { store.stats = response.data.data.attributes[0]; store.rating = response.data.data.ratings[0]; })
                       .catch( error => { console.log(error.response) })
 
                     // Get store items
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products', headers: {} })
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products' })
                       .then( response => { storeItems.items = response.data.data })
                       .catch( error => { console.log(error.response) })
 
                     // Get store recommendations
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations', headers: {} })
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations' })
                       .then( response => { storeRecommendations.items = response.data.data })
                       .catch( error => { console.log( error.response ) })
 
                     // Get general recommendations
-                    axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                    axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
                       .then( response => { recommendations.items = response.data.data })
                       .catch( error => { console.log(error.response) })
 
@@ -1469,9 +1498,17 @@
                     axios({ method: 'GET', url: 'juaso/delivery-methods', headers: {}})
                       .then( response => { deliveryFees.fees = response.data.data; deliveryFees.current = response.data.data[0]['attributes'] })
                       .catch( error => { console.log(error.response) })
+
+                    // Check follow
+                    if ( authentication.isAuthenticated() )
+                    {
+                        axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + response.data.data.include.store.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow"; console.log( response.data ); }})
+                            .catch( error => { console.log( error.response ); follows.loading = false })
+                    }
                 })
             })
-            return { authentication, modal, tabs, product, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
+            return { authentication, modal, tabs, product, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
         }
     }
 </script>
