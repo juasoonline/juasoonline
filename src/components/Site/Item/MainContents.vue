@@ -1284,7 +1284,7 @@
             const makeOrder = () =>
             {
                 orderData.orderLoading = true
-                if ( validateQuantity() && validateColor() && validateSize()  && validateBundle() )
+                if ( validateQuantity() && validateColor() && validateSize() && validateBundle() )
                 {
                     if ( authentication.isAuthenticated() )
                     {
@@ -1323,26 +1323,31 @@
             const addToCart = () =>
             {
                 orderData.cartLoading = true
-                if ( validateQuantity() && validateColor() && validateSize() )
+                if ( validateQuantity() && validateColor() && validateSize() && validateBundle() )
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }}}})
                         .then( response =>
                         {
-                            if ( response.data.status === 'Success' )
+                            if ( response.data.code === 201 )
                             {
                                 orderData.cartLoading = false
                                 modal.message = "A new item has been added to your Shopping Cart";
                                 toggleAddToCartModal()
                             }
+                            else if ( response.data.code === 401 )
+                            {
+                                orderData.cartLoading = false
+                                toggleSignInModal()
+                                loginData.afterLoginAction = addToCart
+                            }
                             else
                             {
                                 orderData.cartLoading = false
-                                console.log( response )
                             }
                         })
-                        .catch( error => { console.log( error.response ) })
+                        .catch( error => { error.response })
                     }
                     else
                     {
