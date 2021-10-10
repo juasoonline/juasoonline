@@ -158,7 +158,11 @@
                             <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
                             <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Please wait...</button>
 
-                            <button v-if="orderData.wishlistLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>12.10K</button>
+                            <button v-if="wishlist.isLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
+                                <svg v-if="wishlist.status === false" class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                <svg v-else class="mr-2 h-5 w-5 text-red-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                {{ wishlist.wishlist_count }}
+                            </button>
                             <button v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</button>
                         </div>
                         <!-- End action button -->
@@ -1259,6 +1263,7 @@
             const tabs = reactive({ openTab: 1 })
 
             const product = reactive({ item: [], currentImage: null })
+            const wishlist = reactive({ resource: null, wishlist_count: 0, status: false, isLoading: false })
             const pricing = reactive({ priced: '', data: [], selected: [] })
             const rating = reactive({ stats: 0, rating: [], rating_percentage: [] })
             const store = reactive({ store: [], categories: [], stats: [], rating: [] })
@@ -1278,7 +1283,7 @@
             const storeRecommendations = reactive({ items: [] })
             const recommendations = reactive({ items: [] })
 
-            const orderData = reactive({ quantity: 1, product_id: "", color_id: "", size_id: "", bundle_id: "", delivery_method_id: null, colorValue: null, sizeValue: null, bundleValue: null, colorActive: null, sizeActive: null, bundleActive: null, orderLoading: false, cartLoading: false, wishlistLoading: false })
+            const orderData = reactive({ quantity: 1, product_id: "", color_id: "", size_id: "", bundle_id: "", delivery_method_id: null, colorValue: null, sizeValue: null, bundleValue: null, colorActive: null, sizeActive: null, bundleActive: null, orderLoading: false, cartLoading: false })
             const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
@@ -1363,31 +1368,23 @@
             }
             const addToWishlist = () =>
             {
-                orderData.wishlistLoading = true
+                wishlist.isLoading = true
                 if ( authentication.isAuthenticated() )
                 {
-                    axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
-                    .then( response =>
+                    if ( wishlist.status === false )
                     {
-                        if ( response.data.status === 'Success' )
-                        {
-                            orderData.wishlistLoading = false
-                            modal.message = "A new item has been added to your Wish List";
-                            toggleAddToCartModal()
-                        }
-                        else
-                        {
-                            orderData.wishlistLoading = false
-                            console.log( response )
-                        }
-                    })
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }}}})
+                            .then( response => { if ( response.data.code === 201 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true; wishlist.wishlist_count = wishlist.wishlist_count + 1; wishlist.isLoading = false; modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal() } else { wishlist.isLoading = false } })
+                        console.log( wishlist.status )
+                    }
+                    else
+                    {
+                        axios({ method: 'DELETE', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + wishlist.resource, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.code === 204 ) { wishlist.resource = null; wishlist.status = false; wishlist.wishlist_count = wishlist.wishlist_count - 1; wishlist.isLoading = false } else { wishlist.isLoading = false }})
+                        console.log( wishlist.status )
+                    }
                 }
-                else
-                {
-                    orderData.wishlistLoading = false
-                    toggleSignInModal()
-                    loginData.afterLoginAction = addToWishlist
-                }
+                else { wishlist.isLoading = false; toggleSignInModal(); loginData.afterLoginAction = addToWishlist }
             }
             const followAction = () =>
             {
@@ -1465,6 +1462,7 @@
                     promotions.promotions = response.data.data.include.promotions;
                     faqs.faqs = response.data.data.include.faqs;
 
+                    wishlist.wishlist_count = response.data.data.wishlist;
                     product.currentImage = response.data.data.attributes.image;
                     pricing.priced = response.data.data.pricing.priced;
                     pricing.data = response.data.data.pricing.price_data[0];
@@ -1508,12 +1506,19 @@
                     if ( authentication.isAuthenticated() )
                     {
                         axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + response.data.data.include.store.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                            .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow"; console.log( response.data ); }})
+                            .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow" }})
                             .catch( error => { console.log( error.response ); follows.loading = false })
+                    }
+
+                    // Check wishlist
+                    if ( authentication.isAuthenticated() )
+                    {
+                        axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + response.data.data.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.code === 200 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true }})
                     }
                 })
             })
-            return { authentication, modal, tabs, product, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
+            return { authentication, modal, tabs, product, wishlist, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
         }
     }
 </script>
