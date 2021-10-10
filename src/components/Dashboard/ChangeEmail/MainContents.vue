@@ -90,7 +90,7 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'customers/' + authentication.state.user.attributes.resource_id + '?include=addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
+                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '?include=addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
                     .then( response =>
                     {
                         profile.attributes = response.data.data.attributes

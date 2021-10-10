@@ -15,7 +15,7 @@
 
                 <!-- Begin user icon -->
                 <button class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                    <img class="h-8 w-8 rounded-full" :src="files.userIconMale" alt=""> <span class="ml-1 font-bold text-gray-500 text-xs">Hi! {{ authentication.state.user.attributes.first_name }}</span>
+                    <img class="h-8 w-8 rounded-full" :src="files.userIconMale" alt=""> <span class="ml-1 font-bold text-gray-500 text-xs">Hi! {{ authentication.state.user.name }}</span>
                 </button>
                 <!-- End user icon -->
 
@@ -35,8 +35,8 @@
 
                         <!-- Begin user name/role -->
                         <div class="">
-                            <h3 class="text-sm font-bold">Hi! {{ authentication.state.user.attributes.first_name }}</h3>
-                            <p class="text-xs">{{ authentication.state.user.attributes.email }}</p>
+                            <h3 class="text-sm font-bold">Hi! {{ authentication.state.user.name }}</h3>
+                            <p class="text-xs">{{ authentication.state.user.email }}</p>
                         </div>
                         <!-- End user name/role -->
 

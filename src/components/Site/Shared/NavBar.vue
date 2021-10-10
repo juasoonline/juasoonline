@@ -72,8 +72,8 @@
 
                                     <!-- Begin user name/role -->
                                     <div class="">
-                                        <h3 class="text-sm font-bold text-gray-800">Hi! {{ authentication.state.user.attributes.first_name }}</h3>
-                                        <p class="text-xs text-gray-800">{{ authentication.state.user.attributes.email }}</p>
+                                        <h3 class="text-sm font-bold text-gray-800">Hi! {{ authentication.state.user.name }}</h3>
+                                        <p class="text-xs text-gray-800">{{ authentication.state.user.email }}</p>
                                     </div>
                                     <!-- End user name/role -->
 

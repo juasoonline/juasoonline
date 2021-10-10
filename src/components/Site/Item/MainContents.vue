@@ -158,7 +158,11 @@
                             <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
                             <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Please wait...</button>
 
-                            <button v-if="orderData.wishlistLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>12.10K</button>
+                            <button v-if="wishlist.isLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
+                                <svg v-if="wishlist.status === false" class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                <svg v-else class="mr-2 h-5 w-5 text-red-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                {{ wishlist.wishlist_count }}
+                            </button>
                             <button v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</button>
                         </div>
                         <!-- End action button -->
@@ -333,9 +337,9 @@
 
                                     <!-- Begin store stats -->
                                     <div class="my-2">
-                                        <p class="text-xs">95.7%<span class="text-gray-400 mx-2">Positive Feedback</span></p>
-                                        <p class="text-xs">230<span class="text-gray-400 mx-2">Items</span></p>
-                                        <p class="text-xs">230<span class="text-gray-400 mx-2">Followers</span></p>
+                                        <p class="text-xs">{{ store.rating.overall_rating }}<span class="text-gray-400 mx-2">Positive Feedback</span></p>
+                                        <p class="text-xs">{{ store.stats.items }}<span class="text-gray-400 mx-2">Items</span></p>
+                                        <p class="text-xs">{{ store.stats.followers }}<span class="text-gray-400 mx-2">Followers</span></p>
                                         <p class="text-xs my-2">
                                             <router-link to="/messages" class="flex items-center hover:text-juaso-primary cursor-pointer ">
                                                 <svg class="w-5 h-5 text-juaso-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
@@ -348,7 +352,10 @@
                                     <!-- Begin call to action -->
                                     <div class="mt-3 flex justify-between items-center">
                                         <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
-                                        <button class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Follow</button>
+                                        <button @click="followAction()" class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">
+                                            <span v-if="follows.loading === true">Loading</span>
+                                            <span v-else>{{ follows.status }}</span>
+                                        </button>
                                     </div>
                                     <!-- End call to action -->
 
@@ -364,7 +371,7 @@
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.pricing.price_data[0].sales_price }} </router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -376,7 +383,7 @@
                                                     <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.pricing.price_data[0].sales_price }} </router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -388,7 +395,7 @@
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
                                                 <div class="m-3 text-center">
-                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                                    <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.pricing.price_data[0].sales_price }} </router-link></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1229,7 +1236,7 @@
 </template>
 
 <script>
-    import { inject, onBeforeMount, reactive } from "vue";
+    import { inject, onBeforeMount, reactive, watchEffect } from "vue";
 
     import router from "../../../router";
     import axios from "axios";
@@ -1256,9 +1263,10 @@
             const tabs = reactive({ openTab: 1 })
 
             const product = reactive({ item: [], currentImage: null })
+            const wishlist = reactive({ resource: null, wishlist_count: 0, status: false, isLoading: false })
             const pricing = reactive({ priced: '', data: [], selected: [] })
             const rating = reactive({ stats: 0, rating: [], rating_percentage: [] })
-            const store = reactive({ store: [], categories: [] })
+            const store = reactive({ store: [], categories: [], stats: [], rating: [] })
             const specifications = reactive({ specifications: [] })
             const images = reactive({ images: [] })
             const colors = reactive({ colors: [] })
@@ -1269,22 +1277,23 @@
             const faqs = reactive({ faqs: [] })
             const promotions = reactive({ promotions: [] })
 
+            const follows = reactive({ status: 'Follow', loading: false })
             const deliveryFees = reactive({ fees: [], current: [] })
             const storeItems = reactive({ items: [] })
             const storeRecommendations = reactive({ items: [] })
             const recommendations = reactive({ items: [] })
 
-            const orderData = reactive({ product_id: "", color_id: "", colorValue: null, size_id: "", sizeValue: null, bundle_id: "", bundleValue: null, quantity: 1, colorActive: null, sizeActive: null, bundleActive: null, orderLoading: false, cartLoading: false, wishlistLoading: false })
+            const orderData = reactive({ quantity: 1, product_id: "", color_id: "", size_id: "", bundle_id: "", delivery_method_id: null, colorValue: null, sizeValue: null, bundleValue: null, colorActive: null, sizeActive: null, bundleActive: null, orderLoading: false, cartLoading: false })
             const loginData = reactive({ email: "", password: "", afterLoginAction: null, isLoading: false })
 
             const makeOrder = () =>
             {
                 orderData.orderLoading = true
-                if ( validateQuantity() && validateColor() && validateSize() )
+                if ( validateQuantity() && validateColor() && validateSize() && validateBundle() )
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
                         .then( response =>
                         {
                             if ( response.data.status === 'Success' )
@@ -1316,30 +1325,34 @@
                     notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
             }
-
             const addToCart = () =>
             {
                 orderData.cartLoading = true
-                if ( validateQuantity() && validateColor() && validateSize() )
+                if ( validateQuantity() && validateColor() && validateSize() && validateBundle() )
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/carts', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Cart', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }}}})
                         .then( response =>
                         {
-                            if ( response.data.status === 'Success' )
+                            if ( response.data.code === 201 )
                             {
                                 orderData.cartLoading = false
                                 modal.message = "A new item has been added to your Shopping Cart";
                                 toggleAddToCartModal()
                             }
+                            else if ( response.data.code === 401 )
+                            {
+                                orderData.cartLoading = false
+                                toggleSignInModal()
+                                loginData.afterLoginAction = addToCart
+                            }
                             else
                             {
                                 orderData.cartLoading = false
-                                console.log( response )
                             }
                         })
-                        .catch( error => { console.log( error.response ) })
+                        .catch( error => { error.response })
                     }
                     else
                     {
@@ -1353,38 +1366,55 @@
                     notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Please provide the missing information first</p>', duration: 5000, ripple: false, dismissible: true })
                 }
             }
-
             const addToWishlist = () =>
             {
-                orderData.wishlistLoading = true
+                wishlist.isLoading = true
                 if ( authentication.isAuthenticated() )
                 {
-                    axios({ method: 'POST', url: 'customers/' + authentication.state.user.attributes.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
-                    .then( response =>
+                    if ( wishlist.status === false )
                     {
-                        if ( response.data.status === 'Success' )
-                        {
-                            orderData.wishlistLoading = false
-                            modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal()
-                        }
-                        else
-                        {
-                            orderData.wishlistLoading = false
-                            console.log( response )
-                        }
-                    })
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }}}})
+                            .then( response => { if ( response.data.code === 201 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true; wishlist.wishlist_count = wishlist.wishlist_count + 1; wishlist.isLoading = false; modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal() } else { wishlist.isLoading = false } })
+                    }
+                    else
+                    {
+                        axios({ method: 'DELETE', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + wishlist.resource, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.code === 204 ) { wishlist.resource = null; wishlist.status = false; wishlist.wishlist_count = wishlist.wishlist_count - 1; wishlist.isLoading = false } else { wishlist.isLoading = false }})
+                    }
+                }
+                else { wishlist.isLoading = false; toggleSignInModal(); loginData.afterLoginAction = addToWishlist }
+            }
+            const followAction = () =>
+            {
+                follows.loading = true
+                if ( authentication.isAuthenticated() )
+                {
+                    if ( follows.status === "Follow" )
+                    {
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + store.store.resource_id + '/follow', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.status === 'Success' ) { follows.loading = false; follows.status = "Following" } else { follows.loading = false; console.log( response.data ); }})
+                            .catch( error => { console.log( error.response ); follows.loading = false })
+                    }
+                    else
+                    {
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + store.store.resource_id + '/unfollow', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.status === 'Success' ) { follows.loading = false; follows.status = "Follow" } else { follows.loading = false; console.log( response.data ); }})
+                            .catch( error => { console.log( error.response ); follows.loading = false })
+                    }
                 }
                 else
                 {
-                    orderData.wishlistLoading = false
+                    follows.loading = false
                     toggleSignInModal()
-                    loginData.afterLoginAction = addToWishlist
+                    loginData.afterLoginAction = followAction
                 }
             }
 
             const validateQuantity = () => { return orderData.quantity > 0 }
             const validateColor = () => { if ( colors.colors.length > 0 && orderData.color_id !== "" ) { return true }}
             const validateSize = () => { if ( sizes.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
+            const validateBundle = () => { if ( bundles.bundles.length > 0 && orderData.bundle_id !== "" ) { return true }}
+            watchEffect(() => wishlist.status )
 
             const signIn = () =>
             {
@@ -1431,6 +1461,7 @@
                     promotions.promotions = response.data.data.include.promotions;
                     faqs.faqs = response.data.data.include.faqs;
 
+                    wishlist.wishlist_count = response.data.data.wishlist;
                     product.currentImage = response.data.data.attributes.image;
                     pricing.priced = response.data.data.pricing.priced;
                     pricing.data = response.data.data.pricing.price_data[0];
@@ -1445,23 +1476,23 @@
                         rating.stats = { average_rating: 0, total_rating: 0 }
                     }
 
-                    // Get store categories
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products', headers: {} })
-                      .then( response => { storeItems.items = response.data.data })
+                    // Get store stats
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats' })
+                      .then( response => { store.stats = response.data.data.attributes[0]; store.rating = response.data.data.ratings[0]; })
                       .catch( error => { console.log(error.response) })
 
                     // Get store items
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products', headers: {} })
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products' })
                       .then( response => { storeItems.items = response.data.data })
                       .catch( error => { console.log(error.response) })
 
                     // Get store recommendations
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations', headers: {} })
+                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations' })
                       .then( response => { storeRecommendations.items = response.data.data })
                       .catch( error => { console.log( error.response ) })
 
                     // Get general recommendations
-                    axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', headers: {}, data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                    axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
                       .then( response => { recommendations.items = response.data.data })
                       .catch( error => { console.log(error.response) })
 
@@ -1469,9 +1500,24 @@
                     axios({ method: 'GET', url: 'juaso/delivery-methods', headers: {}})
                       .then( response => { deliveryFees.fees = response.data.data; deliveryFees.current = response.data.data[0]['attributes'] })
                       .catch( error => { console.log(error.response) })
+
+                    // Check follow
+                    if ( authentication.isAuthenticated() )
+                    {
+                        axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + response.data.data.include.store.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow" }})
+                            .catch( error => { console.log( error.response ); follows.loading = false })
+                    }
+
+                    // Check wishlist
+                    if ( authentication.isAuthenticated() )
+                    {
+                        axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + response.data.data.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                            .then( response => { if ( response.data.code === 200 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true }})
+                    }
                 })
             })
-            return { authentication, modal, tabs, product, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
+            return { authentication, modal, tabs, product, wishlist, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
         }
     }
 </script>
