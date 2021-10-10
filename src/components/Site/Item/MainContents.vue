@@ -1236,7 +1236,7 @@
 </template>
 
 <script>
-    import { inject, onBeforeMount, reactive } from "vue";
+    import { inject, onBeforeMount, reactive, watchEffect } from "vue";
 
     import router from "../../../router";
     import axios from "axios";
@@ -1375,13 +1375,11 @@
                     {
                         axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }}}})
                             .then( response => { if ( response.data.code === 201 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true; wishlist.wishlist_count = wishlist.wishlist_count + 1; wishlist.isLoading = false; modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal() } else { wishlist.isLoading = false } })
-                        console.log( wishlist.status )
                     }
                     else
                     {
                         axios({ method: 'DELETE', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + wishlist.resource, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
                             .then( response => { if ( response.data.code === 204 ) { wishlist.resource = null; wishlist.status = false; wishlist.wishlist_count = wishlist.wishlist_count - 1; wishlist.isLoading = false } else { wishlist.isLoading = false }})
-                        console.log( wishlist.status )
                     }
                 }
                 else { wishlist.isLoading = false; toggleSignInModal(); loginData.afterLoginAction = addToWishlist }
@@ -1416,6 +1414,7 @@
             const validateColor = () => { if ( colors.colors.length > 0 && orderData.color_id !== "" ) { return true }}
             const validateSize = () => { if ( sizes.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
             const validateBundle = () => { if ( bundles.bundles.length > 0 && orderData.bundle_id !== "" ) { return true }}
+            watchEffect(() => wishlist.status )
 
             const signIn = () =>
             {
