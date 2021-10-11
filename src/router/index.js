@@ -35,6 +35,7 @@ const routes =
     { path: '/customer-service', name: 'CustomerService', component: () => import( '../components/Site/CustomerService/CustomerService' ) },
     { path: '/seller-information', name: 'SellerInformation', component: () => import( '../components/Site/SellerInformation/SellerInformation' ) },
     { path: '/product-recalls', name: 'ProductRecalls', component: () => import( '../components/Site/ProductRecalls/ProductRecalls' ) },
+    { path: '/404', name: '404', component: () => import( '../components/Site/404/404' ) },
     { path: '/faq', name: 'Faq', component: () => import( '../components/Site/Faq/Faq' ) },
     { path: '/contacts', name: 'Contacts', component: () => import( '../components/Site/Contacts/Contacts' ) },
     { path: '/user-agreement', name: 'UserAgreement', component: () => import( '../components/Site/UserAgreement/UserAgreement' ) },

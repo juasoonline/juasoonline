@@ -34,15 +34,16 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import MainContents from "@/components/Site/Item/MainContents";
+    import MainContents from "@/components/Site/404/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
 
     export default
     {
-        name: "Item",
+        name: 'Home',
         components: { TopAds, NavBar, MainHeader, MainContents, MainFooter }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
 </style>

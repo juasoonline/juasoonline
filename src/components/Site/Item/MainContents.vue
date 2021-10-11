@@ -1543,74 +1543,82 @@
                 axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions,faqs&ratings=ratings', headers: {} })
                 .then( response =>
                 {
-                    product.item = response.data.data.attributes;
-                    store.store = response.data.data.include.store.attributes;
-                    brand.brand = response.data.data.include.brand.attributes;
-                    store.categories = response.data.data.include.store.include.categories;
-                    specifications.specifications = response.data.data.include.specifications;
-                    images.images = response.data.data.include.images;
-                    colors.colors = response.data.data.include.colors;
-                    sizes.sizes = response.data.data.include.sizes;
-                    bundles.bundles = response.data.data.include.bundles;
-                    overviews.overviews = response.data.data.include.overviews;
-                    reviews.reviews = response.data.data.include.reviews;
-                    promotions.promotions = response.data.data.include.promotions;
-                    faqs.faqs = response.data.data.include.faqs;
-
-                    wishlist.wishlist_count = response.data.data.wishlist;
-                    product.currentImage = response.data.data.attributes.image;
-                    pricing.priced = response.data.data.pricing.priced;
-                    pricing.data = response.data.data.pricing.price_data[0];
-                    if ( response.data.data.ratings.length > 0 )
+                    if ( response.data.code === 200 )
                     {
-                        rating.stats = response.data.data.ratings[0];
-                        rating.rating = response.data.data.ratings[1].rating;
-                        rating.rating_percentage = response.data.data.ratings[2].rating_percentage;
+                        product.item = response.data.data.attributes;
+                        store.store = response.data.data.include.store.attributes;
+                        brand.brand = response.data.data.include.brand.attributes;
+                        store.categories = response.data.data.include.store.include.categories;
+                        specifications.specifications = response.data.data.include.specifications;
+                        images.images = response.data.data.include.images;
+                        colors.colors = response.data.data.include.colors;
+                        sizes.sizes = response.data.data.include.sizes;
+                        bundles.bundles = response.data.data.include.bundles;
+                        overviews.overviews = response.data.data.include.overviews;
+                        reviews.reviews = response.data.data.include.reviews;
+                        promotions.promotions = response.data.data.include.promotions;
+                        faqs.faqs = response.data.data.include.faqs;
+
+                        wishlist.wishlist_count = response.data.data.wishlist;
+                        product.currentImage = response.data.data.attributes.image;
+                        pricing.priced = response.data.data.pricing.priced;
+                        pricing.data = response.data.data.pricing.price_data[0];
+                        if ( response.data.data.ratings.length > 0 )
+                        {
+                            rating.stats = response.data.data.ratings[0];
+                            rating.rating = response.data.data.ratings[1].rating;
+                            rating.rating_percentage = response.data.data.ratings[2].rating_percentage;
+                        }
+                        else
+                        {
+                            rating.stats = { average_rating: 0, total_rating: 0 }
+                        }
+
+                        // Get store stats
+                        axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats' })
+                            .then( response => { store.stats = response.data.data.attributes[0]; store.rating = response.data.data.ratings[0]; })
+                            .catch( error => { console.log(error.response) })
+
+                        // Get store items
+                        axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products' })
+                            .then( response => { storeItems.items = response.data.data })
+                            .catch( error => { console.log(error.response) })
+
+                        // Get store recommendations
+                        axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations' })
+                            .then( response => { storeRecommendations.items = response.data.data })
+                            .catch( error => { console.log( error.response ) })
+
+                        // Get general recommendations
+                        axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                            .then( response => { recommendations.items = response.data.data })
+                            .catch( error => { console.log(error.response) })
+
+                        // Get delivery fees
+                        axios({ method: 'GET', url: 'juaso/delivery-methods', headers: {}})
+                            .then( response => { deliveryFees.fees = response.data.data; deliveryFees.current = response.data.data[0]['attributes'] })
+                            .catch( error => { console.log(error.response) })
+
+                        // Check follow
+                        if ( authentication.isAuthenticated() )
+                        {
+                            axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + response.data.data.include.store.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                                .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow" }})
+                                .catch( error => { console.log( error.response ); follows.loading = false })
+                        }
+
+                        // Check wishlist
+                        if ( authentication.isAuthenticated() )
+                        {
+                            axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + response.data.data.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                                .then( response => { if ( response.data.code === 200 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true }})
+                        }
                     }
                     else
                     {
-                        rating.stats = { average_rating: 0, total_rating: 0 }
+                        router.replace('/404')
                     }
 
-                    // Get store stats
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats' })
-                      .then( response => { store.stats = response.data.data.attributes[0]; store.rating = response.data.data.ratings[0]; })
-                      .catch( error => { console.log(error.response) })
-
-                    // Get store items
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products' })
-                      .then( response => { storeItems.items = response.data.data })
-                      .catch( error => { console.log(error.response) })
-
-                    // Get store recommendations
-                    axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations' })
-                      .then( response => { storeRecommendations.items = response.data.data })
-                      .catch( error => { console.log( error.response ) })
-
-                    // Get general recommendations
-                    axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
-                      .then( response => { recommendations.items = response.data.data })
-                      .catch( error => { console.log(error.response) })
-
-                    // Get delivery fees
-                    axios({ method: 'GET', url: 'juaso/delivery-methods', headers: {}})
-                      .then( response => { deliveryFees.fees = response.data.data; deliveryFees.current = response.data.data[0]['attributes'] })
-                      .catch( error => { console.log(error.response) })
-
-                    // Check follow
-                    if ( authentication.isAuthenticated() )
-                    {
-                        axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + response.data.data.include.store.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                            .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow" }})
-                            .catch( error => { console.log( error.response ); follows.loading = false })
-                    }
-
-                    // Check wishlist
-                    if ( authentication.isAuthenticated() )
-                    {
-                        axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + response.data.data.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                            .then( response => { if ( response.data.code === 200 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true }})
-                    }
                 })
             })
             return { authentication, modal, tabs, product, wishlist, pricing, rating, brand, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
