@@ -353,7 +353,7 @@
                                     <div class="mt-3 flex justify-between items-center">
                                         <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                                         <button @click="followAction()" class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">
-                                            <span v-if="follows.loading === true">Loading</span>
+                                            <span v-if="follows.isLoading === true">Loading</span>
                                             <span v-else>{{ follows.status }}</span>
                                         </button>
                                     </div>
@@ -1236,7 +1236,7 @@
 </template>
 
 <script>
-    import { inject, onBeforeMount, reactive, watchEffect } from "vue";
+    import { inject, onBeforeMount, reactive } from "vue";
 
     import router from "../../../router";
     import axios from "axios";
@@ -1263,7 +1263,6 @@
             const tabs = reactive({ openTab: 1 })
 
             const product = reactive({ item: [], currentImage: null })
-            const wishlist = reactive({ resource: null, wishlist_count: 0, status: false, isLoading: false })
             const pricing = reactive({ priced: '', data: [], selected: [] })
             const rating = reactive({ stats: 0, rating: [], rating_percentage: [] })
             const store = reactive({ store: [], categories: [], stats: [], rating: [] })
@@ -1277,7 +1276,8 @@
             const faqs = reactive({ faqs: [] })
             const promotions = reactive({ promotions: [] })
 
-            const follows = reactive({ status: 'Follow', loading: false })
+            const wishlist = reactive({ resource: "", wishlist_count: 0, status: false, isLoading: false })
+            const follows = reactive({ status: 'Follow', isLoading: false })
             const deliveryFees = reactive({ fees: [], current: [] })
             const storeItems = reactive({ items: [] })
             const storeRecommendations = reactive({ items: [] })
@@ -1374,37 +1374,35 @@
                     if ( wishlist.status === false )
                     {
                         axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/wishlists', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Wishlist', attributes: { product_id: product.item.resource_id }}}})
-                            .then( response => { if ( response.data.code === 201 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true; wishlist.wishlist_count = wishlist.wishlist_count + 1; wishlist.isLoading = false; modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal() } else { wishlist.isLoading = false } })
+                            .then( response => { if ( response.data.code === 201 ) { wishlist.resource = response.data.data.attributes.resource_id; wishlist.status = true; wishlist.wishlist_count = wishlist.wishlist_count + 1; wishlist.isLoading = false; modal.message = "A new item has been added to your Wish List"; toggleAddToCartModal() } else { wishlist.isLoading = false } })
                     }
                     else
                     {
                         axios({ method: 'DELETE', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + wishlist.resource, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                            .then( response => { if ( response.data.code === 204 ) { wishlist.resource = null; wishlist.status = false; wishlist.wishlist_count = wishlist.wishlist_count - 1; wishlist.isLoading = false } else { wishlist.isLoading = false }})
+                            .then( response => { if ( response.data.code === 204 ) { wishlist.resource = ""; wishlist.status = false; wishlist.wishlist_count = wishlist.wishlist_count - 1; wishlist.isLoading = false } else { wishlist.isLoading = false }})
                     }
                 }
                 else { wishlist.isLoading = false; toggleSignInModal(); loginData.afterLoginAction = addToWishlist }
             }
             const followAction = () =>
             {
-                follows.loading = true
+                follows.isLoading = true
                 if ( authentication.isAuthenticated() )
                 {
                     if ( follows.status === "Follow" )
                     {
                         axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + store.store.resource_id + '/follow', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                            .then( response => { if ( response.data.status === 'Success' ) { follows.loading = false; follows.status = "Following" } else { follows.loading = false; console.log( response.data ); }})
-                            .catch( error => { console.log( error.response ); follows.loading = false })
+                            .then( response => { if ( response.data.status === 'Success' ) { follows.isLoading = false; follows.status = "Following" } else { follows.isLoading = false; console.log( response.data ); }})
                     }
                     else
                     {
                         axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + store.store.resource_id + '/unfollow', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                            .then( response => { if ( response.data.status === 'Success' ) { follows.loading = false; follows.status = "Follow" } else { follows.loading = false; console.log( response.data ); }})
-                            .catch( error => { console.log( error.response ); follows.loading = false })
+                            .then( response => { if ( response.data.status === 'Success' ) { follows.isLoading = false; follows.status = "Follow" } else { follows.isLoading = false; }})
                     }
                 }
                 else
                 {
-                    follows.loading = false
+                    follows.isLoading = false
                     toggleSignInModal()
                     loginData.afterLoginAction = followAction
                 }
@@ -1414,7 +1412,6 @@
             const validateColor = () => { if ( colors.colors.length > 0 && orderData.color_id !== "" ) { return true }}
             const validateSize = () => { if ( sizes.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
             const validateBundle = () => { if ( bundles.bundles.length > 0 && orderData.bundle_id !== "" ) { return true }}
-            watchEffect(() => wishlist.status )
 
             const signIn = () =>
             {
