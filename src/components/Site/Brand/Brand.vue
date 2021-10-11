@@ -20,9 +20,7 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <suspense>
-            <main-footer></main-footer>
-        </suspense>
+        <main-footer></main-footer>
         <!-- End footer -->
 
     </div>
@@ -34,12 +32,12 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import MainContents from "@/components/Site/Item/MainContents";
+    import MainContents from "@/components/Site/AboutJuasoonline/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
 
     export default
     {
-        name: "Item",
+        name: "Store",
         components: { TopAds, NavBar, MainHeader, MainContents, MainFooter }
     }
 </script>
