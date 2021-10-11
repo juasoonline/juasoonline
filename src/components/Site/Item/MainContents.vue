@@ -1408,10 +1408,25 @@
                 }
             }
 
-            const validateQuantity = () => { return orderData.quantity > 0 }
-            const validateColor = () => { if ( colors.colors.length > 0 && orderData.color_id !== "" ) { return true }}
-            const validateSize = () => { if ( sizes.sizes.length > 0 && orderData.size_id !== "" ) { return true }}
-            const validateBundle = () => { if ( bundles.bundles.length > 0 && orderData.bundle_id !== "" ) { return true }}
+            const validateQuantity = () =>
+            {
+                return orderData.quantity > 0
+            }
+            const validateColor = () =>
+            {
+                if ( colors.colors.length <= 0 ){ return true }
+                else if ( colors.colors.length > 0 && orderData.color_id !== "" ){ return true }
+            }
+            const validateSize = () =>
+            {
+                if ( sizes.sizes.length <= 0 ){ return true }
+                else if ( sizes.sizes.length > 0 && orderData.size_id !== "" ){ return true }
+            }
+            const validateBundle = () =>
+            {
+                if ( bundles.bundles.length <= 0 ){ return true }
+                else if ( bundles.bundles.length > 0 && orderData.bundle_id !== "" ){ return true }
+            }
 
             const signIn = () =>
             {
@@ -1434,6 +1449,7 @@
             const chooseBundle = ( bundle, id, resource_id ) => { orderData.bundleValue = bundle; orderData.bundleActive = id; orderData.bundle_id = resource_id; if ( pricing.priced === 'Bundle' ){ pricing.selected = bundles.bundles[id]['attributes'] } }
             const quantityCounter = ( operator ) => { if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 } else { orderData.quantity = orderData.quantity -1 }}
             const changeImage = ( image ) => { product.currentImage = image }
+
             const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
             const toggleSignInModal = () => { modal.showSignInModal = !modal.showSignInModal; }
             const toggleAddToCartModal = () => { modal.showAddToCartModal = !modal.showAddToCartModal; }
