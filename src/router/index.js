@@ -19,7 +19,7 @@ const routes =
     { path: '/edit-address', name: 'EditAddress', component: () => import( '../components/Dashboard/EditAddress/EditAddress' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
 
     // Buyers routes
-    { path: '/order/:order_id/confirmation', name: 'OrderConfirmation', component: () => import( '../components/Site/Order/OrderConfirmation/OrderConfirmation' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/order/:order_id/confirmation', name: 'OrderConfirmation', component: () => import( '../components/Site/Order/OrderConfirmation/OrderConfirmation' ), beforeEnter:( to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     // { path: '/orders/confirmation', name: 'OrdersConfirmation', component: () => import( '../components/Site/OrderConfirmation/OrdersConfirmation' ) }, beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
 
     // Public routes
@@ -29,6 +29,7 @@ const routes =
     { path: '/item/:item', name: 'Item', component: () => import( '../components/Site/Item/Item' ) },
     { path: '/stores', name: 'Stores', component: () => import( '../components/Site/Stores/Stores' ) },
     { path: '/store/:store', name: 'Store', component: () => import( '../components/Site/Store/Store' ) },
+    { path: '/brand/:brand', name: 'Brand', component: () => import( '../components/Site/Brand/Brand' ) },
     { path: '/buyer-protection', name: 'BuyerProtection', component: () => import( '../components/Site/BuyerProtection/BuyerProtection' ) },
     { path: '/help', name: 'Help', component: () => import( '../components/Site/Help/Help' ) },
     { path: '/customer-service', name: 'CustomerService', component: () => import( '../components/Site/CustomerService/CustomerService' ) },

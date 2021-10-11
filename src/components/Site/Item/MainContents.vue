@@ -31,7 +31,7 @@
                             <h2 class="text-lg font-light leading-6 mb-3">{{ product.item.name }}</h2>
                             <div class="text-xs font-light mt-1 flex items-center">
                                 <span class="mr-4 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ store.store.doing_business_as }}</router-link></span>
-                                <span class="mr-4 font-bold border-r pr-3">Brand: <a href="#" class="hover:text-red-500">{{ product.item.brand }}</a></span>
+                                <span class="mr-4 font-bold border-r pr-3">Brand: <router-link :to="{ name: 'Brand', params: { brand: brand.brand.slug }}" class="hover:text-red-500">{{  brand.brand.name }}</router-link></span>
                                 <span class="mr-4 hover:text-red-500 flex">
                                       <div class="text-sm text-gray-500 flex items-center">
                                           <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
@@ -304,10 +304,10 @@
                                     <div class="font-bold text-sm mt-1.5">{{ item.attributes.sales_price }}</div>
                                     <div class="flex text-xs justify-between text-gray-400 mb-5">
                                         <p class="flex inline-block text-grey-darker items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                                             </svg>
-                                            <span>948</span>
+                                            <span>{{ item.attributes.average_rating }}</span>
                                         </p>
                                         <p class="inline-block text-grey-darker">{{ item.attributes.total_sold }} Sold</p>
                                     </div>
@@ -624,12 +624,31 @@
                                                 <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
                                             </router-link>
                                         </span>
-                                        <p class="font-bold block text-xs my-0.5">
-                                            <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover hover:text-red-500">
-                                                 {{ item.attributes.sales_price }}
-                                                <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+
+                                        <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
+                                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                                {{ item.pricing.price_data[0].sales_price }}
+                                                <del class="ml-2 text-xxxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
                                             </router-link>
                                         </p>
+                                        <p v-else class="font-bold block text-xs my-0.5">
+                                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                                {{ item.pricing.price_data[0].price_range }}
+                                            </router-link>
+                                        </p>
+
+                                        <div class="flex items-center justify-between">
+                                            <p class="block text-xs my-0.5 flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                                </svg>
+                                                <span>{{ item.attributes.average_rating }}</span>
+                                            </p>
+                                            <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="hover:text-red-500">
+                                                <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+                                            </router-link>
+                                        </div>
+
                                         <span class="block text-gray-500 text-xxs"></span>
                                     </div>
                                 </div>
@@ -663,12 +682,31 @@
                                                 <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
                                             </router-link>
                                         </span>
-                                        <p class="font-bold block text-xs my-0.5">
-                                            <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="w-full object-cover hover:text-red-500">
-                                                 {{ item.attributes.sales_price }}
-                                                <span class="ml-2 text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+
+                                        <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
+                                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                                {{ item.pricing.price_data[0].sales_price }}
+                                                <del class="ml-2 text-xxxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
                                             </router-link>
                                         </p>
+                                        <p v-else class="font-bold block text-xs my-0.5">
+                                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                                {{ item.pricing.price_data[0].price_range }}
+                                            </router-link>
+                                        </p>
+
+                                        <div class="flex items-center justify-between">
+                                            <p class="block text-xs my-0.5 flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                                </svg>
+                                                <span>{{ item.attributes.average_rating }}</span>
+                                            </p>
+                                            <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="hover:text-red-500">
+                                                <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+                                            </router-link>
+                                        </div>
+
                                         <span class="block text-gray-500 text-xxs"></span>
                                     </div>
                                 </div>
@@ -1266,6 +1304,7 @@
             const pricing = reactive({ priced: '', data: [], selected: [] })
             const rating = reactive({ stats: 0, rating: [], rating_percentage: [] })
             const store = reactive({ store: [], categories: [], stats: [], rating: [] })
+            const brand = reactive({ brand: [] })
             const specifications = reactive({ specifications: [] })
             const images = reactive({ images: [] })
             const colors = reactive({ colors: [] })
@@ -1444,17 +1483,60 @@
                 })
             }
 
-            const chooseColor = ( color, id, resource_id ) => { orderData.colorValue = color; orderData.colorActive = id; orderData.color_id = resource_id; if ( pricing.priced === 'Color' ){ pricing.selected = colors.colors[id]['attributes'] } }
-            const chooseSize = ( size, id, resource_id ) => { orderData.sizeValue = size; orderData.sizeActive = id; orderData.size_id = resource_id; if ( pricing.priced === 'Size' ){ pricing.selected = sizes.sizes[id]['attributes'] } }
-            const chooseBundle = ( bundle, id, resource_id ) => { orderData.bundleValue = bundle; orderData.bundleActive = id; orderData.bundle_id = resource_id; if ( pricing.priced === 'Bundle' ){ pricing.selected = bundles.bundles[id]['attributes'] } }
-            const quantityCounter = ( operator ) => { if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 } else { orderData.quantity = orderData.quantity -1 }}
-            const changeImage = ( image ) => { product.currentImage = image }
+            const chooseColor = ( color, id, resource_id ) =>
+            {
+                orderData.colorValue = color;
+                orderData.colorActive = id;
+                orderData.color_id = resource_id;
 
-            const toggleTabs = ( tabNumber ) => { tabs.openTab = tabNumber }
-            const toggleSignInModal = () => { modal.showSignInModal = !modal.showSignInModal; }
-            const toggleAddToCartModal = () => { modal.showAddToCartModal = !modal.showAddToCartModal; }
-            const toggleDeliveryOptionsModal = () => { modal.showDeliveryOptionsModal = !modal.showDeliveryOptionsModal; }
-            const selectDeliveryOption = ( option ) => { deliveryFees.current = deliveryFees.fees[option]['attributes']; }
+                if ( pricing.priced === 'Color' ){ pricing.selected = colors.colors[id]['attributes']}
+            }
+            const chooseSize = ( size, id, resource_id ) =>
+            {
+                orderData.sizeValue = size;
+                orderData.sizeActive = id;
+                orderData.size_id = resource_id;
+
+                if ( pricing.priced === 'Size' ){ pricing.selected = sizes.sizes[id]['attributes']}
+            }
+            const chooseBundle = ( bundle, id, resource_id ) =>
+            {
+                orderData.bundleValue = bundle;
+                orderData.bundleActive = id;
+                orderData.bundle_id = resource_id;
+
+                if ( pricing.priced === 'Bundle' ){ pricing.selected = bundles.bundles[id]['attributes'] }
+            }
+            const quantityCounter = ( operator ) =>
+            {
+                if ( operator === '+' ){ orderData.quantity = orderData.quantity +1 }
+                else { orderData.quantity = orderData.quantity -1 }
+            }
+            const changeImage = ( image ) =>
+            {
+                product.currentImage = image
+            }
+
+            const toggleTabs = ( tabNumber ) =>
+            {
+                tabs.openTab = tabNumber
+            }
+            const toggleSignInModal = () =>
+            {
+                modal.showSignInModal = !modal.showSignInModal;
+            }
+            const toggleAddToCartModal = () =>
+            {
+                modal.showAddToCartModal = !modal.showAddToCartModal;
+            }
+            const toggleDeliveryOptionsModal = () =>
+            {
+                modal.showDeliveryOptionsModal = !modal.showDeliveryOptionsModal;
+            }
+            const selectDeliveryOption = ( option ) =>
+            {
+                deliveryFees.current = deliveryFees.fees[option]['attributes'];
+            }
 
             onBeforeMount(() =>
             {
@@ -1463,6 +1545,7 @@
                 {
                     product.item = response.data.data.attributes;
                     store.store = response.data.data.include.store.attributes;
+                    brand.brand = response.data.data.include.brand.attributes;
                     store.categories = response.data.data.include.store.include.categories;
                     specifications.specifications = response.data.data.include.specifications;
                     images.images = response.data.data.include.images;
@@ -1530,7 +1613,7 @@
                     }
                 })
             })
-            return { authentication, modal, tabs, product, wishlist, pricing, rating, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
+            return { authentication, modal, tabs, product, wishlist, pricing, rating, brand, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
         }
     }
 </script>
