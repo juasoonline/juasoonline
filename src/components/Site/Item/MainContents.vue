@@ -1332,10 +1332,10 @@
                 {
                     if ( authentication.isAuthenticated() )
                     {
-                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id }, relationships: { customer: { customer_id: authentication.state.user.id }}}}})
+                        axios({ method: 'POST', url: 'customers/' + authentication.state.user.resource_id + '/orders', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: { data: { type: 'Order', attributes: { product_id: product.item.resource_id, quantity: orderData.quantity, color_id: orderData.color_id, size_id: orderData.size_id, bundle_id: orderData.bundle_id, delivery_method_id: deliveryFees.current.resource_id }}}})
                         .then( response =>
                         {
-                            if ( response.data.status === 'Success' )
+                            if ( response.data.code === 201 )
                             {
                                 orderData.orderLoading = false
                                 router.push({ name: 'OrderConfirmation', params: { order_id: response.data.data.attributes.resource_id }});
@@ -1621,6 +1621,7 @@
 
                 })
             })
+
             return { authentication, modal, tabs, product, wishlist, pricing, rating, brand, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
         }
     }
@@ -1644,7 +1645,6 @@
     .ps-table thead > tr > th { font-family: "Work Sans", sans-serif; font-weight: 700; color: #515356; text-transform: uppercase; border-bottom: 1px solid #e5e7eb; }
     .ps-table tbody > tr > td { vertical-align: middle; padding: 10px; border: 1px solid #e5e7eb; color: #666; }
     .ps-table--specification tbody tr td:first-child { background-color: #f4f4f4; font-weight: 500; color: #000; width: 200px; }
-
 
     .animated { -webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-fill-mode: both; animation-fill-mode: both; }
     .animated.faster { -webkit-animation-duration: 500ms; animation-duration: 500ms; }
