@@ -5,6 +5,7 @@ const routes =
 [
     // User protected routes
     { path: '/register', name: 'Register', component: () => import( '../components/Dashboard/Register/Register' ) },
+    { path: '/code/resend', name: 'Resend', component: () => import( '../components/Dashboard/Resend/Resend' ) },
     { path: '/login', name: 'Login', component: () => import( '../components/Dashboard/Login/login' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Account' }); } else { next() } } },
     { path: '/forgot-password', name: 'ForgotPassword', component: () => import( '../components/Dashboard/ForgotPassword/ForgotPassword' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Account' }); } else { next() } } },
     { path: '/cart', name: 'Cart', component: () => import( '../components/Dashboard/Cart/Cart' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
