@@ -179,10 +179,10 @@
             const createAccount = () =>
             {
                 loader.isLoading = true
-                axios( { method: 'POST', url: 'customers/auth/registration', headers: {}, data: { data: { type: "Customer", attributes: { first_name: accountData.first_name, last_name: accountData.last_name, mobile_phone: accountData.mobile_phone, email: accountData.email, password: accountData.password } } } })
+                axios( { method: 'POST', url: 'customers/authentication/registration', headers: {}, data: { data: { type: "Customer", attributes: { first_name: accountData.first_name, last_name: accountData.last_name, mobile_phone: accountData.mobile_phone, email: accountData.email, password: accountData.password } } } })
                     .then( response =>
                     {
-                        if ( response.data.status === "Success" )
+                        if ( response.data.code === 201 )
                         {
                             accountData.verification = true
                             notification.success({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">SUCCESS!</b><p class="text-xxs leading-4">Account created. Check your email for verification code.</p>', duration: 10000, ripple: false, dismissible: true })
@@ -205,7 +205,7 @@
             const verifyAccount = () =>
             {
                 loader.isLoading = true
-                axios( { method: 'POST', url: 'customers/auth/verification', headers: {}, data: { data: { type: "Customer", attributes: { email: accountData.email, verification_code: accountData.verification_code } } } })
+                axios( { method: 'POST', url: 'customers/authentication/code/verification', headers: {}, data: { data: { type: "Customer", attributes: { email: accountData.email, verification_code: accountData.verification_code } } } })
                     .then( response =>
                     {
                         if ( response.data.status === "Success" )
