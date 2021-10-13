@@ -194,21 +194,15 @@
                             notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Something went wrong. Try again later</p>', duration: 10000, ripple: false, dismissible: true })
                         }
                     })
-                    .catch( error =>
-                    {
-                        console.log( error.response )
-                        loader.isLoading = false;
-                        notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Something went wrong. Try again later</p>', duration: 10000, ripple: false, dismissible: true })
-                    })
 
             }
             const verifyAccount = () =>
             {
                 loader.isLoading = true
-                axios( { method: 'POST', url: 'customers/authentication/code/verification', headers: {}, data: { data: { type: "Customer", attributes: { email: accountData.email, verification_code: accountData.verification_code } } } })
+                axios( { method: 'POST', url: 'customers/authentication/registration/code/verification', headers: {}, data: { data: { type: "Customer", attributes: { email: accountData.email, verification_code: accountData.verification_code } } } })
                     .then( response =>
                     {
-                        if ( response.data.status === "Success" )
+                        if ( response.data.code === 200 )
                         {
                             loader.isLoading = false
                             notification.success({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">SUCCESS!</b><p class="text-xxs leading-4">Registration completed.</p>', duration: 10000, ripple: false, dismissible: true })
@@ -219,11 +213,6 @@
                             loader.isLoading = false;
                             notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Something went wrong. Try again later</p>', duration: 10000, ripple: false, dismissible: true })
                         }
-                    })
-                    .catch( error =>
-                    {
-                        loader.isLoading = false
-                        error.response
                     })
             }
 
