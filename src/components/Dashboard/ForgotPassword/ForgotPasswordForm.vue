@@ -298,7 +298,7 @@
                 axios( { method: 'POST', url: 'customers/authentication/password/reset', headers: {}, data: { data: { type: "Customer", attributes: { email: data.email, password: data.password, password_confirmation: data.password_confirmation } } } })
                     .then( response =>
                     {
-                        if ( response.data.code === 201 )
+                        if ( response.data.code === 200 )
                         {
                             notification.success({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">SUCCESS!</b><p class="text-xxs leading-4">Code resent. Check your email for confirmation.</p>', duration: 10000, ripple: false, dismissible: true })
 
@@ -336,6 +336,7 @@
                     })
                     .catch(() => { loader.isLoading = false; notification.error({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">ERROR!</b><p class="text-xxs leading-4">Email or password is incorrect</p>', duration: 8000, ripple: false, dismissible: true }) })
             }
+
             onBeforeMount(() =>
             {
                 setActiveStep()
