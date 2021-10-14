@@ -35,7 +35,7 @@
 
                                 <!-- Begin profile pic -->
                                 <div class="border p-1">
-                                    <img src="https://scontent.facc6-1.fna.fbcdn.net/v/t1.18169-9/13659007_10154327395795996_6331869464865846575_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeF4HREV98ZHmwH3ckSdAQ_RwFYaqqOzebXAVhqqo7N5tUukbvtOBfCKoOSMbj6wfNc&_nc_ohc=f6CuriyusvYAX9AineU&_nc_ht=scontent.facc6-1.fna&oh=d89e0a6136fd12d9d3c8ac521462b318&oe=60BA1D02">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
                                 </div>
                                 <!-- End profile pic -->
 
@@ -59,32 +59,48 @@
 
                                 <!-- Begin contact info -->
                                 <div class="border-t mt-6 py-5">
-                                    <h4 class="text-gray-400 text-xxxs mb-3">CONTACT INFORMATION</h4>
-
-                                    <table class="table-auto text-xxs">
+                                    <h4 class="text-gray-400 text-xs mb-3">CONTACT INFORMATION</h4>
+                                    <table class="table-auto text-xs w-full">
                                         <tbody>
                                             <tr>
-                                                <td class="w-60 py-2 align-top">Phone</td>
-                                                <td class="w-60 py-2 text-juaso-primary">{{ profile.attributes.mobile_phone }}</td>
+                                                <td class="w-40 py-2 align-top">Phone</td>
+                                                <td class="w-96 py-2 text-juaso-primary">{{ profile.attributes.mobile_phone }}</td>
                                             </tr>
                                             <tr>
-                                                <td class="w-60 py-2 align-top">Permanent Address</td>
-                                                <td class="w-60 py-2 text-gray-600">
-                                                    {{ profile.permanent_address.postal_code }}<br>
-                                                    {{ profile.permanent_address.street_name }} <br> {{ profile.delivery_address.city }}
+                                                <td class="w-40 py-2 align-top">Addresses</td>
+                                                <td class="w-96 py-2 text-gray-600">
+                                                    <div v-if="addresses.addresses.length > 0 ">
+                                                        <div v-for="( address, index ) in addresses.addresses" :key="index" class="flex justify-between mb-5">
+                                                            <div class="">
+                                                                {{ address.attributes.type }}<br>
+                                                                {{ address.attributes.postal_code }}<br>
+                                                                {{ address.attributes.street_name }} <br>
+                                                                {{ address.attributes.region }} <br>
+                                                                {{ address.attributes.city }}, {{ address.attributes.country }} <br>
+                                                            </div>
+                                                            <div>
+                                                                <div class="group inline-block">
+                                                                    <button class="outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center">
+                                                                        <span class="pr-1 font-semibold flex-1">Action</span>
+                                                                        <span><svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span>
+                                                                    </button>
+                                                                    <ul class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32">
+                                                                        <li class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer">Delete</li>
+                                                                        <li class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer">Edit</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div v-else class="h-40">N/A</div>
+                                                </td>
+                                                <td class="w-60 py-2 align-top text-right">
+                                                    <button class="outline-none font-semibold text-xxs focus:outline-none border px-3 py-1 bg-white rounded-sm items-end">Add Address</button>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="w-60 py-2 align-top">Delivery Address</td>
-                                                <td class="w-60 py-2 text-gray-600">
-                                                    {{ profile.delivery_address.postal_code }}<br>
-                                                    {{ profile.delivery_address.street_name }} <br>
-                                                    {{ profile.delivery_address.city }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-60 py-2 align-top">Email</td>
-                                                <td class="w-60 py-2 text-juaso-primary">{{ profile.attributes.email }}</td>
+                                                <td class="w-40 py-2 align-top">Email</td>
+                                                <td class="w-96 py-2 text-juaso-primary">{{ profile.attributes.email }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -93,17 +109,27 @@
 
                                 <!-- Begin contact info -->
                                 <div class="border-t mt-6 py-5">
-                                    <h4 class="text-gray-400 text-xxxs mb-3">BASIC INFORMATION</h4>
-
-                                    <table class="table-auto text-xxs">
+                                    <h4 class="text-gray-400 text-xs mb-3">BASIC INFORMATION</h4>
+                                    <table class="table-auto text-xxs w-full">
                                         <tbody>
                                             <tr class="">
-                                                <td class="w-60 py-2">Gender</td>
-                                                <td class="w-60 py-2 text-gray-600">Male</td>
+                                                <td class="w-40 py-2">Gender</td>
+                                                <td class="w-60 py-2 text-gray-600">
+                                                    <span v-if="profile.attributes.gender === null">N/A</span>
+                                                    <span v-else>{{ profile.attributes.gender }}</span>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td class="w-60 py-2">Date of birth</td>
-                                                <td class="w-60 py-2 text-gray-600">12/03/2021</td>
+                                                <td class="w-40 py-2">Date of birth</td>
+                                                <td class="w-96 py-2 text-gray-600">
+                                                    <span v-if="profile.attributes.date_of_birth === null">N/A</span>
+                                                    <span v-else>{{ profile.attributes.date_of_birth }}</span>
+                                                </td>
+                                                <td class="w-60 py-2 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-40 py-2">Date joined</td>
+                                                <td class="w-60 py-2 text-gray-600">{{ profile.attributes.created_at }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -245,7 +271,8 @@
             const notification = new Notyf();
             const loader = reactive({ color: '#FFFFFF', size: '10px', loading: true, isLoading: false })
             const authentication = inject( 'authentication' )
-            const profile = reactive({ attributes: [], permanent_address: [], delivery_address: [] })
+            const profile = reactive({ attributes: [] })
+            const addresses = reactive({ addresses: [] })
 
             const addAddress = () =>
             {
@@ -253,31 +280,36 @@
                 axios({ method: 'POST', url: 'customer/' + authentication.state.user.include.store.attributes.resource_id + '/addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: {} })
                     .then( response =>
                     {
-                        if ( response.data.status === 'Success' || response.data.code === 201 )
+                        if ( response.data.code === 201 )
                         {
                             loader.isLoading = false
                         }
                     })
-                    .catch()
             }
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '?include=addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
-                    .then( response =>
-                    {
-                        profile.attributes = response.data.data.attributes
-                        profile.permanent_address = response.data.data.include.addresses[0].attributes
-                        profile.delivery_address = response.data.data.include.addresses[1].attributes
-                    })
-                    .catch( error => { error.response })
+                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
+                    .then( response => { profile.attributes = response.data.data.attributes })
+
+                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
+                    .then( response => { addresses.addresses = response.data.data })
             })
 
             const signOut = () => { authentication.logoutUser().then(() => { document.location.href = "" } )}
-            return { notification, loader, profile, addAddress, signOut }
+            return { notification, loader, profile, addresses, addAddress, signOut }
         }
     }
 </script>
 
 <style scoped>
+    li>ul                 { transform: translatex(100%) scale(0) }
+    li:hover>ul           { transform: translatex(101%) scale(1) }
+    li > button svg       { transform: rotate(-90deg) }
+    li:hover > button svg { transform: rotate(-270deg) }
+
+    .group:hover .group-hover\:scale-100 { transform: scale(1) }
+    .group:hover .group-hover\:-rotate-180 { transform: rotate(180deg) }
+    .scale-0 { transform: scale(0) }
+    .min-w-32 { min-width: 8rem }
 </style>
