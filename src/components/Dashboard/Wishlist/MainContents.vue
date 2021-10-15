@@ -1,7 +1,24 @@
 <template>
 
-    <!-- Begin contents -->
-    <main class="container mx-auto my-4">
+    <!-- Begin breadcrumb -->
+    <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+        <div class="container mx-auto">
+            <nav class="relative select-none bg-grey lg:flex lg:items-stretch w-full">
+                <div class="flex flex-no-shrink items-stretch text-xs h-12 items-center">
+                    <router-link to="/" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
+                        Home <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </router-link>
+                    <router-link to="/account" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
+                        Wish Lists
+                    </router-link>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <!-- End breadcrumb -->
+
+    <!-- Begin main contents -->
+    <main class="container mx-auto mb-4">
 
         <!-- Begin contents for large screens -->
         <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
@@ -9,27 +26,11 @@
                 <div class="flex grid grid-cols-12 gap-4">
 
                     <!-- Begin left contents -->
-                    <div class="col-span-2">
-                        <div class="sticky inset-x-0 top-20 left-0">
-
-                            <!-- Begin nav bar -->
-                            <div class="bg-white border">
-                                <div class="p-2 text-xs font-bold bg-gray-100">Account Settings</div>
-                                <ul class="list-reset">
-                                    <li><router-link to="edit-profile" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Edit Member Profile</router-link></li>
-                                    <li><router-link to="change-email" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Change Email</router-link></li>
-                                    <li><router-link to="change-password" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Change Password</router-link></li>
-                                    <li><router-link to="edit-address" class="block p-2.5 text-xs text-grey-darker hover:bg-juaso-extra hover:text-white">Edit Addresses</router-link></li>
-                                </ul>
-                            </div>
-                            <!-- End nav bar -->
-
-                        </div>
-                    </div>
+                    <side-bar></side-bar>
                     <!-- End left contents -->
 
                     <!-- Begin right contents -->
-                    <div class="col-span-10 border bg-white">
+                    <div class="2xl:col-span-10 xl:col-span-9 lg:col-span-9 border bg-white">
                         <div class="">
 
                             <!-- Begin page title -->
@@ -315,14 +316,17 @@
         <!-- End contents for large screens -->
 
     </main>
-    <!-- End contents -->
+    <!-- End main contents -->
 
 </template>
 
 <script>
+    import SideBar from "../Shared/SideBar";
+
     export default
     {
-        name: "MainContents"
+        name: "MainContents",
+        components: { SideBar }
     }
 </script>
 

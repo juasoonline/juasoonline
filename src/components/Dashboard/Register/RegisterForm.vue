@@ -185,7 +185,7 @@
                         if ( response.data.code === 201 )
                         {
                             accountData.verification = true
-                            notification.success({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">SUCCESS!</b><p class="text-xxs leading-4">Account created. Check your email for verification code.</p>', duration: 10000, ripple: false, dismissible: true })
+                            notification.success({ position: { x: 'right', y: 'top', }, message: '<b class="text-xs leading-3">SUCCESS!</b><p class="text-xxs leading-4">Profile created. Check your email for verification code.</p>', duration: 10000, ripple: false, dismissible: true })
                             loader.isLoading = false
                         }
                         else
