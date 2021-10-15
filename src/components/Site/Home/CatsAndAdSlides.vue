@@ -1,16 +1,16 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex flex-col grid gap-2 grid-cols-12 w-full">
+    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full gap-3">
 
-        <!-- Begin categories navbar -->
-        <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:col-span-2 xl:col-span-2 lg:col-span-3 h-full bg-white rounded">
+        <!-- Begin categories nav bar -->
+        <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5 h-full bg-white rounded">
             <categories-menu></categories-menu>
         </div>
-        <!-- End categories navbar -->
+        <!-- End categories nav bar -->
 
         <!-- Begin ads slides -->
-        <div class="2xl:col-span-8 xl:col-span-8 lg:col-span-9 md:col-span-12 sm:col-span-12 xs:col-span-12 h-full rounded">
+        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 md:w-full sm:w-full xs:w-full h-full rounded">
 
             <!-- Begin slider banners -->
             <Suspense>
@@ -114,7 +114,7 @@
         <!-- End ads slides -->
 
         <!-- Begin user actions -->
-        <div class="2xl:block xl:block lg:hidden md:hidden sm:hidden xs:hidden 2xl:col-span-2 xl:col-span-2 lg:col-span-2 h-full bg-white rounded">
+        <div class="2xl:block xl:block lg:hidden md:hidden sm:hidden xs:hidden w-1/5 h-full bg-white rounded">
 
             <!-- Begin user actions -->
             <div class="flex justify-center mb-2 items-center bg-white rounded py-6">

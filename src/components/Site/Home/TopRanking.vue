@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="mt-2 bg-white rounded p-2">
+    <div class="2xl:mt-2 xl:mt-3 lg:mt-3.5 bg-white rounded p-2">
 
         <!-- Begin header -->
         <div class="2xl:mb-2 xl:mb-2 lg:mb-2.5 flex justify-between items-center text-gray-600">
@@ -11,33 +11,33 @@
         <!-- End header -->
 
         <!-- Begin ranks for 2xl and lg screens -->
-        <swiper :slides-per-view="12" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:block xl:hidden lg:hidden">
+        <swiper :slides-per-view="8" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:block xl:hidden lg:hidden">
             <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border pb-1.5 border-gray-100 text-center rounded">
                     <router-link to="/item/975858275"><img v-bind:src="banner.image" :alt="banner.name" class="rounded"></router-link>
-                    <p class="font-bold block text-xs"><router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275"> {{ banner.sales_price }}</router-link></p>
+                    <p class="font-bold block text-xs"><router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
                 </div>
             </swiper-slide>
         </swiper>
         <!-- End ranks for 2xl and lg screens -->
 
         <!-- Begin ranks for md screens -->
-        <swiper :slides-per-view="8" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:block lg:hidden">
+        <swiper :slides-per-view="6" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:block lg:hidden">
             <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border pb-1.5 border-gray-100 text-center rounded">
                     <router-link to="/item/975858275"><img v-bind:src="banner.image" :alt="banner.name" class="rounded"></router-link>
-                    <p class="font-bold block text-xs"><router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275"> {{ banner.sales_price }}</router-link></p>
+                    <p class="font-bold block text-xs"><router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
                 </div>
             </swiper-slide>
         </swiper>
         <!-- End ranks for md screens -->
 
         <!-- Begin ranks for md screens -->
-        <swiper :slides-per-view="6" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:hidden lg:block">
+        <swiper :slides-per-view="7" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:hidden lg:block lg:my-2.5">
             <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border pb-1.5 border-gray-100 text-center rounded">
                     <router-link to="/item/975858275"><img v-bind:src="banner.image" :alt="banner.name" class="rounded"></router-link>
-                    <p class="font-bold block text-xs"><router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275"> {{ banner.sales_price }}</router-link></p>
+                    <p class="font-bold block text-xs"><router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link></p>
                 </div>
             </swiper-slide>
         </swiper>
@@ -89,5 +89,4 @@
 </script>
 
 <style scoped>
-
 </style>
