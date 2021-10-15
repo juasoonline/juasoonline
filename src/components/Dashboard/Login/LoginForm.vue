@@ -43,7 +43,7 @@
                     <button v-if="loader.isLoading === false" type="submit" class="rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
                         <span class="uppercase text-xxs">Login</span>
                     </button>
-                    <button v-else disabled type="submit" class="flex items-center rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
+                    <button v-else disabled class="flex items-center rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
                         <span class="flex w-full items-center">
                             <p class="uppercase text-xxs w-full">Please wait...</p>
                             <spinner :loading="loader.loading" :color="loader.color" :size="loader.size" style="margin-left: -130px"></spinner>
