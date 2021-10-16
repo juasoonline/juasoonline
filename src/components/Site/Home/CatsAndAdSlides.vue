@@ -161,8 +161,8 @@
             return {
                 banners:
                 [
-                    { resource_id: 10000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/right/banner1.jpg", name: "Ad banner name 1"  },
-                    { resource_id: 20000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/right/banner2.jpg", name: "Ad banner name 2"  },
+                    { resource_id: 10000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/right/banner1.jpg", name: "Ad banner name 1"  },
+                    { resource_id: 20000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/right/banner2.jpg", name: "Ad banner name 2"  },
                 ],
                 category_icons:
                 {

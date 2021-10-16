@@ -4,9 +4,9 @@ import authentication from "@/store/authentication";
 const routes =
 [
     // User protected routes
-    { path: '/login', name: 'Login', component: () => import( '../components/Dashboard/Login/login' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Account' }); } else { next() } } },
+    { path: '/login', name: 'Login', component: () => import( '../components/Dashboard/Login/login' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Profile' }); } else { next() } } },
     { path: '/overview', name: 'Overview', component: () => import( '../components/Dashboard/Overview/Overview' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
-    { path: '/profile', name: 'Account', component: () => import( '../components/Dashboard/Profile/Profile' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/profile', name: 'Profile', component: () => import( '../components/Dashboard/Profile/Profile' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/cart', name: 'Cart', component: () => import( '../components/Dashboard/Cart/Cart' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/wishlist', name: 'Wishlist', component: () => import( '../components/Dashboard/Wishlist/Wishlist' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/orders', name: 'Orders', component: () => import( '../components/Dashboard/Orders/Orders' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },

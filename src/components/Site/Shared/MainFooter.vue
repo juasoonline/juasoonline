@@ -57,7 +57,7 @@
 
                     <!-- Begin links -->
                     <div class="">
-                        <router-link to="/account" class="my-2 block text-gray-300 hover:text-juaso-secondary text-sm font-medium duration-700">My Account</router-link>
+                        <router-link to="/profile" class="my-2 block text-gray-300 hover:text-juaso-secondary text-sm font-medium duration-700">My Account</router-link>
                         <router-link to="/cart" class="my-2 block text-gray-300 hover:text-juaso-secondary text-sm font-medium duration-700">Shopping Cart</router-link>
                         <router-link to="/wishlist" class="my-2 block text-gray-300 hover:text-juaso-secondary text-sm font-medium duration-700">Wish List</router-link>
                         <router-link to="/orders" class="my-2 block text-gray-300 hover:text-juaso-secondary text-sm font-medium duration-700">Order history</router-link>

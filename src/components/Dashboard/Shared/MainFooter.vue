@@ -33,7 +33,7 @@
             <div class="text-gray-300">
                 <h1 class="font-bold mb-2">Category</h1>
                 <p class="text-sm text-gray-300">
-                    <router-link v-for="Group in Groups" :key="Group.attributes.resource_id" class="hover:text-juaso-secondary mr-1.5" to="/category/1234567890">{{ Group.attributes.name }},</router-link>
+                    <router-link v-for="Group in Groups" :key="Group.attributes.resource_id" class="hover:text-juaso-secondary mr-1.5" to="">{{ Group.attributes.name }},</router-link>
                 </p>
             </div>
             <!-- End category -->

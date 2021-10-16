@@ -256,8 +256,10 @@
 
                 <!-- Begin store banner -->
                 <section class="my-4">
-                    <div class="rounded"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
-                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/top/banner1.jpg" alt="" class="rounded"></router-link>
+                    <div class="rounded">
+                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
+                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
+                        </router-link>
                     </div>
                 </section>
                 <!-- End store banner -->
@@ -324,14 +326,16 @@
 
                         <!-- Begin store info -->
                         <div class="bg-white mb-4 rounded p-4">
-                            <div class="flex grid grid-cols-12">
+                            <div class="flex">
 
                                 <!-- Begin store info -->
-                                <div class="col-span-2 mr-3">
+                                <div class="w-1/5 mr-3">
 
                                     <!-- Begin store name -->
                                     <div class="flex items-center">
-                                        <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link></span>
+                                        <span class="text-sm font-bold">
+                                            <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link>
+                                        </span>
                                     </div>
                                     <!-- End store name -->
 
@@ -363,7 +367,7 @@
                                 <!-- Begin store info -->
 
                                 <!-- Begin store items -->
-                                <div class="col-span-10">
+                                <div class="w-4/5">
                                     <div class="2xl:block xl:hidden lg:hidden">
                                         <div class="flex grid gap-2 grid-cols-8">
                                             <div v-for="item in storeItems.items.slice( 0, 8 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
@@ -636,7 +640,6 @@
                                                 {{ item.pricing.price_data[0].price_range }}
                                             </router-link>
                                         </p>
-
                                         <div class="flex items-center justify-between">
                                             <p class="block text-xs my-0.5 flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
