@@ -380,8 +380,8 @@
                                 <!-- Begin store items -->
                                 <div class="w-4/5">
                                     <div class="2xl:block xl:hidden lg:hidden">
-                                        <div class="flex grid gap-2 grid-cols-8">
-                                            <div v-for="item in storeItems.items.slice( 0, 8 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                        <div class="flex grid gap-2 grid-cols-7">
+                                            <div v-for="item in storeItems.items.slice( 0, 7 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
                                                 <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
