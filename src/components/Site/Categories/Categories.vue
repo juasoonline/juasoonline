@@ -24,10 +24,12 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <suspense>
-            <main-footer></main-footer>
-        </suspense>
+        <suspense><main-footer></main-footer></suspense>
         <!-- End footer -->
+
+        <!-- Begin mobile menu -->
+        <mobile-bottom-nav-bar></mobile-bottom-nav-bar>
+        <!-- End mobile menu -->
 
     </div>
     <!-- End contents wrapper -->
@@ -41,11 +43,12 @@
     import PageHeader from "./PageHeader";
     import MainContents from "@/components/Site/Categories/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
+    import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
 
     export default
     {
         name: "Categories",
-        components: { TopAds, NavBar, MainHeader, PageHeader, MainContents, MainFooter }
+        components: { TopAds, NavBar, MainHeader, PageHeader, MainContents, MainFooter, MobileBottomNavBar }
     }
 </script>
 
