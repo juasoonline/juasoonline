@@ -9,7 +9,7 @@
                         Home <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                     </router-link>
                     <router-link to="/account" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
-                        Message Center
+                        Account
                     </router-link>
                 </div>
             </nav>
@@ -33,7 +33,114 @@
                     <div class="2xl:col-span-10 xl:col-span-9 lg:col-span-9 border bg-white">
                         <div class="p-4 flex grid grid-cols-12 gap-10">
 
+                            <!-- Begin profile image -->
+                            <div class="col-span-2">
 
+                                <!-- Begin profile pic -->
+                                <div class="border p-1">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png">
+                                </div>
+                                <!-- End profile pic -->
+
+                            </div>
+                            <!-- End profile image -->
+
+                            <!-- Begin profile info -->
+                            <div class="col-span-10">
+
+                                <!-- Begin user info -->
+                                <div class="flex justify-between">
+                                    <div class="text-gray-600">
+                                        <h3 class="font-bold text-lg">{{ profile.attributes.first_name }} {{ profile.attributes.last_name }}</h3>
+                                        <p class="text-xxs font-bold mt-0.5">User ID: {{ profile.attributes.resource_id }}</p>
+                                    </div>
+                                    <div class="flex">
+                                        <router-link to="edit-profile" class="font-light text-xxs text-juaso-primary hover:text-juaso-secondary">Edit Profile</router-link>
+                                    </div>
+                                </div>
+                                <!-- End user info -->
+
+                                <!-- Begin contact info -->
+                                <div class="border-t mt-6 py-5">
+                                    <h4 class="text-gray-400 text-xs mb-3">CONTACT INFORMATION</h4>
+                                    <table class="table-auto text-xs w-full">
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-40 py-2 align-top">Phone</td>
+                                                <td class="w-96 py-2 text-juaso-primary">{{ profile.attributes.mobile_phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-40 py-2 align-top">Addresses</td>
+                                                <td class="w-96 py-2 text-gray-600">
+                                                    <div v-if="addresses.addresses.length > 0 ">
+                                                        <div v-for="( address, index ) in addresses.addresses" :key="index" class="flex justify-between mb-5">
+                                                            <div class="">
+                                                                {{ address.attributes.type }}<br>
+                                                                {{ address.attributes.postal_code }}<br>
+                                                                {{ address.attributes.street_name }} <br>
+                                                                {{ address.attributes.region }} <br>
+                                                                {{ address.attributes.city }}, {{ address.attributes.country }} <br>
+                                                            </div>
+                                                            <div>
+                                                                <div class="group inline-block">
+                                                                    <button class="outline-none focus:outline-none border px-3 py-1 bg-white rounded-sm flex items-center">
+                                                                        <span class="pr-1 font-semibold flex-1">Action</span>
+                                                                        <span><svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span>
+                                                                    </button>
+                                                                    <ul class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32">
+                                                                        <li class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer">Delete</li>
+                                                                        <li class="rounded-sm px-3 py-1 hover:bg-gray-100 cursor-pointer">Edit</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div v-else class="h-40">N/A</div>
+                                                </td>
+                                                <td class="w-60 py-2 align-top text-right">
+                                                    <button class="outline-none font-semibold text-xxs focus:outline-none border px-3 py-1 bg-white rounded-sm items-end">Add Address</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-40 py-2 align-top">Email</td>
+                                                <td class="w-96 py-2 text-juaso-primary">{{ profile.attributes.email }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- End contact info -->
+
+                                <!-- Begin contact info -->
+                                <div class="border-t mt-6 py-5">
+                                    <h4 class="text-gray-400 text-xs mb-3">BASIC INFORMATION</h4>
+                                    <table class="table-auto text-xxs w-full">
+                                        <tbody>
+                                            <tr class="">
+                                                <td class="w-40 py-2">Gender</td>
+                                                <td class="w-60 py-2 text-gray-600">
+                                                    <span v-if="profile.attributes.gender === null">N/A</span>
+                                                    <span v-else>{{ profile.attributes.gender }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-40 py-2">Date of birth</td>
+                                                <td class="w-96 py-2 text-gray-600">
+                                                    <span v-if="profile.attributes.date_of_birth === null">N/A</span>
+                                                    <span v-else>{{ profile.attributes.date_of_birth }}</span>
+                                                </td>
+                                                <td class="w-60 py-2 align-top"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-40 py-2">Date joined</td>
+                                                <td class="w-60 py-2 text-gray-600">{{ profile.attributes.created_at }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- End contact info -->
+
+                            </div>
+                            <!-- End profile info -->
 
                         </div>
                     </div>
@@ -156,14 +263,58 @@
 
 <script>
     import SideBar from "../Shared/SideBar";
+    import { inject, onBeforeMount, reactive } from 'vue';
+    import axios from "axios";
+    import { Notyf } from "notyf";
 
     export default
     {
         name: "MainContents",
         components: { SideBar },
+        setup()
+        {
+            const notification = new Notyf();
+            const loader = reactive({ color: '#FFFFFF', size: '10px', loading: true, isLoading: false })
+            const authentication = inject( 'authentication' )
+            const profile = reactive({ attributes: [] })
+            const addresses = reactive({ addresses: [] })
+
+            const addAddress = () =>
+            {
+                loader.isLoading = true
+                axios({ method: 'POST', url: 'customer/' + authentication.state.user.include.store.attributes.resource_id + '/addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token }, data: {} })
+                    .then( response =>
+                    {
+                        if ( response.data.code === 201 )
+                        {
+                            loader.isLoading = false
+                        }
+                    })
+            }
+
+            onBeforeMount(() =>
+            {
+                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
+                    .then( response => { profile.attributes = response.data.data.attributes })
+
+                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/addresses', headers: { 'Authorization': 'Bearer ' + authentication.state.token } })
+                    .then( response => { addresses.addresses = response.data.data })
+            })
+
+            const signOut = () => { authentication.logoutUser().then(() => { document.location.href = "" } )}
+            return { notification, loader, profile, addresses, addAddress, signOut }
+        }
     }
 </script>
 
 <style scoped>
+    li>ul                 { transform: translatex(100%) scale(0) }
+    li:hover>ul           { transform: translatex(101%) scale(1) }
+    li > button svg       { transform: rotate(-90deg) }
+    li:hover > button svg { transform: rotate(-270deg) }
 
+    .group:hover .group-hover\:scale-100 { transform: scale(1) }
+    .group:hover .group-hover\:-rotate-180 { transform: rotate(180deg) }
+    .scale-0 { transform: scale(0) }
+    .min-w-32 { min-width: 8rem }
 </style>

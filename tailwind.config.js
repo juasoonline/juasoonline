@@ -54,6 +54,11 @@ module.exports =
             'juaso-secondary': '#2d8bc3',
         }),
 
+        backgroundImage: theme => (
+        {
+            'header-banner': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/banner.svg')",
+        }),
+
         screens:
         {
             'xs': {'min': '225px', 'max': '639px'},

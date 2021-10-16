@@ -4,19 +4,19 @@ import authentication from "@/store/authentication";
 const routes =
 [
     // User protected routes
-    { path: '/register', name: 'Register', component: () => import( '../components/Dashboard/Register/Register' ) },
     { path: '/login', name: 'Login', component: () => import( '../components/Dashboard/Login/login' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Account' }); } else { next() } } },
-    { path: '/forgot-password', name: 'ForgotPassword', component: () => import( '../components/Dashboard/ForgotPassword/ForgotPassword' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Account' }); } else { next() } } },
+    { path: '/overview', name: 'Overview', component: () => import( '../components/Dashboard/Overview/Overview' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/profile', name: 'Account', component: () => import( '../components/Dashboard/Profile/Profile' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/cart', name: 'Cart', component: () => import( '../components/Dashboard/Cart/Cart' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/wishlist', name: 'Wishlist', component: () => import( '../components/Dashboard/Wishlist/Wishlist' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/orders', name: 'Orders', component: () => import( '../components/Dashboard/Orders/Orders' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
-    { path: '/messages', name: 'Messages', component: () => import( '../components/Dashboard/Messages/Messages' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/coupons', name: 'Coupons', component: () => import( '../components/Dashboard/Coupons/Coupons' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
-    { path: '/account', name: 'Account', component: () => import( '../components/Dashboard/Account/Account' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
-    { path: '/edit-profile', name: 'EditProfile', component: () => import( '../components/Dashboard/EditProfile/EditProfile' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
-    { path: '/change-email', name: 'ChangeEmail', component: () => import( '../components/Dashboard/ChangeEmail/ChangeEmail' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
-    { path: '/change-password', name: 'ChangePassword', component: () => import( '../components/Dashboard/ChangePassword/ChangePassword' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
-    { path: '/edit-address', name: 'EditAddress', component: () => import( '../components/Dashboard/EditAddress/EditAddress' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/messages', name: 'Messages', component: () => import( '../components/Dashboard/Messages/Messages' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+    { path: '/mystores', name: 'MyStores', component: () => import( '../components/Dashboard/MyStores/MyStores' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
+
+    { path: '/register', name: 'Register', component: () => import( '../components/Dashboard/Register/Register' ) },
+    { path: '/code/resend', name: 'Resend', component: () => import( '../components/Dashboard/Resend/Resend' ) },
+    { path: '/forgot-password', name: 'ForgotPassword', component: () => import( '../components/Dashboard/ForgotPassword/ForgotPassword' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Account' }); } else { next() } } },
 
     // Buyers routes
     { path: '/order/:order_id/confirmation', name: 'OrderConfirmation', component: () => import( '../components/Site/Order/OrderConfirmation/OrderConfirmation' ), beforeEnter:( to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },

@@ -15,12 +15,18 @@
         <main-header></main-header>
         <!-- End logo, search and cart -->
 
+        <!-- Begin page header -->
+        <page-header></page-header>
+        <!-- End page header -->
+
         <!-- Begin top contents -->
         <main-contents></main-contents>
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer></main-footer>
+        <suspense>
+            <main-footer></main-footer>
+        </suspense>
         <!-- End footer -->
 
     </div>
@@ -32,13 +38,14 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import MainContents from "@/components/Site/AboutJuasoonline/MainContents";
+    import PageHeader from "./PageHeader";
+    import MainContents from "@/components/Site/Categories/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
 
     export default
     {
         name: "Categories",
-        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter }
+        components: { TopAds, NavBar, MainHeader, PageHeader, MainContents, MainFooter }
     }
 </script>
 

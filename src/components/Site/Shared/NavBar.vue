@@ -27,6 +27,7 @@
                 <!-- Begin right menu -->
                 <nav class="py-3">
                     <ul class="flex items-center">
+
                         <li class="topNave mr-3">
                             <router-link class="navLink" to="/">
                                 <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
@@ -72,8 +73,10 @@
 
                                     <!-- Begin user name/role -->
                                     <div class="">
-                                        <h3 class="text-sm font-bold text-gray-800">Hi! {{ authentication.state.user.name }}</h3>
-                                        <p class="text-xs text-gray-800">{{ authentication.state.user.email }}</p>
+                                        <router-link to="/overview">
+                                            <h3 class="text-sm font-bold text-gray-800">Hi! {{ authentication.state.user.name }}</h3>
+                                            <p class="text-xs text-gray-800">{{ authentication.state.user.email }}</p>
+                                        </router-link>
                                     </div>
                                     <!-- End user name/role -->
 
@@ -83,7 +86,7 @@
                                 <!-- Begin nav list -->
                                 <ul class="w-full dropMenu text-gray-600 border-t">
                                     <li class="px-3 py-1.5 hover:bg-juaso-secondary">
-                                        <router-link to="account" class="flex hover:text-white hover:border-gray-600">
+                                        <router-link to="profile" class="flex hover:text-white hover:border-gray-600">
                                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                                             <span>My Account</span>
                                         </router-link>

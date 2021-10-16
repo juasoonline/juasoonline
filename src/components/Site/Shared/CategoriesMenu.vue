@@ -16,14 +16,13 @@
 
         <!-- Begin cat menu -->
         <div class="flex w-full bg-white rounded-b py-2">
-            <nav class="text-sm w-full">
+            <nav class="text-sm w-full h-full">
                 <ul class="menu">
                     <li v-for="group in groups.categories" :key="group.attributes.resource_id" class="2xl:text-ct xl:text-xs lg:text-xs text-gray-500">
                         <router-link :to="{ name: 'Category', params: { category: group.attributes.resource_id, slug: group.attributes.slug }}" class="flex justify-between items-center py-1.5 2xl:mb-0.5 px-3 hover:shadow-lg hover:text-juaso-primary">
                             <span>{{ group.attributes.name }}</span>
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </router-link>
-
                         <div class="megadrop rounded-r border shadow-sm grid gap-6 grid-cols-3">
                           <div class="col" v-for="category in group.include.categories" :key="category.attributes.resource_id">
                               <router-link :to="{ name: 'Category', params: { category: category.attributes.resource_id, slug: category.attributes.slug }}">

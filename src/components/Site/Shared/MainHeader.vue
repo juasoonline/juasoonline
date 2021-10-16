@@ -18,7 +18,9 @@
 
                     <!-- Begin logo for mobile screens -->
                     <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mr-3">
-                        <router-link to="/" class="p-0 flex"><img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" alt="" class="w-24 h-5"></router-link>
+                        <router-link to="/" class="p-0 flex">
+                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" alt="" class="w-24 h-5">
+                        </router-link>
                     </div>
                     <!-- End logo for mobile screens -->
 
@@ -59,8 +61,10 @@
                                 <option value="205965401">Virtual Goods</option>
                             </select>
                         </label>
-                        <label class="w-full"><input class="2xl:border-l xl:border-l lg:border-l border-blue-900 text-xs px-3 2xl:py-2.5 xl:py-2.5 lg:py-2.5 text-gray-600 w-full" placeholder="What are you looking for?..."></label>
-                        <button class="w-8 h-8 mx-1.5 block focus:outline-none">
+                        <label class="w-full">
+                            <input type="text" v-on:keyup.enter="search()" v-model="searchTerms.keyWords" class="2xl:border-l xl:border-l lg:border-l border-blue-900 text-xs px-3 2xl:py-2.5 xl:py-2.5 lg:py-2.5 text-gray-600 w-full" placeholder="What are you looking for?...">
+                        </label>
+                        <button @click="search()" class="w-8 h-8 mx-1.5 block focus:outline-none">
                             <svg class="w-6 h-6 text-juaso-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
@@ -106,6 +110,7 @@
 <script>
     import { inject, onBeforeMount, reactive } from "vue";
     import axios from "axios";
+    import router from "../../../router";
 
     export default
     {
@@ -114,15 +119,19 @@
         {
             const authentication = inject( 'authentication' );
             const userStats = reactive({ wishlistCount: 0, cartItemCount: 0 })
+            const searchTerms = reactive({ keyWords: "" })
 
             const getUserStats = () =>
             {
                 if ( authentication.isAuthenticated() )
                 {
                     axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stats', headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                    .then( response => { userStats.wishlistCount = response.data.data.attributes.wishlists; userStats.cartItemCount = response.data.data.attributes.carts })
-                    .catch( error => { console.log( error.response ) })
+                        .then( response => { userStats.wishlistCount = response.data.data.attributes.wishlists; userStats.cartItemCount = response.data.data.attributes.carts })
                 }
+            }
+            const search = () =>
+            {
+                router.push({ name: 'search', params: { searchTerms: searchTerms.keyWords }});
             }
 
             onBeforeMount(() =>
@@ -130,7 +139,7 @@
                 getUserStats()
             })
 
-            return { userStats }
+            return { userStats, search, searchTerms }
         }
     }
 </script>
