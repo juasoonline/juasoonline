@@ -265,10 +265,10 @@
                 <!-- End store banner -->
 
                 <!-- Begin item review and specifications -->
-                <section class="flex grid grid-cols-6 gap-5 my-4">
+                <section class="flex gap-5 my-4">
 
                     <!-- Begin left contents -->
-                    <aside class="rounded col-span-1">
+                    <aside class="w-1/5 rounded">
 
                         <!-- Begin store category -->
                         <div class="bg-white rounded px-4 py-4 mb-5">
@@ -304,6 +304,17 @@
                                 <div v-for="item in storeItems.items.slice( 0, 5 )" :key="item.id" class="max-w-xs">
                                     <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><img class="w-full rounded border cursor-pointer" :src="item.attributes.image" alt="Sunset in the mountains"></router-link>
                                     <div class="font-bold text-sm mt-1.5">{{ item.attributes.sales_price }}</div>
+                                    <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
+                                        <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                            {{ item.pricing.price_data[0].sales_price }}
+                                            <del class="ml-2 text-xxxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
+                                        </router-link>
+                                    </p>
+                                    <p v-else class="font-bold block text-xs my-0.5">
+                                        <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                            {{ item.pricing.price_data[0].price_range }}
+                                        </router-link>
+                                    </p>
                                     <div class="flex text-xs justify-between text-gray-400 mb-5">
                                         <p class="flex inline-block text-grey-darker items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
@@ -322,7 +333,7 @@
                     <!-- End left contents -->
 
                     <!-- Begin right contents -->
-                    <div class="col-span-5">
+                    <div class="w-4/5">
 
                         <!-- Begin store info -->
                         <div class="bg-white mb-4 rounded p-4">
@@ -685,7 +696,6 @@
                                                 <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
                                             </router-link>
                                         </span>
-
                                         <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
                                             <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
                                                 {{ item.pricing.price_data[0].sales_price }}
@@ -697,7 +707,6 @@
                                                 {{ item.pricing.price_data[0].price_range }}
                                             </router-link>
                                         </p>
-
                                         <div class="flex items-center justify-between">
                                             <p class="block text-xs my-0.5 flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
@@ -709,7 +718,6 @@
                                                 <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
                                             </router-link>
                                         </div>
-
                                         <span class="block text-gray-500 text-xxs"></span>
                                     </div>
                                 </div>
