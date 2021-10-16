@@ -5,7 +5,7 @@
         <div class="container mx-auto px-1.5 py-7">
 
             <!-- Begin page header -->
-            <h2 class="font-black text-2xl text-gray-300">ALL CATEGORIES</h2>
+            <h2 class="font-black text-2xl text-gray-100 items-center flex"><span class="mr-4">ALL CATEGORIES</span> <span class="text-xxs font-normal">Shop in Confidence</span></h2>
             <!-- End page header -->
 
         </div>
