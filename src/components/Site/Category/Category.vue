@@ -20,8 +20,12 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer></main-footer>
+        <suspense><main-footer></main-footer></suspense>
         <!-- End footer -->
+
+        <!-- Begin mobile menu -->
+        <mobile-bottom-nav-bar></mobile-bottom-nav-bar>
+        <!-- End mobile menu -->
 
     </div>
     <!-- End contents wrapper -->
@@ -34,11 +38,12 @@
     import MainHeader from "@/components/Site/Shared/MainHeader";
     import MainContents from "@/components/Site/Category/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
+    import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
 
     export default
     {
         name: "Category",
-        components: { TopAds, NavBar, MainHeader, MainFooter, MainContents }
+        components: { TopAds, NavBar, MainHeader, MainFooter, MainContents, MobileBottomNavBar }
     }
 </script>
 

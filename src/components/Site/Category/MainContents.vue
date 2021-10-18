@@ -1,11 +1,12 @@
 <template>
 
     <!-- Begin contents -->
-    <main class="container mx-auto my-4">
-        <div class="flex flex-col grid gap-5 grid-cols-6">
+    <main class="2xl:container xl:container lg:container 2xl:my-4 xl:my-4 lg:my-4 mx-auto px-1.5">
+        <div class="2xl:flex xl:flex lg:flex 2xl:gap-5 xl:gap-5 lg:gap-5 my-4">
 
             <!-- Begin left contents -->
-            <aside class="bg-white rounded overflow-auto h-screen sticky top-0">
+            <aside class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5">
+                <div class="sticky inset-x-0 top-20 left-0">
 
                 <!-- Begin cat header -->
                 <div class="bg-juaso-primary rounded-t">
@@ -23,11 +24,12 @@
                 </div>
                 <!-- End cat nav -->
 
+                </div>
             </aside>
             <!-- End left contents -->
 
             <!-- Begin right contents -->
-            <div class="col-span-5">
+            <div class="2xl:w-4/5 xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xs:w-full">
 
                 <!-- Begin breadcrumb -->
                 <div class="text-xs text-gray-500 bg-white rounded p-4">
@@ -43,61 +45,46 @@
                 <!-- End sort and view type -->
 
                 <!-- Begin items list -->
-                <div class="grid grid-cols-6 gap-4">
-                    <div v-for="item in items" :key="item.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
-                        <router-link class="w-full object-cover" to="/item/975858275"><img v-bind:src="item.image" :alt="item.name"></router-link>
-                        <div class="m-5">
-                            <span class="text-gray-500 text-xs hover:text-red-500"><router-link class="w-full object-cover" to="/item/975858275">{{ item.name }}...</router-link></span>
-                            <p class="font-bold block text-xs my-0.5"><router-link class="w-full object-cover hover:text-red-500" to="/item/975858275"> {{ item.sales_price }} <del class="ml-2 text-xs font-light text-gray-500 text-red-500"> {{ item.product_price }}</del></router-link></p>
-                            <span class="block text-gray-500 text-xxs">{{ item.total_sold }} Sold</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End items list -->
-
-                <!-- Begin pagination -->
-                <div class="text-xs text-gray-500 bg-white rounded p-4 my-5">
-                    <div class="flex items-center justify-between">
-
-                        <!-- Begin nav buttons -->
-                        <div class="flex-1 flex justify-between sm:hidden">
-                            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500">Previous</a>
-                            <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500">Next</a>
-                        </div>
-                        <!-- End nav buttons -->
-
-                        <!-- Begin pagination navs -->
-                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-                            <div><p class="text-sm text-gray-700">Showing <span class="font-medium"> 1 </span>to <span class="font-medium"> 10 </span>of <span class="font-medium"> 97 </span> results</p></div>
-                            <div>
-                                <nav class="relative z-0 inline-flex shadow-sm -space-x-px" aria-label="Pagination">
-                                      <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                        <span class="sr-only">Previous</span>
-                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-                                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
-                                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
-                                    <a href="#" class="hidden md:inline-flex relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
-                                    <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
-                                    <a href="#" class="hidden md:inline-flex relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">8</a>
-                                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">9</a>
-                                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">10</a>
-                                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                        <span class="sr-only">Next</span>
-                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-                                </nav>
+                <div id="infinite-list" class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 xs:grid-cols-2">
+                    <div v-for="item in product.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
+                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                            <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
+                        </router-link>
+                        <div class="m-2">
+                            <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
+                                <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                    <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 25) }}...</p>
+                                </router-link>
+                            </span>
+                            <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
+                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                    {{ item.pricing.price_data[0].sales_price }}
+                                    <del class="ml-2 text-xxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
+                                </router-link>
+                            </p>
+                            <p v-else class="font-bold block text-xs my-0.5">
+                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                    {{ item.pricing.price_data[0].price_range }}
+                                </router-link>
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <p class="block text-xs my-0.5 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                    </svg>
+                                    <span>{{ item.attributes.average_rating }}</span>
+                                </p>
+                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="hover:text-red-500">
+                                    <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+                                </router-link>
                             </div>
                         </div>
-                        <!-- End pagination navs -->
-
                     </div>
                 </div>
-                <!-- End pagination -->
+                <div v-if="isLoading">
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+                </div>
+                <!-- End items list -->
 
             </div>
             <!-- End right contents -->
@@ -109,48 +96,62 @@
 </template>
 
 <script>
+    import { computed, onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
+    import axios from "axios";
+
     export default
     {
         name: "MainContents",
-        data()
+        setup ()
         {
-            return {
-                items:
-                [
-                    { resource_id: 10000000, image: "../assets/images/products/1.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "230",  },
-                    { resource_id: 20000000, image: "../assets/images/products/2.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 30000000, image: "../assets/images/products/3.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 40000000, image: "../assets/images/products/4.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 50000000, image: "../assets/images/products/5.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 60000000, image: "../assets/images/products/6.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 70000000, image: "../assets/images/products/7.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 80000000, image: "../assets/images/products/8.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 90000000, image: "../assets/images/products/9.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 12000000, image: "../assets/images/products/10.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 13000000, image: "../assets/images/products/11.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 14000000, image: "../assets/images/products/12.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 15000000, image: "../assets/images/products/13.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 17000000, image: "../assets/images/products/14.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 18000000, image: "../assets/images/products/15.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 19000000, image: "../assets/images/products/16.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 22000000, image: "../assets/images/products/17.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 23000000, image: "../assets/images/products/18.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 24000000, image: "../assets/images/products/19.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 25000000, image: "../assets/images/products/20.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 26000000, image: "../assets/images/products/21.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 27000000, image: "../assets/images/products/22.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 28000000, image: "../assets/images/products/23.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 29000000, image: "../assets/images/products/24.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 30000000, image: "../assets/images/products/25.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 31000000, image: "../assets/images/products/26.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 32000000, image: "../assets/images/products/27.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                    { resource_id: 33000000, image: "../assets/images/products/28.jpg", sales_price: "23,000", product_price: "24,000", name: "CP4 Cannon 350 camera...", total_sold: "1,230",  },
-                ]
+            const product = reactive({ items: [] })
+            const currentPage = ref(0)
+            const totalPages = ref()
+            const isInitialRequestLoading = ref(true)
+            const isLoading = ref(false )
+
+            const getItems = async () =>
+            {
+                currentPage.value++
+                try
+                {
+                    const response = await axios({ method: 'GET', url: `business/products?page=${currentPage.value}`, headers: {} })
+                    const parsedResponse = await response.data
+                    product.items = [ ...product.items, ...parsedResponse.data ]
+                    totalPages.value = parsedResponse.meta.last_page
+                }
+                catch( err )
+                {
+                    console.log( err )
+                }
             }
+            const handleScroll = async () =>
+            {
+                if (( window.scrollY + window.innerHeight ) >= document.body.offsetHeight )
+                {
+                    if ( hasFetchedAllData.value || isLoading.value ) { return }
+                    isLoading.value = true
+                    await getItems()
+                    isLoading.value = false
+                }
+            }
+            const hasFetchedAllData = computed(() =>
+            {
+                return currentPage.value === totalPages.value && !isLoading.value
+            })
+
+            onBeforeMount(async () =>
+            {
+                await getItems()
+                isInitialRequestLoading.value = false
+            })
+            onMounted(() => { window.addEventListener('scroll', handleScroll) })
+            onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
+
+            return { product, isInitialRequestLoading, isLoading }
         }
     }
 </script>
 
 <style scoped>
-
 </style>

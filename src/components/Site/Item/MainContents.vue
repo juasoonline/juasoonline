@@ -961,7 +961,7 @@
                     <!-- End recommendations header -->
 
                     <!-- Begin items list -->
-                    <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
+                    <div class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
                         <div v-for="item in storeRecommendations.items.slice(0, 6)" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
                             <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
                                 <img v-bind:src="item.image" :alt="item.name" class="object-cover h-16 w-16 text-center mx-auto">
@@ -983,7 +983,7 @@
                     <h3 class="font-bold text-sm mb-1.5 text-center">More To Love</h3>
 
                     <!-- Begin items list -->
-                    <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
+                    <div class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
                         <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                             <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                 <img v-bind:src="item.attributes.image" :alt="item.name">
