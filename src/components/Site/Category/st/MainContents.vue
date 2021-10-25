@@ -98,12 +98,14 @@
 <script>
     import { computed, onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
     import axios from "axios";
+    import { useRoute } from 'vue-router'
 
     export default
     {
         name: "MainContents",
         setup ()
         {
+            const route = useRoute()
             const product = reactive({ items: [] })
             const currentPage = ref(0)
             const totalPages = ref()
@@ -115,7 +117,7 @@
                 currentPage.value++
                 try
                 {
-                    const response = await axios({ method: 'GET', url: `business/products?page=${currentPage.value}`, headers: {} })
+                    const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '/products' })
                     const parsedResponse = await response.data
                     product.items = [ ...product.items, ...parsedResponse.data ]
                     totalPages.value = parsedResponse.meta.last_page

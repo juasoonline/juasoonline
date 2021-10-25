@@ -65,6 +65,9 @@
                 {
                     const response = await axios({ method: 'GET', url: `business/products?page=${currentPage.value}`, headers: {} })
                     const parsedResponse = await response.data
+
+                    console.log( parsedResponse.data )
+
                     product.items = [ ...product.items, ...parsedResponse.data ]
                     totalPages.value = parsedResponse.meta.last_page
                 }
