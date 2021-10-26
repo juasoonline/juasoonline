@@ -7,8 +7,8 @@
             <!-- Begin left contents -->
             <aside class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5">
                 <div class="sticky inset-x-0 top-20 left-0">
-
                     <div class="bg-white rounded-b">
+
                         <!-- Begin cat header -->
                         <div class="bg-juaso-primary rounded-t">
                             <router-link to="">
