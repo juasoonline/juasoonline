@@ -21,17 +21,17 @@
                         <!-- Begin cat nav -->
                         <div class="p-3">
                             <div v-if="menus.isLoading === true">
-                                <div class="font-bold text-sm">
-                                    <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="flex items-center hover:text-red-600">
+                                <div class="font-bold text-sm hover:text-red-600">
+                                    <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
                                         {{ menus.menu.include.category.include.group.attributes.name }}
                                     </router-link>
                                 </div>
                                 <div class="ml-2 py-1 text-xs">
                                     <ul>
-                                        <li class="py-1 flex">
+                                        <li class="py-1 flex hover:text-red-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                            <router-link :to="{ name: 'Category', params: { category: menus.menu.include.category.attributes.resource_id, slug: menus.menu.include.category.attributes.slug }}" class="hover:text-red-600">{{ menus.menu.include.category.attributes.name }}</router-link>
+                                            <router-link :to="{ name: 'Category', params: { category: menus.menu.include.category.attributes.resource_id, slug: menus.menu.include.category.attributes.slug }}">{{ menus.menu.include.category.attributes.name }}</router-link>
                                         </li>
                                         <li class="ml-5 py-1 font-bold">{{ menus.menu.attributes.name }}</li>
                                     </ul>
