@@ -2,10 +2,10 @@
 
     <!-- Begin contents -->
     <main class="2xl:container xl:container lg:container 2xl:my-4 xl:my-4 lg:my-4 mx-auto px-1.5">
-        <div class="2xl:flex xl:flex lg:flex 2xl:gap-5 xl:gap-5 lg:gap-5 my-4">
+        <div class="2xl:flex xl:flex lg:flex my-4">
 
             <!-- Begin left contents -->
-            <aside class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5">
+            <aside class="mr-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5">
                 <div class="sticky inset-x-0 top-20 left-0">
                     <div class="bg-white rounded-b">
 
