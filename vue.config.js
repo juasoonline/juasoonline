@@ -2,7 +2,7 @@ module.exports =
 {
     devServer:
     {
-        host: 'juasoonline.test',
+        // host: 'juasoonline.test',
         // port: '4000'
     }
 };

@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full gap-3">
+    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full">
 
         <!-- Begin categories nav bar -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5 bg-white rounded">
@@ -10,7 +10,7 @@
         <!-- End categories nav bar -->
 
         <!-- Begin ads slides -->
-        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 md:w-full sm:w-full xs:w-full rounded">
+        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 md:w-full sm:w-full xs:w-full rounded mx-3">
 
             <!-- Begin slider banners -->
             <Suspense>
@@ -161,8 +161,8 @@
             return {
                 banners:
                 [
-                    { resource_id: 10000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/right/banner1.jpg", name: "Ad banner name 1"  },
-                    { resource_id: 20000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/right/banner2.jpg", name: "Ad banner name 2"  },
+                    { resource_id: 10000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/right/banner1.jpg", name: "Ad banner name 1"  },
+                    { resource_id: 20000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/right/banner2.jpg", name: "Ad banner name 2"  },
                 ],
                 category_icons:
                 {

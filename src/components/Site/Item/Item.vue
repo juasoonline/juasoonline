@@ -20,9 +20,7 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <suspense>
-            <main-footer></main-footer>
-        </suspense>
+        <suspense><main-footer></main-footer></suspense>
         <!-- End footer -->
 
     </div>

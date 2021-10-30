@@ -256,17 +256,19 @@
 
                 <!-- Begin store banner -->
                 <section class="my-4">
-                    <div class="rounded"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
-                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/ads/top/banner1.jpg" alt="" class="rounded"></router-link>
+                    <div class="rounded">
+                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
+                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
+                        </router-link>
                     </div>
                 </section>
                 <!-- End store banner -->
 
                 <!-- Begin item review and specifications -->
-                <section class="flex grid grid-cols-6 gap-5 my-4">
+                <section class="flex gap-5 my-4">
 
                     <!-- Begin left contents -->
-                    <aside class="rounded col-span-1">
+                    <aside class="w-1/5 rounded">
 
                         <!-- Begin store category -->
                         <div class="bg-white rounded px-4 py-4 mb-5">
@@ -302,6 +304,17 @@
                                 <div v-for="item in storeItems.items.slice( 0, 5 )" :key="item.id" class="max-w-xs">
                                     <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"><img class="w-full rounded border cursor-pointer" :src="item.attributes.image" alt="Sunset in the mountains"></router-link>
                                     <div class="font-bold text-sm mt-1.5">{{ item.attributes.sales_price }}</div>
+                                    <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
+                                        <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                            {{ item.pricing.price_data[0].sales_price }}
+                                            <del class="ml-2 text-xxxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
+                                        </router-link>
+                                    </p>
+                                    <p v-else class="font-bold block text-xs my-0.5">
+                                        <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                            {{ item.pricing.price_data[0].price_range }}
+                                        </router-link>
+                                    </p>
                                     <div class="flex text-xs justify-between text-gray-400 mb-5">
                                         <p class="flex inline-block text-grey-darker items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
@@ -320,18 +333,20 @@
                     <!-- End left contents -->
 
                     <!-- Begin right contents -->
-                    <div class="col-span-5">
+                    <div class="w-4/5">
 
                         <!-- Begin store info -->
                         <div class="bg-white mb-4 rounded p-4">
-                            <div class="flex grid grid-cols-12">
+                            <div class="flex">
 
                                 <!-- Begin store info -->
-                                <div class="col-span-2 mr-3">
+                                <div class="w-1/5 mr-3">
 
                                     <!-- Begin store name -->
                                     <div class="flex items-center">
-                                        <span class="text-sm font-bold"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link></span>
+                                        <span class="text-sm font-bold">
+                                            <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link>
+                                        </span>
                                     </div>
                                     <!-- End store name -->
 
@@ -363,10 +378,10 @@
                                 <!-- Begin store info -->
 
                                 <!-- Begin store items -->
-                                <div class="col-span-10">
+                                <div class="w-4/5">
                                     <div class="2xl:block xl:hidden lg:hidden">
-                                        <div class="flex grid gap-2 grid-cols-8">
-                                            <div v-for="item in storeItems.items.slice( 0, 8 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                        <div class="flex grid gap-2 grid-cols-7">
+                                            <div v-for="item in storeItems.items.slice( 0, 7 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
                                                 <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                                     <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
                                                 </router-link>
@@ -636,7 +651,6 @@
                                                 {{ item.pricing.price_data[0].price_range }}
                                             </router-link>
                                         </p>
-
                                         <div class="flex items-center justify-between">
                                             <p class="block text-xs my-0.5 flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
@@ -682,7 +696,6 @@
                                                 <p class="" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
                                             </router-link>
                                         </span>
-
                                         <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
                                             <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
                                                 {{ item.pricing.price_data[0].sales_price }}
@@ -694,7 +707,6 @@
                                                 {{ item.pricing.price_data[0].price_range }}
                                             </router-link>
                                         </p>
-
                                         <div class="flex items-center justify-between">
                                             <p class="block text-xs my-0.5 flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
@@ -706,7 +718,6 @@
                                                 <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
                                             </router-link>
                                         </div>
-
                                         <span class="block text-gray-500 text-xxs"></span>
                                     </div>
                                 </div>
@@ -752,8 +763,6 @@
                         <div v-else class="flex items-center justify-between">
                             <p class="font-bold text-lg items-center flex">
                                  {{ pricing.data.price_range }}
-<!--                                <del class="text-xxs text-red-600 font-light mx-2"> {{ pricing.price_data.price }}</del>-->
-<!--                                <span class="inline-flex py-0.5 px-3 items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">- {{ pricing.price_data.discount_percentage }}%</span>-->
                             </p>
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                         </div>
@@ -952,7 +961,7 @@
                     <!-- End recommendations header -->
 
                     <!-- Begin items list -->
-                    <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
+                    <div class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-3">
                         <div v-for="item in storeRecommendations.items.slice(0, 6)" :key="item.resource_id" class="card bg-white rounded overflow-hidden">
                             <router-link class="text-center" :to="{ name: 'Item', params: { item: item.resource_id }}">
                                 <img v-bind:src="item.image" :alt="item.name" class="object-cover h-16 w-16 text-center mx-auto">
@@ -974,7 +983,7 @@
                     <h3 class="font-bold text-sm mb-1.5 text-center">More To Love</h3>
 
                     <!-- Begin items list -->
-                    <div class="grid 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 xs:gap-1 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
+                    <div class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
                         <div v-for="item in recommendations.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                             <router-link class="w-full object-cover" target= '_blank' :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                                 <img v-bind:src="item.attributes.image" :alt="item.name">

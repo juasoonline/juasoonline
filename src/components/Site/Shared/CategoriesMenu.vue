@@ -19,7 +19,7 @@
             <nav class="text-sm w-full h-full">
                 <ul class="menu">
                     <li v-for="group in groups.categories" :key="group.attributes.resource_id" class="2xl:text-ct xl:text-xs lg:text-xs text-gray-500">
-                        <router-link :to="{ name: 'Category', params: { category: group.attributes.resource_id, slug: group.attributes.slug }}" class="flex justify-between items-center py-1.5 2xl:mb-0.5 px-3 hover:shadow-lg hover:text-juaso-primary">
+                        <router-link :to="{ name: 'Group', params: { category: group.attributes.resource_id, slug: group.attributes.slug }}" class="flex justify-between items-center py-1.5 2xl:mb-0.5 px-3 hover:shadow-lg hover:text-juaso-primary">
                             <span>{{ group.attributes.name }}</span>
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </router-link>
@@ -32,7 +32,9 @@
                               </router-link>
                               <ul class="">
                                   <li v-for="subcategory in category.include.subcategories" :key="subcategory.attributes.resource_id" class="text-gray-500 font-light text-xs hover:text-juaso-primary py-0.5">
-                                      <router-link :to="{ name: 'Category', params: { category: subcategory.attributes.resource_id, slug: subcategory.attributes.slug }}">{{ subcategory.attributes.name }}</router-link>
+                                      <router-link :to="{ name: 'Subcategory', params: { category: subcategory.attributes.resource_id, slug: subcategory.attributes.slug }}">
+                                          {{ subcategory.attributes.name }}
+                                      </router-link>
                                   </li>
                               </ul>
                           </div>

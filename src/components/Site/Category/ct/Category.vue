@@ -7,17 +7,13 @@
         <top-ads></top-ads>
         <!-- End top ads -->
 
-        <!-- Begin navbar -->
+        <!-- Begin nav bar -->
         <nav-bar></nav-bar>
-        <!-- End navbar -->
+        <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
         <main-header></main-header>
         <!-- End logo, search and cart -->
-
-        <!-- Begin page header -->
-        <page-header></page-header>
-        <!-- End page header -->
 
         <!-- Begin top contents -->
         <main-contents></main-contents>
@@ -40,18 +36,16 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import PageHeader from "./PageHeader";
-    import MainContents from "@/components/Site/Categories/MainContents";
+    import MainContents from "@/components/Site/Category/ct/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
-    import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
+    import MobileBottomNavBar from "../../Shared/MobileBottomNavBar";
 
     export default
     {
-        name: "Categories",
-        components: { TopAds, NavBar, MainHeader, PageHeader, MainContents, MainFooter, MobileBottomNavBar }
+        name: "Category",
+        components: { TopAds, NavBar, MainHeader, MainFooter, MainContents, MobileBottomNavBar }
     }
 </script>
 
 <style scoped>
-
 </style>

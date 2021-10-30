@@ -8,7 +8,7 @@
                     <router-link to="/" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
                         Home <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                     </router-link>
-                    <router-link to="/account" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
+                    <router-link to="/profile" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
                         Account
                     </router-link>
                 </div>
@@ -55,7 +55,7 @@
                                         <p class="text-xxs font-bold mt-0.5">User ID: {{ profile.attributes.resource_id }}</p>
                                     </div>
                                     <div class="flex">
-                                        <router-link to="edit-profile" class="font-light text-xxs text-juaso-primary hover:text-juaso-secondary">Edit Profile</router-link>
+                                        <router-link to="" class="font-light text-xxs text-juaso-primary hover:text-juaso-secondary">Edit Profile</router-link>
                                     </div>
                                 </div>
                                 <!-- End user info -->

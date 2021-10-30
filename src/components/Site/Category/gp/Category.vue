@@ -7,9 +7,9 @@
         <top-ads></top-ads>
         <!-- End top ads -->
 
-        <!-- Begin navbar -->
+        <!-- Begin nav bar -->
         <nav-bar></nav-bar>
-        <!-- End navbar -->
+        <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
         <main-header></main-header>
@@ -20,8 +20,12 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer></main-footer>
+        <suspense><main-footer></main-footer></suspense>
         <!-- End footer -->
+
+        <!-- Begin mobile menu -->
+        <mobile-bottom-nav-bar></mobile-bottom-nav-bar>
+        <!-- End mobile menu -->
 
     </div>
     <!-- End contents wrapper -->
@@ -32,16 +36,16 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import MainContents from "@/components/Site/Category/MainContents";
+    import MainContents from "@/components/Site/Category/gp/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
+    import MobileBottomNavBar from "../../Shared/MobileBottomNavBar";
 
     export default
     {
         name: "Category",
-        components: { TopAds, NavBar, MainHeader, MainFooter, MainContents }
+        components: { TopAds, NavBar, MainHeader, MainFooter, MainContents, MobileBottomNavBar }
     }
 </script>
 
 <style scoped>
-
 </style>
