@@ -39,7 +39,6 @@
                             </div>
                             <div v-else>
                                 <bullet-list-loader viewBox="0 0 250 100" primaryColor="#f3f3f3" secondaryColor="#cccccc"></bullet-list-loader>
-                                <!--                                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">-->
                             </div>
                         </div>
                         <!-- End cat nav -->
@@ -69,7 +68,7 @@
                 <!-- End sort and view type -->
 
                 <!-- Begin items list -->
-                <div class="">
+                <div v-if="product.loaded === true">
                     <div v-if="product.items.length > 0" id="infinite-list" class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 xs:grid-cols-2">
                         <div v-for="( item ) in product.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                             <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
@@ -115,6 +114,9 @@
                         <p class="py-2 text-sm text-gray-400">There are no products in this category</p>
                     </div>
                 </div>
+                <div v-else>
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+                </div>
                 <div v-if="isLoading">
                     <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
                 </div>
@@ -143,7 +145,7 @@
         {
             const route = useRoute()
             const menus = reactive({ menu: [], loaded: false })
-            const product = reactive({ items: [] })
+            const product = reactive({ items: [], loaded: false })
             const currentPage = ref(0)
             const totalPages = ref()
             const isInitialRequestLoading = ref(true)
@@ -158,6 +160,7 @@
                     const parsedResponse = await response.data
                     product.items = [ ...product.items, ...parsedResponse.data ]
                     totalPages.value = parsedResponse.meta.last_page
+                    product.loaded = true
                 }
                 catch( err )
                 {
@@ -196,8 +199,8 @@
 
             onBeforeMount(async () =>
             {
-                await getItems()
                 await getMenus()
+                await getItems()
                 isInitialRequestLoading.value = false
             })
             onMounted(() => { window.addEventListener('scroll', handleScroll) })
