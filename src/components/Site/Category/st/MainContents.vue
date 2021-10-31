@@ -20,7 +20,7 @@
 
                         <!-- Begin cat nav -->
                         <div class="p-3">
-                            <div v-if="menus.isLoading === true">
+                            <div v-if="menus.loaded === true">
                                 <div class="font-bold text-sm hover:text-red-600">
                                     <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
@@ -37,6 +37,10 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div v-else>
+                                <bullet-list-loader viewBox="0 0 250 100" primaryColor="#f3f3f3" secondaryColor="#cccccc"></bullet-list-loader>
+                                <!--                                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">-->
+                            </div>
                         </div>
                         <!-- End cat nav -->
 
@@ -50,7 +54,7 @@
 
                 <!-- Begin breadcrumb -->
                 <div class="text-xs text-gray-500">
-                    <div v-if="menus.isLoading === true">
+                    <div v-if="menus.loaded === true">
                         <router-link to="/categories" class="hover:text-red-500">All Categories <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
                         <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="hover:text-red-500">{{ menus.menu.include.category.include.group.attributes.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
                         <router-link :to="{ name: 'Category', params: { category: menus.menu.include.category.attributes.resource_id, slug: menus.menu.include.category.attributes.slug }}" class="hover:text-red-500">{{ menus.menu.include.category.attributes.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
@@ -107,7 +111,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div v-else class="h-96">
                         <p class="py-2 text-sm text-gray-400">There are no products in this category</p>
                     </div>
@@ -130,14 +133,16 @@
     import { computed, onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
     import axios from "axios";
     import { useRoute } from 'vue-router'
+    import { BulletListLoader } from 'vue-content-loader'
 
     export default
     {
         name: "MainContents",
+        components: { BulletListLoader },
         setup ()
         {
             const route = useRoute()
-            const menus = reactive({ menu: [], isLoading: false })
+            const menus = reactive({ menu: [], loaded: false })
             const product = reactive({ items: [] })
             const currentPage = ref(0)
             const totalPages = ref()
@@ -159,7 +164,6 @@
                     console.log( err )
                 }
             }
-
             const getMenus = async () =>
             {
                 try
@@ -167,11 +171,11 @@
                     const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '?include=category.group' })
                     const data = await response.data
                     menus.menu = data.data
-                    menus.isLoading = true
+                    menus.loaded = true
                 }
                 catch( err )
                 {
-                    menus.isLoading = false
+                    menus.loaded = false
                     console.log( err )
                 }
             }
