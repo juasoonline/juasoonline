@@ -22,16 +22,16 @@
                         <div class="p-3">
                             <div v-if="menus.loaded === true">
                                 <div class="font-bold 2xl:text-sm xl:text-xs lg:text-xxs hover:text-red-600">
-                                    <router-link :to="{ name: 'Group', params: { category: menus.menu.include.group.attributes.resource_id, slug: menus.menu.include.group.attributes.slug }}" class="flex">
+                                    <router-link :to="{ name: 'Group', params: { category: menus.group.resource_id, slug: menus.group.slug }}" class="flex">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 2xl:mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ menus.menu.include.group.attributes.name }}
+                                        {{ menus.group.name }}
                                     </router-link>
                                 </div>
                                 <div class="ml-2 py-1 2xl:text-xs xl:text-xxs lg:text-xxs">
                                     <ul>
                                         <li class="py-1 flex py-1 font-bold">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                            {{ menus.menu.attributes.name }}
+                                            {{ menus.category.name }}
                                         </li>
                                         <li v-for="( subcategory, index ) in menus.subcategories" :key="index" class="ml-5 py-1 hover:text-red-600">
                                             <router-link :to="{ name: 'Subcategory', params: { category: subcategory.attributes.resource_id, slug: subcategory.attributes.slug }}" class="flex">
@@ -57,9 +57,9 @@
 
                 <!-- Begin breadcrumb -->
                 <div class="text-xs text-gray-500">
-                    <router-link to="" class="hover:text-red-500">All Categories <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                    <router-link to="" class="hover:text-red-500">Cellphones & Telecommunications <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                    <router-link to="" class="hover:text-red-500 font-extrabold">"Cellphones"</router-link> (552 Results)
+                    <router-link to="/categories" class="hover:text-red-500">All Categories <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
+                    <router-link :to="{ name: 'Group', params: { category: menus.group.resource_id, slug: menus.group.slug }}" class="hover:text-red-500">{{ menus.group.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
+                    <span class="hover:text-red-500 font-extrabold">"{{ menus.category.name }}"</span>
                 </div>
                 <!-- End breadcrumb -->
 
@@ -116,10 +116,10 @@
                     </div>
                 </div>
                 <div v-else>
-                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="">
                 </div>
                 <div v-if="isLoading">
-                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="">
                 </div>
                 <!-- End items list -->
 
@@ -145,7 +145,7 @@
         setup ()
         {
             const route = useRoute()
-            const menus = reactive({ menu: [], subcategories: [], loaded: false })
+            const menus = reactive({ category: [], group: [], subcategories: [], loaded: false })
             const brands = reactive({ brands: [], loaded: false })
             const product = reactive({ items: [], loaded: false })
             const currentPage = ref(0)
@@ -159,7 +159,8 @@
                 {
                     const response = await axios({ method: 'GET', url: 'juaso/categories/' + route.params.category + '?include=group,subcategories' })
                     const data = await response.data
-                    menus.menu = data.data
+                    menus.category = data.data.attributes
+                    menus.group = data.data.include.group.attributes
                     menus.subcategories = data.data.include.subcategories
                     menus.loaded = true
                 }
@@ -195,7 +196,7 @@
                 }
                 catch( err )
                 {
-                    console.log( err )
+                    product.loaded = false
                 }
             }
             const handleScroll = async () =>

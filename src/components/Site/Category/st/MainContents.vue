@@ -22,18 +22,18 @@
                         <div class="p-3">
                             <div v-if="menus.loaded === true">
                                 <div class="font-bold 2xl:text-sm xl:text-xs lg:text-xxs hover:text-red-600">
-                                    <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="flex">
+                                    <router-link :to="{ name: 'Group', params: { category: menus.group.resource_id, slug: menus.group.slug }}" class="flex">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 2xl:mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ menus.menu.include.category.include.group.attributes.name }}
+                                        {{ menus.group.name }}
                                     </router-link>
                                 </div>
                                 <div class="ml-2 py-1 2xl:text-xs xl:text-xxs lg:text-xxs">
                                     <ul>
                                         <li class="py-1 flex hover:text-red-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                            <router-link :to="{ name: 'Category', params: { category: menus.menu.include.category.attributes.resource_id, slug: menus.menu.include.category.attributes.slug }}">{{ menus.menu.include.category.attributes.name }}</router-link>
+                                            <router-link :to="{ name: 'Category', params: { category: menus.category.resource_id, slug: menus.category.slug }}">{{ menus.category.name }}</router-link>
                                         </li>
-                                        <li class="ml-5 py-1 font-bold">{{ menus.menu.attributes.name }}</li>
+                                        <li class="ml-5 py-1 font-bold">{{ menus.subcategory.name }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                         <div v-for="( brand ) in brands.brands.slice( 0, 6 )" :key="brand.attributes.resource_id">
                                             <router-link :to="{ name: 'Brands', params: { brands: brand.attributes.resource_id, slug: brand.attributes.slug }}" class="">
                                                 <div class="border text-center py-2 rounded ">
-                                                    <img :src="brand.attributes.logo" class="m-auto w-10 h-4">
+                                                    <img :src="brand.attributes.logo" alt="" class="m-auto w-10 h-4">
                                                 </div>
                                             </router-link>
                                         </div>
@@ -77,9 +77,9 @@
                 <div class="text-xs text-gray-500">
                     <div v-if="menus.loaded === true">
                         <router-link to="/categories" class="hover:text-red-500">All Categories <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                        <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="hover:text-red-500">{{ menus.menu.include.category.include.group.attributes.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                        <router-link :to="{ name: 'Category', params: { category: menus.menu.include.category.attributes.resource_id, slug: menus.menu.include.category.attributes.slug }}" class="hover:text-red-500">{{ menus.menu.include.category.attributes.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                        <span class="hover:text-red-500 font-extrabold">"{{ menus.menu.attributes.name }}"</span>
+                        <router-link :to="{ name: 'Group', params: { category: menus.group.resource_id, slug: menus.group.slug }}" class="hover:text-red-500">{{ menus.group.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
+                        <router-link :to="{ name: 'Category', params: { category: menus.category.resource_id, slug: menus.category.slug }}" class="hover:text-red-500">{{ menus.category.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
+                        <span class="hover:text-red-500 font-extrabold">"{{ menus.subcategory.name }}"</span>
                     </div>
                 </div>
                 <!-- End breadcrumb -->
@@ -166,7 +166,7 @@
         setup ()
         {
             const route = useRoute()
-            const menus = reactive({ menu: [], loaded: false })
+            const menus = reactive({ subcategory: [], category: [], group: [], loaded: false })
             const brands = reactive({ brands: [], loaded: false })
             const product = reactive({ items: [], loaded: false })
             const currentPage = ref(0)
@@ -180,7 +180,9 @@
                 {
                     const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '?include=category.group' })
                     const data = await response.data
-                    menus.menu = data.data
+                    menus.subcategory = data.data.attributes
+                    menus.category = data.data.include.category.attributes
+                    menus.group = data.data.include.category.include.group.attributes
                     menus.loaded = true
                 }
                 catch( err )
