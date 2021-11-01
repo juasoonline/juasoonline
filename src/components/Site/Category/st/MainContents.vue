@@ -50,7 +50,7 @@
                                 <div v-if="brands.loaded === true" class="mt-5">
                                     <div v-if="brands.brands.length > 0" class="flex grid gap-4 grid-cols-2">
                                         <div v-for="( brand ) in brands.brands.slice( 0, 6 )" :key="brand.attributes.resource_id">
-                                            <router-link to="" class="">
+                                            <router-link :to="{ name: 'Brands', params: { brands: brand.attributes.resource_id, slug: brand.attributes.slug }}" class="">
                                                 <div class="border text-center py-2 rounded ">
                                                     <img :src="brand.attributes.logo" class="m-auto w-10 h-4">
                                                 </div>
@@ -186,7 +186,6 @@
                 catch( err )
                 {
                     menus.loaded = false
-                    console.log( err )
                 }
             }
             const getBrands = async () =>
@@ -201,7 +200,6 @@
                 catch( err )
                 {
                     brands.loaded = false
-                    console.log( err )
                 }
             }
             const getItems = async () =>
@@ -217,7 +215,7 @@
                 }
                 catch( err )
                 {
-                    console.log( err )
+                    product.loaded = false
                 }
             }
             const handleScroll = async () =>
