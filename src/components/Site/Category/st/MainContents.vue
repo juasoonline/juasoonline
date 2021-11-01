@@ -5,7 +5,7 @@
         <div class="2xl:flex xl:flex lg:flex my-4">
 
             <!-- Begin left contents -->
-            <aside class="mr-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5">
+            <aside class="mr-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:w-2/12 xl:w-1/5 lg:w-1/5">
                 <div class="sticky inset-x-0 top-20 left-0">
                     <div class="bg-white rounded-b">
 
@@ -21,13 +21,13 @@
                         <!-- Begin cat nav -->
                         <div class="p-3">
                             <div v-if="menus.loaded === true">
-                                <div class="font-bold text-sm hover:text-red-600">
-                                    <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                                <div class="font-bold 2xl:text-sm xl:text-xxs lg:text-xxs hover:text-red-600">
+                                    <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 2xl:mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
                                         {{ menus.menu.include.category.include.group.attributes.name }}
                                     </router-link>
                                 </div>
-                                <div class="ml-2 py-1 text-xs">
+                                <div class="ml-2 py-1 2xl:text-xs xl:text-xxs lg:text-xxs">
                                     <ul>
                                         <li class="py-1 flex hover:text-red-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
@@ -50,9 +50,11 @@
                                 <div v-if="brands.loaded === true" class="mt-5">
                                     <div v-if="brands.brands.length > 0" class="flex grid gap-4 grid-cols-2">
                                         <div v-for="( brand ) in brands.brands.slice( 0, 6 )" :key="brand.attributes.resource_id">
-                                            <div class="border text-center py-2 rounded">
-                                                <img :src="brand.attributes.logo" class="m-auto w-10 h-4">
-                                            </div>
+                                            <router-link to="" class="">
+                                                <div class="border text-center py-2 rounded ">
+                                                    <img :src="brand.attributes.logo" class="m-auto w-10 h-4">
+                                                </div>
+                                            </router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +71,7 @@
             <!-- End left contents -->
 
             <!-- Begin right contents -->
-            <div class="2xl:w-4/5 xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xs:w-full">
+            <div class="2xl:w-10/12 xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xs:w-full">
 
                 <!-- Begin breadcrumb -->
                 <div class="text-xs text-gray-500">
