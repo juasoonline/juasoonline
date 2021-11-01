@@ -43,6 +43,26 @@
                         </div>
                         <!-- End cat nav -->
 
+                        <!-- Begin brands -->
+                        <div class="px-4 pb-5">
+                            <div class="border-t">
+                                <h3 class="font-bold text-sm mt-5">Brands</h3>
+                                <div v-if="brands.loaded === true" class="mt-5">
+                                    <div v-if="brands.brands.length > 0" class="flex grid gap-4 grid-cols-2">
+                                        <div v-for="( brand ) in brands.brands.slice( 0, 6 )" :key="brand.attributes.resource_id">
+                                            <div class="border text-center py-2 rounded">
+                                                <img :src="brand.attributes.logo" class="m-auto w-10 h-4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else>
+                                    <bullet-list-loader viewBox="0 0 250 100" primaryColor="#f3f3f3" secondaryColor="#cccccc"></bullet-list-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End brands -->
+
                     </div>
                 </div>
             </aside>
@@ -145,12 +165,43 @@
         {
             const route = useRoute()
             const menus = reactive({ menu: [], loaded: false })
+            const brands = reactive({ brands: [], loaded: false })
             const product = reactive({ items: [], loaded: false })
             const currentPage = ref(0)
             const totalPages = ref()
             const isInitialRequestLoading = ref(true)
             const isLoading = ref(false )
 
+            const getMenus = async () =>
+            {
+                try
+                {
+                    const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '?include=category.group' })
+                    const data = await response.data
+                    menus.menu = data.data
+                    menus.loaded = true
+                }
+                catch( err )
+                {
+                    menus.loaded = false
+                    console.log( err )
+                }
+            }
+            const getBrands = async () =>
+            {
+                try
+                {
+                    const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '/products/brands' })
+                    const data = await response.data
+                    brands.brands = data.data
+                    brands.loaded = true
+                }
+                catch( err )
+                {
+                    brands.loaded = false
+                    console.log( err )
+                }
+            }
             const getItems = async () =>
             {
                 currentPage.value++
@@ -164,21 +215,6 @@
                 }
                 catch( err )
                 {
-                    console.log( err )
-                }
-            }
-            const getMenus = async () =>
-            {
-                try
-                {
-                    const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '?include=category.group' })
-                    const data = await response.data
-                    menus.menu = data.data
-                    menus.loaded = true
-                }
-                catch( err )
-                {
-                    menus.loaded = false
                     console.log( err )
                 }
             }
@@ -200,13 +236,14 @@
             onBeforeMount(async () =>
             {
                 await getMenus()
+                await getBrands()
                 await getItems()
                 isInitialRequestLoading.value = false
             })
             onMounted(() => { window.addEventListener('scroll', handleScroll) })
             onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 
-            return { menus, product, isInitialRequestLoading, isLoading }
+            return { menus, brands, product, isInitialRequestLoading, isLoading }
         }
     }
 </script>
