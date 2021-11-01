@@ -2,12 +2,12 @@
 
     <!-- Begin contents -->
     <main class="2xl:container xl:container lg:container 2xl:my-4 xl:my-4 lg:my-4 mx-auto px-1.5">
-        <div class="2xl:flex xl:flex lg:flex 2xl:gap-5 xl:gap-5 lg:gap-5 my-4">
+        <div class="2xl:flex xl:flex lg:flex my-4">
 
             <!-- Begin left contents -->
-            <aside class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5">
+            <aside class="mr-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:w-2/12 xl:w-1/5 lg:w-1/5">
                 <div class="sticky inset-x-0 top-20 left-0">
-                    <div class="bg-white rounded-b">
+                    <div class="bg-white rounded-b shadow-lg">
 
                         <!-- Begin cat header -->
                         <div class="bg-juaso-primary rounded-t">
@@ -35,17 +35,17 @@
                             </div>
                         </div>
                         <!-- End cat nav -->
-                    </div>
 
+                    </div>
                 </div>
             </aside>
             <!-- End left contents -->
 
             <!-- Begin right contents -->
-            <div class="2xl:w-4/5 xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xs:w-full">
+            <div class="2xl:w-10/12 xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xs:w-full">
 
                 <!-- Begin breadcrumb -->
-                <div class="text-xs text-gray-500 bg-white rounded p-4">
+                <div class="text-xs text-gray-500">
                     <router-link to="" class="hover:text-red-500">All Categories <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
                     <router-link to="" class="hover:text-red-500">{{ groups.group.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
                     <router-link to="" class="hover:text-red-500 font-extrabold">"Cellphones"</router-link> (552 Results)
@@ -53,7 +53,7 @@
                 <!-- End breadcrumb -->
 
                 <!-- Begin sort and view type -->
-                <div class="my-4">
+                <div class="mt-5 mb-4">
                 </div>
                 <!-- End sort and view type -->
 
