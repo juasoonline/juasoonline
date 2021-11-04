@@ -13,7 +13,7 @@
                 </div>
                 <div class="ml-4">
                     <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-juaso-primary font-bold">Over 1 million items on sale</h3>
-                    <p class="mt-1 2xl:text-sm xl:text-xs lg:text-xxs text-gray-500">With over 1 million items, there's always something on sale!</p>
+                    <p class="mt-1 text-sm text-gray-500">With over 1 million items, there's always something on sale!</p>
                 </div>
             </div>
             <!-- End products counts -->
@@ -27,7 +27,7 @@
                 </div>
                 <div class="ml-4">
                     <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-juaso-primary font-bold">24/7 Help Center</h3>
-                    <p class="mt-1 2xl:text-sm xl:text-xs lg:text-xxs text-gray-500">Round-the-clock assistance for a smooth shopping experience.</p>
+                    <p class="mt-1 text-sm text-gray-500">Round-the-clock assistance for a smooth shopping experience.</p>
                 </div>
             </div>
             <!-- End 24/7 help -->
@@ -41,7 +41,7 @@
                 </div>
                 <div class="ml-4">
                     <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-juaso-primary font-bold">Convenient payment options</h3>
-                    <p class="mt-1 2xl:text-sm xl:text-xs lg:text-xxs text-gray-500">Pay with the world’s most popular and secure payment methods.</p>
+                    <p class="mt-1 text-sm text-gray-500">Pay with the world’s most popular and secure payment methods.</p>
                 </div>
             </div>
             <!-- End safe payment -->
@@ -55,7 +55,7 @@
                 </div>
                 <div class="ml-4">
                     <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-juaso-primary font-bold">Shop with Confidence</h3>
-                    <p class="mt-1 2xl:text-sm xl:text-xs lg:text-xxs text-gray-500">Our Buyer Protection covers your purchase from click to delivery.</p>
+                    <p class="mt-1 text-sm text-gray-500">Our Buyer Protection covers your purchase from click to delivery.</p>
                 </div>
             </div>
             <!-- End shop with confidence -->

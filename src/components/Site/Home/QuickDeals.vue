@@ -5,8 +5,11 @@
 
         <!-- Begin header -->
         <div class="flex justify-between items-center mb-3 pt-2">
-            <div class="font-bold">Quick Deals</div>
-            <div class="text-xs"><router-link to="">View More</router-link></div>
+            <div class="font-black text-xl text-gray-700 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                <span>Flash Deals</span>
+            </div>
+            <div class="text-sm"><router-link to="">VIEW MORE</router-link></div>
         </div>
         <!-- End header -->
 
@@ -114,14 +117,13 @@
 </template>
 
 <script>
-    import SwiperCore, { Autoplay, Navigation } from 'swiper';
-    import { Swiper, SwiperSlide } from 'swiper/vue'
-    SwiperCore.use( [ Autoplay, Navigation ] );
-
-    import 'swiper/swiper.scss';
-    import {reactive, ref} from "vue";
+    import { reactive, ref } from "vue";
     import axios from "axios";
 
+    import SwiperCore, { Autoplay, Navigation } from 'swiper';
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+    import 'swiper/swiper.scss';
+    SwiperCore.use( [ Autoplay, Navigation ] );
 
     export default
     {

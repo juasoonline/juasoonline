@@ -11,10 +11,6 @@
         <juaso-tags></juaso-tags>
         <!-- End Juasoonline tags -->
 
-        <!-- Begin error message -->
-        <div v-if="error">{{ error.errors }}</div>
-        <!-- End error message -->
-
         <!-- Begin quick details -->
         <suspense>
             <template #default>
@@ -28,11 +24,56 @@
         </suspense>
         <!-- End quick details -->
 
+        <!-- Begin top rankings -->
+        <div class="bg-white rounded my-5 p-5">
+
+            <!-- Begin header -->
+            <div class="flex justify-between items-center">
+                <div class="font-black text-xl text-gray-700"><router-link to="">Top Rankings</router-link></div>
+                <div class="text-sm"><router-link to="">VIEW MORE</router-link></div>
+            </div>
+            <!-- End header -->
+
+            <!-- Begin items -->
+            <div class="flex gap-3 mt-3">
+                <div v-for="index in 3" :key="index" class="bg-gray-100 p-2 rounded">
+
+                    <!-- Begin header -->
+                    <div class="mb-3 text-lg font-bold">Some category name goes here</div>
+                    <!-- End header -->
+
+                    <!-- Begin category items -->
+                    <div class="rounded flex grid grid-cols-3 gap-1">
+                        <div v-for="index in 3" :key="index" class="card overflow-hidden">
+
+                            <!-- Begin image -->
+                            <router-link class="" :to="{ name: 'Item', params: { item: 78236748275482 }}">
+                                <img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/test/images/products/product14_1.jpg" alt="product">
+                            </router-link>
+                            <!-- End image -->
+
+                            <!-- Begin price -->
+                            <div class="text-center mt-3">
+                                <p class="text-xxxs font-bold text-center"><span>GHS 2000.00</span></p>
+                            </div>
+                            <!-- End price -->
+
+                        </div>
+                    </div>
+                    <!-- End category items -->
+
+                </div>
+            </div>
+            <!-- End items -->
+
+        </div>
+        <!-- End top rankings -->
+
         <!-- Begin items -->
         <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 w-full mb-14">
 
             <!-- Begin title -->
-            <div class="mx-auto text-center"><h4 class="text-2xl font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4></div>
+            <div class="text-center my-5 font-black text-3xl text-gray-700">More To Love</div>
             <!-- End title -->
 
             <!-- Begin items list -->
@@ -63,7 +104,6 @@
     {
         name: "MainContents",
         components: { CatsAndAdSlides, JuasoTags, QuickDeals, ItemsList },
-
     }
 </script>
 

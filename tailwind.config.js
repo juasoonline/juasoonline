@@ -31,7 +31,7 @@ module.exports =
 
         fontFamily:
         {
-            juaso: [ 'Nunito' ]
+            juaso: [ 'Nunito' ],
         },
 
         backgroundColor: theme => ({

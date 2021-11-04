@@ -7,9 +7,9 @@
         <top-ads></top-ads>
         <!-- End top ads -->
 
-        <!-- Begin navbar -->
+        <!-- Begin nav bar -->
         <nav-bar></nav-bar>
-        <!-- End navbar -->
+        <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
         <main-header></main-header>

@@ -242,8 +242,14 @@
                 await getItems()
                 isInitialRequestLoading.value = false
             })
-            onMounted(() => { window.addEventListener('scroll', handleScroll) })
-            onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
+            onMounted(() =>
+            {
+                window.addEventListener('scroll', handleScroll)
+            })
+            onUnmounted(() =>
+            {
+                window.removeEventListener('scroll', handleScroll)
+            })
 
             return { menus, brands, product, isInitialRequestLoading, isLoading }
         }
