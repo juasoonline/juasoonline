@@ -57,6 +57,14 @@ module.exports =
         backgroundImage: theme => (
         {
             'header-banner': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/banner.svg')",
+            'banner': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/banner.jpeg')",
+            'bg-1': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/midnight.jpeg')",
+            'bg-2': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/solid_blue.jpeg')",
+            'bg-3': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/messenger.jpeg')",
+            'coupon-bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/coupon-bg-banner.jpg')",
+            'coupon2-bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/coupon-1.webp')",
+            'coupon3-bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/brand_bg.png')",
+            'coupon4-bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/coupons-v5-bg.jpg')",
         }),
 
         screens:

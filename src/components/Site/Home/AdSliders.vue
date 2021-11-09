@@ -7,7 +7,7 @@
         <!-- End error message -->
 
         <div v-else>
-            <swiper :slides-per-view="1" :speed="1000" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
+            <swiper :slides-per-view="1" :speed="1000" :loop="true" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
                 <swiper-slide v-for="slider in items.data" :key="slider.attributes.resource_id">
                     <div class="swiper-container">
                         <router-link to="/store/1234567890">

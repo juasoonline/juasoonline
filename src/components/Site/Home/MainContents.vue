@@ -30,7 +30,7 @@
             <!-- Begin header -->
             <div class="flex justify-between items-center">
                 <div class="font-black text-xl text-gray-700"><router-link to="">Top Rankings</router-link></div>
-                <div class="text-sm"><router-link to="">VIEW MORE</router-link></div>
+                <div class="text-xs"><router-link to="">VIEW MORE</router-link></div>
             </div>
             <!-- End header -->
 
