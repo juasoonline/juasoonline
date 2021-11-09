@@ -6,12 +6,12 @@
         <!-- Begin header -->
         <div class="2xl:mb-2 xl:mb-2 lg:mb-2.5 flex justify-between items-center text-gray-600 pt-2">
             <h3 class="font-bold">Top Rankings</h3>
-            <p class="text-sm"><router-link to="#">VIEW MORE</router-link></p>
+            <p class="text-xs"><router-link to="#">VIEW MORE</router-link></p>
         </div>
         <!-- End header -->
 
         <!-- Begin ranks for 2xl and lg screens -->
-        <swiper :slides-per-view="8" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:block xl:hidden lg:hidden">
+        <swiper :slides-per-view="8" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="mb-2 rounded 2xl:block xl:hidden lg:hidden">
             <swiper-slide v-for="( rankings ) in rankings.ranks" :key="rankings.attributes.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border border-gray-100 text-center rounded">
                     <div class="border-b border-gray-100"><img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t"></div>
@@ -33,7 +33,7 @@
         <!-- End ranks for 2xl and lg screens -->
 
         <!-- Begin ranks for md screens -->
-        <swiper :slides-per-view="6" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:block lg:hidden">
+        <swiper :slides-per-view="6" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="mb-2 rounded 2xl:hidden xl:block lg:hidden">
             <swiper-slide v-for="( rankings ) in rankings.ranks" :key="rankings.attributes.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border border-gray-100 text-center rounded">
                     <div class="border-b border-gray-100"><img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t"></div>
@@ -55,7 +55,7 @@
         <!-- End ranks for md screens -->
 
         <!-- Begin ranks for md screens -->
-        <swiper :slides-per-view="7" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:hidden lg:block lg:my-2.5">
+        <swiper :slides-per-view="7" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="mb-2 rounded 2xl:hidden xl:hidden lg:block lg:my-2.5">
             <swiper-slide v-for="( rankings ) in rankings.ranks" :key="rankings.attributes.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border border-gray-100 text-center rounded">
                     <div class="border-b border-gray-100"><img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t"></div>

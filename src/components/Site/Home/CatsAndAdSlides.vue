@@ -114,7 +114,7 @@
         <!-- End ads slides -->
 
         <!-- Begin user actions -->
-        <div class="2xl:block xl:block lg:hidden md:hidden sm:hidden xs:hidden w-1/5 rounded">
+        <div class="2xl:block xl:block lg:hidden md:hidden sm:hidden xs:hidden w-1/5">
 
             <!-- Begin user actions -->
             <div class="flex justify-center mb-2 items-center bg-white rounded py-6">
@@ -171,7 +171,7 @@
                     <!-- End logged in user contents -->
 
                     <!-- Begin guest user contents -->
-                    <div v-else class="">
+                    <div v-else class="2xl:mb-3 mb-2.5">
                         <div class="justify-center flex flex-col">
                             <router-link to="/login" class="self-center rounded-full shadow-lg text-gray-500 hover:shadow">
                                 <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -190,39 +190,98 @@
             <!-- End user actions -->
 
             <!-- Begin new user coupon -->
-            <div class="bg-white pb-5 rounded mt-4">
+            <div class="mt-2">
 
-                <!-- Begin logged in user contents -->
-                <div v-if="authentication.isAuthenticated()" class="">
-
-                </div>
-                <!-- End logged in user contents -->
-
-                <!-- Begin guest user contents -->
-                <div v-else class="">
+                <!-- Begin weekly deals contents -->
+                <div v-if="authentication.isAuthenticated()" class="bg-white rounded p-2">
 
                     <!-- Begin header -->
-                    <div class="bg-coupon4-bg bg-cover rounded-t text-white p-3">
-                        <div class="flex font-black items-center mb-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="bg-white rounded-full text-red-600 p-0.5 mr-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
-                            <span class="text-sm">Don't waste this discount!</span>
+                    <div class="">
+                        <div class="flex font-bold items-center mb-1.5 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                            <span>Flash Deals</span>
                         </div>
-                        <p class="2xl:text-xs text-xxs">New user coupon can be used on any item</p>
                     </div>
                     <!-- End header -->
 
+                    <!-- Begin items -->
+                    <div class="text-justify 2xl:mt-3 2xl:mb-1.5 mt-2.5">
+                        <swiper :slides-per-view="2" :loop="true" :space-between="10" :autoplay="{ autoplay: true, delay: 5000 }">
+                            <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
+                                <div class="card bg-white overflow-hidden mx-0.5">
+
+                                    <!-- Begin image -->
+                                    <div class="">
+                                        <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-1">
+                                    </div>
+                                    <!-- End image -->
+
+                                    <!-- Begin pricing -->
+                                    <div class="text-center mt-3.5">
+                                        <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xxs">
+                                            <div class="w-full object-cover text-gray-700 hover:text-red-500">
+                                                <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
+                                            </div>
+                                        </div>
+                                        <div v-else class="font-bold block text-xxs">
+                                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                                {{ item.product.pricing.price_data[0].sales_price }}
+                                            </router-link>
+                                        </div>
+                                    </div>
+                                    <!-- End pricing -->
+
+                                </div>
+                            </swiper-slide>
+                        </swiper>
+                    </div>
+                    <!-- End items -->
+
+                </div>
+                <!-- End weekly deals contents -->
+
+                <!-- Begin guest user contents -->
+                <div v-else class="bg-white rounded p-2">
+
                     <!-- Begin coupon -->
-                    <div class="bg-coupon2-bg bg-contain bg-no-repeat px-3 py-2 my-10 2xl:mx-10 mx-4">
-                        <h4 class="text-white text-sm font-bold">GHS 10.00</h4>
-                        <p class="text-white text-xxs">Orders over GHS 50.00</p>
+                    <div class="flex">
+                        <div class="rounded-l card1 p-2 border-r border-dashed border-white">
+                            <div class="bg-coupon4-bg rounded bg-cover p-3">
+
+                                <!-- Begin header -->
+                                <div class="text-white">
+                                    <div class="flex font-black items-center mb-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bg-white rounded-full text-red-600 p-0.5 mr-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
+                                        <span class="text-sm">Don't miss this!</span>
+                                    </div>
+                                    <p class="text-xs">New user coupon can be used on any item</p>
+                                </div>
+                                <!-- End header -->
+
+                                <!-- Begin coupon -->
+                                <div class="2xl:my-6 my-2">
+                                    <h4 class="text-white text-lg font-black">GHS 10.00</h4>
+                                    <p class="text-white text-xs">Orders over GHS 50.00</p>
+                                </div>
+                                <!-- End coupon -->
+
+                            </div>
+                        </div>
+                        <div class="rounded-r card2 p-2">
+                            <div class="bg-coupon4-bg bg-cover"></div>
+                        </div>
                     </div>
                     <!-- End coupon -->
 
                     <!-- Begin action button -->
-                    <div class="text-center 2xl:my-8 my-1">
-                        <router-link to="/register" class="bg-coupon-bg bg-contain px-12 py-1 rounded-md font-bold text-white text-xs">GET AND USE NOW</router-link>
+                    <div class="bg-juaso-primary rounded mt-6">
+                        <router-link to="/register" target="_blank">
+                            <div class="bg-coupon4-bg bg-cover rounded p-2 text-center text-white font-bold uppercase">
+                                <p class="text-sm">Get It Now</p>
+                            </div>
+                        </router-link>
                     </div>
-                    <!-- Begin action button -->
+                    <!-- End action button -->
 
                 </div>
                 <!-- End guest user contents -->
@@ -328,25 +387,46 @@
 </template>
 
 <script>
-    import { inject, reactive } from "vue";
+    import { inject, onBeforeMount, reactive, ref } from "vue";
 
     import CategoriesMenu from "../Shared/CategoriesMenu"
     import AdSliders from "@/components/Site/Home/AdSliders";
     import TopRanking from "@/components/Site/Home/TopRanking";
     import { Notyf } from "notyf";
+    import axios from "axios";
+
+    import SwiperCore, { Autoplay, Navigation } from 'swiper';
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+    import 'swiper/swiper.scss';
+    SwiperCore.use( [ Autoplay, Navigation ] );
 
     export default
     {
         name: "CatsSlides",
-        components: { CategoriesMenu, AdSliders, TopRanking },
+        components: { CategoriesMenu, AdSliders, TopRanking, Swiper, SwiperSlide },
         setup()
         {
             const authentication = inject( 'authentication' );
             const notification = new Notyf();
 
             const modal = reactive({ showSignInModal: false })
+            const error = ref(null )
+
+            const items = reactive({ data: [] })
             const loginData = reactive({ email: "", password: "", isLoading: false })
 
+            const getItems = async () =>
+            {
+                try
+                {
+                    const response = await axios({ method: 'GET', url: 'business/ads/quick-deals' });
+                    items.data = await response.data.data
+                }
+                catch (e)
+                {
+                    error.value = e
+                }
+            }
             const toggleSignInModal = () =>
             {
                 modal.showSignInModal = !modal.showSignInModal;
@@ -370,7 +450,12 @@
                 authentication.logoutUser().then(() => { document.location.href = "" } )
             }
 
-            return { authentication, modal, loginData, toggleSignInModal, signIn, signOut }
+            onBeforeMount(async () =>
+            {
+                await getItems()
+            })
+
+            return { authentication, modal, items, loginData, toggleSignInModal, signIn, signOut }
         },
 
         data()
@@ -395,4 +480,18 @@
 </script>
 
 <style scoped>
+    .card1{
+        width: 85%;
+        background: #1a4487;
+        background: radial-gradient(circle at right bottom, transparent 8px, #1a4487 0) right bottom, radial-gradient(circle at right top, transparent 8px, #1a4487 0) right top;
+        background-size: 100% 50%;
+        background-repeat: no-repeat;
+    }
+    .card2{
+        width: 15%;
+        background: #1a4487;
+        background: radial-gradient(circle at left bottom, transparent 8px, #1a4487 0) left bottom, radial-gradient(circle at left top, transparent 8px, #1a4487 0) left top;
+        background-size: 100% 50%;
+        background-repeat: no-repeat;
+    }
 </style>

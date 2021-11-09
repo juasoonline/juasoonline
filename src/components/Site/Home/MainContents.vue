@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-4 px-1.5">
+    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-5 px-1.5">
 
         <!-- Begin category and slide contents -->
         <cats-and-ad-slides></cats-and-ad-slides>
@@ -10,6 +10,9 @@
         <!-- Begin Juasoonline tags -->
         <juaso-tags></juaso-tags>
         <!-- End Juasoonline tags -->
+
+        <!-- Begin special promo -->
+        <!-- End special promo -->
 
         <!-- Begin quick details -->
         <suspense>
