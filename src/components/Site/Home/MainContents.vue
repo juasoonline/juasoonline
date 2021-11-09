@@ -31,9 +31,11 @@
         <div class="bg-white rounded my-5 p-5">
 
             <!-- Begin header -->
-            <div class="flex justify-between items-center">
-                <div class="font-black text-xl text-gray-700"><router-link to="">Top Rankings</router-link></div>
-                <div class="text-xs"><router-link to="">VIEW MORE</router-link></div>
+            <div class="">
+                <router-link to="#" class="flex justify-between items-center text-gray-600">
+                    <h3 class="font-bold hover:text-gray-600">Top Rankings</h3>
+                    <p class="text-xs hover:text-red-600">VIEW MORE</p>
+                </router-link>
             </div>
             <!-- End header -->
 
@@ -57,7 +59,7 @@
 
                             <!-- Begin price -->
                             <div class="text-center mt-3">
-                                <p class="text-xxxs font-bold text-center"><span>GHS 2000.00</span></p>
+                                <p class="text-xxs font-bold text-center"><span>GHS 2000.00</span></p>
                             </div>
                             <!-- End price -->
 

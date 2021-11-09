@@ -41,9 +41,9 @@
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
     import PageHeader from "./PageHeader";
-    import MainContents from "@/components/Site/Categories/MainContents";
+    import MainContents from "@/components/Site/Category/Categories/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
-    import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
+    import MobileBottomNavBar from "../../Shared/MobileBottomNavBar";
 
     export default
     {

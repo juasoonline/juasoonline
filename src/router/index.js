@@ -14,6 +14,7 @@ const routes =
     { path: '/messages', name: 'Messages', component: () => import( '../components/Dashboard/Messages/Messages' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
     { path: '/mystores', name: 'MyStores', component: () => import( '../components/Dashboard/MyStores/MyStores' ), beforeEnter:(to, from, next ) => { if ( !authentication.isAuthenticated() ) { next({ name: 'Login' }); } else { next() } } },
 
+    // User unprotected routes
     { path: '/register', name: 'Register', component: () => import( '../components/Dashboard/Register/Register' ) },
     { path: '/code/resend', name: 'Resend', component: () => import( '../components/Dashboard/Resend/Resend' ) },
     { path: '/forgot-password', name: 'ForgotPassword', component: () => import( '../components/Dashboard/ForgotPassword/ForgotPassword' ), beforeEnter:(to, from, next ) => { if ( authentication.isAuthenticated() ) { next({ name: 'Account' }); } else { next() } } },
@@ -25,16 +26,21 @@ const routes =
     // Public routes
     { path: '/', name: 'Home', component: () => import( '../components/Site/Home/Home' )},
     { path: '/404', name: '404', component: () => import( '../components/Site/404/404' )},
-    { path: '/categories', name: 'Categories', component: () => import( '../components/Site/Categories/Categories' )},
 
+    // Categories and related routes
+    { path: '/categories', name: 'Categories', component: () => import( '../components/Site/Category/Categories/Categories' )},
     { path: '/category/gp/:category/:slug', name: 'Group', component: () => import( '../components/Site/Category/gp/Category' )},
     { path: '/category/ct/:category/:slug', name: 'Category', component: () => import( '../components/Site/Category/ct/Category' )},
     { path: '/category/st/:category/:slug', name: 'Subcategory', component: () => import( '../components/Site/Category/st/Category' )},
 
     { path: '/item/:item', name: 'Item', component: () => import( '../components/Site/Item/Item' )},
-    { path: '/stores', name: 'Stores', component: () => import( '../components/Site/Stores/Stores' )},
-    { path: '/store/:store', name: 'Store', component: () => import( '../components/Site/Store/Store' )},
     { path: '/brands/:brands/:slug', name: 'Brands', component: () => import( '../components/Site/Brands/Brands' )},
+
+    // Store and related routes
+    { path: '/stores', name: 'Stores', component: () => import( '../components/Stores/Stores/Stores' )},
+    { path: '/store/:store', name: 'Store', component: () => import( '../components/Stores/Store/Store' )},
+
+    // Static pages routes
     { path: '/buyer-protection', name: 'BuyerProtection', component: () => import( '../components/Site/BuyerProtection/BuyerProtection' ) },
     { path: '/help', name: 'Help', component: () => import( '../components/Site/Help/Help' ) },
     { path: '/customer-service', name: 'CustomerService', component: () => import( '../components/Site/CustomerService/CustomerService' ) },

@@ -56,7 +56,7 @@ module.exports =
 
         backgroundImage: theme => (
         {
-            'header-banner': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/banner.svg')",
+            'header-banner': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/banner.svg')",
             'banner': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/banner.jpeg')",
             'bg-1': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/midnight.jpeg')",
             'bg-2': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/solid_blue.jpeg')",
