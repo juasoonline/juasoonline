@@ -8,11 +8,11 @@
         <!-- End top ads -->
 
         <!-- Begin nav bar -->
-        <nav-bar></nav-bar>
+        <nav-bar class=""></nav-bar>
         <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
-        <main-header class="sticky top-0 z-40"></main-header>
+        <main-header class=""></main-header>
         <!-- End logo, search and cart -->
 
         <!-- Begin top contents -->
@@ -36,16 +36,17 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import MainContents from "@/components/Site/Category/gp/MainContents";
+    import MainContents from "@/components/Campaigns/FlashDeals/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
-    import MobileBottomNavBar from "../../Shared/MobileBottomNavBar";
+    import MobileBottomNavBar from "../../Site/Shared/MobileBottomNavBar";
 
     export default
     {
-        name: "Category",
-        components: { TopAds, NavBar, MainHeader, MainFooter, MainContents, MobileBottomNavBar }
+        name: "FlashDeals",
+        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter, MobileBottomNavBar },
     }
 </script>
 
 <style scoped>
+
 </style>

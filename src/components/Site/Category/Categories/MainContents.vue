@@ -4,7 +4,7 @@
     <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-4 px-1.5">
 
         <!-- Begin menu -->
-        <div class="bg-white sticky inset-x-0 top-20 left-0 shadow-lg md:overflow-x-scroll sm:overflow-x-scroll xs:overflow-x-scroll w-full">
+        <div class="bg-white sticky top-0 z-40 shadow-lg md:overflow-x-scroll sm:overflow-x-scroll xs:overflow-x-scroll w-full">
             <div class="flex 2xl:grid 2xl:grid-cols-7 xl:grid xl:grid-cols-7 lg:grid lg:grid-cols-7">
                 <div v-for="group in data.categories" :key="group.attributes.resource_id" :href="'#' + group.attributes.resource_id" class="p-5 border hover:border-red-400 hover:border-2 items-center">
                     <a class="text-center"><p class="text-xs font-bold">{{ group.attributes.name }}</p></a>

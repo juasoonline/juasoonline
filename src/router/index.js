@@ -36,6 +36,9 @@ const routes =
     { path: '/item/:item', name: 'Item', component: () => import( '../components/Site/Item/Item' )},
     { path: '/brands/:brands/:slug', name: 'Brands', component: () => import( '../components/Site/Brands/Brands' )},
 
+    // Campaigns resource routes
+    { path: '/campaigns/flash-deals', name: 'FlashDeals', component: () => import( '../components/Campaigns/FlashDeals/FlashDeals' )},
+
     // Store and related routes
     { path: '/stores', name: 'Stores', component: () => import( '../components/Stores/Stores/Stores' )},
     { path: '/store/:store', name: 'Store', component: () => import( '../components/Stores/Store/Store' )},

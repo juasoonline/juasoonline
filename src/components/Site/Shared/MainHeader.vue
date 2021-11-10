@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="sticky top-0 z-40 flex bg-white shadow">
+    <div class="flex bg-white shadow">
         <div class="2xl:container xl:container lg:container md:px-1.5 sm:px-1.5 xs:px-1.5 md:w-screen sm:w-screen xs:w-screen mx-auto px-1.5">
             <div class="grid gap-5 grid-cols-12 py-4 items-center">
 
@@ -27,7 +27,7 @@
                     <!-- Begin form -->
                     <div class="border border-blue-900 rounded flex w-full items-center">
                         <label class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-                            <select class="text-xs text-gray-600 minimal">
+                            <select class="bg-white text-xs text-gray-600 minimal">
                                 <option value="0" class="">All Categories</option>
                                 <option value="100003109">Women's Clothing</option>
                                 <option value="100003070">Men's Clothing</option>

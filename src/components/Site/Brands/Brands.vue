@@ -12,7 +12,7 @@
         <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
-        <main-header class=""></main-header>
+        <main-header class="sticky top-0 z-40"></main-header>
         <!-- End logo, search and cart -->
 
         <!-- Begin top contents -->

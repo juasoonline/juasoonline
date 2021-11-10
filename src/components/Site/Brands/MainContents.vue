@@ -5,13 +5,10 @@
         <div class="container mx-auto py-7 px-1.5">
 
             <!-- Begin page header -->
-            <div class="flex justify-between items-center">
+            <div class="justify-between items-center">
                 <div class="font-black text-3xl items-center flex">
-                    <span class="mr-4 text-gray-700 uppercase">{{ brand.brand.name }}</span>
-                    <span class="text-sm font-light">{{ brand.brand.description }}</span>
-                </div>
-                <div class="">
-                    <img :src="brand.brand.logo" :alt="brand.brand.name" class="h-12">
+                    <span class="mr-10 text-gray-700 uppercase">{{ brand.brand.name }}</span>
+                    <span class="text-xl font-light">{{ brand.brand.description }}</span>
                 </div>
             </div>
             <!-- End page header -->
@@ -24,7 +21,7 @@
     <main class="container mx-auto my-4 px-1.5">
 
         <!-- Begin top product ranking -->
-        <div class="flex rounded p-4 grid grid-cols-2 gap-5 items-center" style="background-image: url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/banner.svg'); background-size: cover">
+        <div class="bg-header-banner bg-cover flex rounded p-4 grid grid-cols-2 gap-5 items-center">
             <div class="text-white text-center">
                 <div class="pt-5 px-10 font-black text-xl">{{ brand.brand.description }}</div>
                 <div class="py-2 font-black text-sm">Top Ranked</div>

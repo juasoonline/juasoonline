@@ -1299,7 +1299,6 @@
     {
         name: "MainContents",
         components: { Swiper, SwiperSlide },
-
         setup()
         {
             const notification = new Notyf();

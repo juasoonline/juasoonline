@@ -171,7 +171,7 @@
             const product = reactive({ items: [], loaded: false })
             const currentPage = ref(0)
             const totalPages = ref()
-            const isInitialRequestLoading = ref(true)
+            const isInitialRequestLoading = ref(true )
             const isLoading = ref(false )
 
             const getMenus = async () =>

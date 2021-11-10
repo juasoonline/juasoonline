@@ -12,7 +12,7 @@
         <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
-        <main-header></main-header>
+        <main-header class=""></main-header>
         <!-- End logo, search and cart -->
 
         <!-- Begin page header -->

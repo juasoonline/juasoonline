@@ -52,6 +52,7 @@ module.exports =
             ...theme('colors'),
             'juaso-primary': '#1a4487',
             'juaso-secondary': '#2d8bc3',
+            'juaso-extra': '#1d4b95',
         }),
 
         backgroundImage: theme => (

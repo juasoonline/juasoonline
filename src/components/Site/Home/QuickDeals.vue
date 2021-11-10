@@ -5,7 +5,7 @@
 
         <!-- Begin header -->
         <div class="mb-3 pt-2">
-            <router-link to="" class="flex justify-between items-center">
+            <router-link to="/campaigns/flash-deals" class="flex justify-between items-center">
                 <div class="font-black text-xl text-gray-700 flex items-center hover:text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
                     <span>Flash Deals</span>
