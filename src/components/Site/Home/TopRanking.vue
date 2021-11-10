@@ -5,7 +5,7 @@
 
         <!-- Begin header -->
         <div class="2xl:mb-2 xl:mb-2 lg:mb-2.5 pt-2">
-            <router-link to="/campaigns/top-ranking" class="flex justify-between items-center text-gray-600">
+            <router-link to="/campaigns/top-rankings" class="flex justify-between items-center text-gray-600">
                 <h3 class="font-bold hover:text-gray-600">Top Rankings</h3>
                 <p class="text-xs hover:text-red-600">VIEW MORE</p>
             </router-link>
