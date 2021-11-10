@@ -39,12 +39,15 @@ module.exports =
             'juaso-primary': '#1a4487',
             'juaso-secondary': '#2d8bc3',
             'juaso-extra': '#1d4b95',
+            'juaso-fourth': '#3ca5e5',
         }),
 
         textColor: theme => ({
             ...theme('colors'),
             'juaso-primary': '#1a4487',
             'juaso-secondary': '#2d8bc3',
+            'juaso-extra': '#1d4b95',
+            'juaso-fourth': '#40b1f5',
         }),
 
         borderColor: theme => ({
@@ -53,6 +56,7 @@ module.exports =
             'juaso-primary': '#1a4487',
             'juaso-secondary': '#2d8bc3',
             'juaso-extra': '#1d4b95',
+            'juaso-fourth': '#40b1f5',
         }),
 
         backgroundImage: theme => (

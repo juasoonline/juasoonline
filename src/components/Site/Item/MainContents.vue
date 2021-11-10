@@ -152,18 +152,18 @@
 
                         <!-- Begin action button -->
                         <div class="flex inline-block mt-5">
-                            <button v-if="orderData.orderLoading === false" @click="makeOrder()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Please wait...</button>
+                            <button v-if="orderData.orderLoading === false" @click="makeOrder()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-primary hover:bg-juaso-extra">Buy Now</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-primary hover:bg-juaso-extra">Please wait...</div>
 
-                            <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Please wait...</button>
+                            <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-secondary hover:bg-juaso-fourth mx-3">Add to Cart</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-secondary hover:bg-juaso-fourth mx-3">Please wait...</div>
 
                             <button v-if="wishlist.isLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
                                 <svg v-if="wishlist.status === false" class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 <svg v-else class="mr-2 h-5 w-5 text-red-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 {{ wishlist.wishlist_count }}
                             </button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</div>
                         </div>
                         <!-- End action button -->
 
@@ -365,9 +365,9 @@
                                     <!-- End store stats -->
 
                                     <!-- Begin call to action -->
-                                    <div class="mt-3 flex justify-between items-center">
-                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
-                                        <button @click="followAction()" class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">
+                                    <div class="mt-3">
+                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-juaso-primary hover:bg-juaso-extra text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1.5 px-4 mr-5 rounded-full">Visit Store</router-link>
+                                        <button @click="followAction()" class="text-juaso-primary 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-juaso-primary">
                                             <span v-if="follows.isLoading === true">Loading</span>
                                             <span v-else>{{ follows.status }}</span>
                                         </button>
@@ -625,7 +625,11 @@
 
                         <!-- Begin store recommendations -->
                         <div class="rounded mb-5">
-                            <h3 class="font-bold text-lg text-gray-600 mb-2">Seller Recommendations</h3>
+                            <!-- Begin title -->
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-lg text-gray-600 mb-2">Seller Recommendations</h3>
+                            </div>
+                            <!-- End title -->
 
                             <!-- Begin items -->
                             <div class="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 gap-4">
@@ -678,9 +682,6 @@
                             <!-- Begin title -->
                             <div class="flex items-center justify-between">
                                 <h3 class="font-bold text-lg text-gray-600 mb-2">More To Love</h3>
-                                <router-link to="">
-                                    <p class="flex items-center text-xs text-gray-600 hover:text-juaso-primary">View More <span><svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></span></p>
-                                </router-link>
                             </div>
                             <!-- End title -->
 
