@@ -32,7 +32,7 @@
 
             <!-- Begin header -->
             <div class="">
-                <router-link to="#" class="flex justify-between items-center text-gray-600">
+                <router-link to="/campaigns/top-rankings" class="flex justify-between items-center text-gray-600">
                     <h3 class="font-bold hover:text-gray-600">Top Rankings</h3>
                     <p class="text-xs hover:text-red-600">VIEW MORE</p>
                 </router-link>

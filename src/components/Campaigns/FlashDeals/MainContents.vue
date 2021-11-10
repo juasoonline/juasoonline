@@ -127,7 +127,7 @@
                     menus.loaded = false
                 }
             }
-            const getBrandItems = async () =>
+            const getFlashItems = async () =>
             {
                 currentPage.value++
                 try
@@ -150,7 +150,7 @@
                 {
                     if ( hasFetchedAllData.value || isLoading.value ) { return }
                     isLoading.value = true
-                    await getBrandItems()
+                    await getFlashItems()
                     isLoading.value = false
                 }
             }
@@ -162,7 +162,7 @@
             onBeforeMount(async () =>
             {
                 await getMenus()
-                await getBrandItems()
+                await getFlashItems()
 
                 isInitialRequestLoading.value = false
             })

@@ -197,9 +197,11 @@
 
                     <!-- Begin header -->
                     <div class="">
-                        <div class="flex font-bold items-center mb-1.5 text-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
-                            <span>Flash Deals</span>
+                        <div class="mb-1.5">
+                            <router-link to="/campaigns/flash-deals" class="flex font-bold items-center text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                                <span>Flash Deals</span>
+                            </router-link>
                         </div>
                     </div>
                     <!-- End header -->
@@ -224,9 +226,9 @@
                                             </div>
                                         </div>
                                         <div v-else class="font-bold block text-xxs">
-                                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                            <div class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
                                                 {{ item.product.pricing.price_data[0].sales_price }}
-                                            </router-link>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- End pricing -->

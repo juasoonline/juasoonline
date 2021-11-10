@@ -38,6 +38,7 @@ const routes =
 
     // Campaigns resource routes
     { path: '/campaigns/flash-deals', name: 'FlashDeals', component: () => import( '../components/Campaigns/FlashDeals/FlashDeals' )},
+    { path: '/campaigns/top-rankings', name: 'TopRankings', component: () => import( '../components/Campaigns/TopRankings/TopRankings' )},
 
     // Store and related routes
     { path: '/stores', name: 'Stores', component: () => import( '../components/Stores/Stores/Stores' )},
