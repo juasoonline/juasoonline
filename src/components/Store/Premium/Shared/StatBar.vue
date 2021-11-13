@@ -3,7 +3,7 @@
     <!-- Begin contents -->
     <div v-if="stats.loaded === true" class="flex bg-white border-t 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
         <div class="container mx-auto px-1.5">
-            <div class="flex justify-between font-bold">
+            <div class="flex justify-between">
 
                 <!-- Begin left menu -->
                 <nav class="py-3">

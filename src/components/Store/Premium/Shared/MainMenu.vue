@@ -3,27 +3,27 @@
     <!-- Begin contents -->
     <div class="sticky top-0 z-40 bg-white border-t shadow-lg">
         <div class="container mx-auto px-1.5">
-            <div class="text-gray-600 flex justify-between">
+            <div class="text-sm text-gray-600 flex justify-between">
                 <div class="flex">
-                    <div class="text-center px-10 py-7 border-l border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
-                        <router-link to="" class="text-sm font-bold truncate">
+                    <div class="text-center px-10 py-4 border-l border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
+                        <router-link to="" class="truncate">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
                         </router-link>
                     </div>
                     <div class="flex overflow-x-auto">
-                        <div class="dropdown px-10 py-7 border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
+                        <div class="dropdown px-10 py-4 border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
                             <router-link to="" class="inline-flex items-center">
-                                <p class="text-sm font-bold my-auto truncate mr-2">Products</p>
+                                <p class="my-auto truncate mr-2">Products</p>
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
                             </router-link>
-                            <div class="dropdown-menu bg-white w-auto absolute hidden text-gray-700 z-0 mt-7 -ml-10 shadow-md">
-                                <div class="megadrop rounded-r border shadow-sm grid gap-5 grid-cols-5">
+                            <div class="dropdown-menu bg-white w-auto absolute hidden text-gray-700 z-0 mt-4 -ml-10 shadow-md">
+                                <div class="megadrop rounded-r border shadow-sm grid gap-2 grid-cols-5">
                                     <div class="col p-5" v-for="category in categories.data" :key="category.attributes.resource_id">
 
                                         <!-- Begin category -->
                                         <router-link :to="{ name: 'Category', params: { category: category.attributes.resource_id, slug: category.attributes.slug }}">
                                             <div class="border-b pb-1 mb-1">
-                                                <h3 class="text-gray-500 text-sm font-black hover:text-juaso-primary">{{ category.attributes.name }}</h3>
+                                                <h3 class="text-gray-500 text-sm font-bold hover:text-juaso-primary">{{ category.attributes.name }}</h3>
                                             </div>
                                         </router-link>
                                         <!-- End category -->
@@ -48,19 +48,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-center px-10 py-7 border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
-                        <router-link to="" class="text-sm font-bold truncate">
+                    <div class="text-center px-10 py-4 border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
+                        <router-link to="" class="truncate">
                             <span>New Arrivals</span>
                         </router-link>
                     </div>
-                    <div class="text-center px-10 py-7 border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
-                        <router-link to="" class="text-sm font-bold truncate">
+                    <div class="text-center px-10 py-4 border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
+                        <router-link to="" class="truncate">
                             <span>Flash Sales</span>
                         </router-link>
                     </div>
                 </div>
-                <div class="text-center px-10 py-7 border-l border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
-                    <router-link to="" class="flex items-center text-sm font-bold truncate">
+                <div class="text-center px-10 py-4 border-l border-r border-gray-200 hover:bg-gray-100 cursor-pointer">
+                    <router-link to="" class="flex items-center truncate">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" /></svg>
                         <span>Follow</span>
                     </router-link>
