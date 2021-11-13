@@ -37,12 +37,11 @@ const routes =
     { path: '/brands/:brands/:slug', name: 'Brands', component: () => import( '../components/Site/Brands/Brands' )},
 
     // Campaigns resource routes
-    { path: '/campaigns/flash-deals', name: 'FlashDeals', component: () => import( '../components/Campaigns/FlashDeals/FlashDeals' )},
-    { path: '/campaigns/top-rankings', name: 'TopRankings', component: () => import( '../components/Campaigns/TopRankings/TopRankings' )},
+    { path: '/campaigns/flash-deals', name: 'FlashDeals', component: () => import( '../components/Site/Campaigns/FlashDeals/FlashDeals' )},
+    { path: '/campaigns/top-rankings', name: 'TopRankings', component: () => import( '../components/Site/Campaigns/TopRankings/TopRankings' )},
 
     // Store and related routes
-    { path: '/stores', name: 'Stores', component: () => import( '../components/Stores/Stores/Stores' )},
-    { path: '/store/:store', name: 'Store', component: () => import( '../components/Stores/Store/Store' )},
+    { path: '/store/:slug', name: 'Store', component: () => import( '../components/Store/Pages/Home' )},
 
     // Static pages routes
     { path: '/buyer-protection', name: 'BuyerProtection', component: () => import( '../components/Site/BuyerProtection/BuyerProtection' ) },

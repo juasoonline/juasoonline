@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="flex bg-juaso-primary border-b 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+    <div class="flex bg-juaso-primary 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
         <div class="container mx-auto px-1.5">
             <div class="flex justify-between">
 
@@ -38,12 +38,6 @@
                             <router-link class="navLink" to="/">
                                 <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                                 <span class="">Download App</span>
-                            </router-link>
-                        </li>
-                        <li class="topNave mr-3">
-                            <router-link class="navLink" to="/wishlist">
-                                <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                                <span class="">Wishlist</span>
                             </router-link>
                         </li>
 
@@ -133,7 +127,7 @@
                                     <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/orders" class="flex hover:text-white hover:border-gray-600">My Orders</router-link></li>
                                     <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/messages" class="flex hover:text-white hover:border-gray-600">Message Center</router-link></li>
                                     <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/wishlist" class="flex hover:text-white hover:border-gray-600">Wish List</router-link></li>
-                                    <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/stores" class="flex hover:text-white hover:border-gray-600">My Favorite Stores</router-link></li>
+                                    <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/mystores" class="flex hover:text-white hover:border-gray-600">My Favorite Stores</router-link></li>
                                     <li class="px-3 py-1.5 hover:bg-juaso-secondary"><router-link to="/coupons" class="flex hover:text-white hover:border-gray-600">My Coupons</router-link></li>
                                 </ul>
                             </div>

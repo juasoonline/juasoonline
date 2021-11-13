@@ -36,13 +36,13 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import MainContents from "@/components/Campaigns/TopRankings/MainContents";
+    import MainContents from "@/components/Site/Campaigns/FlashDeals/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
-    import MobileBottomNavBar from "../../Site/Shared/MobileBottomNavBar";
+    import MobileBottomNavBar from "../../Shared/MobileBottomNavBar";
 
     export default
     {
-        name: "TopRankings",
+        name: "FlashDeals",
         components: { TopAds, NavBar, MainHeader, MainContents, MainFooter, MobileBottomNavBar },
     }
 </script>
