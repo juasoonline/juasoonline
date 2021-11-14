@@ -37,8 +37,10 @@ const routes =
     { path: '/brands/:brands/:slug', name: 'Brands', component: () => import( '../components/Site/Brands/Brands' )},
 
     // Campaigns resource routes
+    { path: '/campaign/:slug', name: 'Campaign', component: () => import( '../components/Site/Campaigns/Campaign/Campaign' )},
     { path: '/campaigns/flash-deals', name: 'FlashDeals', component: () => import( '../components/Site/Campaigns/FlashDeals/FlashDeals' )},
     { path: '/campaigns/top-rankings', name: 'TopRankings', component: () => import( '../components/Site/Campaigns/TopRankings/TopRankings' )},
+    { path: '/campaigns/new-arrivals', name: 'NewArrivals', component: () => import( '../components/Site/Campaigns/NewArrivals/NewArrivals' )},
 
     // Store and related routes
     { path: '/store/:slug', name: 'Store', component: () => import( '../components/Store/Pages/Home' )},

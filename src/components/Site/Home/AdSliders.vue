@@ -1,11 +1,13 @@
 <template>
 
     <!-- Begin contents -->
-    <div>
+    <div class="">
+
         <!-- Begin error message -->
-        <div v-if="error">{{ error.errors }}</div>
+        <div v-if="error"></div>
         <!-- End error message -->
 
+        <!-- Begin sliders -->
         <div v-else>
             <swiper :slides-per-view="1" :speed="1000" :loop="true" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
                 <swiper-slide v-for="slider in items.data" :key="slider.attributes.resource_id">
@@ -17,6 +19,8 @@
                 </swiper-slide>
             </swiper>
         </div>
+        <!-- End sliders -->
+
     </div>
     <!-- End contents -->
 
@@ -46,7 +50,7 @@
 
             try
             {
-                const response = await axios({ method: 'GET', url: 'business/ads/slider-ads' });
+                const response = await axios({ method: 'GET', url: 'business/campaigns/sliders' });
                 items.data = await response.data.data
             }
             catch (e)

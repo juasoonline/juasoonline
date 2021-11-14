@@ -16,69 +16,27 @@
 
         <!-- Begin quick details -->
         <suspense>
-            <template #default>
-                <quick-deals></quick-deals>
-            </template>
-            <template #fallback>
-                <div class="mx-auto text-center">
-                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
-                </div>
-            </template>
+            <template #default><flash-deals></flash-deals></template>
+            <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt=""></div></template>
         </suspense>
         <!-- End quick details -->
 
+        <!-- Begin new arrivals -->
+        <suspense>
+            <template #default><new-arrivals></new-arrivals></template>
+            <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt=""></div></template>
+        </suspense>
+        <!-- End new arrivals -->
+
         <!-- Begin top rankings -->
-        <div class="bg-white rounded my-5 p-5">
-
-            <!-- Begin header -->
-            <div class="">
-                <router-link to="/campaigns/top-rankings" class="flex justify-between items-center text-gray-600">
-                    <h3 class="font-bold hover:text-gray-600">Top Rankings</h3>
-                    <p class="text-xs hover:text-red-600">VIEW MORE</p>
-                </router-link>
-            </div>
-            <!-- End header -->
-
-            <!-- Begin items -->
-            <div class="flex gap-3 mt-3">
-                <div v-for="index in 3" :key="index" class="bg-gray-100 p-2 rounded">
-
-                    <!-- Begin header -->
-                    <div class="mb-3 text-lg font-bold">Some category name goes here</div>
-                    <!-- End header -->
-
-                    <!-- Begin category items -->
-                    <div class="rounded flex grid grid-cols-3 gap-1">
-                        <div v-for="index in 3" :key="index" class="card overflow-hidden">
-
-                            <!-- Begin image -->
-                            <router-link class="" :to="{ name: 'Item', params: { item: 78236748275482 }}">
-                                <img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/test/images/products/product14_1.jpg" alt="product">
-                            </router-link>
-                            <!-- End image -->
-
-                            <!-- Begin price -->
-                            <div class="text-center mt-3">
-                                <p class="text-xxs font-bold text-center"><span>GHS 2000.00</span></p>
-                            </div>
-                            <!-- End price -->
-
-                        </div>
-                    </div>
-                    <!-- End category items -->
-
-                </div>
-            </div>
-            <!-- End items -->
-
-        </div>
+        <top-rankings></top-rankings>
         <!-- End top rankings -->
 
         <!-- Begin items -->
         <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 w-full mb-14">
 
             <!-- Begin title -->
-            <div class="text-center my-5 font-black text-3xl text-gray-700">More To Love</div>
+            <div class="mb-3 font-black text-xl text-gray-700">Recommendations For You</div>
             <!-- End title -->
 
             <!-- Begin items list -->
@@ -102,13 +60,15 @@
 <script>
     import CatsAndAdSlides from "@/components/Site/Home/CatsAndAdSlides";
     import JuasoTags from "@/components/Site/Shared/JuasoTags";
-    import QuickDeals from "./QuickDeals";
+    import FlashDeals from "./FlashDeals";
+    import NewArrivals from "./NewArrivals";
+    import TopRankings from "./TopRankings";
     import ItemsList from "./ItemsList";
 
     export default
     {
         name: "MainContents",
-        components: { CatsAndAdSlides, JuasoTags, QuickDeals, ItemsList },
+        components: { CatsAndAdSlides, JuasoTags, FlashDeals, NewArrivals, TopRankings, ItemsList },
     }
 </script>
 

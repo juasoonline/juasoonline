@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full">
+    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full mb-5">
 
         <!-- Begin categories nav bar -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5 bg-white rounded">
@@ -10,28 +10,22 @@
         <!-- End categories nav bar -->
 
         <!-- Begin ads slides -->
-        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 md:w-full sm:w-full xs:w-full rounded mx-3">
+        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 2xl:mx-3 xl:mx-3 lg:mx-3 md:w-full sm:w-full xs:w-full rounded">
 
             <!-- Begin slider banners -->
-            <Suspense>
-                <template #default>
-                    <ad-sliders class=""></ad-sliders>
-                </template>
-                <template #fallback>
-                    <div class="mx-auto text-center">
-                        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
-                    </div>
-                </template>
-            </Suspense>
+            <suspense>
+                <template #default><ad-sliders class=""></ad-sliders></template>
+                <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif"></div></template>
+            </suspense>
             <!-- End slider banners -->
 
-            <!-- Begin ads -->
-            <top-ranking class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden"></top-ranking>
-            <!-- Begin ads -->
+            <!-- Begin banner rankings -->
+            <banner-rankings class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden"></banner-rankings>
+            <!-- Begin banner rankings -->
 
             <!-- Begin category menu for mobile -->
             <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block">
-                <div class="my-4 text-center bg-white rounded px-1.5 py-3">
+                <div class="mt-5 text-center bg-white rounded px-1.5 py-3">
 
                     <!-- Begin categories -->
                     <div class="text-center grid gap-1 grid-cols-5 mb-2">
@@ -100,9 +94,7 @@
 
                     <!-- Begin call to action button -->
                     <div class="flex items-center text-center mx-auto w-full">
-                        <router-link to="categories" class="bg-juaso-primary text-white text-xxs px-3 py-2 rounded w-full">
-                            View all categories
-                        </router-link>
+                        <router-link to="/categories" class="bg-juaso-primary text-white text-xxs px-3 py-2 rounded w-full">View all categories</router-link>
                     </div>
                     <!-- End call to action button -->
 
@@ -390,10 +382,6 @@
 
 <script>
     import { inject, onBeforeMount, reactive, ref } from "vue";
-
-    import CategoriesMenu from "../Shared/CategoriesMenu"
-    import AdSliders from "@/components/Site/Home/AdSliders";
-    import TopRanking from "@/components/Site/Home/TopRanking";
     import { Notyf } from "notyf";
     import axios from "axios";
 
@@ -402,10 +390,14 @@
     import 'swiper/swiper.scss';
     SwiperCore.use( [ Autoplay, Navigation ] );
 
+    import CategoriesMenu from "../Shared/CategoriesMenu"
+    import AdSliders from "@/components/Site/Home/AdSliders";
+    import BannerRankings from "@/components/Site/Home/BannerRankings";
+
     export default
     {
         name: "CatsSlides",
-        components: { CategoriesMenu, AdSliders, TopRanking, Swiper, SwiperSlide },
+        components: { CategoriesMenu, AdSliders, BannerRankings, Swiper, SwiperSlide },
         setup()
         {
             const authentication = inject( 'authentication' );
@@ -421,7 +413,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/ads/quick-deals' });
+                    const response = await axios({ method: 'GET', url: 'business/campaigns/flash-deals' });
                     items.data = await response.data.data
                 }
                 catch (e)

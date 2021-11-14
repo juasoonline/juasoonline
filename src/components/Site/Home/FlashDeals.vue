@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="2xl:p-4 xl:p-4 lg:p-4 md:px-1.5 sm:px-1.5 xs:px-1.5 md:mx-1.5 sm:mx-1.5 xs:mx-1.5 bg-white rounded">
+    <div class="2xl:p-4 xl:p-4 lg:p-4 md:px-1.5 sm:px-1.5 xs:px-1.5 md:mx-1.5 sm:mx-1.5 xs:mx-1.5 bg-white rounded mb-5">
 
         <!-- Begin header -->
         <div class="mb-3 pt-2">
@@ -35,20 +35,20 @@
                                 <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
                                     <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
                                         <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                        <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                                        <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
                                     </div>
                                 </div>
                                 <div v-else class="font-bold block text-xs my-0.5">
-                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                    {{ item.product.pricing.price_data[0].price_range }}
-                                </router-link>
-                            </div>
+                                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                        {{ item.product.pricing.price_data[0].sales_price }}
+                                    </router-link>
+                                </div>
                             </div>
                             <!-- End pricing -->
 
                             <!-- Begin counter -->
                             <div class="block text-xxs flex justify-between mt-2 text-green-800">
-                                <p class="">Deal Ends:</p>
+                                <p class="">Ends in:</p>
                                 <p class="">{{ item.attributes.promo_end }}</p>
                             </div>
                             <!-- End counter -->
@@ -75,12 +75,12 @@
                             <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
                                 <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
                                     <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                    <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                                    <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
                                 </div>
                             </div>
                             <div v-else class="font-bold block text-xs my-0.5">
                                 <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                    {{ item.product.pricing.price_data[0].price_range }}
+                                    {{ item.product.pricing.price_data[0].sales_price }}
                                 </router-link>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
 
                         <!-- Begin counter -->
                         <div class="block text-xxs flex justify-between mt-2 text-green-800">
-                            <p class="">Deal Ends:</p>
+                            <p class="">Ends in:</p>
                             <p class="">{{ item.attributes.promo_end }}</p>
                         </div>
                         <!-- End counter -->
@@ -114,12 +114,12 @@
                             <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
                                 <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
                                     <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                    <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
+                                    <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
                                 </div>
                             </div>
                             <div v-else class="font-bold block text-xs my-0.5">
                                 <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                    {{ item.product.pricing.price_data[0].price_range }}
+                                    {{ item.product.pricing.price_data[0].sales_price }}
                                 </router-link>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
 
                         <!-- Begin counter -->
                         <div class="block text-xxs flex justify-between mt-2 text-green-800">
-                            <p class="">Deal Ends:</p>
+                            <p class="">Ends in:</p>
                             <p class="">{{ item.attributes.promo_end }}</p>
                         </div>
                         <!-- End counter -->
@@ -140,36 +140,26 @@
             <!-- Begin item list -->
             <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block text-justify">
                 <swiper :slides-per-view="3" :loop="true" :space-between="5" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
+                    <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id" class="mb-2">
 
                         <!-- Begin image -->
                         <router-link :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
-                            <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-4">
+                            <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-2">
                         </router-link>
                         <!-- End image -->
 
                         <!-- Begin pricing -->
-                        <div class="">
-                            <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
-                                <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
-                                    <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                    <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
-                                </div>
+                        <div class="text-center text-xs font-black">
+                            <div v-if="item.product.pricing.priced === 'Product'" class="">
+                                <div class="w-full object-cover text-gray-700 hover:text-red-500"><span>{{ item.product.pricing.price_data[0].sales_price }}</span></div>
                             </div>
-                            <div v-else class="font-bold block text-xs my-0.5">
+                            <div v-else class="">
                                 <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                    {{ item.product.pricing.price_data[0].price_range }}
+                                    {{ item.product.pricing.price_data[0].sales_price }}
                                 </router-link>
                             </div>
                         </div>
                         <!-- End pricing -->
-
-                        <!-- Begin counter -->
-                        <div class="block text-xxs flex justify-between mt-2 text-green-800">
-                            <p class="">Deal Ends:</p>
-                            <p class="">{{ item.attributes.promo_end }}</p>
-                        </div>
-                        <!-- End counter -->
 
                     </swiper-slide>
                 </swiper>
@@ -202,11 +192,11 @@
             const items = reactive({ data: [] })
             const error = ref(null )
 
-            const getItems = async () =>
+            const getFlashDeals = async () =>
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/ads/quick-deals' });
+                    const response = await axios({ method: 'GET', url: 'business/campaigns/flash-deals' });
                     items.data = await response.data.data
                 }
                 catch (e)
@@ -217,7 +207,7 @@
 
             onBeforeMount(async () =>
             {
-                await getItems()
+                await getFlashDeals()
             })
 
             return { items, error }
