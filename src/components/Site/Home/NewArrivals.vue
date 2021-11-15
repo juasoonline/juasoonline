@@ -17,8 +17,8 @@
 
             <!-- Begin item for 2xl screens -->
             <div class="2xl:block xl:hidden lg:hidden md:hidden sm:hidden xs:hidden text-justify">
-                <swiper :slides-per-view="7" :speed="1500" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
+                <div class="flex grid 2xl:grid-cols-8 gap-3 pb-2">
+                    <div v-for="( item ) in items.data.slice( 0, 8 )" :key="item.attributes.resource_id">
                         <div class="card bg-white overflow-hidden mx-0.5">
 
                             <!-- Begin image -->
@@ -55,15 +55,15 @@
                             <!-- End seller -->
 
                         </div>
-                    </swiper-slide>
-                </swiper>
+                    </div>
+                </div>
             </div>
             <!-- End item for 2xl screens -->
 
             <!-- Begin item for xl screens -->
             <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
-                <swiper :slides-per-view="6" :speed="1500" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
+                <div class="flex grid xl:grid-cols-7 gap-3">
+                    <div v-for="( item ) in items.data.slice( 0, 7 )" :key="item.attributes.resource_id">
                         <div class="card bg-white overflow-hidden mx-0.5">
 
                             <!-- Begin image -->
@@ -100,15 +100,15 @@
                             <!-- End seller -->
 
                         </div>
-                    </swiper-slide>
-                </swiper>
+                    </div>
+                </div>
             </div>
             <!-- End item for xl screens -->
 
             <!-- Begin item for lg screens -->
             <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
-                <swiper :slides-per-view="5" :speed="1500" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
+                <div class="flex grid lg:grid-cols-6 gap-3">
+                    <div v-for="( item ) in items.data.slice( 0, 6 )" :key="item.attributes.resource_id">
                         <div class="card bg-white overflow-hidden mx-0.5">
 
                             <!-- Begin image -->
@@ -145,35 +145,63 @@
                             <!-- End seller -->
 
                         </div>
-                    </swiper-slide>
-                </swiper>
+                    </div>
+                </div>
             </div>
             <!-- End item for lg screens -->
 
             <!-- Begin item list -->
             <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block text-justify">
-                <swiper :slides-per-view="3" :speed="1500" :loop="true" :space-between="5" :autoplay="{ autoplay: true }">
+                <swiper :slides-per-view="4" :speed="1500" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="md:block sm:hidden xs:hidden">
                     <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id" class="mb-2">
+                        <router-link to="/campaigns/new-arrivals">
 
-                        <!-- Begin image -->
-                        <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                            <img :src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
+                            <!-- Begin image -->
+                            <div>
+                                <img :src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
+                            </div>
+                            <!-- End image -->
+
+                            <!-- Begin pricing -->
+                            <div class="text-center text-xs font-black">
+                                <div v-if="item.pricing[0].priced === 'Product'" class="">
+                                    <div class="w-full object-cover text-gray-700 hover:text-red-500"><span>{{ item.pricing[0].price_data[0].sales_price }}</span></div>
+                                </div>
+                                <div v-else class="">
+                                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                        {{ item.pricing[0].price_data[0].sales_price }}
+                                    </router-link>
+                                </div>
+                            </div>
+                            <!-- End pricing -->
+
                         </router-link>
-                        <!-- End image -->
+                    </swiper-slide>
+                </swiper>
+                <swiper :slides-per-view="3" :speed="1500" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="md:hidden sm:block xs:block">
+                    <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id" class="mb-2">
+                        <router-link to="/campaigns/new-arrivals">
 
-                        <!-- Begin pricing -->
-                        <div class="text-center text-xs font-black">
-                            <div v-if="item.pricing[0].priced === 'Product'" class="">
-                                <div class="w-full object-cover text-gray-700 hover:text-red-500"><span>{{ item.pricing[0].price_data[0].sales_price }}</span></div>
+                            <!-- Begin image -->
+                            <div>
+                                <img :src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
                             </div>
-                            <div v-else class="">
-                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                    {{ item.pricing[0].price_data[0].sales_price }}
-                                </router-link>
-                            </div>
-                        </div>
-                        <!-- End pricing -->
+                            <!-- End image -->
 
+                            <!-- Begin pricing -->
+                            <div class="text-center text-xs font-black">
+                                <div v-if="item.pricing[0].priced === 'Product'" class="">
+                                    <div class="w-full object-cover text-gray-700 hover:text-red-500"><span>{{ item.pricing[0].price_data[0].sales_price }}</span></div>
+                                </div>
+                                <div v-else class="">
+                                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                        {{ item.pricing[0].price_data[0].sales_price }}
+                                    </router-link>
+                                </div>
+                            </div>
+                            <!-- End pricing -->
+
+                        </router-link>
                     </swiper-slide>
                 </swiper>
             </div>

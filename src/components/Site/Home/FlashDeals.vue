@@ -23,36 +23,38 @@
                 <swiper :slides-per-view="7" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
                     <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
                         <div class="card bg-white overflow-hidden mx-0.5">
+                            <router-link to="/campaigns/flash-deals">
 
-                            <!-- Begin image -->
-                            <router-link :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
-                                <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-4">
-                            </router-link>
-                            <!-- End image -->
+                                <!-- Begin image -->
+                                <div :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
+                                    <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-4">
+                                </div>
+                                <!-- End image -->
 
-                            <!-- Begin pricing -->
-                            <div class="">
-                                <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
-                                    <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
-                                        <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                        <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
+                                <!-- Begin pricing -->
+                                <div class="">
+                                    <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
+                                        <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
+                                            <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
+                                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
+                                        </div>
+                                    </div>
+                                    <div v-else class="font-bold block text-xs my-0.5">
+                                        <div class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                            {{ item.product.pricing.price_data[0].sales_price }}
+                                        </div>
                                     </div>
                                 </div>
-                                <div v-else class="font-bold block text-xs my-0.5">
-                                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                        {{ item.product.pricing.price_data[0].sales_price }}
-                                    </router-link>
+                                <!-- End pricing -->
+
+                                <!-- Begin counter -->
+                                <div class="block text-xxs flex justify-between mt-2 text-green-800">
+                                    <p class="">Ends in:</p>
+                                    <p class="">{{ item.attributes.promo_end }}</p>
                                 </div>
-                            </div>
-                            <!-- End pricing -->
+                                <!-- End counter -->
 
-                            <!-- Begin counter -->
-                            <div class="block text-xxs flex justify-between mt-2 text-green-800">
-                                <p class="">Ends in:</p>
-                                <p class="">{{ item.attributes.promo_end }}</p>
-                            </div>
-                            <!-- End counter -->
-
+                            </router-link>
                         </div>
                     </swiper-slide>
                 </swiper>
@@ -63,36 +65,40 @@
             <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
                 <swiper :slides-per-view="6" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
                     <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
+                        <div class="card bg-white overflow-hidden mx-0.5">
+                            <router-link to="/campaigns/flash-deals">
 
-                        <!-- Begin image -->
-                        <router-link :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
-                            <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-4">
-                        </router-link>
-                        <!-- End image -->
-
-                        <!-- Begin pricing -->
-                        <div class="">
-                            <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
-                                <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
-                                    <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                    <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
+                                <!-- Begin image -->
+                                <div :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
+                                    <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-4">
                                 </div>
-                            </div>
-                            <div v-else class="font-bold block text-xs my-0.5">
-                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                    {{ item.product.pricing.price_data[0].sales_price }}
-                                </router-link>
-                            </div>
-                        </div>
-                        <!-- End pricing -->
+                                <!-- End image -->
 
-                        <!-- Begin counter -->
-                        <div class="block text-xxs flex justify-between mt-2 text-green-800">
-                            <p class="">Ends in:</p>
-                            <p class="">{{ item.attributes.promo_end }}</p>
-                        </div>
-                        <!-- End counter -->
+                                <!-- Begin pricing -->
+                                <div class="">
+                                    <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
+                                        <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
+                                            <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
+                                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
+                                        </div>
+                                    </div>
+                                    <div v-else class="font-bold block text-xs my-0.5">
+                                        <div class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                            {{ item.product.pricing.price_data[0].sales_price }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End pricing -->
 
+                                <!-- Begin counter -->
+                                <div class="block text-xxs flex justify-between mt-2 text-green-800">
+                                    <p class="">Ends in:</p>
+                                    <p class="">{{ item.attributes.promo_end }}</p>
+                                </div>
+                                <!-- End counter -->
+
+                            </router-link>
+                        </div>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -102,36 +108,40 @@
             <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
                 <swiper :slides-per-view="5" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
                     <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
+                        <div class="card bg-white overflow-hidden mx-0.5">
+                            <router-link to="/campaigns/flash-deals">
 
-                        <!-- Begin image -->
-                        <router-link :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
-                            <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-4">
-                        </router-link>
-                        <!-- End image -->
-
-                        <!-- Begin pricing -->
-                        <div class="">
-                            <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
-                                <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
-                                    <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                    <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
+                                <!-- Begin image -->
+                                <div :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
+                                    <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-4">
                                 </div>
-                            </div>
-                            <div v-else class="font-bold block text-xs my-0.5">
-                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                    {{ item.product.pricing.price_data[0].sales_price }}
-                                </router-link>
-                            </div>
-                        </div>
-                        <!-- End pricing -->
+                                <!-- End image -->
 
-                        <!-- Begin counter -->
-                        <div class="block text-xxs flex justify-between mt-2 text-green-800">
-                            <p class="">Ends in:</p>
-                            <p class="">{{ item.attributes.promo_end }}</p>
-                        </div>
-                        <!-- End counter -->
+                                <!-- Begin pricing -->
+                                <div class="">
+                                    <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xs my-0.5">
+                                        <div class="flex items-center justify-between w-full object-cover text-gray-700 hover:text-red-500">
+                                            <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
+                                            <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-{{ item.product.pricing.price_data[0].discount_percentage }}</p>
+                                        </div>
+                                    </div>
+                                    <div v-else class="font-bold block text-xs my-0.5">
+                                        <div class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                            {{ item.product.pricing.price_data[0].sales_price }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End pricing -->
 
+                                <!-- Begin counter -->
+                                <div class="block text-xxs flex justify-between mt-2 text-green-800">
+                                    <p class="">Ends in:</p>
+                                    <p class="">{{ item.attributes.promo_end }}</p>
+                                </div>
+                                <!-- End counter -->
+
+                            </router-link>
+                        </div>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -139,28 +149,56 @@
 
             <!-- Begin item list -->
             <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block text-justify">
-                <swiper :slides-per-view="3" :loop="true" :space-between="5" :autoplay="{ autoplay: true }">
+                <swiper :slides-per-view="4" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="md:block sm:hidden xs:hidden">
                     <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id" class="mb-2">
+                        <router-link to="/campaigns/flash-deals">
 
-                        <!-- Begin image -->
-                        <router-link :to="{ name: 'Item', params: { item: item.product.attributes.resource_id }}">
-                            <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-2">
+                            <!-- Begin image -->
+                            <div>
+                                <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-2">
+                            </div>
+                            <!-- End image -->
+
+                            <!-- Begin pricing -->
+                            <div class="text-center text-xs font-black">
+                                <div v-if="item.product.pricing.priced === 'Product'" class="">
+                                    <div class="w-full object-cover text-gray-700 hover:text-red-500"><span>{{ item.product.pricing.price_data[0].sales_price }}</span></div>
+                                </div>
+                                <div v-else class="">
+                                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                        {{ item.product.pricing.price_data[0].sales_price }}
+                                    </router-link>
+                                </div>
+                            </div>
+                            <!-- End pricing -->
+
                         </router-link>
-                        <!-- End image -->
+                    </swiper-slide>
+                </swiper>
+                <swiper :slides-per-view="3" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="md:hidden sm:block xs:block">
+                    <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id" class="mb-2">
+                        <router-link to="/campaigns/flash-deals">
 
-                        <!-- Begin pricing -->
-                        <div class="text-center text-xs font-black">
-                            <div v-if="item.product.pricing.priced === 'Product'" class="">
-                                <div class="w-full object-cover text-gray-700 hover:text-red-500"><span>{{ item.product.pricing.price_data[0].sales_price }}</span></div>
+                            <!-- Begin image -->
+                            <div>
+                                <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-2">
                             </div>
-                            <div v-else class="">
-                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                    {{ item.product.pricing.price_data[0].sales_price }}
-                                </router-link>
-                            </div>
-                        </div>
-                        <!-- End pricing -->
+                            <!-- End image -->
 
+                            <!-- Begin pricing -->
+                            <div class="text-center text-xs font-black">
+                                <div v-if="item.product.pricing.priced === 'Product'" class="">
+                                    <div class="w-full object-cover text-gray-700 hover:text-red-500"><span>{{ item.product.pricing.price_data[0].sales_price }}</span></div>
+                                </div>
+                                <div v-else class="">
+                                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
+                                        {{ item.product.pricing.price_data[0].sales_price }}
+                                    </router-link>
+                                </div>
+                            </div>
+                            <!-- End pricing -->
+
+                        </router-link>
                     </swiper-slide>
                 </swiper>
             </div>

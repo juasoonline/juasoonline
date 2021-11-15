@@ -70,6 +70,7 @@ module.exports =
             'coupon2-bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/coupon-1.webp')",
             'coupon3-bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/brand_bg.png')",
             'coupon4-bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/coupons-v5-bg.jpg')",
+            'flash_bg': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/backgrounds/burning-sunrise.jpg')",
         }),
 
         screens:

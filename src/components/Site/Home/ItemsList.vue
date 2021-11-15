@@ -52,11 +52,12 @@
     {
         setup ()
         {
-            const product = reactive({ items: [] })
             const currentPage = ref(0)
             const totalPages = ref()
-            const isInitialRequestLoading = ref(true)
             const isLoading = ref(false )
+            const isInitialRequestLoading = ref(true)
+
+            const product = reactive({ items: [] })
 
             const getItems = async () =>
             {
@@ -73,13 +74,6 @@
                     console.log( err )
                 }
             }
-
-            onBeforeMount(async () =>
-            {
-                await getItems()
-                isInitialRequestLoading.value = false
-            })
-
             const handleScroll = async () =>
             {
                 if (( window.scrollY + window.innerHeight ) >= document.body.offsetHeight )
@@ -91,6 +85,11 @@
                 }
             }
 
+            onBeforeMount(async () =>
+            {
+                await getItems()
+                isInitialRequestLoading.value = false
+            })
             onMounted(() => { window.addEventListener('scroll', handleScroll) })
             onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
 
