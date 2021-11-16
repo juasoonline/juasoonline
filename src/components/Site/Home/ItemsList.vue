@@ -9,7 +9,7 @@
             <div class="m-2">
                 <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
                     <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                        <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 25) }}...</p>
+                        <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
                     </router-link>
                 </span>
                 <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">

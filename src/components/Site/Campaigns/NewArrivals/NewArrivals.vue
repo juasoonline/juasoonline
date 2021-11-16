@@ -12,7 +12,7 @@
         <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
-        <main-header class=""></main-header>
+        <main-header class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden"></main-header>
         <!-- End logo, search and cart -->
 
         <!-- Begin top contents -->
@@ -33,7 +33,6 @@
 </template>
 
 <script>
-
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
@@ -49,5 +48,4 @@
 </script>
 
 <style scoped>
-
 </style>
