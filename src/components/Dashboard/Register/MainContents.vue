@@ -36,7 +36,7 @@
         components: { RegisterForm },
         setup()
         {
-            const files = reactive ({ userIconMale: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/user-icon-male.png', logo: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png' })
+            const files = reactive ({ userIconMale: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/user-icon-male.png', logo: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png' })
             return { files }
         }
     }

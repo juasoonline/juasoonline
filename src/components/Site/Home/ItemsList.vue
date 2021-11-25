@@ -1,6 +1,10 @@
 <template>
 
-    <!-- Begin contents -->
+    <!-- Begin title -->
+    <div class="mb-3 font-black 2xl:text-xl xl:text-xl lg:text-xl text-lg text-gray-700">Recommendations For You</div>
+    <!-- End title -->
+
+    <!-- Begin items -->
     <div id="infinite-list" class="grid gap-4 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
         <div v-for="item in product.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
             <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
@@ -13,7 +17,7 @@
                     </router-link>
                 </span>
                 <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
-                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                    <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                          {{ item.pricing.price_data[0].sales_price }}
                         <del class="ml-2 text-xxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
                     </router-link>
@@ -38,9 +42,9 @@
         </div>
     </div>
     <div v-if="isLoading">
-        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif">
     </div>
-    <!-- End contents -->
+    <!-- End items -->
 
 </template>
 

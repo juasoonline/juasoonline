@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full mb-5">
+    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full 2xl:mb-5 xl:mb-5 lg:mb-5">
 
         <!-- Begin categories nav bar -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5 bg-white rounded">
@@ -15,92 +15,17 @@
             <!-- Begin slider banners -->
             <suspense>
                 <template #default><ad-sliders class=""></ad-sliders></template>
-                <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif"></div></template>
+                <template #fallback>
+                    <div class="mx-auto text-center">
+                        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif">
+                    </div>
+                </template>
             </suspense>
             <!-- End slider banners -->
 
             <!-- Begin banner rankings -->
             <banner-rankings class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden"></banner-rankings>
             <!-- Begin banner rankings -->
-
-            <!-- Begin category menu for mobile -->
-            <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block">
-                <div class="mt-5 text-center bg-white rounded px-1.5 py-3">
-
-                    <!-- Begin categories -->
-                    <div class="text-center grid gap-1 grid-cols-5 mb-2">
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.women_fashion" />
-                                <p class="text-xxs text-gray-600">Women's Fashion</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.men_fashion" />
-                                <p class="text-xxs text-gray-600">Men's Fashion</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.phones_more" />
-                                <p class="text-xxs text-gray-600">Phones & More</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.consumer_electronics" />
-                                <p class="text-xxs text-gray-600">Consumer Electronics</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.bags_shoes" />
-                                <p class="text-xxs text-gray-600">Bags & Shoes</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.home_pets" />
-                                <p class="text-xxs text-gray-600">Home, Pet & Appliances</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.jewelry_watches" />
-                                <p class="text-xxs text-gray-600">Jewelry & Watches</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.toys_kids_babies" />
-                                <p class="text-xxs text-gray-600">Toys, Kids & Babies</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.outdoor_fun_sports" />
-                                <p class="text-xxs text-gray-600">Outdoor Fun & Sports</p>
-                            </router-link>
-                        </div>
-                        <div class="mb-2.5">
-                            <router-link to="">
-                                <img class="w-8 h-8 mx-auto mb-1" :src="category_icons.beauty_health_hair" />
-                                <p class="text-xxs text-gray-600">Beauty, Health, Hair</p>
-                            </router-link>
-                        </div>
-                    </div>
-                    <!-- End categories -->
-
-                    <!-- Begin call to action button -->
-                    <div class="flex items-center text-center mx-auto w-full">
-                        <router-link to="/categories" class="bg-juaso-primary text-white text-xxs px-3 py-2 rounded w-full">View all categories</router-link>
-                    </div>
-                    <!-- End call to action button -->
-
-                </div>
-            </div>
-            <!-- End category menu for mobile -->
 
         </div>
         <!-- End ads slides -->
@@ -117,7 +42,7 @@
 
                         <!-- Begin user icon -->
                         <div class="self-center rounded-full">
-                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/user-icon-male.png" alt="" class="m-auto w-16">
+                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/user-icon-male.png" alt="" class="m-auto w-16">
                         </div>
                         <!-- End user icon -->
 
@@ -201,31 +126,22 @@
                     <!-- Begin items -->
                     <div class="text-justify 2xl:mt-3 2xl:mb-1.5 mt-2.5">
                         <swiper :slides-per-view="2" :loop="true" :space-between="10" :autoplay="{ autoplay: true, delay: 5000 }">
-                            <swiper-slide v-for="( item ) in items.data" :key="item.attributes.resource_id">
-                                <div class="card bg-white overflow-hidden mx-0.5">
+                            <swiper-slide v-for="( item, index ) in items.data" :key="index" class="">
+                                <router-link to="/campaigns/flash-deals">
 
                                     <!-- Begin image -->
-                                    <div class="">
-                                        <img :src="item.product.attributes.image" :alt="item.product.attributes.name" class="rounded border mb-1">
-                                    </div>
+                                    <div class=""><img :src="item.product.image" alt="" class="rounded border my-1.5"></div>
                                     <!-- End image -->
 
                                     <!-- Begin pricing -->
-                                    <div class="text-center mt-3.5">
-                                        <div v-if="item.product.pricing.priced === 'Product'" class="font-bold text-xxs">
-                                            <div class="w-full object-cover text-gray-700 hover:text-red-500">
-                                                <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
-                                            </div>
-                                        </div>
-                                        <div v-else class="font-bold block text-xxs">
-                                            <div class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.product.attributes.resource_id } }">
-                                                {{ item.product.pricing.price_data[0].sales_price }}
-                                            </div>
+                                    <div class="text-center text-xs font-black">
+                                        <div class="w-full object-cover text-gray-700 hover:text-red-500">
+                                            <span>{{ item.product.pricing.price_data[0].sales_price }}</span>
                                         </div>
                                     </div>
                                     <!-- End pricing -->
 
-                                </div>
+                                </router-link>
                             </swiper-slide>
                         </swiper>
                     </div>
@@ -268,7 +184,7 @@
                     <!-- End coupon -->
 
                     <!-- Begin action button -->
-                    <div class="bg-juaso-primary rounded mt-6">
+                    <div class="bg-juaso-primary rounded mt-6 mb-1">
                         <router-link to="/register" target="_blank">
                             <div class="bg-coupon4-bg bg-cover rounded p-2 text-center text-white font-bold uppercase">
                                 <p class="text-sm">Get It Now</p>
@@ -301,7 +217,7 @@
                     <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                         <div>
                             <router-link to="/">
-                                <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+                                <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
                             </router-link>
                         </div>
                         <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleSignInModal()">
@@ -409,12 +325,12 @@
             const items = reactive({ data: [] })
             const loginData = reactive({ email: "", password: "", isLoading: false })
 
-            const getItems = async () =>
+            const getFlashItems = async () =>
             {
                 try
                 {
                     const response = await axios({ method: 'GET', url: 'business/campaigns/flash-deals' });
-                    items.data = await response.data.data
+                    items.data = await response.data.data.data
                 }
                 catch (e)
                 {
@@ -446,30 +362,11 @@
 
             onBeforeMount(async () =>
             {
-                await getItems()
+                await getFlashItems()
             })
 
             return { authentication, modal, items, loginData, toggleSignInModal, signIn, signOut }
         },
-
-        data()
-        {
-            return {
-                category_icons:
-                {
-                    women_fashion: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/women_fashion.png",
-                    men_fashion: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/men_fashion.png",
-                    phones_more: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/phones_more.png",
-                    consumer_electronics: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/consumer_electronics.png",
-                    jewelry_watches: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/jewelry_watches.png",
-                    home_pets: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/home_pets.png",
-                    bags_shoes: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/bags_shoes.png",
-                    toys_kids_babies: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/toys_kids_babies.png",
-                    outdoor_fun_sports: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/outdoor_fun_sports.png",
-                    beauty_health_hair: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/beauty_health_hair.png"
-                }
-            }
-        }
     }
 </script>
 

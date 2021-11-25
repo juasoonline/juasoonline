@@ -87,7 +87,7 @@
 
             <!-- Begin preloader -->
             <div v-if="isLoading">
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="Loading...">
+                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="Loading...">
             </div>
             <!-- End preloader -->
 
@@ -177,7 +177,7 @@
 
             <!-- Begin preloader -->
             <div v-if="isLoading" class="mb-10">
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="Loading...">
+                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="Loading...">
             </div>
             <!-- End preloader -->
 

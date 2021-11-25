@@ -56,7 +56,7 @@
             <div class="2xl:w-2/3 xl:w-4/5 lg:w-4/5 mx-auto px-1.5">
                 <div class="py-3">
                     <a href="/" class="p-0 flex w-auto">
-                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" alt="" class="w-28 h-8">
+                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" alt="" class="w-28 h-8">
                     </a>
                 </div>
             </div>

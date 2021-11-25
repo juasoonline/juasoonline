@@ -6,7 +6,9 @@
         <!-- Begin header -->
         <div class="mb-3 pt-2">
             <router-link to="/campaigns/top-rankings" class="flex justify-between items-center">
-                <div class="font-black text-xl text-gray-700 items-center hover:text-gray-600"><span>Top Rankings</span></div>
+                <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-sm text-gray-700 flex items-center hover:text-gray-600">
+                    <span>Top Rankings</span>
+                </div>
                 <div class="text-xs hover:text-red-600">VIEW MORE</div>
             </router-link>
         </div>
@@ -26,7 +28,7 @@
 
                         <!-- Begin image -->
                         <router-link class="" :to="{ name: 'Item', params: { item: 78236748275482 }}">
-                            <img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/test/images/products/product14_1.jpg" alt="product">
+                            <img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/juaso/items/products/product13_1.jpg" alt="product">
                         </router-link>
                         <!-- End image -->
 

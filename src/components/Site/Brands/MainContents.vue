@@ -22,6 +22,8 @@
 
         <!-- Begin top product ranking -->
         <div class="bg-header-banner bg-cover flex rounded p-4 grid grid-cols-2 gap-5 items-center">
+
+            <!-- Begin header -->
             <div class="text-white text-center">
                 <div class="pt-5 px-10 font-black text-xl">{{ brand.brand.description }}</div>
                 <div class="py-2 font-black text-sm">Top Ranked</div>
@@ -29,6 +31,9 @@
                     <p class="">Ranked by order growth rate this week</p>
                 </div>
             </div>
+            <!-- End header -->
+
+            <!-- Begin item -->
             <div class="flex bg-white rounded p-5 items-center">
                 <div class="2xl:w-1/5 xl:w-1/5 mr-5">
                     <div class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
@@ -54,6 +59,8 @@
                     </div>
                 </div>
             </div>
+            <!-- Begin item -->
+
         </div>
         <!-- End top product ranking -->
 
@@ -198,7 +205,7 @@
 
             <!-- Begin preloader -->
             <div v-if="isLoading">
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="Loading...">
+                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="Loading...">
             </div>
             <!-- End preloader -->
 

@@ -1008,7 +1008,7 @@
                 </div>
                 <!-- End more to love -->
 
-                <!-- Begin bottom navbar -->
+                <!-- Begin bottom nav bar -->
                 <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-40 bg-white shadow">
                     <div id="tabs" class="flex justify-between">
                         <router-link to="/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1 border-r">
@@ -1027,7 +1027,7 @@
                         </button>
                     </div>
                 </section>
-                <!-- End bottom navbar -->
+                <!-- End bottom nav bar -->
 
             </div>
             <!-- End contents for mobile screens -->
@@ -1050,7 +1050,7 @@
                     <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                         <div>
                             <router-link to="/">
-                                <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+                                <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
                             </router-link>
                         </div>
                         <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleSignInModal()">

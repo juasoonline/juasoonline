@@ -65,7 +65,7 @@
     <!-- End tag for lg screens -->
 
     <!-- Begin tag for sm screens -->
-    <section class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mb-5">
+    <section class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mb-3">
         <div class="flex grid grid-cols-3 gap-1 px-1 bg-white rounded py-1 mx-1.5">
 
             <div class="flex bg-gray-100 rounded p-1 text-xs font-bold text-gray-600">

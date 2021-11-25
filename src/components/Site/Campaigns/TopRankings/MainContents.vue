@@ -36,6 +36,50 @@
         <!-- Begin main contents -->
         <main class="container mx-auto my-4 px-1.5">
 
+            <!-- Begin top product ranking -->
+            <div class="bg-header-banner bg-cover flex rounded p-4 grid grid-cols-2 gap-5 items-center">
+
+                <!-- Begin header -->
+                <div class="text-white text-center">
+                    <div class="pt-5 px-10 font-black text-xl">fadjf</div>
+                    <div class="py-2 font-black text-sm">Top Ranked</div>
+                    <div class="bg-black mx-40 rounded-xl py-1 text-sm bg-opacity-25">
+                        <p class="">Ranked by order growth rate this week</p>
+                    </div>
+                </div>
+                <!-- End header -->
+
+                <!-- Begin item -->
+                <div class="flex bg-white rounded p-5 items-center">
+                    <div class="2xl:w-1/5 xl:w-1/5 mr-5">
+                        <div class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
+                            <router-link class="" :to="{ name: 'Item', params: { item: 78236748275482 }}">
+                                <img class="object-cover w-full" src="https://juasoonline.nyc3.digitaloceanspaces.com/test/images/products/product14_1.jpg" :alt="product">
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="2xl:w-4/5 xl:w-4/5">
+                        <p class="">Minglu Spring Mens Shirts Luxury Flower Printing Long Sleeve Casual Mens Dress Shirts Fashion Slim Fit Party Male Shirts</p>
+                        <p class="font-black py-2 text-xl items-center flex">GHS 2.000.00 <del class="ml-2 text-xxs font-light text-gray-500 text-red-500"> GHS2,100.00</del></p>
+                        <div class="flex justify-between">
+                            <div class="flex items-center">
+                                <p class="block text-xs my-0.5 flex items-center mr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                                    <span>4.9</span>
+                                </p>
+                                <span class="text-xs text-gray-500"><strong>2340</strong> Sold</span>
+                            </div>
+                            <p class="text-right">
+                                <router-link to="" class="py-1.5 px-3 bg-juaso-primary text-xs text-white font-bold uppercase rounded">Shop Now</router-link>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Begin item -->
+
+            </div>
+            <!-- End top product ranking -->
+
             <!-- Begin more to love items -->
             <div class="">
 
@@ -84,7 +128,7 @@
 
                 <!-- Begin preloader -->
                 <div v-if="isLoading">
-                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="Loading...">
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="Loading...">
                 </div>
                 <!-- End preloader -->
 
@@ -177,7 +221,7 @@
 
             <!-- Begin preloader -->
             <div v-if="isLoading" class="mb-10">
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="Loading...">
+                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="Loading...">
             </div>
             <!-- End preloader -->
 

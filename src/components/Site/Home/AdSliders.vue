@@ -2,41 +2,37 @@
 
     <!-- Begin contents -->
     <div class="">
+        <div class="">
 
-        <!-- Begin error message -->
-        <div v-if="error"></div>
-        <!-- End error message -->
-
-        <!-- Begin sliders -->
-        <div v-else>
+            <!-- Begin sliders -->
             <swiper :slides-per-view="1" :speed="1000" :loop="true" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
                 <swiper-slide v-for="slider in items.data" :key="slider.attributes.resource_id">
                     <div class="swiper-container">
                         <router-link to="/store/1234567890">
-                            <img :src="slider.attributes.image" alt="" class="rounded border-none">
+                            <img :src="slider.attributes.slider_image" alt="" class="rounded border-none">
                         </router-link>
                     </div>
                 </swiper-slide>
             </swiper>
-        </div>
-        <!-- End sliders -->
+            <!-- End sliders -->
 
+        </div>
     </div>
     <!-- End contents -->
 
 </template>
 
 <script>
+    import { reactive, ref } from "vue";
+    import axios from "axios";
+
     import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
+    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
 
     import 'swiper/swiper.scss';
     import 'swiper/components/navigation/navigation.scss';
     import 'swiper/components/pagination/pagination.scss';
-    import { reactive, ref } from "vue";
-    import axios from "axios";
-
-    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
 
     export default
     {

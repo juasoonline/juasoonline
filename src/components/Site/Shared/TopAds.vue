@@ -7,7 +7,7 @@
             <!-- Begin ad banner -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden mx-auto w-screen">
                 <router-link to="" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" >
-                    <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/top/banner1.jpg"  alt=""/>
+                    <img src="https://juasoonline.nyc3.digitaloceanspaces.com/juaso/campaigns/top_banners/cyber_monday_sales.jpg"  alt=""/>
                 </router-link>
             </div>
             <!-- Begin ad banner -->

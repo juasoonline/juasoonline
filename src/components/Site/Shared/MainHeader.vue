@@ -8,7 +8,7 @@
                 <!-- Begin logo --->
                 <div class="flex col-span-2 justify-start 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
                     <router-link to="/" class="p-0 flex w-auto">
-                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" alt="" class="w-28 h-8">
+                        <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" alt="" class="w-28 h-8">
                     </router-link>
                 </div>
                 <!-- End logo --->
@@ -19,7 +19,7 @@
                     <!-- Begin logo for mobile screens -->
                     <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mr-3">
                         <router-link to="/" class="p-0 flex">
-                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png" alt="" class="w-24 h-5">
+                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" alt="" class="w-24 h-5">
                         </router-link>
                     </div>
                     <!-- End logo for mobile screens -->

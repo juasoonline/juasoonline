@@ -5,7 +5,7 @@
 
         <!-- Begin image contents -->
         <div class="text-center mx-auto">
-            <img class="mt-20 mx-auto w-96" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/404.png">
+            <img class="mt-20 mx-auto w-96" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/404.png" alt="">
         </div>
         <!-- End image contents -->
 
@@ -19,11 +19,11 @@
                         <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
                     </router-link>
                     <div class="m-2">
-                <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
-                    <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                        <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 25) }}...</p>
-                    </router-link>
-                </span>
+                        <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
+                            <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 25) }}...</p>
+                            </router-link>
+                        </span>
                         <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
                             <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
                                 {{ item.pricing.price_data[0].sales_price }}
@@ -39,10 +39,13 @@
                     </div>
                 </div>
             </div>
-            <div v-if="isLoading">
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
-            </div>
             <!-- End items -->
+
+            <!-- Begin preloader -->
+            <div v-if="isLoading">
+                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="">
+            </div>
+            <!-- End preloader -->
 
         </div>
 

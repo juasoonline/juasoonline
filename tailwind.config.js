@@ -40,6 +40,8 @@ module.exports =
             'juaso-secondary': '#2d8bc3',
             'juaso-extra': '#1d4b95',
             'juaso-fourth': '#3ca5e5',
+
+            'flash-deals': '#f92a22',
         }),
 
         textColor: theme => ({
@@ -48,6 +50,8 @@ module.exports =
             'juaso-secondary': '#2d8bc3',
             'juaso-extra': '#1d4b95',
             'juaso-fourth': '#40b1f5',
+
+            'flash-deals': '#f92a22',
         }),
 
         borderColor: theme => ({
@@ -57,6 +61,8 @@ module.exports =
             'juaso-secondary': '#2d8bc3',
             'juaso-extra': '#1d4b95',
             'juaso-fourth': '#40b1f5',
+
+            'flash-deals': '#f92a22',
         }),
 
         backgroundImage: theme => (

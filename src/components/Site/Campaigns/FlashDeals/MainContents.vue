@@ -7,15 +7,15 @@
         <div class="bg-white border-t">
             <div class="container mx-auto py-6 px-1.5">
                 <div class="font-black text-3xl items-center flex">
-                    <span class="mr-10 uppercase text-red-500">Flash Deals</span>
-                    <span class="text-xl font-light">Only available for few days - don't miss out!</span>
+                    <span class="mr-10 uppercase text-flash-deals ">Flash Deals</span>
+                    <span class="text-xl font-light text-gray-500">Only available for few days - don't miss out!</span>
                 </div>
             </div>
         </div>
         <!-- End page header -->
 
         <!-- Begin categories menu -->
-        <div class="bg-flash_bg bg-cover sticky top-0 z-40 bg-white border-gray-100 text-white shadow-md">
+        <div class="bg-flash-deals sticky top-0 z-40 bg-white border-gray-100 text-white shadow-md">
             <div class="container mx-auto px-1.5">
                 <div class="font-bold">
                     <div class="flex overflow-x-auto">
@@ -42,8 +42,10 @@
                 <!-- Begin now / upcoming actions -->
                 <div class="my-10">
                     <div class="text-center">
-                        <span class="mr-2"><button class="items-end rounded-full bg-gray-300 px-8 py-1.5 text-xs text-gray-700 font-semibold uppercase">Now</button></span>
-                        <span class="ml-2"><button class="items-start rounded-full bg-gray-200 px-8 py-1.5 text-xs text-gray-700 font-semibold uppercase">Upcoming</button></span>
+                        <span class="mr-2"><button class="items-end rounded-2xl bg-flash_bg bg-cover px-8 py-1.5 text-xs text-white font-bold uppercase">Now</button></span>
+                        <span class="ml-2"><button class="items-start rounded-2xl bg-gray-200 px-8 py-1.5 text-xs text-gray-700 font-semibold uppercase">Upcoming</button></span>
+                        <span class="ml-2"><button class="items-start rounded-2xl bg-gray-200 px-8 py-1.5 text-xs text-gray-700 font-semibold uppercase">Discount</button></span>
+                        <span class="ml-2"><button class="items-start rounded-2xl bg-gray-200 px-8 py-1.5 text-xs text-gray-700 font-semibold uppercase">Price</button></span>
                     </div>
                 </div>
                 <!-- End now / upcoming actions -->
@@ -51,38 +53,55 @@
                 <!-- Begin items -->
                 <div class="grid gap-4 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5">
                     <div v-for="item in moreFlashDeals.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
-                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                            <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
-                        </router-link>
+
+                        <!-- Begin image -->
+                        <div class="">
+                            <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
+                            </router-link>
+                        </div>
+                        <!-- End image -->
+
+                        <!-- Begin item details -->
                         <div class="m-2">
-                            <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
+
+                            <!-- Begin name -->
+                            <div class="text-gray-500 text-sm hover:text-red-500 leading-tight">
                                 <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                    <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 25) }}...</p>
-                                </router-link>
-                            </span>
-                            <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
-                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                    {{ item.pricing.price_data[0].sales_price }}
-                                    <del class="ml-2 text-xxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
-                                </router-link>
-                            </p>
-                            <p v-else class="font-bold block text-xs my-0.5">
-                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                    {{ item.pricing.price_data[0].price_range }}
-                                </router-link>
-                            </p>
-                            <div class="flex items-center justify-between">
-                                <p class="block text-xs my-0.5 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                    </svg>
-                                    <span>{{ item.attributes.average_rating }}</span>
-                                </p>
-                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="hover:text-red-500">
-                                    <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+                                    <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 40) }}...</p>
                                 </router-link>
                             </div>
+                            <!-- End name -->
+
+                            <!-- Begin price -->
+                            <div class="my-2">
+                                <div class="my-0.5">
+                                    <p class="text-sm text-flash-deals font-black"><router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">{{ item.pricing.price_data[0].sales_price }}</router-link></p>
+                                    <p class="text-sm text-gray-500"><del class=""> {{ item.pricing.price_data[0].price }}</del><span class="ml-3">{{ item.pricing.price_data[0].discount_percentage }} Off</span></p>
+                                </div>
+                            </div>
+                            <!-- End price -->
+
+                            <!-- Begin stats -->
+                            <div class="text-xs text-gray-500 my-1 flex block items-center justify-between">
+                                <p class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                                    <span>{{ item.attributes.average_rating }}</span>
+                                </p>
+                                <p class="">{{ item.attributes.total_sold }} Sold</p>
+                            </div>
+                            <!-- End stats -->
+
+                            <!-- Begin timer -->
+                            <div class="text-xs text-gray-500 my-1 flex items-center justify-between ">
+                                <p class="">Ends in</p>
+                                <p class="">00:29:35:09</p>
+                            </div>
+                            <!-- End timer -->
+
                         </div>
+                        <!-- End item details -->
+
                     </div>
                 </div>
                 <!-- End items -->
@@ -92,7 +111,7 @@
 
             <!-- Begin preloader -->
             <div v-if="isLoading">
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="Loading...">
+                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="Loading...">
             </div>
             <!-- End preloader -->
 
@@ -103,10 +122,10 @@
     <!-- End content for large screens -->
 
     <!-- Begin content for small screens -->
-    <div class="bg-flash_bg bg-cover 2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block">
+    <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block">
 
         <!-- Begin page header -->
-        <div class="bg-flash_bg bg-cover sticky top-0 z-40 bg-cover py-3 px-1.5 text-white">
+        <div class="bg-flash-deals sticky top-0 z-40 py-3 px-1.5 text-white">
 
             <!-- Begin title section -->
             <div class="flex justify-between items-center">
@@ -135,59 +154,149 @@
         <!-- End page header -->
 
         <!-- Begin main contents -->
-        <main class="mb-14 bg-gray-100 px-1.5">
+        <main class="mb-16 bg-gray-100 px-1.5">
 
             <!-- Begin now / upcoming actions -->
-            <div class="py-5">
-                <div class="text-center">
-                    <span class="mr-2"><button class="items-end rounded-full bg-gray-300 px-8 py-1.5 text-xs text-gray-700 font-semibold uppercase">Now</button></span>
-                    <span class="ml-2"><button class="items-start rounded-full bg-gray-200 px-8 py-1.5 text-xs text-gray-700 font-semibold uppercase">Upcoming</button></span>
+            <div class="bg-red-600 rounded p-3 my-3">
+
+                <!-- Begin header -->
+                <div class="mb-2 text-white font-bold">
+                    <p>Coming Up</p>
                 </div>
+                <!-- End header -->
+
+                <!-- Begin items -->
+                <div class="rounded flex grid grid-cols-3 gap-3">
+                    <div v-for="index in 3" :key="index" class="card overflow-hidden text-white">
+
+                        <!-- Begin image -->
+                        <div class="">
+                            <img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/juaso/items/products/product14_1.jpg" alt="product">
+                        </div>
+                        <!-- End image -->
+
+                        <!-- Begin price -->
+                        <div class="text-center mt-3">
+                            <p class="text-xs font-black text-center"><span>GHS 2000.00</span></p>
+                        </div>
+                        <!-- End price -->
+
+                    </div>
+                </div>
+                <!-- End items -->
+
             </div>
             <!-- End now / upcoming actions -->
 
-            <!-- Begin items -->
-            <div class="grid gap-2 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
-                <div v-for="item in moreFlashDeals.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
-                    <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                        <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
-                    </router-link>
-                    <div class="m-2">
-                        <span class="text-gray-500 text-xs hover:text-red-500 leading-tight">
-                            <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 20) }}...</p>
-                            </router-link>
-                        </span>
-                        <p v-if="item.pricing.priced === 'Product'" class="font-bold block text-xs my-0.5">
-                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                {{ item.pricing.price_data[0].sales_price }}
-                                <del class="ml-2 text-xxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
-                            </router-link>
-                        </p>
-                        <p v-else class="font-bold block text-xs my-0.5">
-                            <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
-                                {{ item.pricing.price_data[0].price_range }}
-                            </router-link>
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <p class="block text-xs my-0.5 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                </svg>
-                                <span>{{ item.attributes.average_rating }}</span>
-                            </p>
-                            <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="hover:text-red-500">
-                                <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
-                            </router-link>
+            <!-- Begin items medium screens -->
+            <div class="md:block sm:hidden xs:hidden">
+                <div class=" grid gap-2 grid-cols-4">
+                    <div v-for="item in moreFlashDeals.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
+
+                        <!-- Begin item image -->
+                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                            <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
+                        </router-link>
+                        <!-- End item image -->
+
+                        <!-- Begin item details -->
+                        <div class="m-2">
+
+                            <!-- Begin item name -->
+                            <div class="text-gray-500 text-xs hover:text-red-500 leading-tight">
+                                <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                    <p class="leading-5" :title="item.attributes.name">{{ item.attributes.name.substring(0, 50) }}...</p>
+                                </router-link>
+                            </div>
+                            <!-- End item name -->
+
+                            <!-- Begin item price -->
+                            <div class="font-bold block text-xs my-0.5">
+                                <router-link class="w-full object-cover text-gray-700 hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id } }">
+                                    {{ item.pricing.price_data[0].sales_price }}
+                                    <del class="ml-2 text-xxs font-light text-gray-500 text-red-500"> {{ item.pricing.price_data[0].price }}</del>
+                                </router-link>
+                            </div>
+                            <!-- End item price -->
+
+                            <!-- Begin item stats -->
+                            <div class="flex items-center justify-between">
+                                <p class="block text-xs my-0.5 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                    </svg>
+                                    <span>{{ item.attributes.average_rating }}</span>
+                                </p>
+                                <router-link :to="{ name: 'Item', params: { item: item.attributes.resource_id }}" class="hover:text-red-500">
+                                    <span class="text-xs font-light text-gray-500">{{ item.attributes.total_sold }} Sold</span>
+                                </router-link>
+                            </div>
+                            <!-- End item stats -->
+
                         </div>
+                        <!-- End item details -->
+
                     </div>
                 </div>
             </div>
-            <!-- End items -->
+            <!-- End items medium screens -->
+
+            <!-- Begin items for small and extra small screens -->
+            <div class="md:hidden sm:block xs:block">
+                <div v-for="item in moreFlashDeals.items" :key="item.attributes.resource_id" class="bg-white rounded mb-2">
+                    <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                        <div class="flex justify-around items-center overflow-hidden rounded">
+
+                            <!-- Begin item image -->
+                            <div class="w-1/3 object-cover border-r">
+                                <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                    <img class="object-cover h-22" v-bind:src="item.attributes.image" :alt="item.attributes.image">
+                                </router-link>
+                            </div>
+                            <!-- Begin item image -->
+
+                            <!-- Begin item details -->
+                            <div class="w-2/3 flex flex-col items-baseline justify-around px-3">
+
+                                <!-- Begin item name -->
+                                <div class="flex flex-col justify-start items-baseline">
+                                    <p class="text-xs text-gray-500" :title="item.attributes.name">{{ item.attributes.name.substring(0, 65) }}...</p>
+                                </div>
+                                <!-- End item name -->
+
+                                <!-- Begin item price -->
+                                <div class="flex flex-col justify-start items-baseline py-1">
+                                    <h1 class="font-bold text-red-500">{{ item.pricing.price_data[0].sales_price }}</h1>
+                                    <p class="text-xs text-gray-500"><del class=""> {{ item.pricing.price_data[0].price }}</del><span class="ml-3">{{ item.pricing.price_data[0].discount_percentage }} Off</span></p>
+                                </div>
+                                <!-- End item price -->
+
+                                <!-- Begin item stats / action -->
+                                <div class="w-full flex justify-between items-center">
+                                    <div class="text-xs text-gray-500 my-1 flex items-center justify-between ">
+                                        <p class="mr-3">Ends in</p>
+                                        <p class="">00:29:35:09</p>
+                                    </div>
+                                    <button class="bg-flash_bg bg-cover text-white px-3 py-1 rounded-full shadow-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <!-- End item stats / action -->
+
+                            </div>
+                            <!-- End item details -->
+
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <!-- End items for small and extra small screens -->
 
             <!-- Begin preloader -->
             <div v-if="isLoading" class="mb-10">
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif" alt="Loading...">
+                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="Loading...">
             </div>
             <!-- End preloader -->
 

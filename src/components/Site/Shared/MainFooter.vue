@@ -19,8 +19,8 @@
                         </div>
 
                         <div class="my-3">
-                            <router-link to="/"><img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/icon-appstore.png" alt="" class="mb-2"></router-link>
-                            <router-link to="/"><img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/icon-appstore.png" alt=""></router-link>
+                            <router-link to="/"><img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/icon-appstore.png" alt="" class="mb-2"></router-link>
+                            <router-link to="/"><img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/icon-googleplay.png" alt=""></router-link>
                         </div>
                     </div>
                     <!-- End contents -->
