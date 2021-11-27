@@ -1,6 +1,18 @@
 <template>
 
-    <!-- Begin contents -->
+    <!-- Begin top ads -->
+    <top-ads></top-ads>
+    <!-- End top ads -->
+
+    <!-- Begin nav bar -->
+    <nav-bar></nav-bar>
+    <!-- End nav bar -->
+
+    <!-- Begin logo, search and cart -->
+    <main-header class="2xl:sticky 2xl:top-0 2xl:z-40 xl:sticky xl:top-0 xl:z-40 lg:sticky lg:top-0 lg:z-40"></main-header>
+    <!-- End logo, search and cart -->
+
+    <!-- Begin main contents -->
     <main class="">
 
         <!-- Begin item contents -->
@@ -258,7 +270,7 @@
                 <section class="my-4">
                     <div class="rounded">
                         <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}" class="focus:outline-none">
-                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
+                            <img :src="store.store.banner_image" alt="Store banner" class="rounded">
                         </router-link>
                     </div>
                 </section>
@@ -1036,7 +1048,12 @@
         <!-- End main contents -->
 
     </main>
-    <!-- End contents -->
+    <!-- End main contents -->
+
+    <!-- Begin footer -->
+    <suspense><main-footer></main-footer></suspense>
+    <!-- End footer -->
+
 
     <!-- Begin sign in form modal -->
     <div class="">
@@ -1284,6 +1301,11 @@
 </template>
 
 <script>
+    import TopAds from "@/components/Site/Shared/TopAds";
+    import NavBar from "@/components/Site/Shared/NavBar";
+    import MainHeader from "@/components/Site/Shared/MainHeader";
+    import MainFooter from "@/components/Site/Shared/MainFooter";
+
     import { inject, onBeforeMount, reactive } from "vue";
 
     import router from "../../../router";
@@ -1291,15 +1313,16 @@
     import { useRoute } from 'vue-router'
 
     import { Notyf } from "notyf";
+
+    import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
-    import SwiperCore, { Autoplay, Navigation } from "swiper";
     import 'swiper/swiper.scss';
-    SwiperCore.use( [ Autoplay, Navigation ] );
+    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
 
     export default
     {
         name: "MainContents",
-        components: { Swiper, SwiperSlide },
+        components: { TopAds, NavBar, MainHeader, MainFooter, Swiper, SwiperSlide },
         setup()
         {
             const notification = new Notyf();
@@ -1549,7 +1572,7 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions,faqs&ratings=ratings', headers: {} })
+                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,faqs&ratings=ratings', headers: {} })
                 .then( response =>
                 {
                     if ( response.data.code === 200 )

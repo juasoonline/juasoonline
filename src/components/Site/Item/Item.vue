@@ -3,25 +3,13 @@
     <!-- Begin contents wrapper -->
     <div class="">
 
-        <!-- Begin top ads -->
-        <top-ads></top-ads>
-        <!-- End top ads -->
+        <!-- Begin contents for large screens -->
+        <main-contents v-if="!isMobile()"></main-contents>
+        <!-- End contents for large screens -->
 
-        <!-- Begin navbar -->
-        <nav-bar></nav-bar>
-        <!-- End navbar -->
-
-        <!-- Begin logo, search and cart -->
-        <main-header class="sticky top-0 z-40"></main-header>
-        <!-- End logo, search and cart -->
-
-        <!-- Begin top contents -->
-        <main-contents></main-contents>
-        <!-- End top contents -->
-
-        <!-- Begin footer -->
-        <suspense><main-footer></main-footer></suspense>
-        <!-- End footer -->
+        <!-- Begin contents for mobile screens -->
+        <mobile-contents v-else></mobile-contents>
+        <!-- End contents for mobile screens -->
 
     </div>
     <!-- End contents wrapper -->
@@ -29,16 +17,20 @@
 </template>
 
 <script>
-    import TopAds from "@/components/Site/Shared/TopAds";
-    import NavBar from "@/components/Site/Shared/NavBar";
-    import MainHeader from "@/components/Site/Shared/MainHeader";
+    import { useMobileDetection } from "vue3-mobile-detection"
+
     import MainContents from "@/components/Site/Item/MainContents";
-    import MainFooter from "@/components/Site/Shared/MainFooter";
+    import MobileContents from "@/components/Site/Item/MobileContents";
 
     export default
     {
         name: "Item",
-        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter }
+        components: { MainContents, MobileContents },
+        setup()
+        {
+            const { isMobile } = useMobileDetection();
+            return { isMobile }
+        }
     }
 </script>
 

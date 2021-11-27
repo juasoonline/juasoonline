@@ -1,13 +1,13 @@
 <template>
 
     <!-- Begin content for large screens -->
-    <div class="bg-red-700 rounded mb-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-        <router-link to="/campaign/juasoonline-lunch-promo">
+    <div class="bg-juaso-primary rounded mb-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
+        <router-link to="/campaign/juasoonline-launch-promo">
             <div class="flex justify-between items-center grid grid-cols-2 gap-5 px-4 py-8">
 
                 <!-- Begin promo header -->
                 <div class="text-white text-center">
-                    <div class="font-black text-4xl">Juasoonline Lunch Promo</div>
+                    <div class="font-black text-4xl">Juasoonline Launch Promo</div>
                     <div class="py-2 font-black text-sm">Grab the best brands for a less price</div>
                     <div class="bg-black mx-40 rounded-xl py-1 text-sm bg-opacity-25"><p class="">Limited Time: 15 Days from now</p></div>
                 </div>
@@ -35,7 +35,7 @@
     <!-- End content for large screens -->
 
     <!-- Begin content for small screens -->
-    <div class="bg-red-700 rounded mb-3 2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mx-1.5">
+    <div class="bg-juaso-primary rounded mb-3 2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block mx-1.5">
         <router-link to="/campaign/juasoonline-lunch-promo">
             <div class="p-4">
 
