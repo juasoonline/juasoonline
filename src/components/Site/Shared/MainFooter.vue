@@ -181,7 +181,7 @@
                         <router-link class="hover:text-gray-300 duration-700 mr-1.5" to="/mission-and-vision">Mission and Vision,</router-link>
                         <router-link class="hover:text-gray-300 duration-700 mr-1.5" to="/contacts">Contact Us</router-link>
                     </p>
-                    <div class="uppercase mt-6 text-right">
+                    <div class="uppercase text-right text-xs mt-6">
                         <p class="">2021 - 2022 <span class="ml-3">Juasoonline</span></p>
                         <p class="">© Copyright. All Rights Reserved.</p>
                     </div>
@@ -191,7 +191,7 @@
             </div>
             <!-- End company and site info -->
 
-            <!-- Begin copyright -->
+            <!-- Begin payment methods -->
             <div class="m-auto border-t text-center">
                 <div class="flex m-auto sm:border-t border-gray-400 text-sm flex-col">
                     <div class="flex py-5 mx-auto">
@@ -203,7 +203,7 @@
                     </div>
                 </div>
             </div>
-            <!-- End copyright -->
+            <!-- End payment methods -->
 
         </div>
     </footer>
