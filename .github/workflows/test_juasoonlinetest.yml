@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'juasoonlinetest'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C912C1A3B43D4FC889370ABDB182C4CB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E19F4F4F55104788913F04D3539866D6 }}
           package: .
