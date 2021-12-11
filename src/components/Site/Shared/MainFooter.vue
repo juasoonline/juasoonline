@@ -3,6 +3,83 @@
     <!-- Begin upper footer contents -->
     <footer class="bg-gray-50 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
         <div class="container py-20 m-auto px-1.5 text-gray-600">
+
+            <!-- Begin tags -->
+            <div class="text-center mb-16 border-b border-gray-200 pb-16">
+
+                <!-- Begin text -->
+                <div>
+                    <h2 class="text-xl font-bold mb-2">Online Shopping at Juasoonline.com</h2>
+                    <p class="">We believe in providing not only hot gadgets and great gifts but also the best support and service. We've been delivering best bang for your buck, every item we stock is carefully selected to ensure we offer you top quality at competitive prices.</p>
+                </div>
+                <!-- End text -->
+
+                <!-- Begin tags -->
+                <div class="flex flex-col grid gap-3 grid-cols-4 mt-5 rounded-full bg-gray-200 px-10">
+
+                    <!-- Begin products counts -->
+                    <div class="flex items-center 2xl:p-6 xl:p-4 lg:p-2">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-full text-white bg-gray-500 2xl:p-4 xl:p-3 lg:p-2">
+                                <svg class="2xl:w-5 xl:w-4 lg:w-3 2xl:h-5 xl:4 lg:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-gray-600 font-bold">Over 1 million items on sale</h3>
+                            <p class="mt-1 text-sm text-gray-500">Over 1 million items, there's always something on sale!</p>
+                        </div>
+                    </div>
+                    <!-- End products counts -->
+
+                    <!-- Begin 24/7 help -->
+                    <div class="flex items-center 2xl:p-6 xl:p-4 lg:p-2">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-full text-white bg-gray-500 2xl:p-4 xl:p-3 lg:p-2">
+                                <svg class="2xl:w-5 xl:w-4 lg:w-3 2xl:h-5 xl:4 lg:h-3 rounded-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-gray-600 font-bold">24/7 Help Center</h3>
+                            <p class="mt-1 text-sm text-gray-500">Round-the-clock assistance for a smooth shopping experience.</p>
+                        </div>
+                    </div>
+                    <!-- End 24/7 help -->
+
+                    <!-- Begin safe payment -->
+                    <div class="flex items-center 2xl:p-6 xl:p-4 lg:p-2">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-full text-white bg-gray-500 2xl:p-4 xl:p-3 lg:p-2">
+                                <svg class="2xl:w-5 xl:w-4 lg:w-3 2xl:h-5 xl:4 lg:h-3 rounded-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-gray-600 font-bold">Convenient payment options</h3>
+                            <p class="mt-1 text-sm text-gray-500">Pay with the most popular and secure payment methods.</p>
+                        </div>
+                    </div>
+                    <!-- End safe payment -->
+
+                    <!-- Begin shop with confidence -->
+                    <div class="flex items-center 2xl:p-6 xl:p-4 lg:p-2">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-full text-white bg-gray-500 2xl:p-4 xl:p-3 lg:p-2">
+                                <svg class="2xl:w-5 xl:w-4 lg:w-3 2xl:h-5 xl:4 lg:h-3 rounded-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="2xl:text-sm xl:text-sm lg:text-xs text-gray-600 font-bold">Shop with Confidence</h3>
+                            <p class="mt-1 text-sm text-gray-500">Our policies covers your purchase from click to delivery.</p>
+                        </div>
+                    </div>
+                    <!-- End shop with confidence -->
+
+                </div>
+                <!-- End tags -->
+
+            </div>
+            <!-- End tags -->
+
+            <!-- Begin menus -->
             <div class="flex flex-col grid gap-6 grid-cols-5">
 
                 <!-- Begin get app contents -->
@@ -131,6 +208,8 @@
                 <!-- End contact information -->
 
             </div>
+            <!-- End menus -->
+
         </div>
     </footer>
     <!-- End upper footer contents -->
