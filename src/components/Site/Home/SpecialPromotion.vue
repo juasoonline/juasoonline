@@ -7,7 +7,7 @@
 
                 <!-- Begin promo header -->
                 <div class="text-white text-center">
-                    <div class="font-black text-4xl">Juasoonline Launch Promo</div>
+                    <div class="font-black text-4xl">Juasoonline Launch Sales</div>
                     <div class="py-2 font-black text-sm">Grab the best brands for a less price</div>
                     <div class="bg-black mx-40 rounded-xl py-1 text-sm bg-opacity-25"><p class="">Limited Time: 15 Days from now</p></div>
                 </div>
