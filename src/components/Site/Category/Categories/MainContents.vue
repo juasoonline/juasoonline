@@ -1,23 +1,23 @@
 <template>
 
     <!-- Begin contents -->
-    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-4 px-1.5">
+    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-4">
 
         <!-- Begin menu -->
-        <div class="bg-white sticky top-0 z-40 shadow-lg md:overflow-x-scroll sm:overflow-x-scroll xs:overflow-x-scroll w-full">
-            <div class="flex 2xl:grid 2xl:grid-cols-7 xl:grid xl:grid-cols-7 lg:grid lg:grid-cols-7">
-                <div v-for="group in data.categories" :key="group.attributes.resource_id" :href="'#' + group.attributes.resource_id" class="p-5 border hover:border-red-400 hover:border-2 items-center">
-                    <a class="text-center"><p class="text-xs font-bold">{{ group.attributes.name }}</p></a>
+        <div class="bg-white sticky top-0 z-40 md:overflow-x-scroll sm:overflow-x-scroll xs:overflow-x-scroll w-full">
+            <div class="flex 2xl:grid 2xl:grid-cols-7 xl:grid xl:grid-cols-7 lg:grid lg:grid-cols-7 border-t border-l">
+                <div v-for="group in data.categories" :key="group.attributes.resource_id" class="text-center p-6 w-full border-b border-r truncate">
+                    <a class="text-xs font-bold" href="#">{{ group.attributes.name }}</a>
                 </div>
-                <div class="text-center p-5 border">
-                    <p class="text-xs font-bold">More...</p>
+                <div class="text-center p-6 w-full border-b border-r truncate">
+                    <a class="text-xs font-bold" href="#">More...</a>
                 </div>
             </div>
         </div>
         <!-- End menu -->
 
         <!-- Begin categories -->
-        <div class="bg-white w-full mt-4">
+        <div class="bg-white w-full mt-4 border">
             <div class="p-5">
                 <div v-for="group in data.categories" :key="group.attributes">
 
