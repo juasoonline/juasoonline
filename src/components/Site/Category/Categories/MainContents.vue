@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-4">
+    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto my-4 px-1.5">
 
         <!-- Begin menu -->
         <div class="bg-white sticky top-0 z-40 md:overflow-x-scroll sm:overflow-x-scroll xs:overflow-x-scroll w-full">
