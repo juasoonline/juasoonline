@@ -4,11 +4,11 @@
     <div class="">
 
         <!-- Begin contents for large screens -->
-        <main-contents v-if="!isMobile()"></main-contents>
+        <main-contents></main-contents>
         <!-- End contents for large screens -->
 
         <!-- Begin contents for mobile screens -->
-        <mobile-contents v-else></mobile-contents>
+        <!-- <mobile-contents v-else></mobile-contents> -->
         <!-- End contents for mobile screens -->
 
     </div>
@@ -17,19 +17,19 @@
 </template>
 
 <script>
-    import { useMobileDetection } from "vue3-mobile-detection"
+    // import { useMobileDetection } from "vue3-mobile-detection"
 
     import MainContents from "@/components/Site/Item/MainContents";
-    import MobileContents from "@/components/Site/Item/MobileContents";
+    // import MobileContents from "@/components/Site/Item/MobileContents";
 
     export default
     {
         name: "Item",
-        components: { MainContents, MobileContents },
+        components: { MainContents },
         setup()
         {
-            const { isMobile } = useMobileDetection();
-            return { isMobile }
+            // const { isMobile } = useMobileDetection();
+            // return { isMobile }
         }
     }
 </script>

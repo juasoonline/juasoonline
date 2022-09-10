@@ -60,11 +60,7 @@
                                     <!-- Begin user icon -->
                                     <div class="mr-4">
                                         <div class="rounded-full">
-<<<<<<< HEAD
                                             <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/user-icon-male.png" alt="" class="w-10">
-=======
-                                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/user-icon-male.png" alt="" class="w-10">
->>>>>>> test
                                         </div>
                                     </div>
                                     <!-- End user icon -->

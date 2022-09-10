@@ -48,7 +48,7 @@
                             </div>
                             </div>
                             <div v-else>
-                                <bullet-list-loader viewBox="0 0 250 100" primaryColor="#f3f3f3" secondaryColor="#cccccc"></bullet-list-loader>
+                                <!-- <bullet-list-loader viewBox="0 0 250 100" primaryColor="#f3f3f3" secondaryColor="#cccccc"></bullet-list-loader> -->
                             </div>
                         </div>
                         <!-- End cat nav -->
@@ -141,12 +141,12 @@
     import { computed, onBeforeMount, onMounted, onUnmounted, reactive, ref} from "vue";
     import axios from "axios";
     import { useRoute } from 'vue-router'
-    import { BulletListLoader } from 'vue-content-loader'
+    // import { BulletListLoader } from 'vue-content-loader'
 
     export default
     {
         name: "MainContents",
-        components: { BulletListLoader },
+        // components: { BulletListLoader },
         setup ()
         {
             const route = useRoute()
