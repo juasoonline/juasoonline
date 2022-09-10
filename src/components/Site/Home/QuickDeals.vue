@@ -16,17 +16,17 @@
 
         <!-- Begin items content -->
         <div v-else>
-
+            
             <!-- Begin item for 2xl screens -->
             <div class="2xl:block xl:hidden lg:hidden md:hidden sm:hidden xs:hidden text-justify">
                 <swiper :slides-per-view="7" :space-between="10" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
+                    <swiper-slide v-for="item in items.data" :key="item.product.resource_id">
                         <div class="card bg-white overflow-hidden text-center mx-0.5">
-                            <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}">
-                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
+                            <router-link :to="{ name: 'Item', params: { item: item.product.resource_id }}">
+                                <img v-bind:src="item.product.image" :alt="item.product.name" class="rounded border mb-4">
                             </router-link>
                             <div class="font-bold block text-xs flex justify-between">
-                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.product.resource_id }}"> {{ item.product.pricing.price_data[0].sales_price }}</router-link>
                                 <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
                             </div>
                             <div class="block text-xxs flex justify-between mt-2 text-green-800">
@@ -42,13 +42,13 @@
             <!-- Begin item for xl screens -->
             <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
                 <swiper :slides-per-view="6" :space-between="10" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
+                    <swiper-slide v-for="item in items.data" :key="item.product.resource_id">
                         <div class="card bg-white overflow-hidden text-center mx-0.5">
-                            <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}">
-                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
+                            <router-link :to="{ name: 'Item', params: { item: item.product.resource_id }}">
+                                <img v-bind:src="item.product.image" :alt="item.product.name" class="rounded border mb-4">
                             </router-link>
                             <div class="font-bold block text-xs flex justify-between">
-                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.product.resource_id }}"> {{ item.product.pricing.price_data[0].sales_price }}</router-link>
                                 <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
                             </div>
                             <div class="block text-xxs flex justify-between mt-2 text-green-800">
@@ -64,13 +64,13 @@
             <!-- Begin item for lg screens -->
             <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
                 <swiper :slides-per-view="5" :space-between="10" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
+                    <swiper-slide v-for="item in items.data" :key="item.product.resource_id">
                         <div class="card bg-white overflow-hidden text-center mx-0.5">
-                            <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}">
-                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border mb-4">
+                            <router-link :to="{ name: 'Item', params: { item: item.product.resource_id }}">
+                                <img v-bind:src="item.product.image" :alt="item.product.name" class="rounded border mb-4">
                             </router-link>
                             <div class="font-bold block text-xs flex justify-between">
-                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xs text-gray-600" :to="{ name: 'Item', params: { item: item.product.resource_id }}"> {{ item.product.pricing.price_data[0].sales_price }}</router-link>
                                 <p class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">-15%</p>
                             </div>
                             <div class="block text-xxs flex justify-between mt-2 text-green-800">
@@ -86,13 +86,13 @@
             <!-- Begin item list -->
             <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block text-justify">
                 <swiper :slides-per-view="3" :space-between="5" :autoplay="{ autoplay: true }">
-                    <swiper-slide v-for="item in items.data" :key="item.attributes.resource_id">
+                    <swiper-slide v-for="item in items.data" :key="item.product.resource_id">
                         <div class="card bg-white overflow-hidden text-center pb-3 relative">
-                            <router-link :to="{ name: 'Item', params: { item: item.attributes.product_id }}" class="">
-                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="rounded border">
+                            <router-link :to="{ name: 'Item', params: { item: item.product.resource_id }}" class="">
+                                <img v-bind:src="item.product.image" :alt="item.product.name" class="rounded border">
                             </router-link>
                             <div class="font-bold block">
-                                <router-link class="text-xxs text-red-600 font-bold" :to="{ name: 'Item', params: { item: item.attributes.product_id }}"> {{ item.attributes.sales_price }}</router-link>
+                                <router-link class="text-xxs text-red-600 font-bold" :to="{ name: 'Item', params: { item: item.product.resource_id }}"> {{ item.product.pricing.price_data[0].sales_price }}</router-link>
                                 <p class="font-light text-xxs leading-none p-0">398 Sold</p>
                             </div>
                             <div class="inline-flex py-0.5 px-3 font-bold items-center rounded text-xxxs bg-red-200 text-red-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 absolute top-0 my-1.5 mx-2.5"><span>-2%</span></div>
@@ -114,14 +114,13 @@
 </template>
 
 <script>
-    import SwiperCore, { Autoplay, Navigation } from 'swiper';
+    import axios from "axios"
+    import SwiperCore, { Autoplay, Navigation } from 'swiper'
+    import 'swiper/swiper.scss'
     import { Swiper, SwiperSlide } from 'swiper/vue'
-    SwiperCore.use( [ Autoplay, Navigation ] );
+    import { reactive, ref } from "vue"
 
-    import 'swiper/swiper.scss';
-    import {reactive, ref} from "vue";
-    import axios from "axios";
-
+    SwiperCore.use( [ Autoplay, Navigation ] )
 
     export default
     {
@@ -135,8 +134,8 @@
           
             try
             {
-                const response = await axios({ method: 'GET', url: 'business/ads/quick-deals' });
-                items.data = await response.data.data
+                const response = await axios({ method: 'GET', url: 'juaso/campaigns/flash-deals/hot-deals' });
+                items.data = await response.data.data.data
             }
             catch (e)
             {
@@ -149,5 +148,4 @@
 </script>
 
 <style scoped>
-
 </style>

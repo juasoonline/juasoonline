@@ -36,7 +36,7 @@
         components: { ResendForm },
         setup()
         {
-            const files = reactive ({ userIconMale: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/user-icon-male.png', logo: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/logo.png' })
+            const files = reactive ({ userIconMale: 'https://kyeiandamankwaa.com/juasoonline/resources/assets/images/user-icon-male.png', logo: 'https://kyeiandamankwaa.com/juasoonline/resources/assets/images/logo.png' })
             return { files }
         }
     }

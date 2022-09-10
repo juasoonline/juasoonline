@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <div id="infinite-list" class="grid gap-4 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
+    <div id="infinite-list" class="grid gap-5 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2">
         <div v-for="item in product.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
             <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
                 <img class="object-cover h-48 w-full" v-bind:src="item.attributes.image" :alt="item.attributes.image">
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div v-if="isLoading">
-        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+        <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
     </div>
     <!-- End contents -->
 

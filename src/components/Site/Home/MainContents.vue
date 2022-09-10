@@ -22,14 +22,14 @@
             </template>
             <template #fallback>
                 <div class="mx-auto text-center">
-                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+                    <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
                 </div>
             </template>
         </suspense>
         <!-- End quick details -->
 
         <!-- Begin items -->
-        <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 w-full mb-14">
+        <section class="w-full mb-14">
 
             <!-- Begin title -->
             <div class="mx-auto text-center"><h4 class="text-2xl font-bold mt-6 pb-2 md:text-center sm:text-center xs:text-center">Latest items</h4></div>
@@ -63,7 +63,6 @@
     {
         name: "MainContents",
         components: { CatsAndAdSlides, JuasoTags, QuickDeals, ItemsList },
-
     }
 </script>
 

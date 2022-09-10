@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full">
+    <section class="flex w-full">
 
         <!-- Begin categories nav bar -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5 bg-white rounded">
@@ -10,7 +10,7 @@
         <!-- End categories nav bar -->
 
         <!-- Begin ads slides -->
-        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 md:w-full sm:w-full xs:w-full rounded mx-3">
+        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 md:w-full sm:w-full xs:w-full rounded 2xl:mx-3 xl:mx-3 lg:mx-3">
 
             <!-- Begin slider banners -->
             <Suspense>
@@ -19,7 +19,7 @@
                 </template>
                 <template #fallback>
                     <div class="mx-auto text-center">
-                        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/loader.gif">
+                        <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
                     </div>
                 </template>
             </Suspense>
@@ -121,7 +121,9 @@
                 <div class="bg-white rounded">
                     <div class="justify-center flex flex-col">
                         <router-link to="/login" class="self-center rounded-full shadow-lg text-gray-500 hover:shadow">
-                            <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
                         </router-link>
                         <router-link to="/login" class="self-center font-bold text-sm my-4  text-juaso-primary hover:text-juaso-secondary">Welcome to Juasoonline</router-link>
                         <div class="justify-center m-auto">
@@ -161,21 +163,21 @@
             return {
                 banners:
                 [
-                    { resource_id: 10000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/right/banner1.jpg", name: "Ad banner name 1"  },
-                    { resource_id: 20000000, image: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/advertisment/right/banner2.jpg", name: "Ad banner name 2"  },
+                    { resource_id: 10000000, image: "https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/right/banner1.jpg", name: "Ad banner name 1"  },
+                    { resource_id: 20000000, image: "https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/right/banner2.jpg", name: "Ad banner name 2"  },
                 ],
                 category_icons:
                 {
-                    women_fashion: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/women_fashion.png",
-                    men_fashion: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/men_fashion.png",
-                    phones_more: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/phones_more.png",
-                    consumer_electronics: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/consumer_electronics.png",
-                    jewelry_watches: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/jewelry_watches.png",
-                    home_pets: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/home_pets.png",
-                    bags_shoes: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/bags_shoes.png",
-                    toys_kids_babies: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/toys_kids_babies.png",
-                    outdoor_fun_sports: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/outdoor_fun_sports.png",
-                    beauty_health_hair: "https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/icons/category/beauty_health_hair.png"
+                    women_fashion: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/women_fashion.png",
+                    men_fashion: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/men_fashion.png",
+                    phones_more: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/phones_more.png",
+                    consumer_electronics: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/consumer_electronics.png",
+                    jewelry_watches: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/jewelry_watches.png",
+                    home_pets: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/home_pets.png",
+                    bags_shoes: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/bags_shoes.png",
+                    toys_kids_babies: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/toys_kids_babies.png",
+                    outdoor_fun_sports: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/outdoor_fun_sports.png",
+                    beauty_health_hair: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/beauty_health_hair.png"
                 }
             }
         }

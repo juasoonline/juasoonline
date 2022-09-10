@@ -56,7 +56,7 @@ module.exports =
 
         backgroundImage: theme => (
         {
-            'header-banner': "url('https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/banner.svg')",
+            'header-banner': "url('https://kyeiandamankwaa.com/juasoonline/resources/assets/images/banner.svg')",
         }),
 
         screens:
