@@ -269,13 +269,8 @@
                 <!-- Begin store banner -->
                 <section class="my-4">
                     <div class="rounded">
-<<<<<<< HEAD
                         <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
                             <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
-=======
-                        <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}" class="focus:outline-none">
-                            <img :src="store.store.banner_image" alt="Store banner" class="rounded">
->>>>>>> test
                         </router-link>
                     </div>
                 </section>
@@ -1073,7 +1068,6 @@
                 <div class="relative w-auto my-6 mx-auto max-w-sm">
                     <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
-<<<<<<< HEAD
                         <!-- Begin modal header -->
                         <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                             <div>
@@ -1086,14 +1080,6 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
-=======
-                    <!-- Begin modal header -->
-                    <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                        <div>
-                            <router-link to="/">
-                                <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
-                            </router-link>
->>>>>>> test
                         </div>
                         <!-- End modal header -->
 
@@ -1594,15 +1580,9 @@
 
             onBeforeMount(() =>
             {
-<<<<<<< HEAD
+
                 axios({ method: 'GET', url: 'business/products/' + route.params.item + '?ratings=ratings&include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,faqs', headers: {} })
                     .then( response =>
-=======
-                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,faqs&ratings=ratings', headers: {} })
-                .then( response =>
-                {
-                    if ( response.data.code === 200 )
->>>>>>> test
                     {
                         if ( response.data.code === 200 )
                         {

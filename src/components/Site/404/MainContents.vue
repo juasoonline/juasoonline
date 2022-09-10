@@ -4,7 +4,6 @@
     <main class="container mx-auto my-4">
 
         <!-- Begin image contents -->
-<<<<<<< HEAD
         <div class="text-center mx-auto mt-32">
 
             <!-- Begin icon -->
@@ -36,10 +35,9 @@
             <!-- End button -->
 
             <!-- <img class="mt-20 mx-auto w-96" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/404.png"> -->
-=======
+        </div>
         <div class="text-center mx-auto">
             <img class="mt-20 mx-auto w-96" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/404.png" alt="">
->>>>>>> test
         </div>
         <!-- End image contents -->
 
@@ -77,11 +75,7 @@
 
             <!-- Begin preloader -->
             <div v-if="isLoading">
-<<<<<<< HEAD
                 <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
-=======
-                <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="">
->>>>>>> test
             </div>
             <!-- End preloader -->
 

@@ -1,11 +1,8 @@
 <template>
 
     <!-- Begin contents -->
-<<<<<<< HEAD
-    <section class="flex w-full">
-=======
+    <!-- <section class="flex w-full"> -->
     <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full 2xl:mb-5 xl:mb-5 lg:mb-5">
->>>>>>> test
 
         <!-- Begin categories nav bar -->
         <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5 bg-white rounded">
@@ -14,22 +11,15 @@
         <!-- End categories nav bar -->
 
         <!-- Begin ads slides -->
-<<<<<<< HEAD
         <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 md:w-full sm:w-full xs:w-full rounded 2xl:mx-3 xl:mx-3 lg:mx-3">
-=======
-        <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 2xl:mx-3 xl:mx-3 lg:mx-3 md:w-full sm:w-full xs:w-full rounded">
->>>>>>> test
+        <!-- <div class="2xl:w-3/5 xl:w-3/5 lg:w-4/5 2xl:mx-3 xl:mx-3 lg:mx-3 md:w-full sm:w-full xs:w-full rounded"> -->
 
             <!-- Begin slider banners -->
             <suspense>
                 <template #default><ad-sliders class=""></ad-sliders></template>
                 <template #fallback>
                     <div class="mx-auto text-center">
-<<<<<<< HEAD
                         <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
-=======
-                        <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif">
->>>>>>> test
                     </div>
                 </template>
             </suspense>
@@ -166,25 +156,26 @@
                 <div v-else class="bg-white rounded p-2">
 
                     <!-- Begin coupon -->
-                    <div class="flex">
+                    <!-- <div class="flex">
                         <div class="rounded-l card1 p-2 border-r border-dashed border-white">
-                            <div class="bg-coupon4-bg rounded bg-cover p-3">
+                            <div class="bg-coupon4-bg rounded bg-cover p-3"> -->
 
-<<<<<<< HEAD
+
             <!-- Begin user actions -->
-            <div class="flex justify-center mb-2 items-center bg-white rounded py-6">
-                <div class="bg-white rounded">
-                    <div class="justify-center flex flex-col">
-                        <router-link to="/login" class="self-center rounded-full shadow-lg text-gray-500 hover:shadow">
-                            <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </router-link>
-                        <router-link to="/login" class="self-center font-bold text-sm my-4  text-juaso-primary hover:text-juaso-secondary">Welcome to Juasoonline</router-link>
-                        <div class="justify-center m-auto">
-                            <router-link to="/register" class="inline-block mr-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-juaso-primary rounded shadow ripple hover:bg-juaso-secondary">Join</router-link>
-                            <router-link to="/login" class="inline-block ml-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-juaso-secondary rounded shadow ripple hover:bg-juaso-primary">Login</router-link>
-=======
+            <!-- <div class="flex justify-center mb-2 items-center bg-white rounded py-6"> -->
+
+                    <div class="bg-white rounded">
+                        <div class="justify-center flex flex-col">
+                            <router-link to="/login" class="self-center rounded-full shadow-lg text-gray-500 hover:shadow">
+                                <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </router-link>
+                            <router-link to="/login" class="self-center font-bold text-sm my-4  text-juaso-primary hover:text-juaso-secondary">Welcome to Juasoonline</router-link>
+                            <div class="justify-center m-auto">
+                                <router-link to="/register" class="inline-block mr-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-juaso-primary rounded shadow ripple hover:bg-juaso-secondary">Join</router-link>
+                                <router-link to="/login" class="inline-block ml-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-juaso-secondary rounded shadow ripple hover:bg-juaso-primary">Login</router-link>
+
                                 <!-- Begin header -->
                                 <div class="text-white">
                                     <div class="flex font-black items-center mb-1">
@@ -203,24 +194,23 @@
                                 <!-- End coupon -->
 
                             </div>
-                        </div>
-                        <div class="rounded-r card2 p-2">
-                            <div class="bg-coupon4-bg bg-cover"></div>
->>>>>>> test
-                        </div>
-                    </div>
-                    <!-- End coupon -->
-
-                    <!-- Begin action button -->
-                    <div class="bg-juaso-primary rounded mt-6 mb-1">
-                        <router-link to="/register" target="_blank">
-                            <div class="bg-coupon4-bg bg-cover rounded p-2 text-center text-white font-bold uppercase">
-                                <p class="text-sm">Get It Now</p>
+                            <div class="rounded-r card2 p-2">
+                                <div class="bg-coupon4-bg bg-cover"></div>
                             </div>
-                        </router-link>
-                    </div>
-                    <!-- End action button -->
+                        </div>
+                        <!-- End coupon -->
 
+                        <!-- Begin action button -->
+                        <div class="bg-juaso-primary rounded mt-6 mb-1">
+                            <router-link to="/register" target="_blank">
+                                <div class="bg-coupon4-bg bg-cover rounded p-2 text-center text-white font-bold uppercase">
+                                    <p class="text-sm">Get It Now</p>
+                                </div>
+                            </router-link>
+                        </div>
+                        <!-- End action button -->
+
+                    </div>
                 </div>
                 <!-- End guest user contents -->
 
@@ -344,26 +334,6 @@
         components: { CategoriesMenu, AdSliders, BannerRankings, Swiper, SwiperSlide },
         setup()
         {
-<<<<<<< HEAD
-            return {
-                banners:
-                [
-                    { resource_id: 10000000, image: "https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/right/banner1.jpg", name: "Ad banner name 1"  },
-                    { resource_id: 20000000, image: "https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/right/banner2.jpg", name: "Ad banner name 2"  },
-                ],
-                category_icons:
-                {
-                    women_fashion: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/women_fashion.png",
-                    men_fashion: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/men_fashion.png",
-                    phones_more: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/phones_more.png",
-                    consumer_electronics: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/consumer_electronics.png",
-                    jewelry_watches: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/jewelry_watches.png",
-                    home_pets: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/home_pets.png",
-                    bags_shoes: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/bags_shoes.png",
-                    toys_kids_babies: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/toys_kids_babies.png",
-                    outdoor_fun_sports: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/outdoor_fun_sports.png",
-                    beauty_health_hair: "https://kyeiandamankwaa.com/juasoonline/resources/api/icons/categories/beauty_health_hair.png"
-=======
             const authentication = inject( 'authentication' );
             const notification = new Notyf();
 
@@ -383,7 +353,6 @@
                 catch (e)
                 {
                     error.value = e
->>>>>>> test
                 }
             }
             const toggleSignInModal = () =>
@@ -411,7 +380,7 @@
 
             onBeforeMount(async () =>
             {
-                await getFlashItems()
+                getFlashItems()
             })
 
             return { authentication, modal, items, loginData, toggleSignInModal, signIn, signOut }
