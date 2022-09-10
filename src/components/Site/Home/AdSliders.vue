@@ -23,6 +23,18 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+    import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+    import axios from "axios";
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/swiper.scss';
+import { reactive, ref } from "vue";
+
+    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
+=======
     import { reactive, ref } from "vue";
     import axios from "axios";
 
@@ -33,6 +45,7 @@
     import 'swiper/swiper.scss';
     import 'swiper/components/navigation/navigation.scss';
     import 'swiper/components/pagination/pagination.scss';
+>>>>>>> test
 
     export default
     {
@@ -46,7 +59,11 @@
 
             try
             {
+<<<<<<< HEAD
+                const response = await axios({ method: 'GET', url: 'juaso/sliders' });
+=======
                 const response = await axios({ method: 'GET', url: 'business/campaigns/sliders' });
+>>>>>>> test
                 items.data = await response.data.data
             }
             catch (e)

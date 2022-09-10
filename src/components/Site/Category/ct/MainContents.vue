@@ -119,7 +119,11 @@
                     <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="">
                 </div>
                 <div v-if="isLoading">
+<<<<<<< HEAD
+                    <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
+=======
                     <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt="">
+>>>>>>> test
                 </div>
                 <!-- End items list -->
 

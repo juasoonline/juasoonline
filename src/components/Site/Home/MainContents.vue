@@ -21,6 +21,21 @@
 
         <!-- Begin quick details -->
         <suspense>
+<<<<<<< HEAD
+            <template #default>
+                <quick-deals></quick-deals>
+            </template>
+            <template #fallback>
+                <div class="mx-auto text-center">
+                    <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
+                </div>
+            </template>
+        </suspense>
+        <!-- End quick details -->
+
+        <!-- Begin items -->
+        <section class="w-full mb-14">
+=======
             <template #default><flash-deals></flash-deals></template>
             <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt=""></div></template>
         </suspense>
@@ -32,6 +47,7 @@
             <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt=""></div></template>
         </suspense>
         <!-- End new arrivals -->
+>>>>>>> test
 
         <!-- Begin top rankings -->
         <top-rankings></top-rankings>
@@ -65,7 +81,11 @@
     export default
     {
         name: "MainContents",
+<<<<<<< HEAD
+        components: { CatsAndAdSlides, JuasoTags, QuickDeals, ItemsList },
+=======
         components: { CatsAndAdSlides, CategoriesMobile, JuasoTags, SpecialPromotion, FlashDeals, NewArrivals, TopRankings, ItemsList },
+>>>>>>> test
     }
 </script>
 

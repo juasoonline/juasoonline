@@ -111,7 +111,11 @@
         setup()
         {
             const authentication = inject( 'authentication' );
+<<<<<<< HEAD
+            const files = reactive ({ userIconMale: 'https://kyeiandamankwaa.com/juasoonline/resources/assets/images/user-icon-male.png', logo: 'https://kyeiandamankwaa.com/juasoonline/resources/assets/images/logo.png' })
+=======
             const files = reactive ({ userIconMale: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/user-icon-male.png', logo: 'https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png' })
+>>>>>>> test
 
             const signOut = () => { authentication.logoutUser().then(() => { document.location.href = "" } )}
             return { files, authentication, signOut }

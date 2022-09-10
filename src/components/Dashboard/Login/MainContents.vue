@@ -9,7 +9,11 @@
                     <!-- Begin logo -->
                     <div class="">
                         <router-link to="/">
+<<<<<<< HEAD
+                            <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/logo.png" class="2xl:w-32 xl:w-32 lg:w-32 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+=======
                             <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" class="2xl:w-32 xl:w-32 lg:w-32 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+>>>>>>> test
                         </router-link>
                     </div>
                     <!-- End logo -->
