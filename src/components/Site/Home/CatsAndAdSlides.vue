@@ -16,7 +16,9 @@
 
             <!-- Begin slider banners -->
             <suspense>
-                <template #default><ad-sliders class=""></ad-sliders></template>
+                <template #default>
+                    <ad-sliders class=""></ad-sliders>
+                </template>
                 <template #fallback>
                     <div class="mx-auto text-center">
                         <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
