@@ -7,12 +7,12 @@
         <top-ads></top-ads>
         <!-- End top ads -->
 
-        <!-- Begin navbar -->
-        <nav-bar></nav-bar>
-        <!-- End navbar -->
+        <!-- Begin nav bar -->
+        <nav-bar class=""></nav-bar>
+        <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
-        <main-header></main-header>
+        <main-header class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden"></main-header>
         <!-- End logo, search and cart -->
 
         <!-- Begin top contents -->
@@ -20,8 +20,12 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer></main-footer>
+        <suspense><main-footer></main-footer></suspense>
         <!-- End footer -->
+
+        <!-- Begin mobile menu -->
+        <mobile-bottom-nav-bar></mobile-bottom-nav-bar>
+        <!-- End mobile menu -->
 
     </div>
     <!-- End contents wrapper -->
@@ -32,15 +36,16 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import MainContents from "@/components/Site/AboutJuasoonline/MainContents";
+    import MainContents from "@/components/Site/Campaigns/FlashDeals/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
+    import MobileBottomNavBar from "../../Shared/MobileBottomNavBar";
 
     export default
     {
-        name: 'Stores',
-        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter }
+        name: "FlashDeals",
+        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter, MobileBottomNavBar },
     }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 </style>

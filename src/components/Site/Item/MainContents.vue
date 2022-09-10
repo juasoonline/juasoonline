@@ -1,6 +1,18 @@
 <template>
 
-    <!-- Begin contents -->
+    <!-- Begin top ads -->
+    <top-ads></top-ads>
+    <!-- End top ads -->
+
+    <!-- Begin nav bar -->
+    <nav-bar></nav-bar>
+    <!-- End nav bar -->
+
+    <!-- Begin logo, search and cart -->
+    <main-header class="2xl:sticky 2xl:top-0 2xl:z-40 xl:sticky xl:top-0 xl:z-40 lg:sticky lg:top-0 lg:z-40"></main-header>
+    <!-- End logo, search and cart -->
+
+    <!-- Begin main contents -->
     <main class="">
 
         <!-- Begin item contents -->
@@ -30,8 +42,8 @@
                         <div class="text-xl text-gray-600 pb-3">
                             <h2 class="text-lg font-light leading-6 mb-3">{{ product.item.name }}</h2>
                             <div class="text-xs font-light mt-1 flex items-center">
-                                <span class="mr-4 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ store.store.doing_business_as }}</router-link></span>
-                                <span class="mr-4 font-bold border-r pr-3">Brand: <router-link :to="{ name: 'Brand', params: { brand: brand.brand.slug }}" class="hover:text-red-500">{{  brand.brand.name }}</router-link></span>
+                                <span class="mr-4 hover:text-red-500"><router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product from {{ store.store.doing_business_as }}</router-link></span>
+                                <span class="mr-4 font-bold border-r pr-3">Brand: <router-link :to="{ name: 'Brands', params: { brands: brand.brand.resource_id, slug: brand.brand.slug }}" class="hover:text-red-500">{{  brand.brand.name }}</router-link></span>
                                 <span class="mr-4 hover:text-red-500 flex">
                                       <div class="text-sm text-gray-500 flex items-center">
                                           <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
@@ -152,18 +164,18 @@
 
                         <!-- Begin action button -->
                         <div class="flex inline-block mt-5">
-                            <button v-if="orderData.orderLoading === false" @click="makeOrder()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Please wait...</button>
+                            <button v-if="orderData.orderLoading === false" @click="makeOrder()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-primary hover:bg-juaso-extra">Buy Now</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-primary hover:bg-juaso-extra">Please wait...</div>
 
-                            <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Please wait...</button>
+                            <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-secondary hover:bg-juaso-fourth mx-3">Add to Cart</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-secondary hover:bg-juaso-fourth mx-3">Please wait...</div>
 
                             <button v-if="wishlist.isLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
                                 <svg v-if="wishlist.status === false" class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 <svg v-else class="mr-2 h-5 w-5 text-red-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 {{ wishlist.wishlist_count }}
                             </button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</div>
                         </div>
                         <!-- End action button -->
 
@@ -257,8 +269,13 @@
                 <!-- Begin store banner -->
                 <section class="my-4">
                     <div class="rounded">
+<<<<<<< HEAD
                         <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
                             <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
+=======
+                        <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}" class="focus:outline-none">
+                            <img :src="store.store.banner_image" alt="Store banner" class="rounded">
+>>>>>>> test
                         </router-link>
                     </div>
                 </section>
@@ -268,7 +285,7 @@
                 <section class="flex gap-5 my-4">
 
                     <!-- Begin left contents -->
-                    <aside class="w-1/5 rounded">
+                    <aside class="2xl:w-2/12 xl:w-1/5 lg:w-1/5 rounded">
 
                         <!-- Begin store category -->
                         <div class="bg-white rounded px-4 py-4 mb-5">
@@ -279,14 +296,14 @@
                             <div class="py-3">
                                 <ul>
                                     <li v-for="category in store.categories" :key="category.attributes.resource_id" class="text-xs font-extrabold text-gray-500 my-1.5">
-                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="flex items-center hover:text-red-500">
+                                        <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}" class="flex items-center hover:text-red-500">
                                             <svg v-if="category.include.subcategories.length > 0" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                                             <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                                             {{ category.attributes.name }}
                                         </router-link>
                                         <ul v-if="category.include.subcategories.length > 0" class="ml-6 text-xxs font-normal mt-1.5 mb-2.5">
                                             <li v-for="subcategory in category.include.subcategories" :key="subcategory.attributes.resource_id" class="my-2 hover:text-red-500">
-                                                <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ subcategory.attributes.name }}</router-link>
+                                                <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}">{{ subcategory.attributes.name }}</router-link>
                                             </li>
                                         </ul>
                                     </li>
@@ -333,7 +350,7 @@
                     <!-- End left contents -->
 
                     <!-- Begin right contents -->
-                    <div class="w-4/5">
+                    <div class="2xl:w-10/12 xl:w-4/5 lg:w-4/5">
 
                         <!-- Begin store info -->
                         <div class="bg-white mb-4 rounded p-4">
@@ -345,7 +362,7 @@
                                     <!-- Begin store name -->
                                     <div class="flex items-center">
                                         <span class="text-sm font-bold">
-                                            <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link>
+                                            <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link>
                                         </span>
                                     </div>
                                     <!-- End store name -->
@@ -367,9 +384,9 @@
                                     <!-- End store stats -->
 
                                     <!-- Begin call to action -->
-                                    <div class="mt-3 flex justify-between items-center">
-                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
-                                        <button @click="followAction()" class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">
+                                    <div class="mt-3">
+                                        <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}" class="bg-juaso-primary hover:bg-juaso-extra text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1.5 px-4 mr-5 rounded-full">Visit Store</router-link>
+                                        <button @click="followAction()" class="text-juaso-primary 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-juaso-primary">
                                             <span v-if="follows.isLoading === true">Loading</span>
                                             <span v-else>{{ follows.status }}</span>
                                         </button>
@@ -627,7 +644,11 @@
 
                         <!-- Begin store recommendations -->
                         <div class="rounded mb-5">
-                            <h3 class="font-bold text-lg text-gray-600 mb-2">Seller Recommendations</h3>
+                            <!-- Begin title -->
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-lg text-gray-600 mb-2">Seller Recommendations</h3>
+                            </div>
+                            <!-- End title -->
 
                             <!-- Begin items -->
                             <div class="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 gap-4">
@@ -680,9 +701,6 @@
                             <!-- Begin title -->
                             <div class="flex items-center justify-between">
                                 <h3 class="font-bold text-lg text-gray-600 mb-2">More To Love</h3>
-                                <router-link to="">
-                                    <p class="flex items-center text-xs text-gray-600 hover:text-juaso-primary">View More <span><svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></span></p>
-                                </router-link>
                             </div>
                             <!-- End title -->
 
@@ -927,7 +945,7 @@
                     <!-- Begin store name -->
                     <div class="flex items-center">
                         <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
-                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.name }}</router-link></span>
+                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}">{{ store.store.name }}</router-link></span>
                     </div>
                     <!-- End store name -->
 
@@ -950,7 +968,7 @@
 
                     <!-- Begin call to action -->
                     <div class="my-3 border-b pb-4">
-                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                        <router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                         <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
                     </div>
                     <!-- End call to action -->
@@ -958,7 +976,7 @@
                     <!-- Begin recommendations header -->
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="font-bold text-sm mb-1.5">Seller Recommendations</h3>
-                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">View All Product</router-link></p>
+                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { slug: store.store.resource_id }}">View All Product</router-link></p>
                     </div>
                     <!-- End recommendations header -->
 
@@ -1009,7 +1027,7 @@
                 </div>
                 <!-- End more to love -->
 
-                <!-- Begin bottom navbar -->
+                <!-- Begin bottom nav bar -->
                 <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-40 bg-white shadow">
                     <div id="tabs" class="flex justify-between">
                         <router-link to="/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1 border-r">
@@ -1028,7 +1046,7 @@
                         </button>
                     </div>
                 </section>
-                <!-- End bottom navbar -->
+                <!-- End bottom nav bar -->
 
             </div>
             <!-- End contents for mobile screens -->
@@ -1037,7 +1055,12 @@
         <!-- End main contents -->
 
     </main>
-    <!-- End contents -->
+    <!-- End main contents -->
+
+    <!-- Begin footer -->
+    <suspense><main-footer></main-footer></suspense>
+    <!-- End footer -->
+
 
     <!-- Begin modals -->
     <div class="">
@@ -1050,6 +1073,7 @@
                 <div class="relative w-auto my-6 mx-auto max-w-sm">
                     <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
+<<<<<<< HEAD
                         <!-- Begin modal header -->
                         <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                             <div>
@@ -1062,6 +1086,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
+=======
+                    <!-- Begin modal header -->
+                    <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                        <div>
+                            <router-link to="/">
+                                <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+                            </router-link>
+>>>>>>> test
                         </div>
                         <!-- End modal header -->
 
@@ -1291,6 +1323,11 @@
 </template>
 
 <script>
+    import TopAds from "@/components/Site/Shared/TopAds";
+    import NavBar from "@/components/Site/Shared/NavBar";
+    import MainHeader from "@/components/Site/Shared/MainHeader";
+    import MainFooter from "@/components/Site/Shared/MainFooter";
+
     import { inject, onBeforeMount, reactive } from "vue";
 
     import router from "../../../router";
@@ -1298,16 +1335,16 @@
     import { useRoute } from 'vue-router'
 
     import { Notyf } from "notyf";
+
+    import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
-    import SwiperCore, { Autoplay, Navigation } from "swiper";
     import 'swiper/swiper.scss';
-    SwiperCore.use( [ Autoplay, Navigation ] );
+    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
 
     export default
     {
         name: "MainContents",
-        components: { Swiper, SwiperSlide },
-
+        components: { TopAds, NavBar, MainHeader, MainFooter, Swiper, SwiperSlide },
         setup()
         {
             const notification = new Notyf();
@@ -1557,8 +1594,15 @@
 
             onBeforeMount(() =>
             {
+<<<<<<< HEAD
                 axios({ method: 'GET', url: 'business/products/' + route.params.item + '?ratings=ratings&include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,faqs', headers: {} })
                     .then( response =>
+=======
+                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,faqs&ratings=ratings', headers: {} })
+                .then( response =>
+                {
+                    if ( response.data.code === 200 )
+>>>>>>> test
                     {
                         if ( response.data.code === 200 )
                         {

@@ -1,21 +1,21 @@
 <template>
 
     <!-- Begin contents -->
-    <div>
-        <!-- Begin error message -->
-        <div v-if="error">{{ error.errors }}</div>
-        <!-- End error message -->
+    <div class="">
+        <div class="">
 
-        <div v-else>
-            <swiper :slides-per-view="1" :speed="1000" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
+            <!-- Begin sliders -->
+            <swiper :slides-per-view="1" :speed="1000" :loop="true" :autoplay="{ autoplay: true, delay: 5000 }" :pagination="{ clickable: true }" class="rounded">
                 <swiper-slide v-for="slider in items.data" :key="slider.attributes.resource_id">
                     <div class="swiper-container">
                         <router-link to="/store/1234567890">
-                            <img :src="slider.attributes.image" alt="" class="rounded border-none">
+                            <img :src="slider.attributes.slider_image" alt="" class="rounded border-none">
                         </router-link>
                     </div>
                 </swiper-slide>
             </swiper>
+            <!-- End sliders -->
+
         </div>
     </div>
     <!-- End contents -->
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
     import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -33,6 +34,18 @@ import 'swiper/swiper.scss';
 import { reactive, ref } from "vue";
 
     SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
+=======
+    import { reactive, ref } from "vue";
+    import axios from "axios";
+
+    import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
+
+    import 'swiper/swiper.scss';
+    import 'swiper/components/navigation/navigation.scss';
+    import 'swiper/components/pagination/pagination.scss';
+>>>>>>> test
 
     export default
     {
@@ -46,7 +59,11 @@ import { reactive, ref } from "vue";
 
             try
             {
+<<<<<<< HEAD
                 const response = await axios({ method: 'GET', url: 'juaso/sliders' });
+=======
+                const response = await axios({ method: 'GET', url: 'business/campaigns/sliders' });
+>>>>>>> test
                 items.data = await response.data.data
             }
             catch (e)

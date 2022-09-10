@@ -5,9 +5,9 @@
         <div class="2xl:flex xl:flex lg:flex my-4">
 
             <!-- Begin left contents -->
-            <aside class="mr-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden w-1/5">
+            <aside class="mr-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden 2xl:w-2/12 xl:w-1/5 lg:w-1/5">
                 <div class="sticky inset-x-0 top-20 left-0">
-                    <div class="bg-white rounded-b">
+                    <div class="bg-white rounded-b shadow-lg">
 
                         <!-- Begin cat header -->
                         <div class="bg-juaso-primary rounded-t">
@@ -20,25 +20,50 @@
 
                         <!-- Begin cat nav -->
                         <div class="p-3">
-                            <div v-if="menus.isLoading === true">
-                                <div class="font-bold text-sm hover:text-red-600">
-                                    <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ menus.menu.include.category.include.group.attributes.name }}
+                            <div v-if="menus.loaded === true">
+                                <div class="font-bold 2xl:text-sm xl:text-xs lg:text-xxs hover:text-red-600">
+                                    <router-link :to="{ name: 'Group', params: { category: menus.group.resource_id, slug: menus.group.slug }}" class="flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 2xl:mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                                        {{ menus.group.name }}
                                     </router-link>
                                 </div>
-                                <div class="ml-2 py-1 text-xs">
+                                <div class="ml-2 py-1 2xl:text-xs xl:text-xxs lg:text-xxs">
                                     <ul>
                                         <li class="py-1 flex hover:text-red-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                            <router-link :to="{ name: 'Category', params: { category: menus.menu.include.category.attributes.resource_id, slug: menus.menu.include.category.attributes.slug }}">{{ menus.menu.include.category.attributes.name }}</router-link>
+                                            <router-link :to="{ name: 'Category', params: { category: menus.category.resource_id, slug: menus.category.slug }}">{{ menus.category.name }}</router-link>
                                         </li>
-                                        <li class="ml-5 py-1 font-bold">{{ menus.menu.attributes.name }}</li>
+                                        <li class="ml-5 py-1 font-bold">{{ menus.subcategory.name }}</li>
                                     </ul>
                                 </div>
                             </div>
+                            <div v-else>
+                                <bullet-list-loader viewBox="0 0 250 100" primaryColor="#f3f3f3" secondaryColor="#cccccc"></bullet-list-loader>
+                            </div>
                         </div>
                         <!-- End cat nav -->
+
+                        <!-- Begin brands -->
+                        <div class="px-4 pb-5">
+                            <div class="border-t">
+                                <h3 class="font-bold text-sm mt-5">Brands</h3>
+                                <div v-if="brands.loaded === true" class="mt-5">
+                                    <div v-if="brands.brands.length > 0" class="flex grid gap-4 grid-cols-2">
+                                        <div v-for="( brand ) in brands.brands.slice( 0, 6 )" :key="brand.attributes.resource_id">
+                                            <router-link :to="{ name: 'Brands', params: { brands: brand.attributes.resource_id, slug: brand.attributes.slug }}" class="">
+                                                <div class="border text-center py-2 rounded ">
+                                                    <img :src="brand.attributes.logo" alt="" class="m-auto w-10 h-4">
+                                                </div>
+                                            </router-link>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else>
+                                    <bullet-list-loader viewBox="0 0 250 100" primaryColor="#f3f3f3" secondaryColor="#cccccc"></bullet-list-loader>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End brands -->
 
                     </div>
                 </div>
@@ -46,15 +71,15 @@
             <!-- End left contents -->
 
             <!-- Begin right contents -->
-            <div class="2xl:w-4/5 xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xs:w-full">
+            <div class="2xl:w-10/12 xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xs:w-full">
 
                 <!-- Begin breadcrumb -->
                 <div class="text-xs text-gray-500">
-                    <div v-if="menus.isLoading === true">
+                    <div v-if="menus.loaded === true">
                         <router-link to="/categories" class="hover:text-red-500">All Categories <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                        <router-link :to="{ name: 'Group', params: { category: menus.menu.include.category.include.group.attributes.resource_id, slug: menus.menu.include.category.include.group.attributes.slug }}" class="hover:text-red-500">{{ menus.menu.include.category.include.group.attributes.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                        <router-link :to="{ name: 'Category', params: { category: menus.menu.include.category.attributes.resource_id, slug: menus.menu.include.category.attributes.slug }}" class="hover:text-red-500">{{ menus.menu.include.category.attributes.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
-                        <span class="hover:text-red-500 font-extrabold">"{{ menus.menu.attributes.name }}"</span>
+                        <router-link :to="{ name: 'Group', params: { category: menus.group.resource_id, slug: menus.group.slug }}" class="hover:text-red-500">{{ menus.group.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
+                        <router-link :to="{ name: 'Category', params: { category: menus.category.resource_id, slug: menus.category.slug }}" class="hover:text-red-500">{{ menus.category.name }} <i class="fal fa-chevron-right mx-2 text-xxxs"></i></router-link>
+                        <span class="hover:text-red-500 font-extrabold">"{{ menus.subcategory.name }}"</span>
                     </div>
                 </div>
                 <!-- End breadcrumb -->
@@ -65,7 +90,7 @@
                 <!-- End sort and view type -->
 
                 <!-- Begin items list -->
-                <div class="">
+                <div v-if="product.loaded === true">
                     <div v-if="product.items.length > 0" id="infinite-list" class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 xs:grid-cols-2">
                         <div v-for="( item ) in product.items" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden shadow-md hover:shadow-2xl">
                             <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
@@ -107,13 +132,19 @@
                             </div>
                         </div>
                     </div>
-
                     <div v-else class="h-96">
                         <p class="py-2 text-sm text-gray-400">There are no products in this category</p>
                     </div>
                 </div>
+                <div v-else>
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif">
+                </div>
                 <div v-if="isLoading">
+<<<<<<< HEAD
                     <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
+=======
+                    <img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif">
+>>>>>>> test
                 </div>
                 <!-- End items list -->
 
@@ -130,20 +161,53 @@
     import { computed, onBeforeMount, onMounted, onUnmounted, reactive, ref } from "vue";
     import axios from "axios";
     import { useRoute } from 'vue-router'
+    import { BulletListLoader } from 'vue-content-loader'
 
     export default
     {
         name: "MainContents",
+        components: { BulletListLoader },
         setup ()
         {
             const route = useRoute()
-            const menus = reactive({ menu: [], isLoading: false })
-            const product = reactive({ items: [] })
+            const menus = reactive({ subcategory: [], category: [], group: [], loaded: false })
+            const brands = reactive({ brands: [], loaded: false })
+            const product = reactive({ items: [], loaded: false })
             const currentPage = ref(0)
             const totalPages = ref()
-            const isInitialRequestLoading = ref(true)
+            const isInitialRequestLoading = ref(true )
             const isLoading = ref(false )
 
+            const getMenus = async () =>
+            {
+                try
+                {
+                    const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '?include=category.group' })
+                    const data = await response.data
+                    menus.subcategory = data.data.attributes
+                    menus.category = data.data.include.category.attributes
+                    menus.group = data.data.include.category.include.group.attributes
+                    menus.loaded = true
+                }
+                catch( err )
+                {
+                    menus.loaded = false
+                }
+            }
+            const getBrands = async () =>
+            {
+                try
+                {
+                    const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '/products/brands' })
+                    const data = await response.data
+                    brands.brands = data.data
+                    brands.loaded = true
+                }
+                catch( err )
+                {
+                    brands.loaded = false
+                }
+            }
             const getItems = async () =>
             {
                 currentPage.value++
@@ -153,26 +217,11 @@
                     const parsedResponse = await response.data
                     product.items = [ ...product.items, ...parsedResponse.data ]
                     totalPages.value = parsedResponse.meta.last_page
+                    product.loaded = true
                 }
                 catch( err )
                 {
-                    console.log( err )
-                }
-            }
-
-            const getMenus = async () =>
-            {
-                try
-                {
-                    const response = await axios({ method: 'GET', url: 'juaso/subcategories/' + route.params.category + '?include=category.group' })
-                    const data = await response.data
-                    menus.menu = data.data
-                    menus.isLoading = true
-                }
-                catch( err )
-                {
-                    menus.isLoading = false
-                    console.log( err )
+                    product.loaded = false
                 }
             }
             const handleScroll = async () =>
@@ -192,14 +241,21 @@
 
             onBeforeMount(async () =>
             {
-                await getItems()
                 await getMenus()
+                await getBrands()
+                await getItems()
                 isInitialRequestLoading.value = false
             })
-            onMounted(() => { window.addEventListener('scroll', handleScroll) })
-            onUnmounted(() => { window.removeEventListener('scroll', handleScroll) })
+            onMounted(() =>
+            {
+                window.addEventListener('scroll', handleScroll)
+            })
+            onUnmounted(() =>
+            {
+                window.removeEventListener('scroll', handleScroll)
+            })
 
-            return { menus, product, isInitialRequestLoading, isLoading }
+            return { menus, brands, product, isInitialRequestLoading, isLoading }
         }
     }
 </script>

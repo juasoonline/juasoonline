@@ -4,11 +4,11 @@
     <div class="w-full">
 
         <!-- Begin cat header -->
-        <div class="bg-juaso-primary rounded-t">
+        <div class="bg-gray-50 text-gray-700 font-bold border-b border-gray-100 rounded-t">
           <router-link to="/categories">
-              <div class="flex justify-start p-2.5 hover:bg-juaso-secondary rounded-t">
-                  <svg class="w-6 h-6 mr-1.5 text-gray-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-                  <span class="text-gray-50">Categories</span>
+              <div class="flex justify-start items-center p-2.5 hover:bg-gray-200 rounded-t">
+                  <svg class="w-5 h-5 mr-1.5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                  <span class="">Categories</span>
               </div>
           </router-link>
         </div>
@@ -19,26 +19,41 @@
             <nav class="text-sm w-full h-full">
                 <ul class="menu">
                     <li v-for="group in groups.categories" :key="group.attributes.resource_id" class="2xl:text-ct xl:text-xs lg:text-xs text-gray-500">
-                        <router-link :to="{ name: 'Group', params: { category: group.attributes.resource_id, slug: group.attributes.slug }}" class="flex justify-between items-center py-1.5 2xl:mb-0.5 px-3 hover:shadow-lg hover:text-juaso-primary">
+
+                        <!-- Begin group menu link -->
+                        <router-link :to="{ name: 'Group', params: { category: group.attributes.resource_id, slug: group.attributes.slug }}" class="flex justify-between items-center py-1.5 2xl:mb-0.5 px-3 hover:shadow-lg hover:text-gray-700">
                             <span>{{ group.attributes.name }}</span>
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </router-link>
-                        <div class="megadrop rounded-r border shadow-sm grid gap-6 grid-cols-3">
+                        <!-- End group menu link -->
+
+                        <!-- Begin categories and subcategories -->
+                        <div class="megadrop rounded-r border border-gray-100 shadow-sm grid gap-6 grid-cols-3">
                           <div class="col" v-for="category in group.include.categories" :key="category.attributes.resource_id">
+
+                              <!-- Begin category menu link -->
                               <router-link :to="{ name: 'Category', params: { category: category.attributes.resource_id, slug: category.attributes.slug }}">
                                   <div class="border-b pb-1 mb-1">
                                       <h3 class="text-gray-500 text-sm font-bold hover:text-juaso-primary">{{ category.attributes.name }}</h3>
                                   </div>
                               </router-link>
+                              <!-- End category menu link -->
+
                               <ul class="">
                                   <li v-for="subcategory in category.include.subcategories" :key="subcategory.attributes.resource_id" class="text-gray-500 font-light text-xs hover:text-juaso-primary py-0.5">
+
+                                      <!-- Begin subcategory menu link -->
                                       <router-link :to="{ name: 'Subcategory', params: { category: subcategory.attributes.resource_id, slug: subcategory.attributes.slug }}">
                                           {{ subcategory.attributes.name }}
                                       </router-link>
+                                      <!-- End subcategory menu link -->
+
                                   </li>
                               </ul>
                           </div>
                         </div>
+                        <!-- Begin categories and subcategories -->
+
                     </li>
                 </ul>
             </nav>

@@ -7,17 +7,13 @@
         <top-ads></top-ads>
         <!-- End top ads -->
 
-        <!-- Begin navbar -->
-        <nav-bar></nav-bar>
-        <!-- End navbar -->
+        <!-- Begin nav bar -->
+        <nav-bar class=""></nav-bar>
+        <!-- End nav bar -->
 
         <!-- Begin logo, search and cart -->
-        <main-header></main-header>
+        <main-header class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden"></main-header>
         <!-- End logo, search and cart -->
-
-        <!-- Begin page header -->
-        <page-header></page-header>
-        <!-- End page header -->
 
         <!-- Begin top contents -->
         <main-contents></main-contents>
@@ -40,18 +36,16 @@
     import TopAds from "@/components/Site/Shared/TopAds";
     import NavBar from "@/components/Site/Shared/NavBar";
     import MainHeader from "@/components/Site/Shared/MainHeader";
-    import PageHeader from "./PageHeader";
-    import MainContents from "@/components/Site/Categories/MainContents";
+    import MainContents from "@/components/Site/Campaigns/NewArrivals/MainContents";
     import MainFooter from "@/components/Site/Shared/MainFooter";
-    import MobileBottomNavBar from "../Shared/MobileBottomNavBar";
+    import MobileBottomNavBar from "../../Shared/MobileBottomNavBar";
 
     export default
     {
-        name: "Categories",
-        components: { TopAds, NavBar, MainHeader, PageHeader, MainContents, MainFooter, MobileBottomNavBar }
+        name: "NewArrivals",
+        components: { TopAds, NavBar, MainHeader, MainContents, MainFooter, MobileBottomNavBar },
     }
 </script>
 
 <style scoped>
-
 </style>

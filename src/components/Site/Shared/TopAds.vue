@@ -7,7 +7,11 @@
             <!-- Begin ad banner -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden mx-auto w-screen">
                 <router-link to="" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" >
+<<<<<<< HEAD
                     <img src="http://kandaconsultingltd.com/juasoonline/resources/api/campaings/banners/cyber_monday.jpg"  alt=""/>
+=======
+                    <img src="https://juasoonline.nyc3.digitaloceanspaces.com/juaso/campaigns/top_banners/cyber_monday_sales.jpg"  alt=""/>
+>>>>>>> test
                 </router-link>
             </div>
             <!-- Begin ad banner -->
