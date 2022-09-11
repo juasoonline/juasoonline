@@ -8,7 +8,7 @@
             <div class="text-center mb-16 border-b border-gray-200 pb-16">
 
                 <!-- Begin text -->
-                <div>
+                <div class="">
                     <h2 class="text-xl font-bold mb-2">Online Shopping at Juasoonline.com</h2>
                     <p class="">We believe in providing not only hot gadgets and great gifts but also the best support and service. We've been delivering best bang for your buck, every item we stock is carefully selected to ensure we offer you top quality at competitive prices.</p>
                 </div>
@@ -274,11 +274,21 @@
             <div class="m-auto border-t text-center">
                 <div class="flex m-auto sm:border-t border-gray-400 text-sm flex-col">
                     <div class="flex py-5 mx-auto">
-                        <div class="my-1 border rounded"><img class="rounded w-16" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/payment_methods/mtn.jpg" alt=""></div>
-                        <div class="my-1 border rounded mx-2"><img class="rounded w-16" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/payment_methods/AirtelTigo.jpg" alt=""></div>
-                        <div class="my-1 border rounded mx-2"><img class="rounded w-16" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/payment_methods/Visa.jpg" alt=""></div>
-                        <div class="my-1 border rounded mx-2"><img class="rounded w-16" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/payment_methods/mastercard.jpg" alt=""></div>
-                        <div class="my-1 border rounded"><img class="rounded w-16" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/payment_methods/vodafone.jpg" alt=""></div>
+                        <div class="my-1 border rounded">
+                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/mtn.jpg" alt="">
+                        </div>
+                        <div class="my-1 border rounded mx-2">
+                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/airteltigo.jpg" alt="">
+                        </div>
+                        <div class="my-1 border rounded mx-2">
+                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/Visa.jpg" alt="">
+                        </div>
+                        <div class="my-1 border rounded mx-2">
+                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/mastercard.jpg" alt="">
+                        </div>
+                        <div class="my-1 border rounded">
+                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/vodafone.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -300,7 +310,7 @@
         async setup()
         {
             const groups = reactive({ categories: [] });
-            const error = ref(null )
+            const error = ref( null )
 
             try
             {

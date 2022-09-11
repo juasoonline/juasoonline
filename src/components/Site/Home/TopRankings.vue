@@ -28,7 +28,7 @@
 
                         <!-- Begin image -->
                         <router-link class="" :to="{ name: 'Item', params: { item: 78236748275482 }}">
-                            <img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/juaso/items/products/product13_1.jpg" alt="product">
+                            <img class="object-cover w-full rounded" src="https://kyeiandamankwaa.com/juasoonline/resources/api/products/images/products/product15_1.jpg" alt="product">
                         </router-link>
                         <!-- End image -->
 

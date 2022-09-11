@@ -46,7 +46,7 @@
 
                         <!-- Begin user icon -->
                         <div class="self-center rounded-full">
-                            <img src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/user-icon-male.png" alt="" class="m-auto w-16">
+                            <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/icons/user-icon-male.png" alt="" class="m-auto w-16">
                         </div>
                         <!-- End user icon -->
 
@@ -64,7 +64,9 @@
                             <div class="">
                                 <router-link to="/overview">
                                     <div class="bg-bg-1 bg-cover rounded-full h-12 w-12 pt-3 m-auto mb-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="m-auto text-white h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
                                     </div>
                                     <p>Account</p>
                                 </router-link>
@@ -72,7 +74,9 @@
                             <div class="">
                                 <router-link to="/orders">
                                     <div class="bg-bg-2 bg-cover rounded-full h-12 w-12 pt-3 m-auto mb-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="m-auto text-white h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                        </svg>
                                     </div>
                                     <p>Orders</p>
                                 </router-link>
@@ -80,7 +84,9 @@
                             <div class="">
                                 <router-link to="/messages">
                                     <div class="bg-bg-3 bg-cover rounded-full h-12 w-12 pt-3 m-auto mb-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="m-auto text-white h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" /></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                                        </svg>
                                     </div>
                                     <p>Messages</p>
                                 </router-link>
@@ -95,7 +101,9 @@
                     <div v-else class="2xl:mb-3 mb-2.5">
                         <div class="justify-center flex flex-col">
                             <router-link to="/login" class="self-center rounded-full shadow-lg text-gray-500 hover:shadow">
-                                <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
                             </router-link>
                             <router-link to="/login" class="self-center font-bold text-sm my-4 text-juaso-primary hover:text-juaso-secondary">Welcome to Juasoonline</router-link>
                             <div class="justify-center m-auto">
@@ -134,7 +142,9 @@
                                 <router-link to="/campaigns/flash-deals">
 
                                     <!-- Begin image -->
-                                    <div class=""><img :src="item.product.image" alt="" class="rounded border my-1.5"></div>
+                                    <div class="">
+                                        <img :src="item.product.image" alt="" class="rounded border my-1.5">
+                                    </div>
                                     <!-- End image -->
 
                                     <!-- Begin pricing -->
@@ -155,28 +165,12 @@
                 <!-- End weekly deals contents -->
 
                 <!-- Begin guest user contents -->
-                <div v-else class="bg-white rounded p-2">
-
-                    <!-- Begin coupon -->
-                    <!-- <div class="flex">
-                        <div class="rounded-l card1 p-2 border-r border-dashed border-white">
-                            <div class="bg-coupon4-bg rounded bg-cover p-3"> -->
-
-
-            <!-- Begin user actions -->
-            <!-- <div class="flex justify-center mb-2 items-center bg-white rounded py-6"> -->
-
-                    <div class="bg-white rounded">
-                        <div class="justify-center flex flex-col">
-                            <router-link to="/login" class="self-center rounded-full shadow-lg text-gray-500 hover:shadow">
-                                <svg class="w-16 bg-juaso-primary rounded-full text-white p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </router-link>
-                            <router-link to="/login" class="self-center font-bold text-sm my-4  text-juaso-primary hover:text-juaso-secondary">Welcome to Juasoonline</router-link>
-                            <div class="justify-center m-auto">
-                                <router-link to="/register" class="inline-block mr-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-juaso-primary rounded shadow ripple hover:bg-juaso-secondary">Join</router-link>
-                                <router-link to="/login" class="inline-block ml-1 px-7 py-2 text-xs font-medium leading-4 text-center text-white transition bg-juaso-secondary rounded shadow ripple hover:bg-juaso-primary">Login</router-link>
+                <div v-else class="bg-white rounded">
+                    <div class="bg-white rounded p-2">
+                        
+                        <!-- Begin coupon -->
+                        <div class="w-full bg-juaso-secondary p-2 rounded mb-4">
+                            <div class="border-2 border-dotted border-sky-500 rounded px-2 py-4">
 
                                 <!-- Begin header -->
                                 <div class="text-white">
@@ -196,14 +190,11 @@
                                 <!-- End coupon -->
 
                             </div>
-                            <div class="rounded-r card2 p-2">
-                                <div class="bg-coupon4-bg bg-cover"></div>
-                            </div>
                         </div>
                         <!-- End coupon -->
 
                         <!-- Begin action button -->
-                        <div class="bg-juaso-primary rounded mt-6 mb-1">
+                        <div class="bg-juaso-primary rounded">
                             <router-link to="/register" target="_blank">
                                 <div class="bg-coupon4-bg bg-cover rounded p-2 text-center text-white font-bold uppercase">
                                     <p class="text-sm">Get It Now</p>
@@ -349,7 +340,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/campaigns/flash-deals' });
+                    const response = await axios({ method: 'GET', url: 'juaso/campaigns/flash-deals/hot-deals' });
                     items.data = await response.data.data.data
                 }
                 catch (e)

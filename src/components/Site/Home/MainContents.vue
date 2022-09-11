@@ -1,7 +1,7 @@
 <template>
 
     <!-- Begin contents -->
-    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto 2xl:my-5  xl:my-5  lg:my-5 my-3">
+    <main class="2xl:container xl:container lg:container md:w-screen sm:w-screen xs:w-screen mx-auto 2xl:my-5 xl:my-5 lg:my-5 my-3">
 
         <!-- Begin category and slide contents -->
         <cats-and-ad-slides></cats-and-ad-slides>
@@ -19,31 +19,12 @@
         <special-promotion></special-promotion>
         <!-- End special promo -->
 
-        <!-- Begin quick details -->
-        <suspense>
-            <template #default>
-                <quick-deals></quick-deals>
-            </template>
-            <template #fallback>
-                <div class="mx-auto text-center">
-                    <img class="mx-auto text-center w-20 h-20" src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/others/loader.gif">
-                </div>
-            </template>
-        </suspense>
-        <!-- End quick details -->
-
-        <!-- Begin items -->
-        <suspense class="w-full mb-14">
-            <template #default><flash-deals></flash-deals></template>
-            <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt=""></div></template>
-        </suspense>
-        <!-- End quick details -->
+        <!-- Begin quick deals -->
+        <flash-deals></flash-deals>
+        <!-- End quick deals -->
 
         <!-- Begin new arrivals -->
-        <suspense>
-            <template #default><new-arrivals></new-arrivals></template>
-            <template #fallback><div class="mx-auto text-center"><img class="mx-auto text-center w-20 h-20" src="https://juasoonline.nyc3.digitaloceanspaces.com/assets/images/others/loader.gif" alt=""></div></template>
-        </suspense>
+        <new-arrivals></new-arrivals>
         <!-- End new arrivals -->
 
         <!-- Begin top rankings -->
@@ -51,13 +32,7 @@
         <!-- End top rankings -->
 
         <!-- Begin items -->
-        <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 w-full mb-16">
-
-            <!-- Begin items list -->
-            <items-list></items-list>
-            <!-- End items list -->
-
-        </section>
+        <items-list></items-list>
         <!-- End items -->
 
     </main>
