@@ -225,7 +225,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/campaigns/new-arrivals' });
+                    const response = await axios({ method: 'GET', url: 'juaso/campaigns/new-arrivals' });
                     items.data = await response.data.data.data
                 }
                 catch (e)

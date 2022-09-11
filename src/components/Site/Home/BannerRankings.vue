@@ -14,10 +14,12 @@
 
         <!-- Begin ranks for 2xl and lg screens -->
         <swiper :slides-per-view="8" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="mb-2 rounded 2xl:block xl:hidden lg:hidden">
-            <swiper-slide v-for="( rankings ) in rankings.ranks" :key="rankings.attributes.resource_id" class="rounded">
+            <swiper-slide v-for="( rankings ) in rankings.ranks.data" :key="rankings.attributes.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border border-gray-100 text-center rounded">
                     <div class="border-b border-gray-100">
-                        <router-link to="/campaigns/top-rankings"><img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t"></router-link>
+                        <router-link to="/campaigns/top-rankings">
+                            <img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t">
+                        </router-link>
                     </div>
                     <div class="font-bold block text-xxs p-1">
                         <p v-if="rankings.pricing.priced === 'Product'" class="my-0.5">
@@ -38,10 +40,12 @@
 
         <!-- Begin ranks for md screens -->
         <swiper :slides-per-view="6" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="mb-2 rounded 2xl:hidden xl:block lg:hidden">
-            <swiper-slide v-for="( rankings ) in rankings.ranks" :key="rankings.attributes.resource_id" class="rounded">
+            <swiper-slide v-for="( rankings ) in rankings.ranks.data" :key="rankings.attributes.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border border-gray-100 text-center rounded">
                     <div class="border-b border-gray-100">
-                        <router-link to="/campaigns/top-rankings"><img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t"></router-link>
+                        <router-link to="/campaigns/top-rankings">
+                            <img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t">
+                        </router-link>
                     </div>
                     <div class="font-bold block text-xxs p-1">
                         <p v-if="rankings.pricing.priced === 'Product'" class="my-0.5">
@@ -62,10 +66,12 @@
 
         <!-- Begin ranks for md screens -->
         <swiper :slides-per-view="7" :loop="true" :space-between="5" :autoplay="{ autoplay: true }" class="mb-2 rounded 2xl:hidden xl:hidden lg:block lg:my-2.5">
-            <swiper-slide v-for="( rankings ) in rankings.ranks" :key="rankings.attributes.resource_id" class="rounded">
+            <swiper-slide v-for="( rankings ) in rankings.ranks.data" :key="rankings.attributes.resource_id" class="rounded">
                 <div class="card bg-white overflow-hidden border border-gray-100 text-center rounded">
                     <div class="border-b border-gray-100">
-                        <router-link to="/campaigns/top-rankings"><img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t"></router-link>
+                        <router-link to="/campaigns/top-rankings">
+                            <img :src="rankings.attributes.image" :alt="rankings.attributes.name" class="rounded-t">
+                        </router-link>
                     </div>
                     <div class="font-bold block text-xxs p-1">
                         <p v-if="rankings.pricing.priced === 'Product'" class="my-0.5">
@@ -111,7 +117,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/products/rankings/top-ranking' })
+                    const response = await axios({ method: 'GET', url: 'juaso/campaigns/top-rankings' })
                     const data = await response.data
                     rankings.ranks = data.data
                     rankings.loaded = true

@@ -205,7 +205,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/campaigns/flash-deals' });
+                    const response = await axios({ method: 'GET', url: 'juaso/campaigns/flash-deals/hot-deals' });
                     items.data = await response.data.data.data
                 }
                 catch (e)
@@ -225,5 +225,4 @@
 </script>
 
 <style scoped>
-
 </style>

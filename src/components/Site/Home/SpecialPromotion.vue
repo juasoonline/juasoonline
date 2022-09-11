@@ -18,7 +18,7 @@
                     <div v-for="index in 4" :key="index" class="card overflow-hidden text-white">
 
                         <!-- Begin image -->
-                        <div class=""><img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/juaso/items/products/product14_1.jpg" alt=""></div>
+                        <div class=""><img class="object-cover w-full rounded" src="https://kyeiandamankwaa.com/juasoonline/resources/api/products/images/products/product5_1.jpg" alt=""></div>
                         <!-- End image -->
 
                         <!-- Begin price -->
@@ -53,7 +53,7 @@
 
                         <!-- Begin image -->
                         <div class="">
-                            <img class="object-cover w-full rounded" src="https://juasoonline.nyc3.digitaloceanspaces.com/juaso/items/products/product14_1.jpg" alt="product">
+                            <img class="object-cover w-full rounded" src="https://kyeiandamankwaa.com/juasoonline/resources/api/products/images/products/product5_1.jpg" alt="product">
                         </div>
                         <!-- End image -->
 
