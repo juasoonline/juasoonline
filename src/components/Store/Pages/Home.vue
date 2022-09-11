@@ -48,7 +48,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.slug + '?include=subscription' })
+                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.resource_id + '?include=subscription' })
                     const data = await response.data
 
                     if ( data.code === 200 && ( data.data.include.subscription.attributes.subscription === 'Premium' || data.data.include.subscription.attributes.subscription === 'Standard' ))

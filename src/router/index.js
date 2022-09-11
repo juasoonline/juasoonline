@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
 import authentication from "@/store/authentication";
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes =
 [
@@ -43,7 +43,7 @@ const routes =
     { path: '/campaigns/new-arrivals', name: 'NewArrivals', component: () => import( '../components/Site/Campaigns/NewArrivals/NewArrivals' )},
 
     // Store and related routes
-    { path: '/store/:slug', name: 'Store', component: () => import( '../components/Store/Pages/Home' )},
+    { path: '/store/:resource_id', name: 'Store', component: () => import( '../components/Store/Pages/Home' )},
 
     // Static pages routes
     { path: '/buyer-protection', name: 'BuyerProtection', component: () => import( '../components/Site/BuyerProtection/BuyerProtection' ) },
