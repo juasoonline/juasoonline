@@ -39,7 +39,7 @@
 
                         <!-- Begin seller -->
                         <div class="text-xxs">
-                            <router-link class="text-gray-700 hover:text-gray-500" :to="{ name: 'Store', params: { slug: item.store.resource_id } }">
+                            <router-link class="text-gray-700 hover:text-gray-500" :to="{ name: 'Store', params: { resource_id: item.store.resource_id } }">
                                 <div class="flex items-center">
                                     <svg class="w-2.5 h-2.5 mr-1 text-gray-500" fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Rounded" transform="translate(-613.000000, -3170.000000)"><g id="Maps" transform="translate(100.000000, 3068.000000)"><g id="-Round-/-Maps-/-store_mall_directory" transform="translate(510.000000, 98.000000)"><g><polygon id="Path" points="0 0 24 0 24 24 0 24"/><path d="M20.16,7.8 C20.07,7.34 19.66,7 19.18,7 L4.82,7 C4.34,7 3.93,7.34 3.84,7.8 L3,12 L3,13 C3,13.55 3.45,14 4,14 L4,19 C4,19.55 4.45,20 5,20 L13,20 C13.55,20 14,19.55 14,19 L14,14 L18,14 L18,19 C18,19.55 18.45,20 19,20 C19.55,20 20,19.55 20,19 L20,14 C20.55,14 21,13.55 21,13 L21,12 L20.16,7.8 Z M12,18 L6,18 L6,14 L12,14 L12,18 Z M5,6 L19,6 C19.55,6 20,5.55 20,5 C20,4.45 19.55,4 19,4 L5,4 C4.45,4 4,4.45 4,5 C4,5.55 4.45,6 5,6 Z" id="🔹-Icon-Color" fill="#1D1D1D"/></g></g></g></g></g></svg>
                                     <span>{{ item.store.name }}</span>
@@ -79,7 +79,7 @@
 
                         <!-- Begin seller -->
                         <div class="text-xxs">
-                            <router-link class="text-gray-700 hover:text-gray-500" :to="{ name: 'Store', params: { slug: item.store.resource_id } }">
+                            <router-link class="text-gray-700 hover:text-gray-500" :to="{ name: 'Store', params: { resource_id: item.store.resource_id } }">
                                 <div class="flex items-center">
                                     <svg class="w-2.5 h-2.5 mr-1 text-gray-500" fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Rounded" transform="translate(-613.000000, -3170.000000)"><g id="Maps" transform="translate(100.000000, 3068.000000)"><g id="-Round-/-Maps-/-store_mall_directory" transform="translate(510.000000, 98.000000)"><g><polygon id="Path" points="0 0 24 0 24 24 0 24"/><path d="M20.16,7.8 C20.07,7.34 19.66,7 19.18,7 L4.82,7 C4.34,7 3.93,7.34 3.84,7.8 L3,12 L3,13 C3,13.55 3.45,14 4,14 L4,19 C4,19.55 4.45,20 5,20 L13,20 C13.55,20 14,19.55 14,19 L14,14 L18,14 L18,19 C18,19.55 18.45,20 19,20 C19.55,20 20,19.55 20,19 L20,14 C20.55,14 21,13.55 21,13 L21,12 L20.16,7.8 Z M12,18 L6,18 L6,14 L12,14 L12,18 Z M5,6 L19,6 C19.55,6 20,5.55 20,5 C20,4.45 19.55,4 19,4 L5,4 C4.45,4 4,4.45 4,5 C4,5.55 4.45,6 5,6 Z" id="🔹-Icon-Color" fill="#1D1D1D"/></g></g></g></g></g></svg>
                                     <span>{{ item.store.name }}</span>
@@ -119,7 +119,7 @@
 
                         <!-- Begin seller -->
                         <div class="text-xxs">
-                            <router-link class="text-gray-700 hover:text-gray-500" :to="{ name: 'Store', params: { slug: item.store.resource_id } }">
+                            <router-link class="text-gray-700 hover:text-gray-500" :to="{ name: 'Store', params: { resource_id: item.store.resource_id } }">
                                 <div class="flex items-center">
                                     <svg class="w-2.5 h-2.5 mr-1 text-gray-500" fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Rounded" transform="translate(-613.000000, -3170.000000)"><g id="Maps" transform="translate(100.000000, 3068.000000)"><g id="-Round-/-Maps-/-store_mall_directory" transform="translate(510.000000, 98.000000)"><g><polygon id="Path" points="0 0 24 0 24 24 0 24"/><path d="M20.16,7.8 C20.07,7.34 19.66,7 19.18,7 L4.82,7 C4.34,7 3.93,7.34 3.84,7.8 L3,12 L3,13 C3,13.55 3.45,14 4,14 L4,19 C4,19.55 4.45,20 5,20 L13,20 C13.55,20 14,19.55 14,19 L14,14 L18,14 L18,19 C18,19.55 18.45,20 19,20 C19.55,20 20,19.55 20,19 L20,14 C20.55,14 21,13.55 21,13 L21,12 L20.16,7.8 Z M12,18 L6,18 L6,14 L12,14 L12,18 Z M5,6 L19,6 C19.55,6 20,5.55 20,5 C20,4.45 19.55,4 19,4 L5,4 C4.45,4 4,4.45 4,5 C4,5.55 4.45,6 5,6 Z" id="🔹-Icon-Color" fill="#1D1D1D"/></g></g></g></g></g></svg>
                                     <span>{{ item.store.name }}</span>

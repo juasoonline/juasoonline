@@ -1,6 +1,18 @@
 <template>
 
-    <!-- Begin contents -->
+    <!-- Begin top ads -->
+    <top-ads></top-ads>
+    <!-- End top ads -->
+
+    <!-- Begin nav bar -->
+    <nav-bar></nav-bar>
+    <!-- End nav bar -->
+
+    <!-- Begin logo, search and cart -->
+    <main-header class="2xl:sticky 2xl:top-0 2xl:z-40 xl:sticky xl:top-0 xl:z-40 lg:sticky lg:top-0 lg:z-40"></main-header>
+    <!-- End logo, search and cart -->
+
+    <!-- Begin main contents -->
     <main class="">
 
         <!-- Begin item contents -->
@@ -30,8 +42,12 @@
                         <div class="text-xl text-gray-600 pb-3">
                             <h2 class="text-lg font-light leading-6 mb-3">{{ product.item.name }}</h2>
                             <div class="text-xs font-light mt-1 flex items-center">
-                                <span class="mr-4 hover:text-red-500"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All Product {{ store.store.doing_business_as }}</router-link></span>
-                                <span class="mr-4 font-bold border-r pr-3">Brand: <router-link :to="{ name: 'Brand', params: { brand: brand.brand.slug }}" class="hover:text-red-500">{{  brand.brand.name }}</router-link></span>
+                                <span class="mr-4 hover:text-red-500">
+                                    <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        All Product from {{ store.store.doing_business_as }}
+                                    </router-link>
+                                </span>
+                                <span class="mr-4 font-bold border-r pr-3">Brand: <router-link :to="{ name: 'Brands', params: { brands: brand.brand.resource_id, slug: brand.brand.slug }}" class="hover:text-red-500">{{  brand.brand.name }}</router-link></span>
                                 <span class="mr-4 hover:text-red-500 flex">
                                       <div class="text-sm text-gray-500 flex items-center">
                                           <span><svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></span>
@@ -152,18 +168,18 @@
 
                         <!-- Begin action button -->
                         <div class="flex inline-block mt-5">
-                            <button v-if="orderData.orderLoading === false" @click="makeOrder()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Buy Now</button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-red-500 hover:bg-red-400">Please wait...</button>
+                            <button v-if="orderData.orderLoading === false" @click="makeOrder()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-primary hover:bg-juaso-extra">Buy Now</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-primary hover:bg-juaso-extra">Please wait...</div>
 
-                            <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Add to Cart</button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-yellow-400 hover:bg-yellow-300 mx-3">Please wait...</button>
+                            <button v-if="orderData.cartLoading === false" @click="addToCart()" class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-secondary hover:bg-juaso-fourth mx-3">Add to Cart</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-16 py-2 border border-transparent rounded shadow-sm text-sm 2xl:font-bold text-white bg-juaso-secondary hover:bg-juaso-fourth mx-3">Please wait...</div>
 
                             <button v-if="wishlist.isLoading === false" @click="addToWishlist()" class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600">
                                 <svg v-if="wishlist.status === false" class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 <svg v-else class="mr-2 h-5 w-5 text-red-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                                 {{ wishlist.wishlist_count }}
                             </button>
-                            <button v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</button>
+                            <div v-else disabled class="inline-flex focus:outline-none items-center px-5 py-2 border border rounded text-sm font-medium text-gray-500 bg-white-600"><svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Loading...</div>
                         </div>
                         <!-- End action button -->
 
@@ -257,7 +273,7 @@
                 <!-- Begin store banner -->
                 <section class="my-4">
                     <div class="rounded">
-                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="focus:outline-none">
+                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="focus:outline-none">
                             <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
                         </router-link>
                     </div>
@@ -268,7 +284,7 @@
                 <section class="flex gap-5 my-4">
 
                     <!-- Begin left contents -->
-                    <aside class="w-1/5 rounded">
+                    <aside class="2xl:w-2/12 xl:w-1/5 lg:w-1/5 rounded">
 
                         <!-- Begin store category -->
                         <div class="bg-white rounded px-4 py-4 mb-5">
@@ -279,14 +295,14 @@
                             <div class="py-3">
                                 <ul>
                                     <li v-for="category in store.categories" :key="category.attributes.resource_id" class="text-xs font-extrabold text-gray-500 my-1.5">
-                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="flex items-center hover:text-red-500">
+                                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="flex items-center hover:text-red-500">
                                             <svg v-if="category.include.subcategories.length > 0" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                                             <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                                             {{ category.attributes.name }}
                                         </router-link>
                                         <ul v-if="category.include.subcategories.length > 0" class="ml-6 text-xxs font-normal mt-1.5 mb-2.5">
                                             <li v-for="subcategory in category.include.subcategories" :key="subcategory.attributes.resource_id" class="my-2 hover:text-red-500">
-                                                <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ subcategory.attributes.name }}</router-link>
+                                                <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">{{ subcategory.attributes.name }}</router-link>
                                             </li>
                                         </ul>
                                     </li>
@@ -333,7 +349,7 @@
                     <!-- End left contents -->
 
                     <!-- Begin right contents -->
-                    <div class="w-4/5">
+                    <div class="2xl:w-10/12 xl:w-4/5 lg:w-4/5">
 
                         <!-- Begin store info -->
                         <div class="bg-white mb-4 rounded p-4">
@@ -345,7 +361,7 @@
                                     <!-- Begin store name -->
                                     <div class="flex items-center">
                                         <span class="text-sm font-bold">
-                                            <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link>
+                                            <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link>
                                         </span>
                                     </div>
                                     <!-- End store name -->
@@ -357,7 +373,9 @@
                                         <p class="text-xs">{{ store.stats.followers }}<span class="text-gray-400 mx-2">Followers</span></p>
                                         <p class="text-xs my-2">
                                             <router-link to="/messages" class="flex items-center hover:text-juaso-primary cursor-pointer ">
-                                                <svg class="w-5 h-5 text-juaso-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                                                <svg class="w-5 h-5 text-juaso-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                                </svg>
                                                 <span class="text-juaso-secondary mx-2">Message Store</span>
                                             </router-link>
                                         </p>
@@ -365,9 +383,9 @@
                                     <!-- End store stats -->
 
                                     <!-- Begin call to action -->
-                                    <div class="mt-3 flex justify-between items-center">
-                                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
-                                        <button @click="followAction()" class="text-red-600 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-red-600">
+                                    <div class="mt-3">
+                                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="bg-juaso-primary hover:bg-juaso-extra text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1.5 px-4 mr-5 rounded-full">Visit Store</router-link>
+                                        <button @click="followAction()" class="text-juaso-primary 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-juaso-primary">
                                             <span v-if="follows.isLoading === true">Loading</span>
                                             <span v-else>{{ follows.status }}</span>
                                         </button>
@@ -625,7 +643,11 @@
 
                         <!-- Begin store recommendations -->
                         <div class="rounded mb-5">
-                            <h3 class="font-bold text-lg text-gray-600 mb-2">Seller Recommendations</h3>
+                            <!-- Begin title -->
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-lg text-gray-600 mb-2">Seller Recommendations</h3>
+                            </div>
+                            <!-- End title -->
 
                             <!-- Begin items -->
                             <div class="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 gap-4">
@@ -678,9 +700,6 @@
                             <!-- Begin title -->
                             <div class="flex items-center justify-between">
                                 <h3 class="font-bold text-lg text-gray-600 mb-2">More To Love</h3>
-                                <router-link to="">
-                                    <p class="flex items-center text-xs text-gray-600 hover:text-juaso-primary">View More <span><svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></span></p>
-                                </router-link>
                             </div>
                             <!-- End title -->
 
@@ -925,7 +944,7 @@
                     <!-- Begin store name -->
                     <div class="flex items-center">
                         <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
-                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">{{ store.store.name }}</router-link></span>
+                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">{{ store.store.name }}</router-link></span>
                     </div>
                     <!-- End store name -->
 
@@ -948,7 +967,7 @@
 
                     <!-- Begin call to action -->
                     <div class="my-3 border-b pb-4">
-                        <router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                         <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
                     </div>
                     <!-- End call to action -->
@@ -956,7 +975,7 @@
                     <!-- Begin recommendations header -->
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="font-bold text-sm mb-1.5">Seller Recommendations</h3>
-                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { store: store.store.resource_id }}">View All Product</router-link></p>
+                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">View All Product</router-link></p>
                     </div>
                     <!-- End recommendations header -->
 
@@ -1007,7 +1026,7 @@
                 </div>
                 <!-- End more to love -->
 
-                <!-- Begin bottom navbar -->
+                <!-- Begin bottom nav bar -->
                 <section id="bottom-navigation" class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block block fixed inset-x-0 bottom-0 z-40 bg-white shadow">
                     <div id="tabs" class="flex justify-between">
                         <router-link to="/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1 border-r">
@@ -1026,7 +1045,7 @@
                         </button>
                     </div>
                 </section>
-                <!-- End bottom navbar -->
+                <!-- End bottom nav bar -->
 
             </div>
             <!-- End contents for mobile screens -->
@@ -1035,254 +1054,272 @@
         <!-- End main contents -->
 
     </main>
-    <!-- End contents -->
+    <!-- End main contents -->
 
-    <!-- Begin sign in form modal -->
+    <!-- Begin footer -->
+    <suspense>
+        <main-footer></main-footer>
+    </suspense>
+    <!-- End footer -->
+
+
+    <!-- Begin modals -->
     <div class="">
-        <div v-if="modal.showSignInModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
+            
+        <!-- Begin sign in form modal -->
+        <div class="">
+            <div v-if="modal.showSignInModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
 
-            <!-- Begin modal -->
-            <div class="relative w-auto my-6 mx-auto max-w-sm">
-                <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <!-- Begin modal -->
+                <div class="relative w-auto my-6 mx-auto max-w-sm">
+                    <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
-                    <!-- Begin modal header -->
-                    <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                        <div>
-                            <router-link to="/">
-                                <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
-                            </router-link>
-                        </div>
-                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleSignInModal()">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- End modal header -->
-
-                    <!-- Begin modal body -->
-                    <div class="relative px-5 flex-auto">
-                        <form @submit.prevent="signIn" class="">
-                            <div class="mt-4 text-sm">
-
-                                <!-- Begin title -->
-                                <div class="max-w-lg text-center">
-                                    <h3 class="font-bold text-lg text-gray-500 uppercase mb-3">Sign In</h3>
-                                    <p> Please provide your email and password to log into your Juasoonline account: </p>
-                                </div>
-                                <!-- End title -->
-
-                                <!-- Begin email -->
-                                <div class="mt-2">
-                                    <label class="text-gray-500 text-sm">Email Address</label>
-                                    <div class="flex mt-3">
-                                        <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
-                                            <svg class="w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                        </div>
-                                        <input v-model="loginData.email" type="email" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="example@example.com">
-                                    </div>
-                                </div>
-                                <!-- End email -->
-
-                                <!-- Begin password -->
-                                <div class="mt-6">
-                                    <div class="flex justify-between"><label class="text-gray-500 text-sm">Password</label></div>
-                                    <div class="flex my-3">
-                                        <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                                        </div>
-                                        <input v-model="loginData.password" type="password" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="password">
-                                    </div>
-                                    <router-link class="text-sm hover:text-juaso-secondary" to="/forgot-password">Forgot your password?</router-link>
-                                </div>
-                                <!-- End password -->
-
-                                <!-- Begin sign in button  -->
-                                <div class="rounded-b mt-3">
-                                    <div class="flex items-center justify-end sm:px-6 sm:flex sm:flex-row-reverse">
-                                        <button v-if="loginData.isLoading === false" type="submit" class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Sign In</button>
-                                        <button v-else disabled class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Logging In...</button>
-                                    </div>
-                                </div>
-                                <!-- End sign in button -->
-
+                        <!-- Begin modal header -->
+                        <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                            <div>
+                                <router-link to="/">
+                                    <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/logo.png" class="2xl:w-32 xl:w-24 lg:w-18 md:w-24 sm:w-24 xs:w-24 mx-auto w-12 h-9.5">
+                                </router-link>
                             </div>
-                        </form>
-                    </div>
-                    <!-- End modal body -->
+                            <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleSignInModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- End modal header -->
 
-                    <!-- Begin register link -->
-                    <div class="my-3 mb-7 text-center text-sm">
-                        Don't have an account yet? <router-link to="/register" class="text-juaso-primary hover:text-juaso-secondary">Register Here</router-link>
-                    </div>
-                    <!-- End register link -->
+                        <!-- Begin modal body -->
+                        <div class="relative px-5 flex-auto">
+                            <form @submit.prevent="signIn" class="">
+                                <div class="mt-4 text-sm">
 
+                                    <!-- Begin title -->
+                                    <div class="max-w-lg text-center">
+                                        <h3 class="font-bold text-lg text-gray-500 uppercase mb-3">Sign In</h3>
+                                        <p> Please provide your email and password to log into your Juasoonline account: </p>
+                                    </div>
+                                    <!-- End title -->
+
+                                    <!-- Begin email -->
+                                    <div class="mt-2">
+                                        <label class="text-gray-500 text-sm">Email Address</label>
+                                        <div class="flex mt-3">
+                                            <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
+                                                <svg class="w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                            </div>
+                                            <input v-model="loginData.email" type="email" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="example@example.com">
+                                        </div>
+                                    </div>
+                                    <!-- End email -->
+
+                                    <!-- Begin password -->
+                                    <div class="mt-6">
+                                        <div class="flex justify-between"><label class="text-gray-500 text-sm">Password</label></div>
+                                        <div class="flex my-3">
+                                            <div class="w-12 z-10 text-center pointer-events-none flex items-center justify-center border-l border-t border-b rounded-l">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                            </div>
+                                            <input v-model="loginData.password" type="password" class="border rounded-r px-3 py-2 w-full focus:outline-none" placeholder="password">
+                                        </div>
+                                        <router-link class="text-sm hover:text-juaso-secondary" to="/forgot-password">Forgot your password?</router-link>
+                                    </div>
+                                    <!-- End password -->
+
+                                    <!-- Begin sign in button  -->
+                                    <div class="rounded-b mt-3">
+                                        <div class="flex items-center justify-end sm:px-6 sm:flex sm:flex-row-reverse">
+                                            <button v-if="loginData.isLoading === false" type="submit" class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Sign In</button>
+                                            <button v-else disabled class="w-full inline-flex justify-center rounded shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Logging In...</button>
+                                        </div>
+                                    </div>
+                                    <!-- End sign in button -->
+
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End modal body -->
+
+                        <!-- Begin register link -->
+                        <div class="my-3 mb-7 text-center text-sm">
+                            Don't have an account yet? <router-link to="/register" class="text-juaso-primary hover:text-juaso-secondary">Register Here</router-link>
+                        </div>
+                        <!-- End register link -->
+
+                    </div>
                 </div>
+                <!-- End modal -->
+
             </div>
-            <!-- End modal -->
-
+            <div v-if="modal.showSignInModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </div>
-        <div v-if="modal.showSignInModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
-    </div>
-    <!-- End sign in form modal -->
+        <!-- End sign in form modal -->
 
-    <!-- Begin addToCart modal -->
-    <div class="">
-        <div v-if="modal.showAddToCartModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
+        <!-- Begin addToCart modal -->
+        <div class="">
+            <div v-if="modal.showAddToCartModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
 
-            <!-- Begin modal -->
-            <div class="relative w-auto my-6 mx-auto 2xl:w-2/4 xl:w-2/3">
-                <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <!-- Begin modal -->
+                <div class="relative w-auto my-6 mx-auto 2xl:w-2/4 xl:w-2/3">
+                    <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
-                    <!-- Begin modal header -->
-                    <div class="flex p-2 rounded-t">
-                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleAddToCartModal()">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- End modal header -->
-
-                    <!-- Begin alert -->
-                    <div class="flex p-2 mx-4 font-medium py-1 px-2 bg-white rounded text-green-700 bg-green-100 border border-green-300 rounded">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle w-5 h-5 mx-2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
+                        <!-- Begin modal header -->
+                        <div class="flex p-2 rounded-t">
+                            <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleAddToCartModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
                         </div>
-                        <div class="text-xs font-normal  max-w-full flex-initial">
-                            {{ modal.message }}
+                        <!-- End modal header -->
+
+                        <!-- Begin alert -->
+                        <div class="flex p-2 mx-4 font-medium py-1 px-2 bg-white rounded text-green-700 bg-green-100 border border-green-300 rounded">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle w-5 h-5 mx-2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="text-xs font-normal  max-w-full flex-initial">
+                                {{ modal.message }}
+                            </div>
                         </div>
-                    </div>
-                    <!-- End alert -->
+                        <!-- End alert -->
 
-                    <!-- Begin action buttons -->
-                    <div class="flex m-4">
-                        <button class="inline-flex justify-center rounded shadow-sm px-4 py-1 mr-5 bg-red-600 font-medium text-sm text-white hover:bg-red-700 focus:outline-none">View Shopping Cart</button>
-                        <button class="inline-flex justify-center rounded shadow-sm px-4 py-1 border border-red-500 font-medium text-sm text-red-500 hover:text-red-700 focus:outline-none">Continue Shopping</button>
-                    </div>
-                    <!-- End action buttons -->
+                        <!-- Begin action buttons -->
+                        <div class="flex m-4">
+                            <button class="inline-flex justify-center rounded shadow-sm px-4 py-1 mr-5 bg-red-600 font-medium text-sm text-white hover:bg-red-700 focus:outline-none">View Shopping Cart</button>
+                            <button class="inline-flex justify-center rounded shadow-sm px-4 py-1 border border-red-500 font-medium text-sm text-red-500 hover:text-red-700 focus:outline-none">Continue Shopping</button>
+                        </div>
+                        <!-- End action buttons -->
 
-                    <!-- Begin modal body -->
-                    <div class="relative px-5 pb-5 mt-4 flex-auto">
-                        <div class="border-t font-bold">
-                            <div class="py-3">Recommended for you</div>
+                        <!-- Begin modal body -->
+                        <div class="relative px-5 pb-5 mt-4 flex-auto">
+                            <div class="border-t font-bold">
+                                <div class="py-3">Recommended for you</div>
 
-                            <div class="2xl:block xl:hidden lg:hidden">
-                                <div class="flex grid gap-5 grid-cols-6">
-                                    <div v-for="item in recommendations.items.slice( 0, 6 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
-                                        <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
-                                        </router-link>
-                                        <div class="m-3 text-center">
-                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                <div class="2xl:block xl:hidden lg:hidden">
+                                    <div class="flex grid gap-5 grid-cols-6">
+                                        <div v-for="item in recommendations.items.slice( 0, 6 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
+                                            </router-link>
+                                            <div class="m-3 text-center">
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="2xl:hidden xl:block lg:hidden">
+                                    <div class="flex grid gap-5 grid-cols-5">
+                                        <div v-for="item in recommendations.items.slice( 0, 5 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                                <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
+                                            </router-link>
+                                            <div class="m-3 text-center">
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="2xl:hidden xl:hidden lg:block">
+                                    <div class="flex grid gap-5 grid-cols-4">
+                                        <div v-for="item in recommendations.items.slice( 0, 4 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
+                                            <router-link class="text-center object-cover h-48 w-full" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
+                                                <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
+                                            </router-link>
+                                            <div class="m-3 text-center">
+                                                <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="2xl:hidden xl:block lg:hidden">
-                                <div class="flex grid gap-5 grid-cols-5">
-                                    <div v-for="item in recommendations.items.slice( 0, 5 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
-                                        <router-link class="w-full object-cover" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                                            <img class="object-fill h-38 w-full border rounded" v-bind:src="item.attributes.image" :alt="item.attributes.name">
-                                        </router-link>
-                                        <div class="m-3 text-center">
-                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="2xl:hidden xl:hidden lg:block">
-                                <div class="flex grid gap-5 grid-cols-4">
-                                    <div v-for="item in recommendations.items.slice( 0, 4 )" :key="item.attributes.resource_id" class="card bg-white rounded overflow-hidden">
-                                        <router-link class="text-center object-cover h-48 w-full" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}">
-                                            <img v-bind:src="item.attributes.image" :alt="item.attributes.name" class="object-cover text-center border mx-auto rounded">
-                                        </router-link>
-                                        <div class="m-3 text-center">
-                                            <p class="font-bold block text-xs"><router-link class="w-full object-cover hover:text-red-500" :to="{ name: 'Item', params: { item: item.attributes.resource_id }}"> {{ item.attributes.sales_price }}</router-link></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    <!-- End modal body -->
+                        <!-- End modal body -->
 
+                    </div>
                 </div>
+                <!-- End modal -->
+
             </div>
-            <!-- End modal -->
-
+            <div v-if="modal.showAddToCartModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </div>
-        <div v-if="modal.showAddToCartModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
-    </div>
-    <!-- End addToCart modal -->
+        <!-- End addToCart modal -->
 
-    <!-- Begin deliver options modal -->
-    <div class="">
-        <div v-if="modal.showDeliveryOptionsModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
+        <!-- Begin deliver options modal -->
+        <div class="">
+            <div v-if="modal.showDeliveryOptionsModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex animated fadeIn faster">
 
-            <!-- Begin modal -->
-            <div class="relative w-auto my-6 mx-auto 2xl:w-2/4 xl:w-3/5">
-                <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <!-- Begin modal -->
+                <div class="relative w-auto my-6 mx-auto 2xl:w-2/4 xl:w-3/5">
+                    <div class="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
-                    <!-- Begin modal header -->
-                    <div class="flex p-2 rounded-t">
-                        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleDeliveryOptionsModal()">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- End modal header -->
-
-                    <!-- Begin modal body -->
-                    <div class="relative px-4 mt-4 flex-auto">
-                        <div class="">
-                            <h2 class="font-bold mb-3 border-b pb-3">Delivery Options</h2>
-
-                            <table class="table ps-table text-sm my-5">
-                                <thead>
-                                    <tr>
-                                        <td></td>
-                                        <td class="py-3">Delivery Time</td>
-                                        <td>Fee</td>
-                                        <td>Carrier</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(option, index) in deliveryFees.fees" :key="option.resource_id">
-                                        <td class="w-5"><input @click="selectDeliveryOption( index )" class="cursor-pointer" name="new1" type="radio"></td>
-                                        <td class="">{{ option.attributes.delivery_time }}</td>
-                                        <td class="">{{ option.attributes.fee }}</td>
-                                        <td class="">{{ option.attributes.carrier }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                        <!-- Begin modal header -->
+                        <div class="flex p-2 rounded-t">
+                            <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-4 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" v-on:click="toggleDeliveryOptionsModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
                         </div>
-                    </div>
-                    <!-- End modal body -->
+                        <!-- End modal header -->
 
-                    <!-- Begin action buttons -->
-                    <div class="flex m-4 justify-end">
-                        <button v-on:click="toggleDeliveryOptionsModal()" class="inline-flex justify-center rounded shadow-sm px-10 py-1 bg-red-600 font-medium text-sm text-white hover:bg-red-700 focus:outline-none">Apply</button>
-                    </div>
-                    <!-- End action buttons -->
+                        <!-- Begin modal body -->
+                        <div class="relative px-4 mt-4 flex-auto">
+                            <div class="">
+                                <h2 class="font-bold mb-3 border-b pb-3">Delivery Options</h2>
 
+                                <table class="table ps-table text-sm my-5">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                            <td class="py-3">Delivery Time</td>
+                                            <td>Fee</td>
+                                            <td>Carrier</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(option, index) in deliveryFees.fees" :key="option.resource_id">
+                                            <td class="w-5"><input @click="selectDeliveryOption( index )" class="cursor-pointer" name="new1" type="radio"></td>
+                                            <td class="">{{ option.attributes.delivery_time }}</td>
+                                            <td class="">{{ option.attributes.fee }}</td>
+                                            <td class="">{{ option.attributes.carrier }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <!-- End modal body -->
+
+                        <!-- Begin action buttons -->
+                        <div class="flex m-4 justify-end">
+                            <button v-on:click="toggleDeliveryOptionsModal()" class="inline-flex justify-center rounded shadow-sm px-10 py-1 bg-red-600 font-medium text-sm text-white hover:bg-red-700 focus:outline-none">Apply</button>
+                        </div>
+                        <!-- End action buttons -->
+
+                    </div>
                 </div>
-            </div>
-            <!-- End modal -->
+                <!-- End modal -->
 
+            </div>
+            <div v-if="modal.showDeliveryOptionsModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </div>
-        <div v-if="modal.showDeliveryOptionsModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        <!-- End deliver options modal -->
+
     </div>
-    <!-- End deliver options modal -->
+    <!-- End modals -->
 
 </template>
 
 <script>
+    import TopAds from "@/components/Site/Shared/TopAds";
+    import NavBar from "@/components/Site/Shared/NavBar";
+    import MainHeader from "@/components/Site/Shared/MainHeader";
+    import MainFooter from "@/components/Site/Shared/MainFooter";
+
     import { inject, onBeforeMount, reactive } from "vue";
 
     import router from "../../../router";
@@ -1290,16 +1327,16 @@
     import { useRoute } from 'vue-router'
 
     import { Notyf } from "notyf";
+
+    import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
-    import SwiperCore, { Autoplay, Navigation } from "swiper";
     import 'swiper/swiper.scss';
-    SwiperCore.use( [ Autoplay, Navigation ] );
+    SwiperCore.use( [ Navigation, Pagination, Autoplay ] );
 
     export default
     {
         name: "MainContents",
-        components: { Swiper, SwiperSlide },
-
+        components: { TopAds, NavBar, MainHeader, MainFooter, Swiper, SwiperSlide },
         setup()
         {
             const notification = new Notyf();
@@ -1549,86 +1586,89 @@
 
             onBeforeMount(() =>
             {
-                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,promotions,faqs&ratings=ratings', headers: {} })
-                .then( response =>
-                {
-                    if ( response.data.code === 200 )
-                    {
-                        product.item = response.data.data.attributes;
-                        store.store = response.data.data.include.store.attributes;
-                        brand.brand = response.data.data.include.brand.attributes;
-                        store.categories = response.data.data.include.store.include.categories;
-                        specifications.specifications = response.data.data.include.specifications;
-                        images.images = response.data.data.include.images;
-                        colors.colors = response.data.data.include.colors;
-                        sizes.sizes = response.data.data.include.sizes;
-                        bundles.bundles = response.data.data.include.bundles;
-                        overviews.overviews = response.data.data.include.overviews;
-                        reviews.reviews = response.data.data.include.reviews;
-                        promotions.promotions = response.data.data.include.promotions;
-                        faqs.faqs = response.data.data.include.faqs;
 
-                        wishlist.wishlist_count = response.data.data.wishlist;
-                        product.currentImage = response.data.data.attributes.image;
-                        pricing.priced = response.data.data.pricing.priced;
-                        pricing.data = response.data.data.pricing.price_data[0];
-                        if ( response.data.data.ratings.length > 0 )
+                axios({ method: 'GET', url: 'business/products/' + route.params.item + '?ratings=ratings&include=store.categories.subcategories,brand,specifications,images,overviews,colors,bundles,sizes,reviews,faqs', headers: {} })
+                    .then( response =>
+                    {
+                        if ( response.data.code === 200 )
                         {
-                            rating.stats = response.data.data.ratings[0];
-                            rating.rating = response.data.data.ratings[1].rating;
-                            rating.rating_percentage = response.data.data.ratings[2].rating_percentage;
+                            product.item = response.data.data.attributes;
+                            images.images = response.data.data.include.images;
+                            specifications.specifications = response.data.data.include.specifications;
+                            colors.colors = response.data.data.include.colors;
+                            sizes.sizes = response.data.data.include.sizes;
+                            bundles.bundles = response.data.data.include.bundles;
+                            overviews.overviews = response.data.data.include.overviews;
+                            reviews.reviews = response.data.data.include.reviews;
+
+                            brand.brand = response.data.data.include.brand.attributes;
+                            product.currentImage = response.data.data.attributes.image;
+
+                            store.store = response.data.data.include.store.attributes;
+                            store.categories = response.data.data.include.store.include.categories;
+                            
+                            promotions.promotions = response.data.data.include.promotions;
+                            faqs.faqs = response.data.data.include.faqs;
+
+                            wishlist.wishlist_count = response.data.data.wishlist;
+                            pricing.priced = response.data.data.pricing.priced;
+                            pricing.data = response.data.data.pricing.price_data[0];
+                            if ( response.data.data.ratings.length > 0 )
+                            {
+                                rating.stats = response.data.data.ratings[0];
+                                rating.rating = response.data.data.ratings[1].rating;
+                                rating.rating_percentage = response.data.data.ratings[2].rating_percentage;
+                            }
+                            else
+                            {
+                                rating.stats = { average_rating: 0, total_rating: 0 }
+                            }
+
+                            // Get store stats
+                            axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats' })
+                                .then( response => { store.stats = response.data.data.stats[0]; store.rating = response.data.data.ratings[0]; })
+                                .catch( error => { console.log(error.response) })
+
+                            // Get store items
+                            axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products' })
+                                .then( response => { storeItems.items = response.data.data })
+                                .catch( error => { console.log(error.response) })
+
+                            // Get store recommendations
+                            axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations' })
+                                .then( response => { storeRecommendations.items = response.data.data })
+                                .catch( error => { console.log( error.response ) })
+
+                            // Get general recommendations
+                            axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
+                                .then( response => { recommendations.items = response.data.data })
+                                .catch( error => { console.log(error.response) })
+
+                            // Get delivery fees
+                            axios({ method: 'GET', url: 'juaso/delivery-methods', headers: {}})
+                                .then( response => { deliveryFees.fees = response.data.data; deliveryFees.current = response.data.data[0]['attributes'] })
+                                .catch( error => { console.log(error.response) })
+
+                            // Check follow
+                            if ( authentication.isAuthenticated() )
+                            {
+                                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + response.data.data.include.store.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                                    .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow" }})
+                                    .catch( error => { console.log( error.response ); follows.loading = false })
+                            }
+
+                            // Check wishlist
+                            if ( authentication.isAuthenticated() )
+                            {
+                                axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + response.data.data.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
+                                    .then( response => { if ( response.data.code === 200 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true }})
+                            }
                         }
                         else
                         {
-                            rating.stats = { average_rating: 0, total_rating: 0 }
+                            router.replace('/404')
                         }
-
-                        // Get store stats
-                        axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/stats' })
-                            .then( response => { store.stats = response.data.data.attributes[0]; store.rating = response.data.data.ratings[0]; })
-                            .catch( error => { console.log(error.response) })
-
-                        // Get store items
-                        axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products' })
-                            .then( response => { storeItems.items = response.data.data })
-                            .catch( error => { console.log(error.response) })
-
-                        // Get store recommendations
-                        axios({ method: 'GET', url: 'business/stores/' + response.data.data.include.store.attributes.resource_id + '/products/' + response.data.data.attributes.resource_id  + '/recommendations' })
-                            .then( response => { storeRecommendations.items = response.data.data })
-                            .catch( error => { console.log( error.response ) })
-
-                        // Get general recommendations
-                        axios({ method: 'GET', url: 'business/products/' + response.data.data.attributes.resource_id  + '/recommendations', data: { type: "Product", attributes: { name: response.data.data.attributes.name } } })
-                            .then( response => { recommendations.items = response.data.data })
-                            .catch( error => { console.log(error.response) })
-
-                        // Get delivery fees
-                        axios({ method: 'GET', url: 'juaso/delivery-methods', headers: {}})
-                            .then( response => { deliveryFees.fees = response.data.data; deliveryFees.current = response.data.data[0]['attributes'] })
-                            .catch( error => { console.log(error.response) })
-
-                        // Check follow
-                        if ( authentication.isAuthenticated() )
-                        {
-                            axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/stores/' + response.data.data.include.store.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                                .then( response => { if ( response.data.code === 200 ) { follows.status = "Following" } else { follows.status = "Follow" }})
-                                .catch( error => { console.log( error.response ); follows.loading = false })
-                        }
-
-                        // Check wishlist
-                        if ( authentication.isAuthenticated() )
-                        {
-                            axios({ method: 'GET', url: 'customers/' + authentication.state.user.resource_id + '/wishlists/' + response.data.data.attributes.resource_id, headers: { 'Authorization': 'Bearer ' + authentication.state.token }})
-                                .then( response => { if ( response.data.code === 200 ) { wishlist.resource = response.data.data.resource_id; wishlist.status = true }})
-                        }
-                    }
-                    else
-                    {
-                        router.replace('/404')
-                    }
-
-                })
+                    })
             })
 
             return { authentication, modal, tabs, product, wishlist, pricing, rating, brand, store, specifications, images, colors, sizes, bundles, overviews, reviews, promotions, faqs, storeRecommendations, recommendations, follows, deliveryFees, storeItems, orderData, loginData, toggleSignInModal, toggleAddToCartModal, toggleDeliveryOptionsModal, selectDeliveryOption, toggleTabs, changeImage, makeOrder, addToCart, addToWishlist, followAction, quantityCounter, chooseColor, chooseBundle, chooseSize, signIn }
