@@ -1,9 +1,9 @@
 <template>
 
     <!-- Begin contents -->
-    <div>
+    <div class="">
         <form v-if="accountData.verification === false" @submit.prevent="createAccount()" class="">
-            <div class="mt-6 text-sm">
+            <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
                 <!-- Begin title -->
                 <div class="w-full text-center">
@@ -74,7 +74,7 @@
                 <!-- End password -->
 
                 <!-- Begin submit button -->
-                <div class="mt-10">
+                <div class="mt-3">
                     <div class="flex mt-3">
                         <button v-if="loader.isLoading === false" type="submit" class="rounded bg-juaso-primary text-white text-xs font-bold px-3 py-3 w-full uppercase focus:outline-none hover:bg-juaso-secondary">
                             <span class="uppercase text-xxs">Create Account</span>
@@ -104,7 +104,7 @@
             </div>
         </form>
         <form v-else @submit.prevent="verifyAccount()" class="">
-            <div class="mt-6 text-sm">
+            <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
                 <!-- Begin title -->
                 <div class="w-full text-center">

@@ -70,7 +70,7 @@
                                     <!-- Begin user icon -->
                                     <div class="mr-4">
                                         <div class="rounded-full">
-                                            <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/user-icon-male.png" alt="" class="w-10">
+                                            <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/icons/user-icon-male.png" alt="" class="w-10">
                                         </div>
                                     </div>
                                     <!-- End user icon -->

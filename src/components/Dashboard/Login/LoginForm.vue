@@ -2,7 +2,7 @@
 
     <!-- Begin contents -->
     <form @submit.prevent="signIn" class="">
-        <div class="mt-6 text-sm">
+        <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
             <!-- Begin title -->
             <div class="w-full text-center">

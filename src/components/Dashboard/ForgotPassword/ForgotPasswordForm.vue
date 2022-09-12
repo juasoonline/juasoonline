@@ -2,7 +2,7 @@
 
     <!-- Begin code confirmation -->
     <form v-if="data.step_1 === true" @submit.prevent="verifyCode()" class="">
-        <div class="mt-6 text-sm">
+        <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
             <!-- Begin title -->
             <div class="w-full text-center">
@@ -49,7 +49,7 @@
 
     <!-- Begin change password -->
     <form v-else-if="data.step_2 === true" @submit.prevent="resetPassword()" class="">
-        <div class="mt-6 text-sm">
+        <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
             <!-- Begin title -->
             <div class="w-full text-center">
@@ -108,7 +108,7 @@
     <!-- Begin confirmation -->
     <div v-else-if="data.step_3 === true">
         <form @submit.prevent="signIn" class="">
-            <div class="mt-6 text-sm">
+            <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
                 <!-- Begin title -->
                 <div class="w-full text-center">
@@ -172,7 +172,7 @@
 
     <!-- Begin email form -->
     <form v-else @submit.prevent="verifyEmail()" class="">
-        <div class="mt-6 text-sm">
+        <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
             <!-- Begin title -->
             <div class="w-full text-center">

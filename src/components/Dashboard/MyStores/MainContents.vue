@@ -1,15 +1,15 @@
 <template>
 
-    <!-- Begin breadcrumb -->
+    <!-- Begin breadcrumb (Show for large screens / Hide for small screens) -->
     <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-        <div class="container mx-auto">
+        <div class="container mx-auto px-1.5">
             <nav class="relative select-none bg-grey lg:flex lg:items-stretch w-full">
                 <div class="flex flex-no-shrink items-stretch text-xs h-12 items-center">
                     <router-link to="/" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
                         Home <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                     </router-link>
                     <router-link to="/profile" class="flex-no-grow flex-no-shrink relative hover:text-juaso-primary py-2 leading-normal text-gray-500 no-underline flex items-center hover:bg-grey-dark">
-                        Overview
+                        My Stores
                     </router-link>
                 </div>
             </nav>
@@ -20,9 +20,9 @@
     <!-- Begin main contents -->
     <main class="mb-4">
 
-        <!-- Begin contents for large screens -->
+        <!-- Begin contents (Show for large screens / Hide for small screens) -->
         <section class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
-            <div class="container mx-auto h-screen">
+            <div class="container mx-auto px-1.5">
                 <div class="flex grid grid-cols-12 gap-4">
 
                     <!-- Begin left contents -->
@@ -42,9 +42,9 @@
                 </div>
             </div>
         </section>
-        <!-- End contents for large screens -->
+        <!-- End contents -->
 
-        <!-- Begin contents for mobile screens -->
+        <!-- Begin contents (Show for small screens / Hide for big screens) -->
         <section class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block">
             <div class="px-2 mx-auto">
 
@@ -147,7 +147,7 @@
 
             </div>
         </section>
-        <!-- End contents for mobile screens -->
+        <!-- End contents -->
 
     </main>
     <!-- End main contents -->

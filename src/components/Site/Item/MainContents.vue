@@ -462,10 +462,10 @@
 
                                                 <!-- Begin overview -->
                                                 <div v-bind:class="{ 'hidden': tabs.openTab !== 1, 'block': tabs.openTab === 1 }" class="">
-                                                    <div v-for="overview in overviews.overviews" :key="overview.attributes.resource_id" class="flex items-center justify-center py-5">
-                                                        <div class="flex flex-col bg-white items-center">
+                                                    <div v-for="overview in overviews.overviews" :key="overview.attributes.resource_id" class="flex py-5">
+                                                        <div class="flex flex-col bg-white">
                                                             <h3 class="font-serif font-bold text-gray-900 text-2xl">{{ overview.attributes.title }}</h3>
-                                                            <p class="text-center leading-relaxed">{{ overview.attributes.description }}</p>
+                                                            <p class="leading-relaxed">{{ overview.attributes.description }}</p>
                                                             <img class="rounded w-full mt-4" :src="overview.attributes.image" alt="motivation" />
                                                         </div>
                                                     </div>

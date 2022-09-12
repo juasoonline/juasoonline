@@ -20,7 +20,9 @@
         <!-- End top contents -->
 
         <!-- Begin footer -->
-        <main-footer></main-footer>
+        <suspense>
+            <main-footer></main-footer>
+        </suspense>
         <!-- End footer -->
 
         <!-- Begin mobile menu -->
@@ -33,11 +35,11 @@
 </template>
 
 <script>
-    import NavBar from "../Shared/NavBar";
+    import NavBar from "../Shared/NavBar.vue"
     import MainHeader from "../Shared/MainHeader";
     import MobileHeader from "../Shared/MobileHeader";
     import MainContents from "./MainContents";
-    import MainFooter from "../Shared/MainFooter";
+    import MainFooter from "../../Site/Shared/MainFooter"
     import MobileBottomNavBar from "../../Site/Shared/MobileBottomNavBar";
 
     export default

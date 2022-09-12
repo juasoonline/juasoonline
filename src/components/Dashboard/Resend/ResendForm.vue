@@ -3,7 +3,7 @@
     <!-- Begin contents -->
     <div>
         <form v-if="accountData.verification === false" @submit.prevent="resendCode()" class="">
-            <div class="mt-6 text-sm">
+            <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
                 <!-- Begin title -->
                 <div class="w-full text-center">
@@ -48,7 +48,7 @@
             </div>
         </form>
         <form v-else @submit.prevent="verifyAccount()" class="">
-            <div class="mt-6 text-sm">
+            <div class="mt-6 text-sm bg-white shadow-md p-5 rounded">
 
                 <!-- Begin title -->
                 <div class="w-full text-center">
