@@ -81,7 +81,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.slug + '/categories' })
+                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.resource_id + '/categories' })
                     const data = await response.data
                     categories.data = data.data
                     categories.loaded = true

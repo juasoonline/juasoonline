@@ -43,7 +43,7 @@
                             <h2 class="text-lg font-light leading-6 mb-3">{{ product.item.name }}</h2>
                             <div class="text-xs font-light mt-1 flex items-center">
                                 <span class="mr-4 hover:text-red-500">
-                                    <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank" class="inline-flex py-0.5 px-5 font-bold items-center border rounded text-xxxs text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         All Product from {{ store.store.doing_business_as }}
                                     </router-link>
                                 </span>
@@ -273,7 +273,7 @@
                 <!-- Begin store banner -->
                 <section class="my-4">
                     <div class="rounded">
-                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="focus:outline-none">
+                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank" class="focus:outline-none">
                             <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
                         </router-link>
                     </div>
@@ -295,14 +295,14 @@
                             <div class="py-3">
                                 <ul>
                                     <li v-for="category in store.categories" :key="category.attributes.resource_id" class="text-xs font-extrabold text-gray-500 my-1.5">
-                                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="flex items-center hover:text-red-500">
+                                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank" class="flex items-center hover:text-red-500">
                                             <svg v-if="category.include.subcategories.length > 0" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                                             <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 -ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
                                             {{ category.attributes.name }}
                                         </router-link>
                                         <ul v-if="category.include.subcategories.length > 0" class="ml-6 text-xxs font-normal mt-1.5 mb-2.5">
                                             <li v-for="subcategory in category.include.subcategories" :key="subcategory.attributes.resource_id" class="my-2 hover:text-red-500">
-                                                <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">{{ subcategory.attributes.name }}</router-link>
+                                                <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank">{{ subcategory.attributes.name }}</router-link>
                                             </li>
                                         </ul>
                                     </li>
@@ -361,7 +361,7 @@
                                     <!-- Begin store name -->
                                     <div class="flex items-center">
                                         <span class="text-sm font-bold">
-                                            <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">{{ store.store.doing_business_as }}</router-link>
+                                            <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank">{{ store.store.doing_business_as }}</router-link>
                                         </span>
                                     </div>
                                     <!-- End store name -->
@@ -384,7 +384,7 @@
 
                                     <!-- Begin call to action -->
                                     <div class="mt-3">
-                                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="bg-juaso-primary hover:bg-juaso-extra text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1.5 px-4 mr-5 rounded-full">Visit Store</router-link>
+                                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank" class="bg-juaso-primary hover:bg-juaso-extra text-white 2xl:text-xs xl:text-xxs lg:text-xxxs py-1.5 px-4 mr-5 rounded-full">Visit Store</router-link>
                                         <button @click="followAction()" class="text-juaso-primary 2xl:text-xs xl:text-xxs lg:text-xxxs py-1 px-4 border rounded-full border-juaso-primary">
                                             <span v-if="follows.isLoading === true">Loading</span>
                                             <span v-else>{{ follows.status }}</span>
@@ -944,7 +944,7 @@
                     <!-- Begin store name -->
                     <div class="flex items-center">
                         <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
-                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">{{ store.store.name }}</router-link></span>
+                        <span class="text-lg font-bold"><router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank">{{ store.store.name }}</router-link></span>
                     </div>
                     <!-- End store name -->
 
@@ -967,7 +967,7 @@
 
                     <!-- Begin call to action -->
                     <div class="my-3 border-b pb-4">
-                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
+                        <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank" class="bg-red-600 text-white mr-3 text-xs py-1 px-4 border rounded-full border-red-600">Visit Store</router-link>
                         <button class="text-red-600 text-xs py-1 px-4 border rounded-full border-red-600">Follow</button>
                     </div>
                     <!-- End call to action -->
@@ -975,7 +975,7 @@
                     <!-- Begin recommendations header -->
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="font-bold text-sm mb-1.5">Seller Recommendations</h3>
-                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}">View All Product</router-link></p>
+                        <p class="text-xxs text-juaso-secondary"><router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank">View All Product</router-link></p>
                     </div>
                     <!-- End recommendations header -->
 

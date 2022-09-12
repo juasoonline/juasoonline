@@ -24,7 +24,7 @@
         <!-- End top sales contents -->
 
         <!-- Begin items category contents -->
-        <div class=""></div>
+        <main class="h-screen"></main>
         <!-- End items category contents -->
 
     </div>
