@@ -42,7 +42,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.slug + '/sliders' })
+                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.resource_id + '/sliders' })
                     const data = await response.data
                     sliders.data = data.data
                     sliders.loaded = true

@@ -37,7 +37,7 @@
         components : { StatBar, MainMenu },
         setup()
         {
-            onBeforeMount(async () =>
+            onBeforeMount( async () =>
             {
             })
 

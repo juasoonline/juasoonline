@@ -74,7 +74,7 @@
             {
                 try
                 {
-                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.slug + '/stats' })
+                    const response = await axios({ method: 'GET', url: 'business/stores/' + route.params.resource_id + '/stats' })
                     const data = await response.data
                     stats.data = data.data
                     stats.loaded = true
