@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import NavBar from "../../Site/Shared/NavBar.vue"
+    import NavBar from "../Shared/NavBar.vue"
     import MainHeader from "../Shared/MainHeader";
     import MobileHeader from "../Shared/MobileHeader";
     import MainContents from "./MainContents";
