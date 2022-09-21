@@ -4,32 +4,31 @@
     <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden bg-white rounded p-5 mb-5">
 
         <!-- Begin header -->
-        <div class="mb-3 pt-2">
+        <div class="mb-3 py-2">
             <router-link to="/campaigns/top-rankings" class="flex justify-between items-center">
                 <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-sm text-gray-700 flex items-center hover:text-gray-600">
-                    <span>Top Rankings</span>
+                    <span>Featured Categories</span>
                 </div>
-                <div class="text-xs hover:text-red-600">VIEW MORE</div>
             </router-link>
         </div>
         <!-- End header -->
 
         <!-- Begin items -->
         <div class="flex gap-3 mt-3">
-            <div v-for="index in 3" :key="index" class="bg-gray-100 p-2 rounded">
+            <div v-for="( item, index ) in items.data" :key="index" class="bg-gray-100 p-2 rounded">
 
                 <!-- Begin header -->
-                <div class="mb-3 text-lg font-bold">Some category name goes here</div>
+                <div class="mb-3 text-lg font-bold">{{ item.attributes.name }}</div>
                 <!-- End header -->
 
                 <!-- Begin category items -->
                 <div class="rounded flex grid grid-cols-3 gap-1">
-                    <div v-for="index in 3" :key="index" class="card overflow-hidden">
+                    <router-link v-for="index in 3" :key="index" to="" class="card overflow-hidden">
 
                         <!-- Begin image -->
-                        <router-link class="" :to="{ name: 'Item', params: { item: 78236748275482 }}">
+                        <div class="" :to="{ name: 'Item', params: { item: 78236748275482 }}">
                             <img class="object-cover w-full rounded" src="https://kyeiandamankwaa.com/juasoonline/resources/api/products/images/products/product15_1.jpg" alt="product">
-                        </router-link>
+                        </div>
                         <!-- End image -->
 
                         <!-- Begin price -->
@@ -38,7 +37,7 @@
                         </div>
                         <!-- End price -->
 
-                    </div>
+                    </router-link>
                 </div>
                 <!-- End category items -->
 
@@ -52,12 +51,37 @@
 </template>
 
 <script>
+    import { onBeforeMount, reactive, ref } from "vue";
+    import axios from "axios";
+
     export default 
     {
-        name: "TopRankings"
+        name: "TopRankings",
+
+        setup()
+        {
+            const items = reactive({ data: [] })
+            const error = ref( null )
+
+            onBeforeMount( async () =>
+            {
+                try
+                {
+                    const response = await axios({ method: 'GET', url: 'juaso/campaigns/featured-categories?include=products' });
+                    items.data = await response.data.data
+                }
+                catch (e)
+                {
+                    error.value = e
+                }
+            })
+
+            return {
+                items, error
+            }
+        }
     }
 </script>
 
 <style scoped>
-
 </style>

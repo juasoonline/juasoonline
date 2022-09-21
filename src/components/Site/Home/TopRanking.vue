@@ -1,12 +1,16 @@
 <template>
 
     <!-- Begin contents -->
-    <div class="2xl:mt-2 xl:mt-3 lg:mt-3.5 bg-white rounded p-2">
+    <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden bg-white rounded p-5 mb-5">
 
         <!-- Begin header -->
-        <div class="2xl:mb-2 xl:mb-2 lg:mb-2.5 flex justify-between items-center text-gray-600">
-            <h3 class="font-bold">Top Rankings</h3>
-            <p class="text-xxs"><router-link to="#">View more</router-link></p>
+        <div class="mb-3 py-2">
+            <router-link to="/campaigns/top-rankings" class="flex justify-between items-center">
+                <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-sm text-gray-700 flex items-center hover:text-gray-600">
+                    <span>Top Rankings</span>
+                </div>
+                <div class="text-xs hover:text-red-600">VIEW MORE</div>
+            </router-link>
         </div>
         <!-- End header -->
 

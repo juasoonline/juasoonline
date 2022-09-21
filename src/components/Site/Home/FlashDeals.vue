@@ -4,7 +4,7 @@
     <div class="2xl:p-4 xl:p-4 lg:p-4 md:px-1.5 sm:px-1.5 xs:px-1.5 md:mx-1.5 sm:mx-1.5 xs:mx-1.5 bg-white rounded 2xl:mb-5 xl:mb-5 lg:mb-5 mb-3">
 
         <!-- Begin header -->
-        <div class="mb-3 pt-2">
+        <div class="mb-3 py-2">
             <router-link to="/campaigns/flash-deals" class="flex justify-between items-center">
                 <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-lg text-gray-700 flex items-center hover:text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
@@ -196,6 +196,7 @@
     {
         name: "QuickDeals",
         components: { Swiper, SwiperSlide },
+
         setup()
         {
             const items = reactive({ data: [] })
