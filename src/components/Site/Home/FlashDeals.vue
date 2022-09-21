@@ -8,7 +8,7 @@
             <router-link to="/campaigns/flash-deals" class="flex justify-between items-center">
                 <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-lg text-gray-700 flex items-center hover:text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
-                    <span>Flash Deals</span>
+                    <h3 class="">Flash Deals</h3>
                 </div>
                 <div class="text-xs hover:text-red-600">VIEW MORE</div>
             </router-link>
@@ -20,7 +20,7 @@
 
             <!-- Begin item for 2xl screens -->
             <div class="2xl:block xl:hidden lg:hidden md:hidden sm:hidden xs:hidden text-justify">
-                <swiper :slides-per-view="7" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
+                <swiper :slides-per-view="8" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
                     <swiper-slide v-for="( item, index ) in items.data" :key="index">
                         <div class="card bg-white overflow-hidden mx-0.5">
                             <router-link to="/campaigns/flash-deals">
@@ -58,7 +58,7 @@
 
             <!-- Begin item for xl screens -->
             <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
-                <swiper :slides-per-view="6" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
+                <swiper :slides-per-view="7" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
                     <swiper-slide v-for="( item, index ) in items.data" :key="index">
                         <div class="card bg-white overflow-hidden mx-0.5">
                             <router-link to="/campaigns/flash-deals">
@@ -96,7 +96,7 @@
 
             <!-- Begin item for lg screens -->
             <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
-                <swiper :slides-per-view="5" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
+                <swiper :slides-per-view="6" :loop="true" :space-between="10" :autoplay="{ autoplay: true }">
                     <swiper-slide v-for="( item, index ) in items.data" :key="index">
                         <div class="card bg-white overflow-hidden mx-0.5">
                             <router-link to="/campaigns/flash-deals">

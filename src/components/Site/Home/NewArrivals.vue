@@ -7,7 +7,7 @@
         <div class="mb-3 pt-2">
             <router-link to="/campaigns/new-arrivals" class="flex justify-between items-center">
                 <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-lg text-gray-700 flex items-center hover:text-gray-600">
-                    <span>New Arrivals</span>
+                    <h3 class="">New Arrivals</h3>
                 </div>
                 <div class="text-xs hover:text-red-600">VIEW MORE</div>
             </router-link>

@@ -5,8 +5,12 @@
 
         <!-- Begin header -->
         <div class="2xl:mb-2 xl:mb-2 lg:mb-2.5 flex justify-between items-center text-gray-600">
-            <h3 class="font-bold">Top Rankings</h3>
-            <p class="text-xxs"><router-link to="#">View more</router-link></p>
+            <router-link to="/campaigns/top-rankings" class="flex justify-between items-center">
+                <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-lg text-gray-700 flex items-center hover:text-gray-600">
+                    <h3 class="">Top Rankings</h3>
+                </div>
+                <div class="text-xs hover:text-red-600">VIEW MORE</div>
+            </router-link>
         </div>
         <!-- End header -->
 
