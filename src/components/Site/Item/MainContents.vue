@@ -274,7 +274,7 @@
                 <section class="my-4">
                     <div class="rounded">
                         <router-link :to="{ name: 'Store', params: { resource_id: store.store.resource_id }}" target="_blank" class="focus:outline-none">
-                            <img src="https://kyeiandamankwaa.com/juasoonline/resources/assets/images/advertisment/top/banner1.jpg" alt="Store banner" class="rounded">
+                            <img :src="store.store.banner_image" alt="Store banner" class="rounded">
                         </router-link>
                     </div>
                 </section>
