@@ -27,8 +27,10 @@
         <new-arrivals></new-arrivals>
         <!-- End new arrivals -->
 
+        <top-ranking></top-ranking>
+        
         <!-- Begin top rankings -->
-        <top-rankings></top-rankings>
+        <featured-categories></featured-categories>
         <!-- End top rankings -->
 
         <!-- Begin items -->
@@ -47,13 +49,14 @@
     import SpecialPromotion from "./SpecialPromotion";
     import FlashDeals from "./FlashDeals";
     import NewArrivals from "./NewArrivals";
-    import TopRankings from "./TopRankings";
+    import TopRanking from "./TopRanking";
+    import FeaturedCategories from "./FeaturedCategories";
     import ItemsList from "./ItemsList";
 
     export default
     {
         name: "MainContents",
-        components: { CatsAndAdSlides, CategoriesMobile, JuasoTags, SpecialPromotion, FlashDeals, NewArrivals, TopRankings, ItemsList },
+        components: { CatsAndAdSlides, CategoriesMobile, JuasoTags, SpecialPromotion, FlashDeals, NewArrivals, FeaturedCategories, TopRanking, ItemsList },
     }
 </script>
 
