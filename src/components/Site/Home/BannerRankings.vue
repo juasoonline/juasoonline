@@ -100,7 +100,7 @@
     import { Swiper, SwiperSlide } from 'swiper/vue'
 
     import 'swiper/swiper.scss';
-    import {onBeforeMount, reactive} from "vue";
+    import { onBeforeMount, reactive } from "vue";
     import axios from "axios";
 
     SwiperCore.use( [ Autoplay, Navigation ] );

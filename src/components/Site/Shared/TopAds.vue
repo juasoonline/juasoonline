@@ -7,19 +7,10 @@
             <!-- Begin ad banner -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden mx-auto w-screen">
                 <router-link to="" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" >
-                    <img src="https://ae01.alicdn.com/kf/Sebe1e13a68ce4cf69143eb1a0e592a14W.jpg_Q90.jpg_.webp"  alt=""/>
+                    <img :src="banners.banners.image"  alt=""/>
                 </router-link>
             </div>
             <!-- Begin ad banner -->
-
-            <!-- Begin sm banner -->
-<!--            <div class="2xl:hidden xl:hidden lg:hidden md:block sm:block xs:block py-2">-->
-<!--                <router-link to="/" class="uppercase text-xxs px-2 py-1 bg-gradient-to-r from-red-400 to-red-500 text-gray-100 rounded">-->
-<!--                    <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg>-->
-<!--                    <span class="ml-1">Open App</span>-->
-<!--                </router-link>-->
-<!--            </div>-->
-            <!-- Begin sm banner -->
 
         </div>
     </div>
@@ -28,9 +19,34 @@
 </template>
 
 <script>
+    import { onBeforeMount, reactive } from "vue";
+    import axios from "axios";
+
     export default
     {
         name: "TopAds",
+
+        setup()
+        {
+            const banners = reactive({ banners: [], loaded: false })
+
+            onBeforeMount( async () =>
+            {
+                try
+                {
+                    const response = await axios({ method: 'GET', url: 'juaso/banners' })
+                    const data = await response.data
+                    banners.banners = data.data[0].attributes
+                    banners.loaded = true
+                }
+                catch( err )
+                {
+                    banners.loaded = false
+                }
+            })
+
+            return { banners }
+        }
     }
 </script>
 
