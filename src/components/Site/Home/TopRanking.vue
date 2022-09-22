@@ -14,50 +14,62 @@
         </div>
         <!-- End header -->
 
-        <!-- Begin ranks for 2xl and lg screens -->
-        <swiper :slides-per-view="8" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:block xl:hidden lg:hidden">
-            <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
-                <div class="card bg-white overflow-hidden pb-1.5 text-center rounded">
-                    <router-link to="/item/975858275">
-                        <img v-bind:src="banner.image" :alt="banner.name" class="object-cover text-center mx-auto rounded">
-                    </router-link>
-                    <p class="font-bold mt-3 block text-xs">
-                        <router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link>
-                    </p>
-                </div>
-            </swiper-slide>
-        </swiper>
-        <!-- End ranks for 2xl and lg screens -->
+        <!-- Begin items content -->
+        <div class="">
 
-        <!-- Begin ranks for md screens -->
-        <swiper :slides-per-view="6" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:block lg:hidden">
-            <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
-                <div class="card bg-white overflow-hidden pb-1.5 text-center rounded">
-                    <router-link to="/item/975858275">
-                        <img v-bind:src="banner.image" :alt="banner.name" class="object-cover text-center mx-auto rounded">
-                    </router-link>
-                    <p class="font-bold mt-3 block text-xs">
-                        <router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link>
-                    </p>
-                </div>
-            </swiper-slide>
-        </swiper>
-        <!-- End ranks for md screens -->
+            <!-- Begin item for 2xl screens -->
+            <div class="2xl:block xl:hidden lg:hidden md:hidden sm:hidden xs:hidden text-justify">
+                <swiper :slides-per-view="8" :loop="true" :space-between="15" :autoplay="{ autoplay: true }" class="rounded 2xl:block xl:hidden lg:hidden">
+                    <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
+                        <div class="card bg-white overflow-hidden pb-1.5 text-center rounded">
+                            <router-link to="/item/975858275">
+                                <img v-bind:src="banner.image" :alt="banner.name" class="object-cover text-center mx-auto rounded">
+                            </router-link>
+                            <p class="font-bold mt-3 block text-xs">
+                                <router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link>
+                            </p>
+                        </div>
+                    </swiper-slide>
+                </swiper>
+            </div>
+            <!-- End item for 2xl screens -->
 
-        <!-- Begin ranks for md screens -->
-        <swiper :slides-per-view="7" :space-between="5" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:hidden lg:block lg:my-2.5">
-            <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
-                <div class="card bg-white overflow-hidden pb-1.5 text-center rounded">
-                    <router-link to="/item/975858275">
-                        <img v-bind:src="banner.image" :alt="banner.name" class="object-cover text-center mx-auto rounded">
-                    </router-link>
-                    <p class="font-bold mt-3 block text-xs">
-                        <router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link>
-                    </p>
-                </div>
-            </swiper-slide>
-        </swiper>
-        <!-- End ranks for md screens -->
+            <!-- Begin item for xl screens -->
+            <div class="2xl:hidden xl:block lg:hidden md:hidden sm:hidden xs:hidden text-justify">
+                <swiper :slides-per-view="7" :loop="true" :space-between="15" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:block lg:hidden">
+                    <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
+                        <div class="card bg-white overflow-hidden pb-1.5 text-center rounded">
+                            <router-link to="/item/975858275">
+                                <img v-bind:src="banner.image" :alt="banner.name" class="object-cover text-center mx-auto rounded">
+                            </router-link>
+                            <p class="font-bold mt-3 block text-xs">
+                                <router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link>
+                            </p>
+                        </div>
+                    </swiper-slide>
+                </swiper>
+            </div>
+            <!-- End item for xl screens -->
+
+            <!-- Begin item for lg screens -->
+            <div class="2xl:hidden xl:hidden lg:block md:hidden sm:hidden xs:hidden text-justify">
+                <swiper :slides-per-view="6" :loop="true" :space-between="15" :autoplay="{ autoplay: true }" class="rounded 2xl:hidden xl:hidden lg:block lg:my-2.5">
+                    <swiper-slide v-for="banner in AdBanners" :key="banner.resource_id" class="rounded">
+                        <div class="card bg-white overflow-hidden pb-1.5 text-center rounded">
+                            <router-link to="/item/975858275">
+                                <img v-bind:src="banner.image" :alt="banner.name" class="object-cover text-center mx-auto rounded">
+                            </router-link>
+                            <p class="font-bold mt-3 block text-xs">
+                                <router-link class="text-xxs px-1 text-juaso-primary rounded" to="/item/975858275">GHS {{ banner.sales_price }}</router-link>
+                            </p>
+                        </div>
+                    </swiper-slide>
+                </swiper>
+            </div>
+            <!-- End item for lg screens -->
+
+        </div>
+        <!-- End items content -->
 
     </div>
     <!-- End contents -->
