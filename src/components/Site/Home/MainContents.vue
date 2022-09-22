@@ -23,11 +23,13 @@
         <flash-deals></flash-deals>
         <!-- End quick deals -->
 
+        <!-- Begin top ranking -->
+        <top-ranking></top-ranking>
+        <!-- End top ranking -->
+
         <!-- Begin new arrivals -->
         <new-arrivals></new-arrivals>
         <!-- End new arrivals -->
-
-        <top-ranking></top-ranking>
         
         <!-- Begin top rankings -->
         <featured-categories></featured-categories>
@@ -48,15 +50,15 @@
     import JuasoTags from "@/components/Site/Shared/JuasoTags";
     import SpecialPromotion from "./SpecialPromotion";
     import FlashDeals from "./FlashDeals";
-    import NewArrivals from "./NewArrivals";
     import TopRanking from "./TopRanking";
+    import NewArrivals from "./NewArrivals";
     import FeaturedCategories from "./FeaturedCategories";
     import ItemsList from "./ItemsList";
 
     export default
     {
         name: "MainContents",
-        components: { CatsAndAdSlides, CategoriesMobile, JuasoTags, SpecialPromotion, FlashDeals, NewArrivals, FeaturedCategories, TopRanking, ItemsList },
+        components: { CatsAndAdSlides, CategoriesMobile, JuasoTags, SpecialPromotion, FlashDeals, TopRanking, NewArrivals, FeaturedCategories, ItemsList },
     }
 </script>
 
