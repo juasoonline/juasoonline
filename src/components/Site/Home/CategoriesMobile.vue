@@ -43,7 +43,7 @@
 </template>
 
 <script>
-    import {onBeforeMount, reactive, ref} from "vue";
+    import { onBeforeMount, reactive, ref } from "vue";
     import axios from "axios";
 
     export default

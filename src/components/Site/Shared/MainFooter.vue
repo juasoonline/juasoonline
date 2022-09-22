@@ -275,19 +275,19 @@
                 <div class="flex m-auto sm:border-t border-gray-400 text-sm flex-col">
                     <div class="flex py-5 mx-auto">
                         <div class="my-1 border rounded">
-                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/mtn.jpg" alt="">
+                            <img class="rounded w-16" src="https://kyeiandamankwaa.com/juasoonline/resources/api/payment_methods/mtn.jpg" alt="">
                         </div>
                         <div class="my-1 border rounded mx-2">
-                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/airteltigo.jpg" alt="">
+                            <img class="rounded w-16" src="https://kyeiandamankwaa.com/juasoonline/resources/api/payment_methods/airteltigo.jpg" alt="">
                         </div>
                         <div class="my-1 border rounded mx-2">
-                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/Visa.jpg" alt="">
+                            <img class="rounded w-16" src="https://kyeiandamankwaa.com/juasoonline/resources/api/payment_methods/visa.jpg" alt="">
                         </div>
                         <div class="my-1 border rounded mx-2">
-                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/mastercard.jpg" alt="">
+                            <img class="rounded w-16" src="https://kyeiandamankwaa.com/juasoonline/resources/api/payment_methods/mastercard.jpg" alt="">
                         </div>
                         <div class="my-1 border rounded">
-                            <img class="rounded w-16" src="http://kandaconsultingltd.com/juasoonline/resources/api/payment_methods/vodafone.jpg" alt="">
+                            <img class="rounded w-16" src="https://kyeiandamankwaa.com/juasoonline/resources/api/payment_methods/vodafone.jpg" alt="">
                         </div>
                     </div>
                 </div>

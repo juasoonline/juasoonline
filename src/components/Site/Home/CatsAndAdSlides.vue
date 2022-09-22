@@ -1,7 +1,6 @@
 <template>
 
     <!-- Begin contents -->
-    <!-- <section class="flex w-full"> -->
     <section class="md:px-1.5 sm:px-1.5 xs:px-1.5 flex w-full 2xl:mb-5 xl:mb-5 lg:mb-5">
 
         <!-- Begin categories nav bar -->
@@ -319,12 +318,13 @@
     import SwiperCore, { Autoplay, Navigation } from 'swiper';
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/swiper.scss';
-    SwiperCore.use( [ Autoplay, Navigation ] );
-
+    
     import CategoriesMenu from "../Shared/CategoriesMenu"
     import AdSliders from "@/components/Site/Home/AdSliders";
     import BannerRankings from "@/components/Site/Home/BannerRankings";
-
+    
+    SwiperCore.use( [ Autoplay, Navigation ] );
+    
     export default
     {
         name: "CatsSlides",
