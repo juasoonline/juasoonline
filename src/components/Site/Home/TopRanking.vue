@@ -78,7 +78,7 @@
 
 <script>
     import SwiperCore, { Autoplay, Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/vue';
+    import { Swiper, SwiperSlide } from 'swiper/vue';
 
     import 'swiper/swiper.scss';
 
