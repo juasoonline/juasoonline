@@ -4,7 +4,7 @@
     <div class="bg-white rounded p-5 mb-5 2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden">
 
         <!-- Begin header -->
-        <div class="mb-3 pt-2">
+        <div class="mb-3 py-2">
             <router-link to="/campaigns/new-arrivals" class="flex justify-between items-center">
                 <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-lg text-gray-700 flex items-center hover:text-gray-600">
                     <h3 class="">New Arrivals</h3>
