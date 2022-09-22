@@ -6,8 +6,8 @@
         <!-- Begin header -->
         <div class="mb-3 py-2">
             <router-link to="/campaigns/top-rankings" class="flex justify-between items-center">
-                <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-sm text-gray-700 flex items-center hover:text-gray-600">
-                    <span>Top Rankings</span>
+                <div class="font-black 2xl:text-xl xl:text-xl md:text-xl text-lg text-gray-700 flex items-center hover:text-gray-600">
+                    <h3 class="">Top Rankings</h3>
                 </div>
                 <div class="text-xs hover:text-red-600">VIEW MORE</div>
             </router-link>

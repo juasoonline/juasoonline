@@ -7,7 +7,8 @@
             <!-- Begin ad banner -->
             <div class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden mx-auto w-screen">
                 <router-link to="" class="2xl:block xl:block lg:block md:hidden sm:hidden xs:hidden" >
-                    <img :src="banners.banners.image"  alt=""/>
+                    <img src="https://ae01.alicdn.com/kf/Sebe1e13a68ce4cf69143eb1a0e592a14W.jpg_Q90.jpg_.webp"  alt=""/>
+                    <!-- <img :src="banners.banners.image"  alt=""/> -->
                 </router-link>
             </div>
             <!-- Begin ad banner -->
