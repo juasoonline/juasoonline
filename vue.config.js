@@ -3,6 +3,6 @@ module.exports =
     devServer:
     {
         host: 'juasoonline.test',
-        port: '9000'
+        port: '9100'
     }
 };
